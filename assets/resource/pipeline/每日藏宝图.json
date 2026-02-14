@@ -5,9 +5,10 @@
       "type": "Click"
     },
     "next": [
-      "确定0",
-      "确定1",
-      "确定2",
+      {
+        "jump_back": true,
+        "name": "确定0"
+      },
       "寻宝助力"
     ],
     "recognition": {
@@ -31,6 +32,7 @@
       "param": {},
       "type": "Click"
     },
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "roi": [
@@ -47,14 +49,14 @@
     }
   },
   "加入队伍": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
     "next": [
+      "识别属性",
       "藏宝图列表页",
       "已进入队伍"
     ],
+    "post_delay": 0,
+    "pre_delay": 0,
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
@@ -77,12 +79,10 @@
       "type": "Click"
     },
     "next": [
-      "识别藏宝图是否满了"
-    ],
-    "on_error": [
+      "识别藏宝图是否满了",
       "点击助力次数"
     ],
-    "post_wait_freezes": 300,
+    "post_wait_freezes": 400,
     "recognition": {
       "param": {
         "expected": [
@@ -96,8 +96,17 @@
         ]
       },
       "type": "OCR"
-    },
-    "timeout": 1000
+    }
+  },
+  "只刷神品和传颂": {
+    "enabled": false,
+    "next": [
+      "识别品质",
+      "藏宝图列表页"
+    ],
+    "post_delay": 0,
+    "pre_delay": 0,
+    "rate_limit": 50
   },
   "寻宝助力": {
     "action": {
@@ -132,6 +141,7 @@
         "name": "点到了好友"
       }
     ],
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
@@ -150,7 +160,8 @@
   },
   "每日藏宝图entry": {
     "next": [
-      "识别集会所"
+      "识别集会所",
+      "寻宝助力"
     ]
   },
   "满了": {
@@ -178,7 +189,7 @@
       "param": {},
       "type": "Click"
     },
-    "pre_wait_freezes": 300,
+    "pre_wait_freezes": 400,
     "recognition": {
       "param": {
         "roi": [
@@ -193,6 +204,21 @@
       },
       "type": "TemplateMatch"
     }
+  },
+  "点击加入队伍": {
+    "action": {
+      "param": {
+        "target": "加入队伍"
+      },
+      "type": "Click"
+    },
+    "next": [
+      "已进入队伍",
+      "藏宝图列表页",
+      "寻宝助力"
+    ],
+    "post_delay": 0,
+    "pre_delay": 0
   },
   "点击助力次数": {
     "action": {
@@ -249,52 +275,20 @@
       "param": {},
       "type": "Click"
     },
-    "next": [
-      "确定1"
-    ],
     "rate_limit": 2000,
     "recognition": {
       "param": {
-        "template": [
-          "确定0.png"
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          521,
+          408,
+          246,
+          309
         ]
       },
-      "type": "TemplateMatch"
-    }
-  },
-  "确定1": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "助力次数"
-    ],
-    "rate_limit": 2000,
-    "recognition": {
-      "param": {
-        "template": [
-          "确定1.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "确定2": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "助力次数"
-    ],
-    "recognition": {
-      "param": {
-        "template": [
-          "确定2.png"
-        ]
-      },
-      "type": "TemplateMatch"
+      "type": "OCR"
     }
   },
   "确认离开队伍": {
@@ -329,29 +323,67 @@
       "加入队伍",
       "已进入队伍"
     ],
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
           "寻宝助力"
         ],
         "roi": [
-          471,
-          30,
-          387,
-          130
+          509,
+          44,
+          324,
+          97
         ]
       },
       "type": "OCR"
     }
   },
-  "藏宝图满了": {
+  "识别品质": {
     "next": [
-      {
-        "jump_back": true,
-        "name": "满了藏宝图返回"
-      }
+      "点击加入队伍"
     ],
-    "timeout": 1000
+    "post_delay": 0,
+    "pre_delay": 0,
+    "recognition": {
+      "param": {
+        "expected": [
+          "神品|传颂"
+        ],
+        "roi": "加入队伍",
+        "roi_offset": [
+          -135,
+          -165,
+          -5,
+          38
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "识别属性": {
+    "next": [
+      "只刷神品和传颂",
+      "点击加入队伍"
+    ],
+    "post_delay": 0,
+    "pre_delay": 0,
+    "rate_limit": 50,
+    "recognition": {
+      "param": {
+        "expected": [
+          ".*"
+        ],
+        "roi": "加入队伍",
+        "roi_offset": [
+          -67,
+          -159,
+          14,
+          28
+        ]
+      },
+      "type": "OCR"
+    }
   },
   "识别藏宝图": {
     "action": {
@@ -373,7 +405,10 @@
   },
   "识别藏宝图是否满了": {
     "next": [
-      "藏宝图满了"
+      {
+        "jump_back": true,
+        "name": "满了藏宝图返回"
+      }
     ],
     "recognition": {
       "param": {
@@ -392,7 +427,7 @@
       },
       "type": "TemplateMatch"
     },
-    "timeout": 1000
+    "timeout": 2000
   },
   "识别集会所": {
     "action": {
@@ -405,6 +440,12 @@
     "recognition": {
       "param": {
         "green_mask": true,
+        "roi": [
+          704,
+          282,
+          522,
+          420
+        ],
         "template": [
           "集会所.png"
         ]
@@ -434,6 +475,7 @@
         ]
       },
       "type": "TemplateMatch"
-    }
+    },
+    "timeout": -1
   }
 }
