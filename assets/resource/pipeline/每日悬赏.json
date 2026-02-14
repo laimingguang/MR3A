@@ -622,7 +622,7 @@
       "type": "Click"
     },
     "next": [
-      "悬赏令主页-self"
+      "没人打悬赏退出-确定"
     ],
     "recognition": {
       "param": {
@@ -637,6 +637,29 @@
         ]
       },
       "type": "TemplateMatch"
+    }
+  },
+  "没人打悬赏退出-确定": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "悬赏令主页-self"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          678,
+          436,
+          263,
+          179
+        ]
+      },
+      "type": "OCR"
     }
   },
   "没满": {
@@ -1024,6 +1047,9 @@
     "next": [
       "战斗-self"
     ],
+    "post_delay": 0,
+    "pre_delay": 0,
+    "rate_limit": 100,
     "recognition": {
       "param": {
         "expected": [
