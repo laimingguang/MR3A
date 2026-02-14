@@ -1,8 +1,32 @@
 {
-  "准备扫荡": {
+  "准备扫荡1": {
     "next": [
-      "点击扫荡",
-      "没有扫荡按钮"
+      "点击扫荡1",
+      "没有扫荡按钮1"
+    ]
+  },
+  "准备扫荡2": {
+    "next": [
+      "点击扫荡2",
+      "没有扫荡按钮2"
+    ]
+  },
+  "准备扫荡3": {
+    "next": [
+      "点击扫荡3",
+      "没有扫荡按钮3"
+    ]
+  },
+  "准备扫荡4": {
+    "next": [
+      "点击扫荡4",
+      "没有扫荡按钮4"
+    ]
+  },
+  "准备扫荡5": {
+    "next": [
+      "点击扫荡5",
+      "没有扫荡按钮5"
     ]
   },
   "向右滑动": {
@@ -54,14 +78,111 @@
       "type": "TemplateMatch"
     }
   },
-  "忍村试炼确定": {
+  "忍村试炼确定1": {
     "action": {
       "param": {},
       "type": "Click"
     },
     "next": [
-      "移动至最右侧"
+      "准备扫荡1"
     ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          438,
+          523,
+          439,
+          193
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "忍村试炼确定2": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "准备扫荡2"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          438,
+          523,
+          439,
+          193
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "忍村试炼确定3": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "准备扫荡3"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          438,
+          523,
+          439,
+          193
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "忍村试炼确定4": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "准备扫荡4"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          438,
+          523,
+          439,
+          193
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "忍村试炼确定5": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "准备扫荡5"
+    ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -101,11 +222,27 @@
       "type": "TemplateMatch"
     }
   },
-  "没有扫荡按钮": {
+  "没有扫荡按钮1": {
     "next": [
       "移动至最右侧"
     ]
   },
+  "没有扫荡按钮2": {
+    "next": [
+      "移动至最右侧"
+    ]
+  },
+  "没有扫荡按钮3": {
+    "next": [
+      "移动至最右侧"
+    ]
+  },
+  "没有扫荡按钮4": {
+    "next": [
+      "移动至最右侧"
+    ]
+  },
+  "没有扫荡按钮5": {},
   "点击忍村试炼": {
     "action": {
       "param": {},
@@ -130,14 +267,110 @@
       "type": "TemplateMatch"
     }
   },
-  "点击扫荡": {
+  "点击扫荡1": {
     "action": {
       "param": {},
       "type": "Click"
     },
     "next": [
-      "忍村试炼确定",
-      "试炼购买饭团"
+      "忍村试炼确定1",
+      "试炼购买饭团_副本8"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "扫荡"
+        ],
+        "roi": [
+          750,
+          574,
+          295,
+          113
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击扫荡2": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼确定2",
+      "试炼购买饭团2"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "扫荡"
+        ],
+        "roi": [
+          750,
+          574,
+          295,
+          113
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击扫荡3": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼确定3",
+      "试炼购买饭团3"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "扫荡"
+        ],
+        "roi": [
+          750,
+          574,
+          295,
+          113
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击扫荡4": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼确定4",
+      "试炼购买饭团4"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "扫荡"
+        ],
+        "roi": [
+          750,
+          574,
+          295,
+          113
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击扫荡5": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼确定5",
+      "试炼购买饭团5"
     ],
     "recognition": {
       "param": {
@@ -179,9 +412,11 @@
       "试炼关卡2",
       "试炼关卡3",
       "试炼关卡4",
-      "忍村试炼返回"
+      "忍村试炼返回",
+      "试炼关卡5"
     ],
-    "repeat": 1
+    "repeat": 4,
+    "repeat_delay": 200
   },
   "识别试炼关卡数字-1": {
     "action": {
@@ -196,7 +431,7 @@
       "type": "Click"
     },
     "next": [
-      "准备扫荡"
+      "准备扫荡1"
     ],
     "recognition": {
       "param": {
@@ -226,7 +461,7 @@
       "type": "Click"
     },
     "next": [
-      "准备扫荡"
+      "准备扫荡2"
     ],
     "recognition": {
       "param": {
@@ -256,7 +491,7 @@
       "type": "Click"
     },
     "next": [
-      "准备扫荡"
+      "准备扫荡3"
     ],
     "recognition": {
       "param": {
@@ -286,7 +521,37 @@
       "type": "Click"
     },
     "next": [
-      "准备扫荡"
+      "准备扫荡4"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "47"
+        ],
+        "roi": [
+          0,
+          200,
+          1277,
+          150
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "识别试炼关卡数字-5": {
+    "action": {
+      "param": {
+        "target_offset": [
+          3,
+          94,
+          -11,
+          -16
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "准备扫荡5"
     ],
     "recognition": {
       "param": {
@@ -327,7 +592,7 @@
     }
   },
   "试炼关卡1": {
-    "max_hit": 3,
+    "max_hit": 1,
     "next": [
       "识别试炼关卡数字-1",
       {
@@ -337,7 +602,7 @@
     ]
   },
   "试炼关卡2": {
-    "max_hit": 3,
+    "max_hit": 1,
     "next": [
       "识别试炼关卡数字-2",
       {
@@ -347,7 +612,7 @@
     ]
   },
   "试炼关卡3": {
-    "max_hit": 3,
+    "max_hit": 1,
     "next": [
       "识别试炼关卡数字-3",
       {
@@ -357,12 +622,22 @@
     ]
   },
   "试炼关卡4": {
-    "max_hit": 3,
+    "max_hit": 1,
     "next": [
       "识别试炼关卡数字-4",
       {
         "jump_back": true,
         "name": "试炼左滑4"
+      }
+    ]
+  },
+  "试炼关卡5": {
+    "max_hit": 1,
+    "next": [
+      "识别试炼关卡数字-5",
+      {
+        "jump_back": true,
+        "name": "试炼左滑5"
       }
     ]
   },
@@ -462,7 +737,155 @@
       "type": "Swipe"
     }
   },
-  "试炼购买饭团": {
+  "试炼左滑5": {
+    "action": {
+      "param": {
+        "begin": [
+          100,
+          400,
+          1,
+          1
+        ],
+        "end": [
+          [
+            700,
+            400,
+            1,
+            1
+          ]
+        ],
+        "end_hold": [
+          500
+        ]
+      },
+      "type": "Swipe"
+    }
+  },
+  "试炼购买饭团2": {
+    "action": {
+      "param": {
+        "target": [
+          887,
+          36,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼返回"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买饭团"
+        ],
+        "roi": [
+          544,
+          176,
+          192,
+          127
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "试炼购买饭团3": {
+    "action": {
+      "param": {
+        "target": [
+          887,
+          36,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼返回"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买饭团"
+        ],
+        "roi": [
+          544,
+          176,
+          192,
+          127
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "试炼购买饭团4": {
+    "action": {
+      "param": {
+        "target": [
+          887,
+          36,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼返回"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买饭团"
+        ],
+        "roi": [
+          544,
+          176,
+          192,
+          127
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "试炼购买饭团5": {
+    "action": {
+      "param": {
+        "target": [
+          887,
+          36,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "忍村试炼返回"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买饭团"
+        ],
+        "roi": [
+          544,
+          176,
+          192,
+          127
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "试炼购买饭团_副本8": {
     "action": {
       "param": {
         "target": [
