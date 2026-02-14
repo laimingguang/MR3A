@@ -34,6 +34,10 @@
     "on_error": [
       "没有红点"
     ],
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 1000
+    },
     "recognition": {
       "param": {
         "roi": [
@@ -113,10 +117,10 @@
       "param": {
         "roi": "家族祈福转盘",
         "roi_offset": [
-          8,
-          -66,
-          53,
-          50
+          6,
+          -64,
+          58,
+          55
         ],
         "template": [
           "红点.png"
@@ -159,6 +163,12 @@
     "recognition": {
       "param": {
         "green_mask": true,
+        "roi": [
+          747,
+          73,
+          419,
+          645
+        ],
         "template": [
           "家族.png"
         ]
