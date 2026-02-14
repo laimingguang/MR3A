@@ -1,12 +1,14 @@
 {
   "$__mpe_config_fight": {
     "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\fight.json",
       "filename": "fight",
+      "lastSyncTime": 1771053911369,
       "prefix": "",
       "savedViewport": {
-        "x": -6799,
-        "y": 406,
-        "zoom": 0.7
+        "x": -10386,
+        "y": 502,
+        "zoom": 1.06
       },
       "version": "v1.1.1"
     }
@@ -14,15 +16,14 @@
   "fight": {
     "$__mpe_code": {
       "position": {
-        "x": 9869,
-        "y": -174
+        "x": 9866,
+        "y": -242
       }
     },
     "next": [
-      "轮询检查下滑"
+      "战斗开始了"
     ],
-    "rate_limit": 100,
-    "timeout": 60000
+    "rate_limit": 100
   },
   "发现boss": {
     "$__mpe_code": {
@@ -126,6 +127,22 @@
       "大招_双椒"
     ]
   },
+  "战斗开始了": {
+    "$__mpe_code": {
+      "position": {
+        "x": 10211,
+        "y": -230
+      }
+    },
+    "next": [
+      "发现boss",
+      {
+        "jump_back": true,
+        "name": "持续点击下滑按钮"
+      }
+    ],
+    "rate_limit": 50
+  },
   "持续点击下滑按钮": {
     "$__mpe_code": {
       "position": {
@@ -135,7 +152,12 @@
     },
     "action": {
       "param": {
-        "target": "轮询检查下滑"
+        "target": [
+          189,
+          630,
+          1,
+          1
+        ]
       },
       "type": "Click"
     },
@@ -161,39 +183,5 @@
     "next": [
       "开大"
     ]
-  },
-  "轮询检查下滑": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10165,
-        "y": -203
-      }
-    },
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "发现boss",
-      {
-        "jump_back": true,
-        "name": "持续点击下滑按钮"
-      }
-    ],
-    "rate_limit": 50,
-    "recognition": {
-      "param": {
-        "roi": [
-          102,
-          550,
-          173,
-          159
-        ],
-        "template": [
-          "下滑.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
   }
 }
