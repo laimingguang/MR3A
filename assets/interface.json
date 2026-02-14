@@ -16,7 +16,7 @@
     ],
     "resource": [
         {
-            "name": "vivo服",
+            "name": "官服",
             "path": [
                 "./resource"
             ]
@@ -106,13 +106,17 @@
     "option": {
         "区服配置": {
             "type": "select",
-            "default_case": "vivo服",
+            "default_case": "官服",
             "cases": [
                 {
                     "name": "vivo服",
                     "pipeline_override": {
                         "启动应用": {
-                            "package_name": "com.corrodinggames.rts"
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.vivo"
+                                }
+                            }
                         }
                     }
                 },
@@ -120,7 +124,11 @@
                     "name": "官服",
                     "pipeline_override": {
                         "启动应用": {
-                            "package_name": "com.corrodinggames.rts.official"
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3"
+                                }
+                            }
                         }
                     }
                 }

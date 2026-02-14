@@ -1,5 +1,8 @@
 {
   "主页面": {
+    "next": [
+      "点开设置"
+    ],
     "recognition": {
       "param": {
         "green_mask": true,
@@ -10,6 +13,43 @@
       },
       "type": "TemplateMatch"
     }
+  },
+  "关闭设置": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "roi": [
+          1052,
+          16,
+          219,
+          170
+        ],
+        "template": [
+          "叉叉1.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "勾选屏蔽": {
+    "action": {
+      "param": {
+        "target": [
+          872,
+          162,
+          25,
+          24
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "关闭设置"
+    ]
   },
   "同意隐私保护提示": {
     "action": {
@@ -63,6 +103,27 @@
     "post_wait_freezes": 300,
     "timeout": 40000
   },
+  "屏蔽所有组队邀请": {
+    "next": [
+      "识别是否勾选",
+      "勾选屏蔽"
+    ],
+    "post_wait_freezes": 200,
+    "recognition": {
+      "param": {
+        "expected": [
+          "屏蔽所有组队邀请"
+        ],
+        "roi": [
+          635,
+          111,
+          547,
+          376
+        ]
+      },
+      "type": "OCR"
+    }
+  },
   "点击登录": {
     "action": {
       "param": {},
@@ -78,6 +139,75 @@
       "type": "TemplateMatch"
     },
     "timeout": 60000
+  },
+  "点开设置": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "设置页上滑"
+    ],
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "roi": [
+          1195,
+          1,
+          80,
+          80
+        ],
+        "template": [
+          "主页设置.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "设置页上滑": {
+    "action": {
+      "param": {
+        "begin": [
+          900,
+          461,
+          1,
+          1
+        ],
+        "end": [
+          [
+            900,
+            121,
+            1,
+            1
+          ]
+        ]
+      },
+      "type": "Swipe"
+    },
+    "next": [
+      "屏蔽所有组队邀请"
+    ],
+    "pre_wait_freezes": 300
+  },
+  "识别是否勾选": {
+    "next": [
+      "关闭设置"
+    ],
+    "recognition": {
+      "param": {
+        "roi": "屏蔽所有组队邀请",
+        "roi_offset": [
+          168,
+          -68,
+          -60,
+          127
+        ],
+        "template": [
+          "设置页选项已勾选.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
   },
   "需要更新": {
     "action": {
