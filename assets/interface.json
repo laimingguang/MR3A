@@ -25,7 +25,10 @@
     "task": [
         {
             "name": "启动游戏",
-            "entry": "启动流程"
+            "entry": "启动流程",
+            "option": [
+                "区服配置"
+            ]
         },
         {
             "name": "神龙契约",
@@ -101,6 +104,28 @@
         }
     ],
     "option": {
+        "区服配置": {
+            "type": "select",
+            "default_case": "vivo服",
+            "cases": [
+                {
+                    "name": "vivo服",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "package_name": "com.corrodinggames.rts"
+                        }
+                    }
+                },
+                {
+                    "name": "官服",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "package_name": "com.corrodinggames.rts.official"
+                        }
+                    }
+                }
+            ]
+        },
         "忍村试炼关卡配置1": {
             "type": "input",
             "inputs": [
