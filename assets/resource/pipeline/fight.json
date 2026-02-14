@@ -1,37 +1,11 @@
 {
-  "$__mpe_config_fight": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\fight.json",
-      "filename": "fight",
-      "lastSyncTime": 1771053911369,
-      "prefix": "",
-      "savedViewport": {
-        "x": -10386,
-        "y": 502,
-        "zoom": 1.06
-      },
-      "version": "v1.1.1"
-    }
-  },
   "fight": {
-    "$__mpe_code": {
-      "position": {
-        "x": 9866,
-        "y": -242
-      }
-    },
     "next": [
       "战斗开始了"
     ],
     "rate_limit": 100
   },
   "发现boss": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10525,
-        "y": -108
-      }
-    },
     "next": [
       "转绳上"
     ],
@@ -53,12 +27,6 @@
     }
   },
   "大招2": {
-    "$__mpe_code": {
-      "position": {
-        "x": 12021,
-        "y": -481
-      }
-    },
     "action": {
       "param": {
         "target": [
@@ -74,12 +42,6 @@
     "repeat_delay": 200
   },
   "大招_双椒": {
-    "$__mpe_code": {
-      "position": {
-        "x": 11414,
-        "y": -377
-      }
-    },
     "enabled": true,
     "next": [
       "大招原点",
@@ -87,12 +49,6 @@
     ]
   },
   "大招原点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 11719,
-        "y": -463
-      }
-    },
     "action": {
       "param": {
         "target": [
@@ -108,32 +64,13 @@
       "大招2"
     ]
   },
-  "大招结束": {
-    "$__mpe_code": {
-      "position": {
-        "x": 11722,
-        "y": -252
-      }
-    }
-  },
+  "大招结束": {},
   "开大": {
-    "$__mpe_code": {
-      "position": {
-        "x": 11136,
-        "y": -154
-      }
-    },
     "next": [
       "大招_双椒"
     ]
   },
   "战斗开始了": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10211,
-        "y": -230
-      }
-    },
     "next": [
       "发现boss",
       {
@@ -144,12 +81,6 @@
     "rate_limit": 50
   },
   "持续点击下滑按钮": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10512,
-        "y": -402
-      }
-    },
     "action": {
       "param": {
         "target": [
@@ -165,12 +96,6 @@
     "rate_limit": 1
   },
   "转绳上": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10827,
-        "y": -164
-      }
-    },
     "action": {
       "param": {
         "target": [

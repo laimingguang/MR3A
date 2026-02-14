@@ -2,13 +2,14 @@
   "file_config": {
     "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\忍村试炼.json",
     "filename": "忍村试炼",
-    "lastSyncTime": 1771055679920,
+    "lastSyncTime": 1771055904876,
     "prefix": "",
     "savedViewport": {
-      "x": 489,
-      "y": 115,
-      "zoom": 0.25
+      "x": -265,
+      "y": 28,
+      "zoom": 0.57
     },
+    "separatedConfigPath": "E:\\MR3A\\assets\\resource\\pipeline\\.忍村试炼.mpe.json",
     "version": "v1.1.1"
   },
   "node_configs": {

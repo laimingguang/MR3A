@@ -1,0 +1,76 @@
+{
+  "file_config": {
+    "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\fight.json",
+    "filename": "fight",
+    "lastSyncTime": 1771055965859,
+    "prefix": "",
+    "savedViewport": {
+      "x": -5403,
+      "y": 447,
+      "zoom": 0.57
+    },
+    "version": "v1.1.1"
+  },
+  "node_configs": {
+    "fight": {
+      "position": {
+        "x": 9866,
+        "y": -242
+      }
+    },
+    "发现boss": {
+      "position": {
+        "x": 10525,
+        "y": -108
+      }
+    },
+    "大招2": {
+      "position": {
+        "x": 12021,
+        "y": -481
+      }
+    },
+    "大招_双椒": {
+      "position": {
+        "x": 11414,
+        "y": -377
+      }
+    },
+    "大招原点": {
+      "position": {
+        "x": 11719,
+        "y": -463
+      }
+    },
+    "大招结束": {
+      "position": {
+        "x": 11722,
+        "y": -252
+      }
+    },
+    "开大": {
+      "position": {
+        "x": 11136,
+        "y": -154
+      }
+    },
+    "战斗开始了": {
+      "position": {
+        "x": 10211,
+        "y": -230
+      }
+    },
+    "持续点击下滑按钮": {
+      "position": {
+        "x": 10512,
+        "y": -402
+      }
+    },
+    "转绳上": {
+      "position": {
+        "x": 10827,
+        "y": -164
+      }
+    }
+  }
+}
