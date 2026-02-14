@@ -28,6 +28,7 @@
     "next": [
       "退出神龙契约"
     ],
+    "post_wait_freezes": 400,
     "recognition": {
       "param": {
         "expected": [
