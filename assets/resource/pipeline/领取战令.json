@@ -1,0 +1,560 @@
+{
+  "$__mpe_config_领取战令": {
+    "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\领取战令.json",
+      "filename": "领取战令",
+      "lastSyncTime": 1770904876367,
+      "prefix": "",
+      "savedViewport": {
+        "x": -1170,
+        "y": 737,
+        "zoom": 0.78
+      },
+      "version": "v1.1.1"
+    }
+  },
+  "再次检查战令页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 3711,
+        "y": -335
+      }
+    },
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "已经领取或者未领取": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2905,
+        "y": -1017
+      }
+    },
+    "action": {
+      "param": {
+        "target": [
+          1234,
+          25,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "再次检查战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "勾玉"
+        ],
+        "roi": [
+          647,
+          479,
+          241,
+          109
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "战令有红点": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1046,
+        "y": -419
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "roi": "识别战令",
+        "roi_offset": [
+          22,
+          -74,
+          24,
+          42
+        ],
+        "template": [
+          "红点.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "战令没红点": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1020,
+        "y": -48
+      }
+    }
+  },
+  "战令确定": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2846,
+        "y": -171
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "再次检查战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          243,
+          573,
+          314,
+          121
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "战令页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1337,
+        "y": -407
+      }
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "点击每日试炼"
+      },
+      {
+        "jump_back": true,
+        "name": "点击月度试炼"
+      },
+      {
+        "jump_back": true,
+        "name": "点击试炼奖励"
+      },
+      "退出战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "无奖励领取": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2859,
+        "y": 126
+      }
+    },
+    "next": [
+      "再次检查战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "当前并无可领取奖励"
+        ],
+        "roi": [
+          500,
+          230,
+          266,
+          46
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "月度试炼结束": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2535,
+        "y": -310
+      }
+    },
+    "next": [
+      "再次检查战令页面"
+    ]
+  },
+  "月度试炼页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2120,
+        "y": -488
+      }
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "点击月度试炼领取图标"
+      },
+      "月度试炼结束"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ],
+        "template": [
+          "月度试炼.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "每日试炼确定": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2897,
+        "y": -753
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "再次检查战令页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          487,
+          563,
+          363,
+          152
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "每日试炼页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2113,
+        "y": -995
+      }
+    },
+    "next": [
+      "点击勾玉"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ],
+        "template": [
+          "每日试炼.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "点击一键领取": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2498,
+        "y": -69
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "战令确定",
+      "无奖励领取"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "一键领取"
+        ],
+        "roi": [
+          509,
+          574,
+          555,
+          132
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击勾玉": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2512,
+        "y": -920
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "已经领取或者未领取",
+      "每日试炼确定"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          1003,
+          458,
+          268,
+          252
+        ],
+        "template": [
+          "战令每日试炼勾玉奖励.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "点击月度试炼": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1772,
+        "y": -496
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 1,
+    "next": [
+      "月度试炼页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "月度试炼"
+        ],
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击月度试炼领取图标": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2533,
+        "y": -583
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "post_delay": 400,
+    "recognition": {
+      "param": {
+        "template": [
+          "月度试炼领取.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "点击每日试炼": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1769,
+        "y": -994
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 1,
+    "next": [
+      "每日试炼页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "每日试炼"
+        ],
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击试炼奖励": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1767,
+        "y": -94
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 1,
+    "next": [
+      "试炼奖励页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "试炼奖励"
+        ],
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "识别战令": {
+    "$__mpe_code": {
+      "position": {
+        "x": 643,
+        "y": -427
+      }
+    },
+    "next": [
+      "战令有红点"
+    ],
+    "on_error": [
+      "战令没红点"
+    ],
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "roi": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "template": [
+          "战令图标.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 1000
+  },
+  "试炼奖励页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2111,
+        "y": -79
+      }
+    },
+    "next": [
+      "点击一键领取"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          573,
+          30,
+          688,
+          108
+        ],
+        "template": [
+          "试炼奖励.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "退出战令页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1765,
+        "y": 345
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "领取战令entry": {
+    "$__mpe_code": {
+      "position": {
+        "x": 326,
+        "y": -409
+      }
+    },
+    "next": [
+      "识别战令"
+    ]
+  }
+}

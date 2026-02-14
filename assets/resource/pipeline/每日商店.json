@@ -1,0 +1,567 @@
+{
+  "$__mpe_config_每日商店": {
+    "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\每日商店.json",
+      "filename": "每日商店",
+      "lastSyncTime": 1770739774547,
+      "prefix": "",
+      "savedViewport": {
+        "x": -859,
+        "y": -480,
+        "zoom": 0.71
+      },
+      "version": "v1.1.1"
+    }
+  },
+  "C级悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2350,
+        "y": 853
+      }
+    },
+    "max_hit": 1,
+    "next": [
+      {
+        "jump_back": true,
+        "name": "悬赏可购买"
+      }
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          18,
+          106,
+          1036,
+          159
+        ],
+        "template": [
+          "C级悬赏令.png"
+        ],
+        "threshold": [
+          0.85
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 1000
+  },
+  "D级悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2350,
+        "y": 550
+      }
+    },
+    "max_hit": 1,
+    "next": [
+      {
+        "jump_back": true,
+        "name": "悬赏可购买"
+      }
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          18,
+          106,
+          1036,
+          159
+        ],
+        "template": [
+          "D级悬赏令.png"
+        ],
+        "threshold": [
+          0.85
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 1000
+  },
+  "忍币图标": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1787,
+        "y": 14
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍币点击购买"
+    ],
+    "recognition": {
+      "param": {
+        "method": 10001,
+        "roi": [
+          50,
+          247,
+          888,
+          393
+        ],
+        "template": [
+          "神秘商店忍币.png"
+        ],
+        "threshold": [
+          0.97
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "忍币点击购买": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2121,
+        "y": 73
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "忍币确定购买"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          509,
+          423,
+          327,
+          182
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "忍币确定购买": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2444,
+        "y": 86
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          486,
+          557,
+          319,
+          143
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "悬赏可购买": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2704,
+        "y": 578
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "悬赏商店忍币购买"
+    ],
+    "recognition": {
+      "param": {
+        "roi": "D级悬赏",
+        "roi_offset": [
+          -82,
+          377,
+          97,
+          101
+        ],
+        "template": [
+          "悬赏商店忍币.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "悬赏商店任务": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1141,
+        "y": 283
+      }
+    },
+    "max_hit": 1,
+    "next": [
+      "点击限购商店"
+    ]
+  },
+  "悬赏商店右滑": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2350,
+        "y": 1170
+      }
+    },
+    "action": {
+      "param": {
+        "begin": [
+          1000,
+          400,
+          0,
+          0
+        ],
+        "end": [
+          [
+            200,
+            400,
+            0,
+            0
+          ]
+        ],
+        "end_hold": [
+          500
+        ]
+      },
+      "type": "Swipe"
+    },
+    "max_hit": 3
+  },
+  "悬赏商店忍币购买": {
+    "$__mpe_code": {
+      "position": {
+        "x": 3009,
+        "y": 654
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "确定领取悬赏"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "购买"
+        ],
+        "roi": [
+          513,
+          450,
+          298,
+          125
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "是否忍币购买悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2023,
+        "y": 660
+      }
+    },
+    "enabled": true,
+    "next": [
+      {
+        "jump_back": true,
+        "name": "D级悬赏"
+      },
+      {
+        "jump_back": true,
+        "name": "C级悬赏"
+      },
+      {
+        "jump_back": true,
+        "name": "悬赏商店右滑"
+      },
+      "退出悬赏商店"
+    ],
+    "post_wait_freezes": 300
+  },
+  "每日商店entry": {
+    "$__mpe_code": {
+      "position": {
+        "x": 452,
+        "y": 155
+      }
+    },
+    "next": [
+      "进入商店"
+    ]
+  },
+  "点击悬赏商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1769,
+        "y": 329
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "领取免费悬赏"
+      },
+      "是否忍币购买悬赏",
+      "退出悬赏商店"
+    ],
+    "post_wait_freezes": 500,
+    "recognition": {
+      "param": {
+        "expected": [
+          "悬赏商店"
+        ],
+        "roi": [
+          1103,
+          108,
+          174,
+          544
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "点击神秘商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1482,
+        "y": 37
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "忍币图标"
+      }
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "神秘商店"
+        ],
+        "roi": [
+          18,
+          633,
+          1261,
+          84
+        ]
+      },
+      "type": "OCR"
+    },
+    "timeout": 2000
+  },
+  "点击限购商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1485,
+        "y": 291
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "点击悬赏商店"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "限购商店"
+        ],
+        "roi": [
+          18,
+          633,
+          1261,
+          84
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "确定领取悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 3356,
+        "y": 516
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "pre_wait_freezes": {
+      "threshold": 0.85,
+      "time": 400
+    },
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          449,
+          522,
+          393,
+          195
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "神秘商店任务": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1142,
+        "y": 51
+      }
+    },
+    "enabled": true,
+    "max_hit": 1,
+    "next": [
+      "点击神秘商店"
+    ]
+  },
+  "识别到免费悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2610,
+        "y": 288
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 1,
+    "next": [
+      "确定领取悬赏"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "expected": [
+          "可领取"
+        ],
+        "roi": [
+          8,
+          382,
+          352,
+          282
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "进入商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 813,
+        "y": 156
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "神秘商店任务"
+      },
+      {
+        "jump_back": true,
+        "name": "悬赏商店任务"
+      },
+      "退出商店"
+    ],
+    "post_wait_freezes": 300,
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "roi": [
+          24,
+          495,
+          774,
+          217
+        ],
+        "template": [
+          "商店.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "退出商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1146,
+        "y": 474
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "pre_wait_freezes": 400,
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "退出悬赏商店": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2350,
+        "y": 1468
+      }
+    }
+  },
+  "领取免费悬赏": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2214,
+        "y": 321
+      }
+    },
+    "max_hit": 1,
+    "next": [
+      "识别到免费悬赏"
+    ],
+    "timeout": 1000
+  }
+}

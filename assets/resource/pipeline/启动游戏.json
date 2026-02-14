@@ -1,0 +1,157 @@
+{
+  "$__mpe_config_启动游戏": {
+    "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\启动游戏.json",
+      "filename": "启动游戏",
+      "lastSyncTime": 1770790481343,
+      "prefix": "",
+      "savedViewport": {
+        "x": 246,
+        "y": 100,
+        "zoom": 0.81
+      },
+      "version": "v1.0.3"
+    }
+  },
+  "主页面": {
+    "$__mpe_code": {
+      "position": {
+        "x": 300,
+        "y": 0
+      }
+    },
+    "next": [
+      "停止"
+    ],
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "template": [
+          "主页面.png"
+        ],
+        "threshold": 0.85
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "停止": {
+    "$__mpe_code": {
+      "position": {
+        "x": 600,
+        "y": 49
+      }
+    }
+  },
+  "启动应用": {
+    "$__mpe_code": {
+      "position": {
+        "x": 294,
+        "y": 276
+      }
+    },
+    "action": {
+      "param": {
+        "package": "com.pandadastudio.ninjamustdie3.vivo"
+      },
+      "type": "StartApp"
+    },
+    "max_hit": 1,
+    "next": [
+      "点击登录",
+      "需要更新"
+    ],
+    "post_delay": 3000,
+    "timeout": 40000
+  },
+  "启动流程": {
+    "$__mpe_code": {
+      "position": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    "next": [
+      "主页面",
+      {
+        "jump_back": true,
+        "name": "启动应用"
+      }
+    ],
+    "post_wait_freezes": 300,
+    "timeout": 40000
+  },
+  "点击登录": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1202,
+        "y": 249
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 3,
+    "recognition": {
+      "param": {
+        "template": [
+          "登录.png"
+        ],
+        "threshold": 0.85
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 60000
+  },
+  "点击确定更新": {
+    "$__mpe_code": {
+      "position": {
+        "x": 900,
+        "y": 400
+      }
+    },
+    "action": {
+      "param": {
+        "target": "需要更新",
+        "target_offset": [
+          182,
+          203,
+          -40,
+          19
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "点击登录"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ]
+      },
+      "type": "OCR"
+    },
+    "timeout": 60000
+  },
+  "需要更新": {
+    "$__mpe_code": {
+      "position": {
+        "x": 600,
+        "y": 461
+      }
+    },
+    "next": [
+      "点击确定更新"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确认更新"
+        ]
+      },
+      "type": "OCR"
+    }
+  }
+}

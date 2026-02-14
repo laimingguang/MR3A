@@ -1,0 +1,194 @@
+{
+  "$__mpe_config_好友忍币": {
+    "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\好友忍币.json",
+      "filename": "好友忍币",
+      "lastSyncTime": 1770696520929,
+      "prefix": "",
+      "savedViewport": {
+        "x": -26,
+        "y": 36,
+        "zoom": 0.93
+      },
+      "version": "v1.1.0"
+    }
+  },
+  "叉掉好友": {
+    "$__mpe_code": {
+      "position": {
+        "x": 739,
+        "y": 307
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "roi": [
+          795,
+          13,
+          127,
+          127
+        ],
+        "template": [
+          "好友叉叉.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "好友忍币entry": {
+    "$__mpe_code": {
+      "position": {
+        "x": -231,
+        "y": 147
+      }
+    },
+    "next": [
+      "好友忍币进入聊天"
+    ]
+  },
+  "好友忍币确定": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1076,
+        "y": 83
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          500,
+          530,
+          301,
+          181
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "好友忍币进入聊天": {
+    "$__mpe_code": {
+      "position": {
+        "x": 84,
+        "y": 115
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "点击聊天"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          500,
+          712
+        ],
+        "template": [
+          "主页面.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "点击好友礼包": {
+    "$__mpe_code": {
+      "position": {
+        "x": 741,
+        "y": 15
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "好友忍币确定"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          386,
+          43,
+          341,
+          676
+        ],
+        "template": [
+          "好友忍币礼包.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 1000
+  },
+  "点击聊天": {
+    "$__mpe_code": {
+      "position": {
+        "x": 394,
+        "y": 128
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      {
+        "jump_back": true,
+        "name": "点击好友礼包"
+      },
+      {
+        "jump_back": true,
+        "name": "叉掉好友"
+      },
+      "退出好友忍币任务"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "私聊"
+        ],
+        "roi": [
+          0,
+          0,
+          726,
+          63
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "退出好友忍币任务": {
+    "$__mpe_code": {
+      "position": {
+        "x": 740,
+        "y": 549
+      }
+    },
+    "action": {
+      "param": {
+        "target": [
+          1250,
+          278,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    }
+  }
+}

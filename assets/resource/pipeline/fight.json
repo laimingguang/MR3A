@@ -1,0 +1,199 @@
+{
+  "$__mpe_config_fight": {
+    "$__mpe_code": {
+      "filename": "fight",
+      "prefix": "",
+      "savedViewport": {
+        "x": -6799,
+        "y": 406,
+        "zoom": 0.7
+      },
+      "version": "v1.1.1"
+    }
+  },
+  "fight": {
+    "$__mpe_code": {
+      "position": {
+        "x": 9869,
+        "y": -174
+      }
+    },
+    "next": [
+      "轮询检查下滑"
+    ],
+    "rate_limit": 100,
+    "timeout": 60000
+  },
+  "发现boss": {
+    "$__mpe_code": {
+      "position": {
+        "x": 10525,
+        "y": -108
+      }
+    },
+    "next": [
+      "转绳上"
+    ],
+    "rate_limit": 50,
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "roi": [
+          183,
+          236,
+          187,
+          183
+        ],
+        "template": [
+          "warning.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "大招2": {
+    "$__mpe_code": {
+      "position": {
+        "x": 12021,
+        "y": -481
+      }
+    },
+    "action": {
+      "param": {
+        "target": [
+          186,
+          265,
+          5,
+          5
+        ]
+      },
+      "type": "Click"
+    },
+    "repeat": 30,
+    "repeat_delay": 200
+  },
+  "大招_双椒": {
+    "$__mpe_code": {
+      "position": {
+        "x": 11414,
+        "y": -377
+      }
+    },
+    "enabled": true,
+    "next": [
+      "大招原点",
+      "大招结束"
+    ]
+  },
+  "大招原点": {
+    "$__mpe_code": {
+      "position": {
+        "x": 11719,
+        "y": -463
+      }
+    },
+    "action": {
+      "param": {
+        "target": [
+          69,
+          341,
+          5,
+          5
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "大招2"
+    ]
+  },
+  "大招结束": {
+    "$__mpe_code": {
+      "position": {
+        "x": 11722,
+        "y": -252
+      }
+    }
+  },
+  "开大": {
+    "$__mpe_code": {
+      "position": {
+        "x": 11136,
+        "y": -154
+      }
+    },
+    "next": [
+      "大招_双椒"
+    ]
+  },
+  "持续点击下滑按钮": {
+    "$__mpe_code": {
+      "position": {
+        "x": 10512,
+        "y": -402
+      }
+    },
+    "action": {
+      "param": {
+        "target": "轮询检查下滑"
+      },
+      "type": "Click"
+    },
+    "post_delay": 0,
+    "rate_limit": 1
+  },
+  "转绳上": {
+    "$__mpe_code": {
+      "position": {
+        "x": 10827,
+        "y": -164
+      }
+    },
+    "action": {
+      "param": {
+        "target": [
+          1090,
+          620
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "开大"
+    ]
+  },
+  "轮询检查下滑": {
+    "$__mpe_code": {
+      "position": {
+        "x": 10165,
+        "y": -203
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "发现boss",
+      {
+        "jump_back": true,
+        "name": "持续点击下滑按钮"
+      }
+    ],
+    "rate_limit": 50,
+    "recognition": {
+      "param": {
+        "roi": [
+          102,
+          550,
+          173,
+          159
+        ],
+        "template": [
+          "下滑.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "$__mpe_config_家族祈福": {
+    "$__mpe_code": {
+      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\家族祈福.json",
+      "filename": "家族祈福",
+      "lastSyncTime": 1770699477744,
+      "prefix": "",
+      "savedViewport": {
+        "x": -418,
+        "y": -111,
+        "zoom": 0.94
+      },
+      "version": "v1.0.3"
+    }
+  },
+  "今日免费祈福": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1658,
+        "y": 269
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "祈福确定"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "每日首次免费"
+        ],
+        "roi": [
+          138,
+          568,
+          372,
+          143
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "家族祈福entry": {
+    "$__mpe_code": {
+      "position": {
+        "x": 276,
+        "y": 407
+      }
+    },
+    "next": [
+      "进入家族"
+    ]
+  },
+  "家族祈福转盘": {
+    "$__mpe_code": {
+      "position": {
+        "x": 958,
+        "y": 397
+      }
+    },
+    "next": [
+      "转盘红点"
+    ],
+    "on_error": [
+      "没有红点"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          338,
+          389,
+          184,
+          186
+        ],
+        "template": [
+          "家族祈福转盘.png"
+        ],
+        "threshold": [
+          0.9
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 500
+  },
+  "家族返回": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2761,
+        "y": 487
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          170,
+          144
+        ],
+        "template": [
+          "家族返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "没有红点": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1313,
+        "y": 580
+      }
+    },
+    "next": [
+      "家族返回"
+    ]
+  },
+  "祈福确定": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2023,
+        "y": 276
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "转盘返回"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          475,
+          511,
+          354,
+          200
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "转盘红点": {
+    "$__mpe_code": {
+      "position": {
+        "x": 1318,
+        "y": 264
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "今日免费祈福"
+    ],
+    "recognition": {
+      "param": {
+        "roi": "家族祈福转盘",
+        "roi_offset": [
+          8,
+          -66,
+          53,
+          50
+        ],
+        "template": [
+          "红点.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "转盘返回": {
+    "$__mpe_code": {
+      "position": {
+        "x": 2376,
+        "y": 271
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "家族返回"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "进入家族": {
+    "$__mpe_code": {
+      "position": {
+        "x": 647,
+        "y": 368
+      }
+    },
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "家族祈福转盘"
+    ],
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "template": [
+          "家族.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  }
+}
