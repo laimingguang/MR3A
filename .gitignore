@@ -452,3 +452,10 @@ tools/ImageCropper/**/*.png
 /copy_to_mfa.bat
 config
 debug
+
+# MPE Config Files
+*.mpe.json
+.mpe.json
+*/.mpe.json
+**/.mpe.json
+*/*.mpe.json
