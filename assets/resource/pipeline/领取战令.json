@@ -15,36 +15,6 @@
       "type": "TemplateMatch"
     }
   },
-  "已经领取或者未领取": {
-    "action": {
-      "param": {
-        "target": [
-          1234,
-          25,
-          0,
-          0
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "再次检查战令页面"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "勾玉"
-        ],
-        "roi": [
-          647,
-          479,
-          241,
-          109
-        ]
-      },
-      "type": "OCR"
-    }
-  },
   "战令有红点": {
     "action": {
       "param": {},
@@ -196,7 +166,8 @@
   },
   "每日试炼页面": {
     "next": [
-      "点击勾玉"
+      "识别试炼进度",
+      "试炼进度满了"
     ],
     "recognition": {
       "param": {
@@ -237,28 +208,67 @@
       "type": "OCR"
     }
   },
-  "点击勾玉": {
+  "点击右上角空白-试炼": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          1239,
+          38,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "next": [
-      "已经领取或者未领取",
-      "每日试炼确定"
+      "每日试炼确定",
+      "再次检查战令页面"
     ],
-    "recognition": {
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 500
+    }
+  },
+  "点击奖励-0": {
+    "action": {
       "param": {
-        "roi": [
-          1003,
-          458,
-          268,
-          252
-        ],
-        "template": [
-          "战令每日试炼勾玉奖励.png"
+        "target": "识别试炼进度",
+        "target_offset": [
+          -7,
+          -56,
+          16,
+          18
         ]
       },
-      "type": "TemplateMatch"
+      "type": "Click"
+    },
+    "next": [
+      "点击奖励-1"
+    ],
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 300
+    }
+  },
+  "点击奖励-1": {
+    "action": {
+      "param": {
+        "target": "识别试炼进度",
+        "target_offset": [
+          -61,
+          -65,
+          13,
+          24
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "点击右上角空白-试炼"
+    ],
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 300
     }
   },
   "点击月度试炼": {
@@ -324,6 +334,29 @@
       "type": "OCR"
     }
   },
+  "点击试炼勾玉": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "点击右上角空白-试炼"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          1122,
+          566,
+          105,
+          98
+        ],
+        "template": [
+          "战令每日试炼勾玉奖励.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
   "点击试炼奖励": {
     "action": {
       "param": {},
@@ -372,6 +405,25 @@
     },
     "timeout": 1000
   },
+  "识别试炼进度": {
+    "next": [
+      "点击奖励-0"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          597,
+          654,
+          577,
+          22
+        ],
+        "template": [
+          "每日试炼进度.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
   "试炼奖励页面": {
     "next": [
       "点击一键领取"
@@ -386,6 +438,25 @@
         ],
         "template": [
           "试炼奖励.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "试炼进度满了": {
+    "next": [
+      "点击试炼勾玉"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          1150,
+          652,
+          34,
+          28
+        ],
+        "template": [
+          "试炼进度满了.png"
         ]
       },
       "type": "TemplateMatch"
