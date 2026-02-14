@@ -1,25 +1,5 @@
 {
-  "$__mpe_config_家族祈福": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\家族祈福.json",
-      "filename": "家族祈福",
-      "lastSyncTime": 1770699477744,
-      "prefix": "",
-      "savedViewport": {
-        "x": -418,
-        "y": -111,
-        "zoom": 0.94
-      },
-      "version": "v1.0.3"
-    }
-  },
   "今日免费祈福": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1658,
-        "y": 269
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -43,23 +23,11 @@
     }
   },
   "家族祈福entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 276,
-        "y": 407
-      }
-    },
     "next": [
       "进入家族"
     ]
   },
   "家族祈福转盘": {
-    "$__mpe_code": {
-      "position": {
-        "x": 958,
-        "y": 397
-      }
-    },
     "next": [
       "转盘红点"
     ],
@@ -86,12 +54,6 @@
     "timeout": 500
   },
   "家族返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2761,
-        "y": 487
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -112,23 +74,11 @@
     }
   },
   "没有红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1313,
-        "y": 580
-      }
-    },
     "next": [
       "家族返回"
     ]
   },
   "祈福确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2023,
-        "y": 276
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -152,12 +102,6 @@
     }
   },
   "转盘红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1318,
-        "y": 264
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -182,12 +126,6 @@
     }
   },
   "转盘返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2376,
-        "y": 271
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -211,12 +149,6 @@
     }
   },
   "进入家族": {
-    "$__mpe_code": {
-      "position": {
-        "x": 647,
-        "y": 368
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"

@@ -1,11 +1,5 @@
 {
   " 修炼完成": {
-    "$__mpe_code": {
-      "position": {
-        "x": 908,
-        "y": 161
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -35,27 +29,7 @@
       "type": "TemplateMatch"
     }
   },
-  "$__mpe_config_忍者小屋修炼": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\小屋修炼.json",
-      "filename": "忍者小屋修炼",
-      "lastSyncTime": 1771048912764,
-      "prefix": "",
-      "savedViewport": {
-        "x": -285,
-        "y": -1,
-        "zoom": 0.86
-      },
-      "version": "v1.1.1"
-    }
-  },
   "小屋有红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 276
-      }
-    },
     "action": {
       "param": {
         "target": "识别忍者小屋"
@@ -84,23 +58,10 @@
       },
       "type": "TemplateMatch"
     },
-    "timeout": 2000
+    "timeout": 2500
   },
-  "小屋没红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 120
-      }
-    }
-  },
+  "小屋没红点": {},
   "小屋返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1800,
-        "y": 313
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -121,12 +82,6 @@
     }
   },
   "忍者修炼": {
-    "$__mpe_code": {
-      "position": {
-        "x": 917,
-        "y": 516
-      }
-    },
     "next": [
       "小屋返回"
     ],
@@ -146,23 +101,11 @@
     }
   },
   "忍者小屋修炼entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 0,
-        "y": 0
-      }
-    },
     "next": [
       "识别忍者小屋"
     ]
   },
   "确定碎片": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1205,
-        "y": 228
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -180,12 +123,6 @@
     }
   },
   "确定继续修炼": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1514,
-        "y": 231
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -203,12 +140,6 @@
     }
   },
   "识别忍者小屋": {
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": 88
-      }
-    },
     "next": [
       "小屋有红点",
       "小屋没红点"

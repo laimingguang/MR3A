@@ -1,25 +1,5 @@
 {
-  "$__mpe_config_领取战令": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\领取战令.json",
-      "filename": "领取战令",
-      "lastSyncTime": 1770904876367,
-      "prefix": "",
-      "savedViewport": {
-        "x": -1170,
-        "y": 737,
-        "zoom": 0.78
-      },
-      "version": "v1.1.1"
-    }
-  },
   "再次检查战令页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3711,
-        "y": -335
-      }
-    },
     "recognition": {
       "param": {
         "roi": [
@@ -36,12 +16,6 @@
     }
   },
   "已经领取或者未领取": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2905,
-        "y": -1017
-      }
-    },
     "action": {
       "param": {
         "target": [
@@ -72,12 +46,6 @@
     }
   },
   "战令有红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1046,
-        "y": -419
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -101,21 +69,8 @@
       "type": "TemplateMatch"
     }
   },
-  "战令没红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1020,
-        "y": -48
-      }
-    }
-  },
+  "战令没红点": {},
   "战令确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2846,
-        "y": -171
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -139,12 +94,6 @@
     }
   },
   "战令页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1337,
-        "y": -407
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -176,12 +125,6 @@
     }
   },
   "无奖励领取": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2859,
-        "y": 126
-      }
-    },
     "next": [
       "再次检查战令页面"
     ],
@@ -201,23 +144,11 @@
     }
   },
   "月度试炼结束": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2535,
-        "y": -310
-      }
-    },
     "next": [
       "再次检查战令页面"
     ]
   },
   "月度试炼页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2120,
-        "y": -488
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -241,12 +172,6 @@
     }
   },
   "每日试炼确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2897,
-        "y": -753
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -270,12 +195,6 @@
     }
   },
   "每日试炼页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2113,
-        "y": -995
-      }
-    },
     "next": [
       "点击勾玉"
     ],
@@ -295,12 +214,6 @@
     }
   },
   "点击一键领取": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2498,
-        "y": -69
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -325,12 +238,6 @@
     }
   },
   "点击勾玉": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2512,
-        "y": -920
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -355,12 +262,6 @@
     }
   },
   "点击月度试炼": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1772,
-        "y": -496
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -385,12 +286,6 @@
     }
   },
   "点击月度试炼领取图标": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2533,
-        "y": -583
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -406,12 +301,6 @@
     }
   },
   "点击每日试炼": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1769,
-        "y": -994
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -436,12 +325,6 @@
     }
   },
   "点击试炼奖励": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1767,
-        "y": -94
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -466,12 +349,6 @@
     }
   },
   "识别战令": {
-    "$__mpe_code": {
-      "position": {
-        "x": 643,
-        "y": -427
-      }
-    },
     "next": [
       "战令有红点"
     ],
@@ -496,12 +373,6 @@
     "timeout": 1000
   },
   "试炼奖励页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2111,
-        "y": -79
-      }
-    },
     "next": [
       "点击一键领取"
     ],
@@ -521,12 +392,6 @@
     }
   },
   "退出战令页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1765,
-        "y": 345
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -547,12 +412,6 @@
     }
   },
   "领取战令entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 326,
-        "y": -409
-      }
-    },
     "next": [
       "识别战令"
     ]

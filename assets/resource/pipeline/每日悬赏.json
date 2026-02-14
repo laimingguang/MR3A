@@ -1,11 +1,5 @@
 {
   " 回到了主页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7876,
-        "y": 2075
-      }
-    },
     "next": [
       "检查悬赏任务是否满了"
     ],
@@ -25,50 +19,7 @@
       "type": "TemplateMatch"
     }
   },
-  "$__mpe_config_每日悬赏": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\每日悬赏.json",
-      "filename": "每日悬赏",
-      "lastSyncTime": 1771053987034,
-      "prefix": "",
-      "savedViewport": {
-        "x": -8216,
-        "y": -937,
-        "zoom": 1.3
-      },
-      "version": "v1.1.1"
-    }
-  },
-  "$__mpe_external_fight_每日悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 10466,
-        "y": -154
-      }
-    }
-  },
-  "$__mpe_group_检查悬赏令是否满了_每日悬赏": {
-    "$__mpe_code": {
-      "childrenLabels": [
-        "悬赏满了1",
-        "跳过检查日常悬赏是否满了"
-      ],
-      "color": "blue",
-      "height": 300,
-      "position": {
-        "x": 431,
-        "y": -951
-      },
-      "width": 400
-    }
-  },
   "B级": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6021,
-        "y": -3000
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -95,12 +46,6 @@
     }
   },
   "C级": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6022,
-        "y": -2723
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -127,12 +72,6 @@
     }
   },
   "D级": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6025,
-        "y": -2450
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -159,12 +98,6 @@
     }
   },
   "other悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5892,
-        "y": 1100
-      }
-    },
     "next": [
       "加入队伍-other",
       "进入了地区悬赏"
@@ -187,12 +120,6 @@
     "timeout": -1
   },
   "self-退出悬赏页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6267,
-        "y": -2133
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -216,12 +143,6 @@
     }
   },
   "self-退出集会所页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6860,
-        "y": -2124
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -245,12 +166,6 @@
     }
   },
   "self-集会所主页": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6554,
-        "y": -2113
-      }
-    },
     "next": [
       "self-退出集会所页面"
     ],
@@ -270,12 +185,6 @@
     }
   },
   "关闭3v3-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6293,
-        "y": 135
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -300,12 +209,6 @@
     }
   },
   "关闭活动玩法-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6574,
-        "y": 139
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -330,12 +233,6 @@
     }
   },
   "关闭邀请页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7075,
-        "y": -2637
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -370,23 +267,11 @@
     "timeout": 56000
   },
   "再次检查": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7312,
-        "y": 2430
-      }
-    },
     "next": [
       "点击准备"
     ]
   },
   "加入队伍-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6323,
-        "y": 1120
-      }
-    },
     "next": [
       "点击",
       "有文字",
@@ -413,12 +298,6 @@
     }
   },
   "可以进入": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6756,
-        "y": 1746
-      }
-    },
     "action": {
       "param": {
         "target": "加入队伍-other"
@@ -433,23 +312,11 @@
     "rate_limit": 50
   },
   "地区悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 4519,
-        "y": 992
-      }
-    },
     "next": [
       "点击聊天-other"
     ]
   },
   "地区页面0": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5895,
-        "y": 552
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -481,12 +348,6 @@
     }
   },
   "展开筛选": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5603,
-        "y": 676
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -510,12 +371,6 @@
     }
   },
   "悬赏令主页-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1716,
-        "y": -641
-      }
-    },
     "next": [
       "点击宝箱"
     ],
@@ -535,12 +390,6 @@
     }
   },
   "悬赏令主页-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5644,
-        "y": -2773
-      }
-    },
     "next": [
       "B级",
       "C级",
@@ -566,12 +415,6 @@
     "timeout": 3000
   },
   "悬赏满了0": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2349,
-        "y": -324
-      }
-    },
     "next": [
       "悬赏满了1",
       "没满"
@@ -592,12 +435,6 @@
     }
   },
   "悬赏满了1": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2210,
-        "y": 648
-      }
-    },
     "next": [
       "满了-叉"
     ],
@@ -617,12 +454,6 @@
     }
   },
   "战斗-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7688,
-        "y": -2712
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -642,12 +473,6 @@
     "timeout": -1
   },
   "打开悬赏令-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6017,
-        "y": 134
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -672,12 +497,6 @@
     }
   },
   "有文字": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6760,
-        "y": 1090
-      }
-    },
     "next": [
       "加入队伍-other",
       "进入了地区悬赏"
@@ -701,35 +520,17 @@
     }
   },
   "检查悬赏任务是否满了": {
-    "$__mpe_code": {
-      "position": {
-        "x": 435,
-        "y": -466
-      }
-    },
     "next": [
       "跳过检查日常悬赏是否满了",
       "进入集会所-check"
     ]
   },
   "每日悬赏entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": -43,
-        "y": -466
-      }
-    },
     "next": [
       "检查悬赏任务是否满了"
     ]
   },
   "没人打悬赏退出": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7378,
-        "y": -2385
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -753,12 +554,6 @@
     }
   },
   "没满": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2413,
-        "y": -680
-      }
-    },
     "next": [
       "没满-叉"
     ],
@@ -778,12 +573,6 @@
     }
   },
   "没满-叉": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2905,
-        "y": -707
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -808,12 +597,6 @@
     }
   },
   "没满-退出悬赏页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3224,
-        "y": -694
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -837,12 +620,6 @@
     }
   },
   "没满-退出集会所页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3912,
-        "y": -688
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -867,12 +644,6 @@
     }
   },
   "没满-集会所主页-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3529,
-        "y": -678
-      }
-    },
     "next": [
       "没满-退出集会所页面"
     ],
@@ -892,24 +663,12 @@
     }
   },
   "清自己的悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 4478,
-        "y": -2615
-      }
-    },
     "max_hit": 1,
     "next": [
       "进入集会所-self"
     ]
   },
   "满了-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7412,
-        "y": 405
-      }
-    },
     "enabled": true,
     "next": [
       "进入后发现是低级悬赏",
@@ -933,12 +692,6 @@
     }
   },
   "满了-叉": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2937,
-        "y": -344
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -963,12 +716,6 @@
     }
   },
   "满了-退出悬赏页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3255,
-        "y": -330
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -992,12 +739,6 @@
     }
   },
   "满了-退出集会所页面-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3901,
-        "y": -344
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1018,12 +759,6 @@
     }
   },
   "满了-集会所主页-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3566,
-        "y": -321
-      }
-    },
     "next": [
       "满了-退出集会所页面-check"
     ],
@@ -1043,12 +778,6 @@
     }
   },
   "满了确认离开队伍": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8354,
-        "y": 757
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1072,12 +801,6 @@
     }
   },
   "满了返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8057,
-        "y": 548
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1106,12 +829,6 @@
     }
   },
   "满了返回-magic": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8360,
-        "y": 411
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1133,12 +850,6 @@
     }
   },
   "点击": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6776,
-        "y": 817
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1165,12 +876,6 @@
     }
   },
   "点击准备": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7302,
-        "y": 1891
-      }
-    },
     "action": {
       "param": {
         "target": "进入了地区悬赏"
@@ -1202,12 +907,6 @@
     "timeout": 30000
   },
   "点击准备的一瞬间被踢进入了角斗场": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7574,
-        "y": 2364
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -1232,12 +931,6 @@
     }
   },
   "点击出发": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7382,
-        "y": -2610
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1261,12 +954,6 @@
     }
   },
   "点击发送消息": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6827,
-        "y": -2609
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1290,12 +977,6 @@
     }
   },
   "点击地区-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5332,
-        "y": 552
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -1327,12 +1008,6 @@
     }
   },
   "点击宝箱": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2038,
-        "y": -658
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -1365,12 +1040,6 @@
     }
   },
   "点击悬赏令-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1412,
-        "y": -652
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1394,12 +1063,6 @@
     }
   },
   "点击悬赏令-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5324,
-        "y": -2767
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1423,12 +1086,6 @@
     }
   },
   "点击空白处关闭-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7882,
-        "y": 1784
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -1457,12 +1114,6 @@
     }
   },
   "点击空白处关闭-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8032,
-        "y": -2521
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -1491,12 +1142,6 @@
     }
   },
   "点击聊天-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 4959,
-        "y": 978
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1520,12 +1165,6 @@
     }
   },
   "点击聊天-self悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6585,
-        "y": -2611
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1549,12 +1188,6 @@
     }
   },
   "点击邀请好友": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6339,
-        "y": -2611
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1578,12 +1211,6 @@
     }
   },
   "确定-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2407,
-        "y": -928
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1607,12 +1234,6 @@
     }
   },
   "确定-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7881,
-        "y": 1531
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1634,12 +1255,6 @@
     }
   },
   "确定-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8038,
-        "y": -2797
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1661,23 +1276,11 @@
     }
   },
   "自己的低级悬赏清完了": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5998,
-        "y": -2104
-      }
-    },
     "next": [
       "self-退出悬赏页面"
     ]
   },
   "跳过低级悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 6763,
-        "y": 1398
-      }
-    },
     "enabled": false,
     "next": [
       "加入队伍-other",
@@ -1702,24 +1305,12 @@
     }
   },
   "跳过检查日常悬赏是否满了": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3471,
-        "y": 923
-      }
-    },
     "enabled": false,
     "next": [
       "地区悬赏"
     ]
   },
   "进入了地区悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7144,
-        "y": 933
-      }
-    },
     "next": [
       "满了-other",
       "点击准备",
@@ -1743,12 +1334,6 @@
     }
   },
   "进入了战斗-other": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7870,
-        "y": 2392
-      }
-    },
     "next": [
       "fight"
     ],
@@ -1768,12 +1353,6 @@
     }
   },
   "进入了战斗-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 8040,
-        "y": -2168
-      }
-    },
     "next": [
       "fight"
     ],
@@ -1793,12 +1372,6 @@
     }
   },
   "进入后发现是低级悬赏": {
-    "$__mpe_code": {
-      "position": {
-        "x": 7762,
-        "y": 565
-      }
-    },
     "next": [
       "满了返回"
     ],
@@ -1819,12 +1392,6 @@
     }
   },
   "进入集会所-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 776,
-        "y": -508
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1848,12 +1415,6 @@
     }
   },
   "进入集会所-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 4729,
-        "y": -2628
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -1877,12 +1438,6 @@
     }
   },
   "集会所主页-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1088,
-        "y": -497
-      }
-    },
     "next": [
       "点击悬赏令-check",
       {
@@ -1906,12 +1461,6 @@
     }
   },
   "集会所主页-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5001,
-        "y": -2612
-      }
-    },
     "next": [
       "点击悬赏令-self",
       {
@@ -1935,12 +1484,6 @@
     }
   },
   "集会所右滑-check": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1416,
-        "y": -407
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -1965,12 +1508,6 @@
     }
   },
   "集会所右滑-self": {
-    "$__mpe_code": {
-      "position": {
-        "x": 5329,
-        "y": -2522
-      }
-    },
     "action": {
       "param": {
         "begin": [

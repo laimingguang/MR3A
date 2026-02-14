@@ -1,33 +1,6 @@
 {
-  "$__mpe_config_神龙契约": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\神龙契约.json",
-      "filename": "神龙契约",
-      "lastSyncTime": 1771043166798,
-      "prefix": "",
-      "savedViewport": {
-        "x": -5096,
-        "y": 473,
-        "zoom": 1.97
-      },
-      "version": "v1.1.1"
-    }
-  },
-  "无神龙契约图标": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2005,
-        "y": -11
-      }
-    }
-  },
+  "无神龙契约图标": {},
   "神龙契约check主页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1502,
-        "y": -244
-      }
-    },
     "next": [
       "识别并点击神龙契约",
       "无神龙契约图标"
@@ -48,12 +21,6 @@
     }
   },
   "神龙契约确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2651,
-        "y": -232
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -77,12 +44,6 @@
     }
   },
   "神龙契约领取": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2326,
-        "y": -242
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -106,12 +67,6 @@
     }
   },
   "识别并点击神龙契约": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2009,
-        "y": -254
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -135,12 +90,6 @@
     }
   },
   "退出神龙契约": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2974,
-        "y": -226
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -169,12 +118,6 @@
     }
   },
   "领取神龙契约entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1148,
-        "y": -201
-      }
-    },
     "next": [
       "神龙契约check主页面"
     ]

@@ -1,0 +1,58 @@
+{
+  "file_config": {
+    "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\神龙契约.json",
+    "filename": "神龙契约",
+    "lastSyncTime": 1771055550005,
+    "prefix": "",
+    "savedViewport": {
+      "x": -914,
+      "y": 431,
+      "zoom": 0.81
+    },
+    "version": "v1.1.1"
+  },
+  "node_configs": {
+    "无神龙契约图标": {
+      "position": {
+        "x": 2005,
+        "y": -11
+      }
+    },
+    "神龙契约check主页面": {
+      "position": {
+        "x": 1502,
+        "y": -244
+      }
+    },
+    "神龙契约确定": {
+      "position": {
+        "x": 2651,
+        "y": -232
+      }
+    },
+    "神龙契约领取": {
+      "position": {
+        "x": 2326,
+        "y": -242
+      }
+    },
+    "识别并点击神龙契约": {
+      "position": {
+        "x": 2009,
+        "y": -254
+      }
+    },
+    "退出神龙契约": {
+      "position": {
+        "x": 2974,
+        "y": -226
+      }
+    },
+    "领取神龙契约entry": {
+      "position": {
+        "x": 1148,
+        "y": -201
+      }
+    }
+  }
+}

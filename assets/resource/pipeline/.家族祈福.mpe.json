@@ -1,0 +1,70 @@
+{
+  "file_config": {
+    "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\家族祈福.json",
+    "filename": "家族祈福",
+    "lastSyncTime": 1771055563649,
+    "prefix": "",
+    "savedViewport": {
+      "x": -473,
+      "y": -30,
+      "zoom": 0.81
+    },
+    "version": "v1.1.1"
+  },
+  "node_configs": {
+    "今日免费祈福": {
+      "position": {
+        "x": 1658,
+        "y": 269
+      }
+    },
+    "家族祈福entry": {
+      "position": {
+        "x": 276,
+        "y": 407
+      }
+    },
+    "家族祈福转盘": {
+      "position": {
+        "x": 958,
+        "y": 397
+      }
+    },
+    "家族返回": {
+      "position": {
+        "x": 2761,
+        "y": 487
+      }
+    },
+    "没有红点": {
+      "position": {
+        "x": 1313,
+        "y": 580
+      }
+    },
+    "祈福确定": {
+      "position": {
+        "x": 2023,
+        "y": 276
+      }
+    },
+    "转盘红点": {
+      "position": {
+        "x": 1318,
+        "y": 264
+      }
+    },
+    "转盘返回": {
+      "position": {
+        "x": 2376,
+        "y": 271
+      }
+    },
+    "进入家族": {
+      "position": {
+        "x": 647,
+        "y": 368
+      }
+    }
+  }
+}

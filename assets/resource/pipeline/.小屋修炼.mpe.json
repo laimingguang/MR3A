@@ -1,0 +1,70 @@
+{
+  "file_config": {
+    "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\小屋修炼.json",
+    "filename": "忍者小屋修炼",
+    "lastSyncTime": 1771055349968,
+    "prefix": "",
+    "savedViewport": {
+      "x": -136,
+      "y": 50,
+      "zoom": 0.86
+    },
+    "version": "v1.1.1"
+  },
+  "node_configs": {
+    " 修炼完成": {
+      "position": {
+        "x": 908,
+        "y": 161
+      }
+    },
+    "小屋有红点": {
+      "position": {
+        "x": 601,
+        "y": 297
+      }
+    },
+    "小屋没红点": {
+      "position": {
+        "x": 600,
+        "y": 120
+      }
+    },
+    "小屋返回": {
+      "position": {
+        "x": 1800,
+        "y": 313
+      }
+    },
+    "忍者修炼": {
+      "position": {
+        "x": 917,
+        "y": 516
+      }
+    },
+    "忍者小屋修炼entry": {
+      "position": {
+        "x": -14,
+        "y": 38
+      }
+    },
+    "确定碎片": {
+      "position": {
+        "x": 1205,
+        "y": 228
+      }
+    },
+    "确定继续修炼": {
+      "position": {
+        "x": 1514,
+        "y": 231
+      }
+    },
+    "识别忍者小屋": {
+      "position": {
+        "x": 300,
+        "y": 88
+      }
+    }
+  }
+}

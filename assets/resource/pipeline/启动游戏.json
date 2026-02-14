@@ -1,25 +1,5 @@
 {
-  "$__mpe_config_启动游戏": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\启动游戏.json",
-      "filename": "启动游戏",
-      "lastSyncTime": 1770790481343,
-      "prefix": "",
-      "savedViewport": {
-        "x": 246,
-        "y": 100,
-        "zoom": 0.81
-      },
-      "version": "v1.0.3"
-    }
-  },
   "主页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": 0
-      }
-    },
     "next": [
       "停止"
     ],
@@ -34,21 +14,8 @@
       "type": "TemplateMatch"
     }
   },
-  "停止": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 49
-      }
-    }
-  },
+  "停止": {},
   "启动应用": {
-    "$__mpe_code": {
-      "position": {
-        "x": 294,
-        "y": 276
-      }
-    },
     "action": {
       "param": {
         "package": "com.pandadastudio.ninjamustdie3.vivo"
@@ -64,12 +31,6 @@
     "timeout": 40000
   },
   "启动流程": {
-    "$__mpe_code": {
-      "position": {
-        "x": 0,
-        "y": 5
-      }
-    },
     "next": [
       "主页面",
       {
@@ -81,12 +42,6 @@
     "timeout": 40000
   },
   "点击登录": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1202,
-        "y": 249
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -104,12 +59,6 @@
     "timeout": 60000
   },
   "点击确定更新": {
-    "$__mpe_code": {
-      "position": {
-        "x": 900,
-        "y": 400
-      }
-    },
     "action": {
       "param": {
         "target": "需要更新",
@@ -136,12 +85,6 @@
     "timeout": 60000
   },
   "需要更新": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 461
-      }
-    },
     "next": [
       "点击确定更新"
     ],

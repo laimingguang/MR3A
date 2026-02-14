@@ -1,26 +1,5 @@
 {
-  "$__mpe_config_领取饭团": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\领取饭团.json",
-      "filename": "领取饭团",
-      "isModifiedExternally": true,
-      "lastSyncTime": 1770650115916,
-      "prefix": "",
-      "savedViewport": {
-        "x": -1459,
-        "y": -117,
-        "zoom": 0.81
-      },
-      "version": "v1.1.1"
-    }
-  },
   "全部回赠": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2100,
-        "y": 384
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -45,12 +24,6 @@
     }
   },
   "全部收取": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1500,
-        "y": 384
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -74,12 +47,6 @@
     }
   },
   "收取饭团页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2455,
-        "y": 411
-      }
-    },
     "action": {
       "param": {
         "target": [
@@ -104,12 +71,6 @@
     }
   },
   "检测好友红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 341
-      }
-    },
     "action": {
       "param": {
         "target": "识别好友"
@@ -136,12 +97,6 @@
     }
   },
   "检测收取饭团红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1208,
-        "y": 337
-      }
-    },
     "action": {
       "param": {
         "target": "识别收取饭团"
@@ -167,32 +122,13 @@
       "type": "TemplateMatch"
     }
   },
-  "没有好友红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 600,
-        "y": 185
-      }
-    }
-  },
+  "没有好友红点": {},
   "没有收取饭团红点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1213,
-        "y": 700
-      }
-    },
     "next": [
       "饭团点击返回"
     ]
   },
   "确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1800,
-        "y": 384
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -216,12 +152,6 @@
     }
   },
   "识别好友": {
-    "$__mpe_code": {
-      "position": {
-        "x": 300,
-        "y": 0
-      }
-    },
     "next": [
       "检测好友红点",
       "没有好友红点"
@@ -242,12 +172,6 @@
     }
   },
   "识别收取饭团": {
-    "$__mpe_code": {
-      "position": {
-        "x": 900,
-        "y": 375
-      }
-    },
     "next": [
       "检测收取饭团红点",
       "没有收取饭团红点"
@@ -269,23 +193,11 @@
     }
   },
   "领取饭团entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 0,
-        "y": 32
-      }
-    },
     "next": [
       "识别好友"
     ]
   },
   "饭团点击返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2947,
-        "y": 638
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"

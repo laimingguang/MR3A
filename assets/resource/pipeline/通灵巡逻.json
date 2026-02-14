@@ -1,31 +1,6 @@
 {
-  "$__mpe_config_通灵巡逻": {
-    "$__mpe_code": {
-      "filename": "通灵巡逻",
-      "prefix": "",
-      "savedViewport": {
-        "x": -2111,
-        "y": 850,
-        "zoom": 1.65
-      },
-      "version": "v1.1.0"
-    }
-  },
-  "忍阶巡逻任务": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1638,
-        "y": -376
-      }
-    }
-  },
+  "忍阶巡逻任务": {},
   "通灵巡逻entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1359,
-        "y": -282
-      }
-    },
     "next": [
       {
         "jump_back": true,

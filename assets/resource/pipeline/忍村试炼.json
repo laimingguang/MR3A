@@ -1,38 +1,11 @@
 {
-  "$__mpe_config_忍村试炼": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\忍村试炼.json",
-      "filename": "忍村试炼",
-      "isDeleted": true,
-      "lastSyncTime": 1770649636368,
-      "prefix": "",
-      "savedViewport": {
-        "x": -220,
-        "y": -119,
-        "zoom": 0.93
-      },
-      "version": "v1.0.3"
-    }
-  },
   "准备扫荡": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2394,
-        "y": 823
-      }
-    },
     "next": [
       "点击扫荡",
       "没有扫荡按钮"
     ]
   },
   "向右滑动": {
-    "$__mpe_code": {
-      "position": {
-        "x": 231,
-        "y": 758
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -57,23 +30,11 @@
     }
   },
   "忍村试炼entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": -369,
-        "y": 522
-      }
-    },
     "next": [
       "识别集会所1"
     ]
   },
   "忍村试炼再次返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1664,
-        "y": 1859
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -94,12 +55,6 @@
     }
   },
   "忍村试炼确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3076,
-        "y": 735
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -123,12 +78,6 @@
     }
   },
   "忍村试炼返回": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1102,
-        "y": 1851
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -153,23 +102,11 @@
     }
   },
   "没有扫荡按钮": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2693,
-        "y": 994
-      }
-    },
     "next": [
       "移动至最右侧"
     ]
   },
   "点击忍村试炼": {
-    "$__mpe_code": {
-      "position": {
-        "x": 231,
-        "y": 442
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -194,12 +131,6 @@
     }
   },
   "点击扫荡": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2695,
-        "y": 768
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -224,12 +155,6 @@
     }
   },
   "移动至最右侧": {
-    "$__mpe_code": {
-      "position": {
-        "x": 750,
-        "y": 500
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -259,12 +184,6 @@
     "repeat": 1
   },
   "识别试炼关卡数字-1": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1525,
-        "y": -86
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -295,12 +214,6 @@
     }
   },
   "识别试炼关卡数字-2": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1546,
-        "y": 316
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -331,12 +244,6 @@
     }
   },
   "识别试炼关卡数字-3": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1550,
-        "y": 746
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -367,12 +274,6 @@
     }
   },
   "识别试炼关卡数字-4": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1555,
-        "y": 1168
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -403,12 +304,6 @@
     }
   },
   "识别集会所1": {
-    "$__mpe_code": {
-      "position": {
-        "x": -69,
-        "y": 442
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -432,12 +327,6 @@
     }
   },
   "试炼关卡1": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1200,
-        "y": 53
-      }
-    },
     "max_hit": 3,
     "next": [
       "识别试炼关卡数字-1",
@@ -448,12 +337,6 @@
     ]
   },
   "试炼关卡2": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1193,
-        "y": 367
-      }
-    },
     "max_hit": 3,
     "next": [
       "识别试炼关卡数字-2",
@@ -464,12 +347,6 @@
     ]
   },
   "试炼关卡3": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1186,
-        "y": 852
-      }
-    },
     "max_hit": 3,
     "next": [
       "识别试炼关卡数字-3",
@@ -480,12 +357,6 @@
     ]
   },
   "试炼关卡4": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1192,
-        "y": 1265
-      }
-    },
     "max_hit": 3,
     "next": [
       "识别试炼关卡数字-4",
@@ -496,12 +367,6 @@
     ]
   },
   "试炼左滑1": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1524,
-        "y": 88
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -526,12 +391,6 @@
     }
   },
   "试炼左滑2": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1551,
-        "y": 518
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -556,12 +415,6 @@
     }
   },
   "试炼左滑3": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1554,
-        "y": 945
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -586,12 +439,6 @@
     }
   },
   "试炼左滑4": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1559,
-        "y": 1391
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -616,12 +463,6 @@
     }
   },
   "试炼购买饭团": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3081,
-        "y": 947
-      }
-    },
     "action": {
       "param": {
         "target": [

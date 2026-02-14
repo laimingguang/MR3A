@@ -1,25 +1,5 @@
 {
-  "$__mpe_config_免费召唤": {
-    "$__mpe_code": {
-      "filePath": "E:\\MR3A\\assets\\resource\\pipeline\\免费召唤.json",
-      "filename": "免费召唤",
-      "lastSyncTime": 1770819451431,
-      "prefix": "",
-      "savedViewport": {
-        "x": 33,
-        "y": -430,
-        "zoom": 0.72
-      },
-      "version": "v1.1.0"
-    }
-  },
   "4000忍币召唤": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1886,
-        "y": 792
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -45,12 +25,6 @@
     }
   },
   "使用钥匙召唤": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1896,
-        "y": 557
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -74,12 +48,6 @@
     }
   },
   "免费召唤": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1887,
-        "y": 232
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -104,23 +72,11 @@
     }
   },
   "免费召唤entry": {
-    "$__mpe_code": {
-      "position": {
-        "x": -492,
-        "y": 458
-      }
-    },
     "next": [
       "点击进入召唤页面"
     ]
   },
   "免费召唤确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2666,
-        "y": 418
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -145,12 +101,6 @@
     }
   },
   "免费炼化": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2241,
-        "y": -95
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -174,12 +124,6 @@
     }
   },
   "召唤上滑": {
-    "$__mpe_code": {
-      "position": {
-        "x": 942,
-        "y": 745
-      }
-    },
     "action": {
       "param": {
         "begin": [
@@ -205,12 +149,6 @@
     "max_hit": 1
   },
   "召唤主页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 301,
-        "y": 459
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -242,12 +180,6 @@
     }
   },
   "点击咒印炼化": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1476,
-        "y": -1
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -278,12 +210,6 @@
     }
   },
   "点击进入召唤页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": -96,
-        "y": 466
-      }
-    },
     "action": {
       "param": {
         "target_offset": [
@@ -314,12 +240,6 @@
     }
   },
   "炼化确定": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2602,
-        "y": -89
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -347,12 +267,6 @@
     }
   },
   "炼化页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1856,
-        "y": 10
-      }
-    },
     "next": [
       "免费炼化",
       "退出炼化页面"
@@ -373,12 +287,6 @@
     }
   },
   "白钥武库任务": {
-    "$__mpe_code": {
-      "position": {
-        "x": 933,
-        "y": 358
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -406,12 +314,6 @@
     }
   },
   "白银武库主页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1450,
-        "y": 443
-      }
-    },
     "next": [
       {
         "jump_back": true,
@@ -443,12 +345,6 @@
     }
   },
   "白银武库主页面再次检测": {
-    "$__mpe_code": {
-      "position": {
-        "x": 3101,
-        "y": 500
-      }
-    },
     "recognition": {
       "param": {
         "expected": [
@@ -464,21 +360,8 @@
       "type": "OCR"
     }
   },
-  "返回上级节点": {
-    "$__mpe_code": {
-      "position": {
-        "x": 1884,
-        "y": 1067
-      }
-    }
-  },
+  "返回上级节点": {},
   "退出召唤": {
-    "$__mpe_code": {
-      "position": {
-        "x": 947,
-        "y": 1142
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -499,12 +382,6 @@
     }
   },
   "退出炼化页面": {
-    "$__mpe_code": {
-      "position": {
-        "x": 2888,
-        "y": 145
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
@@ -525,12 +402,6 @@
     }
   },
   "金钥宝库任务": {
-    "$__mpe_code": {
-      "position": {
-        "x": 925,
-        "y": -40
-      }
-    },
     "action": {
       "param": {},
       "type": "Click"
