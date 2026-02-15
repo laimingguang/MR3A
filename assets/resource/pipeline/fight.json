@@ -5,6 +5,26 @@
     ],
     "rate_limit": 100
   },
+  "fight接口0": {
+    "next": [
+      "fight"
+    ]
+  },
+  "fight接口1": {
+    "next": [
+      "fight"
+    ]
+  },
+  "fight接口2": {
+    "next": [
+      "fight"
+    ]
+  },
+  "fight接口3": {
+    "next": [
+      "fight"
+    ]
+  },
   "发现boss": {
     "next": [
       "转绳上"
