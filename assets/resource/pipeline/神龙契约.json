@@ -94,10 +94,10 @@
     "action": {
       "param": {
         "target_offset": [
-          113,
-          -340,
-          -86,
-          17
+          723,
+          -174,
+          -135,
+          10
         ]
       },
       "type": "Click"
@@ -111,18 +111,18 @@
         454
       ],
       "threshold": 0.95,
-      "time": 400
+      "time": 1000
     },
     "recognition": {
       "param": {
         "roi": [
-          1061,
-          393,
-          181,
-          70
+          418,
+          220,
+          261,
+          95
         ],
         "template": [
-          "今日已领取.png"
+          "神龙契约页面.png"
         ]
       },
       "type": "TemplateMatch"
