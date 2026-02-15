@@ -426,6 +426,27 @@
       "type": "TemplateMatch"
     }
   },
+  "悬赏entry返回主页面": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "post_delay": 1200,
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
   "悬赏令主页-check": {
     "next": [
       "点击宝箱"
@@ -494,6 +515,21 @@
         "template": [
           "返回按钮.png"
         ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "悬赏检查主页面": {
+    "next": [
+      "检查悬赏任务是否满了"
+    ],
+    "recognition": {
+      "param": {
+        "green_mask": true,
+        "template": [
+          "主页面.png"
+        ],
+        "threshold": 0.85
       },
       "type": "TemplateMatch"
     }
@@ -615,7 +651,11 @@
   },
   "每日悬赏entry": {
     "next": [
-      "检查悬赏任务是否满了"
+      "悬赏检查主页面",
+      {
+        "jump_back": true,
+        "name": "悬赏entry返回主页面"
+      }
     ]
   },
   "没人打悬赏退出": {
