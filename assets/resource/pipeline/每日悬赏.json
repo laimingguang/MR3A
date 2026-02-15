@@ -332,7 +332,8 @@
     },
     "next": [
       "进入了地区悬赏",
-      "加入队伍-other"
+      "加入队伍-other",
+      "点击聊天-other"
     ],
     "post_delay": 0,
     "rate_limit": 50
@@ -1011,7 +1012,7 @@
     ],
     "on_error": [
       "点击准备的一瞬间被踢进入了角斗场",
-      "满了返回",
+      "超时退出",
       "再次检查"
     ],
     "rate_limit": 1000,
@@ -1051,17 +1052,17 @@
     ],
     "post_delay": 0,
     "pre_delay": 0,
-    "rate_limit": 100,
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
           "出发"
         ],
         "roi": [
-          1009,
-          623,
-          208,
-          82
+          1024,
+          631,
+          184,
+          63
         ]
       },
       "type": "OCR"
@@ -1424,10 +1425,10 @@
     "recognition": {
       "param": {
         "roi": [
-          8,
-          626,
-          87,
-          111
+          6,
+          627,
+          66,
+          87
         ],
         "template": [
           "悬赏页面小人.png"
@@ -1440,6 +1441,74 @@
     "next": [
       "战斗-self"
     ]
+  },
+  "超时退出": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "超时退出-确定",
+      "超时退出但是进入了战斗",
+      " 回到了主页面"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "超时退出-确定": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "超时退出但是进入了战斗",
+      " 回到了主页面"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          690,
+          446,
+          241,
+          168
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "超时退出但是进入了战斗": {
+    "next": [
+      "点击准备"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          10,
+          560,
+          162,
+          159
+        ],
+        "template": [
+          "进入战斗中.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
   },
   "跳过低级悬赏": {
     "enabled": false,
@@ -1560,6 +1629,7 @@
     "next": [
       "集会所主页-check"
     ],
+    "pre_wait_freezes": 300,
     "recognition": {
       "param": {
         "roi": [
@@ -1606,6 +1676,7 @@
         "name": "集会所右滑-check"
       }
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
