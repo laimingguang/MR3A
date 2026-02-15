@@ -756,6 +756,7 @@
     "next": [
       "没满-退出集会所页面"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -871,6 +872,7 @@
     "next": [
       "满了-退出集会所页面-check"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
