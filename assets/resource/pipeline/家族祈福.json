@@ -34,10 +34,6 @@
     "on_error": [
       "没有红点"
     ],
-    "post_wait_freezes": {
-      "threshold": 0.8,
-      "time": 1000
-    },
     "recognition": {
       "param": {
         "roi": [
@@ -55,7 +51,7 @@
       },
       "type": "TemplateMatch"
     },
-    "timeout": 500
+    "timeout": 1000
   },
   "家族返回": {
     "action": {
@@ -160,6 +156,16 @@
     "next": [
       "家族祈福转盘"
     ],
+    "post_wait_freezes": {
+      "target": [
+        76,
+        144,
+        414,
+        412
+      ],
+      "threshold": 0.7,
+      "time": 1000
+    },
     "recognition": {
       "param": {
         "green_mask": true,
