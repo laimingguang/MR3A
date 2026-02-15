@@ -116,16 +116,17 @@
     "next": [
       "藏宝图列表页"
     ],
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
-          "寻宝助力"
+          "助力"
         ],
         "roi": [
-          1169,
-          219,
-          111,
-          241
+          1194,
+          252,
+          65,
+          177
         ]
       },
       "type": "OCR"
@@ -299,6 +300,7 @@
     "next": [
       "寻宝助力"
     ],
+    "rate_limit": 100,
     "recognition": {
       "param": {
         "expected": [
@@ -326,17 +328,18 @@
     "rate_limit": 50,
     "recognition": {
       "param": {
-        "expected": [
-          "寻宝助力"
-        ],
+        "green_mask": true,
         "roi": [
-          509,
-          44,
-          324,
-          97
+          476,
+          33,
+          151,
+          125
+        ],
+        "template": [
+          "寻宝助力.png"
         ]
       },
-      "type": "OCR"
+      "type": "TemplateMatch"
     }
   },
   "识别品质": {
@@ -462,6 +465,10 @@
       "确认离开队伍",
       "寻宝助力"
     ],
+    "on_error": [
+      "识别集会所"
+    ],
+    "post_delay": 0,
     "recognition": {
       "param": {
         "roi": [
@@ -476,6 +483,6 @@
       },
       "type": "TemplateMatch"
     },
-    "timeout": -1
+    "timeout": 3000
   }
 }
