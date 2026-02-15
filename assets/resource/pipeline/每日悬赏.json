@@ -276,6 +276,7 @@
     "on_error": [
       "没人打悬赏退出"
     ],
+    "rate_limit": 50,
     "recognition": {
       "param": {
         "expected": [
@@ -1629,7 +1630,7 @@
     "next": [
       "集会所主页-check"
     ],
-    "pre_wait_freezes": 300,
+    "post_wait_freezes": 1000,
     "recognition": {
       "param": {
         "roi": [
@@ -1676,7 +1677,7 @@
         "name": "集会所右滑-check"
       }
     ],
-    "post_wait_freezes": 300,
+    "post_wait_freezes": 1000,
     "recognition": {
       "param": {
         "expected": [

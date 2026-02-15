@@ -53,6 +53,36 @@
     },
     "timeout": 1000
   },
+  "忍币不足": {
+    "action": {
+      "param": {
+        "target": [
+          1134,
+          225,
+          1,
+          1
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "退出神秘商店防止jumpback死循环"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "忍币不足"
+        ],
+        "roi": [
+          541,
+          81,
+          181,
+          75
+        ]
+      },
+      "type": "OCR"
+    }
+  },
   "忍币图标": {
     "action": {
       "param": {},
@@ -86,8 +116,13 @@
       "type": "Click"
     },
     "next": [
-      "忍币确定购买"
+      "忍币确定购买",
+      "忍币不足"
     ],
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 200
+    },
     "recognition": {
       "param": {
         "expected": [
@@ -416,6 +451,26 @@
     }
   },
   "退出悬赏商店": {},
+  "退出神秘商店防止jumpback死循环": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "recognition": {
+      "param": {
+        "expected": [
+          "限购商店"
+        ],
+        "roi": [
+          18,
+          633,
+          1261,
+          84
+        ]
+      },
+      "type": "OCR"
+    }
+  },
   "领取免费悬赏": {
     "max_hit": 1,
     "next": [
