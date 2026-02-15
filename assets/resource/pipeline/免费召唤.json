@@ -9,6 +9,7 @@
     "next": [
       "免费召唤确定"
     ],
+    "post_wait_freezes": 400,
     "recognition": {
       "param": {
         "expected": [
@@ -32,6 +33,7 @@
     "next": [
       "免费召唤确定"
     ],
+    "post_wait_freezes": 400,
     "recognition": {
       "param": {
         "roi": [
@@ -56,6 +58,7 @@
     "next": [
       "免费召唤确定"
     ],
+    "post_wait_freezes": 400,
     "recognition": {
       "param": {
         "expected": [
@@ -84,7 +87,7 @@
     "next": [
       "白银武库主页面再次检测"
     ],
-    "pre_wait_freezes": 300,
+    "pre_wait_freezes": 400,
     "recognition": {
       "param": {
         "expected": [
@@ -445,6 +448,7 @@
         ]
       },
       "type": "TemplateMatch"
-    }
+    },
+    "timeout": 5000
   }
 }
