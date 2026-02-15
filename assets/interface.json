@@ -88,7 +88,8 @@
             "name": "每日藏宝图",
             "entry": "每日藏宝图entry",
             "option": [
-                "选择藏宝图属性"
+                "选择藏宝图属性",
+                "是否刷自己的藏宝图"
             ]
         },
         {
@@ -326,6 +327,11 @@
                             "expected": [
                                 ".*"
                             ]
+                        },
+                        "识别属性self藏宝图": {
+                            "expected": [
+                                ".*"
+                            ]
                         }
                     }
                 },
@@ -333,6 +339,11 @@
                     "name": "神炎国",
                     "pipeline_override": {
                         "识别属性": {
+                            "expected": [
+                                "神炎国"
+                            ]
+                        },
+                        "识别属性self藏宝图": {
                             "expected": [
                                 "神炎国"
                             ]
@@ -346,6 +357,11 @@
                             "expected": [
                                 "海之国"
                             ]
+                        },
+                        "识别属性self藏宝图": {
+                            "expected": [
+                                "海之国"
+                            ]
                         }
                     }
                 },
@@ -353,6 +369,11 @@
                     "name": "雷王山",
                     "pipeline_override": {
                         "识别属性": {
+                            "expected": [
+                                "雷王山"
+                            ]
+                        },
+                        "识别属性self藏宝图": {
                             "expected": [
                                 "雷王山"
                             ]
@@ -366,6 +387,36 @@
                             "expected": [
                                 "云之国"
                             ]
+                        },
+                        "识别属性self藏宝图": {
+                            "expected": [
+                                "云之国"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "是否刷自己的藏宝图": {
+            "type": "switch",
+            "label": "是否刷自己的藏宝图",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {
+                        "刷自己的藏宝图": {
+                            "enable": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "刷自己的藏宝图": {
+                            "enable": false
                         }
                     }
                 }

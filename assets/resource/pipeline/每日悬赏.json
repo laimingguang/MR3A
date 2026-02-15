@@ -558,7 +558,7 @@
       "识别到出发的同时别人退了导致的异常",
       "超时但是悬赏未打完"
     ],
-    "timeout": 3000
+    "timeout": 7000
   },
   "打开悬赏令-other": {
     "action": {
@@ -1077,6 +1077,7 @@
     "next": [
       "关闭邀请页面"
     ],
+    "post_delay": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -1288,6 +1289,7 @@
     "next": [
       "点击发送消息"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -1311,6 +1313,7 @@
     "next": [
       "点击聊天-self悬赏"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -1566,7 +1569,7 @@
   },
   "进入了战斗-other": {
     "next": [
-      "fight"
+      "fight接口1"
     ],
     "recognition": {
       "param": {
@@ -1585,7 +1588,7 @@
   },
   "进入了战斗-self": {
     "next": [
-      "fight"
+      "fight接口0"
     ],
     "recognition": {
       "param": {
