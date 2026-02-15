@@ -193,6 +193,10 @@
       "战令确定",
       "无奖励领取"
     ],
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 400
+    },
     "recognition": {
       "param": {
         "expected": [
@@ -336,26 +340,20 @@
   },
   "点击试炼勾玉": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          1175,
+          615,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "next": [
       "点击右上角空白-试炼"
     ],
-    "recognition": {
-      "param": {
-        "roi": [
-          1122,
-          566,
-          105,
-          98
-        ],
-        "template": [
-          "战令每日试炼勾玉奖励.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
+    "pre_delay": 300
   },
   "点击试炼奖励": {
     "action": {
