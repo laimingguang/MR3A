@@ -179,6 +179,22 @@
       "type": "TemplateMatch"
     }
   },
+  "召唤主页面再次check": {
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          232,
+          101
+        ],
+        "template": [
+          "召唤.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
   "点击咒印炼化": {
     "action": {
       "param": {
@@ -386,6 +402,9 @@
       "param": {},
       "type": "Click"
     },
+    "next": [
+      "召唤主页面再次check"
+    ],
     "recognition": {
       "param": {
         "roi": [
