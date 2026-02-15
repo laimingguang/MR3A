@@ -436,7 +436,7 @@
     "recognition": {
       "param": {
         "expected": [
-          "50"
+          "第50关"
         ],
         "roi": [
           1,
@@ -466,7 +466,7 @@
     "recognition": {
       "param": {
         "expected": [
-          "49"
+          "第49关"
         ],
         "roi": [
           1,
@@ -496,7 +496,7 @@
     "recognition": {
       "param": {
         "expected": [
-          "48"
+          "第48关"
         ],
         "roi": [
           1,
@@ -526,7 +526,7 @@
     "recognition": {
       "param": {
         "expected": [
-          "47"
+          "第47关"
         ],
         "roi": [
           1,
@@ -556,7 +556,7 @@
     "recognition": {
       "param": {
         "expected": [
-          "47"
+          "第46关"
         ],
         "roi": [
           1,
@@ -599,7 +599,11 @@
         "jump_back": true,
         "name": "试炼左滑1"
       }
-    ]
+    ],
+    "on_error": [
+      "忍村试炼返回"
+    ],
+    "timeout": 5000
   },
   "试炼关卡2": {
     "max_hit": 1,
@@ -609,7 +613,11 @@
         "jump_back": true,
         "name": "试炼左滑2"
       }
-    ]
+    ],
+    "on_error": [
+      "忍村试炼返回"
+    ],
+    "timeout": 5000
   },
   "试炼关卡3": {
     "max_hit": 1,
@@ -619,7 +627,11 @@
         "jump_back": true,
         "name": "试炼左滑3"
       }
-    ]
+    ],
+    "on_error": [
+      "忍村试炼返回"
+    ],
+    "timeout": 5000
   },
   "试炼关卡4": {
     "max_hit": 1,
@@ -629,7 +641,11 @@
         "jump_back": true,
         "name": "试炼左滑4"
       }
-    ]
+    ],
+    "on_error": [
+      "忍村试炼返回"
+    ],
+    "timeout": 5000
   },
   "试炼关卡5": {
     "max_hit": 1,
@@ -639,7 +655,11 @@
         "jump_back": true,
         "name": "试炼左滑5"
       }
-    ]
+    ],
+    "on_error": [
+      "忍村试炼返回"
+    ],
+    "timeout": 5000
   },
   "试炼左滑1": {
     "action": {
@@ -663,7 +683,8 @@
         ]
       },
       "type": "Swipe"
-    }
+    },
+    "max_hit": 20
   },
   "试炼左滑2": {
     "action": {
@@ -687,7 +708,8 @@
         ]
       },
       "type": "Swipe"
-    }
+    },
+    "max_hit": 20
   },
   "试炼左滑3": {
     "action": {
@@ -711,7 +733,8 @@
         ]
       },
       "type": "Swipe"
-    }
+    },
+    "max_hit": 20
   },
   "试炼左滑4": {
     "action": {
@@ -735,7 +758,8 @@
         ]
       },
       "type": "Swipe"
-    }
+    },
+    "max_hit": 20
   },
   "试炼左滑5": {
     "action": {
@@ -759,7 +783,8 @@
         ]
       },
       "type": "Swipe"
-    }
+    },
+    "max_hit": 20
   },
   "试炼购买饭团2": {
     "action": {
