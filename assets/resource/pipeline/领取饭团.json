@@ -1,11 +1,34 @@
 {
+  "check好友页面": {
+    "next": [
+      "饭团点击返回"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "好友"
+        ],
+        "roi": [
+          87,
+          7,
+          202,
+          96
+        ]
+      },
+      "type": "OCR"
+    }
+  },
   "全部回赠": {
     "action": {
       "param": {},
       "type": "Click"
     },
     "next": [
-      "收取饭团页面"
+      "check好友页面",
+      {
+        "jump_back": true,
+        "name": "点击空白直到出现好友页面，（防卡）"
+      }
     ],
     "post_wait_freezes": 300,
     "recognition": {
@@ -41,30 +64,6 @@
           455,
           374,
           263
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "收取饭团页面": {
-    "action": {
-      "param": {
-        "target": [
-          86,
-          625,
-          0,
-          0
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "饭团点击返回"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "收取饭团"
         ]
       },
       "type": "OCR"
@@ -127,6 +126,20 @@
     "next": [
       "饭团点击返回"
     ]
+  },
+  "点击空白直到出现好友页面，（防卡）": {
+    "action": {
+      "param": {
+        "target": [
+          86,
+          625,
+          0,
+          0
+        ]
+      },
+      "type": "Click"
+    },
+    "post_wait_freezes": 300
   },
   "确定": {
     "action": {
