@@ -23,6 +23,9 @@
         ],
         "template": [
           "warning.png"
+        ],
+        "threshold": [
+          0.85
         ]
       },
       "type": "TemplateMatch"
