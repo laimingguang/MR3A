@@ -1,5 +1,6 @@
 {
   "再次检查战令页面": {
+    "post_delay": 300,
     "recognition": {
       "param": {
         "roi": [
@@ -113,6 +114,28 @@
       "type": "OCR"
     }
   },
+  "月度试炼上滑": {
+    "action": {
+      "param": {
+        "begin": [
+          779,
+          585,
+          1,
+          1
+        ],
+        "end": [
+          [
+            779,
+            217,
+            1,
+            1
+          ]
+        ]
+      },
+      "type": "Swipe"
+    },
+    "max_hit": 1
+  },
   "月度试炼结束": {
     "next": [
       "再次检查战令页面"
@@ -123,6 +146,10 @@
       {
         "jump_back": true,
         "name": "点击月度试炼领取图标"
+      },
+      {
+        "jump_back": true,
+        "name": "月度试炼上滑"
       },
       "月度试炼结束"
     ],
@@ -136,6 +163,9 @@
         ],
         "template": [
           "月度试炼.png"
+        ],
+        "threshold": [
+          0.8
         ]
       },
       "type": "TemplateMatch"
@@ -179,6 +209,9 @@
         ],
         "template": [
           "每日试炼.png"
+        ],
+        "threshold": [
+          0.8
         ]
       },
       "type": "TemplateMatch"
@@ -284,6 +317,7 @@
     "next": [
       "月度试炼页面"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -323,6 +357,7 @@
     "next": [
       "每日试炼页面"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -353,6 +388,7 @@
     "next": [
       "点击右上角空白-试炼"
     ],
+    "post_wait_freezes": 300,
     "pre_delay": 300
   },
   "点击试炼奖励": {
@@ -364,6 +400,7 @@
     "next": [
       "试炼奖励页面"
     ],
+    "post_wait_freezes": 300,
     "recognition": {
       "param": {
         "expected": [
@@ -436,6 +473,9 @@
         ],
         "template": [
           "试炼奖励.png"
+        ],
+        "threshold": [
+          0.8
         ]
       },
       "type": "TemplateMatch"
