@@ -46,6 +46,7 @@
             "name": "忍村试炼",
             "entry": "忍村试炼entry",
             "option": [
+                "是否留至少5个包子",
                 "忍村试炼关卡配置1",
                 "忍村试炼关卡配置2",
                 "忍村试炼关卡配置3",
@@ -154,6 +155,38 @@
                                     "package": "com.pandadastudio.ninjamustdie3"
                                 }
                             }
+                        }
+                    }
+                }
+            ]
+        },
+        "是否留至少5个包子": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "包子5结束": {
+                            "enabled": false
+                        },
+                        "包子6结束": {
+                            "enabled": false
+                        },
+                        "包子7结束": {
+                            "enabled": false
+                        },
+                        "包子8结束": {
+                            "enabled": false
+                        },
+                        "包子9结束": {
+                            "enabled": false
                         }
                     }
                 }
