@@ -65,15 +65,6 @@
       "type": "OCR"
     }
   },
-  "再次检查确定": {
-    "max_hit": 50,
-    "next": [
-      "寻宝助力",
-      "确认离开队伍"
-    ],
-    "post_delay": 400,
-    "pre_delay": 400
-  },
   "准备": {
     "action": {
       "param": {},
@@ -572,10 +563,7 @@
       "param": {},
       "type": "Click"
     },
-    "next": [
-      "再次检查确定",
-      "寻宝助力"
-    ],
+    "post_delay": 400,
     "rate_limit": 100,
     "recognition": {
       "param": {
@@ -1022,7 +1010,10 @@
       "type": "Click"
     },
     "next": [
-      "确认离开队伍",
+      {
+        "jump_back": true,
+        "name": "确认离开队伍"
+      },
       "寻宝助力"
     ],
     "on_error": [
