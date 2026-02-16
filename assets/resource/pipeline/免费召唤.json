@@ -96,7 +96,10 @@
       "param": {},
       "type": "Click"
     },
-    "pre_wait_freezes": 400,
+    "pre_wait_freezes": {
+      "threshold": 0.8,
+      "time": 400
+    },
     "recognition": {
       "param": {
         "expected": [
