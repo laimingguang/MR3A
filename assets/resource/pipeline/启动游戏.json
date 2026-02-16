@@ -160,27 +160,20 @@
   },
   "点开设置": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          1251,
+          39,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "next": [
       "设置页上滑"
     ],
-    "recognition": {
-      "param": {
-        "green_mask": true,
-        "roi": [
-          1195,
-          1,
-          80,
-          80
-        ],
-        "template": [
-          "主页设置.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
+    "post_delay": 400
   },
   "设置页上滑": {
     "action": {
