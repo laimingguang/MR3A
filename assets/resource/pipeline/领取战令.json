@@ -1,6 +1,9 @@
 {
   "再次检查战令页面": {
-    "post_delay": 300,
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 500
+    },
     "recognition": {
       "param": {
         "roi": [
