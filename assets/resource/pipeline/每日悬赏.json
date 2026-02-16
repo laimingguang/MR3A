@@ -526,6 +526,12 @@
     "recognition": {
       "param": {
         "green_mask": true,
+        "roi": [
+          0,
+          0,
+          500,
+          712
+        ],
         "template": [
           "主页面.png"
         ],
