@@ -1041,7 +1041,6 @@
       },
       "type": "Click"
     },
-    "focus": "200",
     "next": [
       {
         "jump_back": true,
