@@ -7,7 +7,11 @@
     "enabled": true,
     "max_hit": 1,
     "next": [
-      "免费召唤确定"
+      {
+        "jump_back": true,
+        "name": "免费召唤确定"
+      },
+      "白银武库主页面再次检测"
     ],
     "post_wait_freezes": 400,
     "recognition": {
@@ -31,7 +35,11 @@
       "type": "Click"
     },
     "next": [
-      "免费召唤确定"
+      {
+        "jump_back": true,
+        "name": "免费召唤确定"
+      },
+      "白银武库主页面再次检测"
     ],
     "post_wait_freezes": 400,
     "recognition": {
@@ -56,7 +64,11 @@
     },
     "max_hit": 1,
     "next": [
-      "免费召唤确定"
+      {
+        "jump_back": true,
+        "name": "免费召唤确定"
+      },
+      "白银武库主页面再次检测"
     ],
     "post_wait_freezes": 400,
     "recognition": {
@@ -84,9 +96,6 @@
       "param": {},
       "type": "Click"
     },
-    "next": [
-      "白银武库主页面再次检测"
-    ],
     "pre_wait_freezes": 400,
     "recognition": {
       "param": {
