@@ -120,7 +120,7 @@
       "忍币不足"
     ],
     "post_wait_freezes": {
-      "threshold": 0.8,
+      "threshold": 0.75,
       "time": 200
     },
     "recognition": {
