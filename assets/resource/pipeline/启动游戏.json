@@ -113,7 +113,15 @@
       "识别是否勾选",
       "勾选屏蔽"
     ],
-    "post_wait_freezes": 200,
+    "post_wait_freezes": {
+      "target": [
+        638,
+        121,
+        557,
+        366
+      ],
+      "time": 200
+    },
     "recognition": {
       "param": {
         "expected": [
@@ -197,7 +205,15 @@
     "next": [
       "屏蔽所有组队邀请"
     ],
-    "pre_wait_freezes": 300
+    "post_wait_freezes": {
+      "target": [
+        638,
+        121,
+        557,
+        366
+      ],
+      "time": 200
+    }
   },
   "识别是否勾选": {
     "next": [
