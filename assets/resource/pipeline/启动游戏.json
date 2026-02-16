@@ -6,6 +6,12 @@
     "recognition": {
       "param": {
         "green_mask": true,
+        "roi": [
+          0,
+          0,
+          500,
+          712
+        ],
         "template": [
           "主页面.png"
         ],
@@ -100,7 +106,6 @@
         "name": "同意隐私保护提示"
       }
     ],
-    "post_wait_freezes": 300,
     "timeout": 40000
   },
   "屏蔽所有组队邀请": {
@@ -131,14 +136,19 @@
     },
     "recognition": {
       "param": {
+        "roi": [
+          446,
+          376,
+          395,
+          208
+        ],
         "template": [
           "登录.png"
         ],
         "threshold": 0.85
       },
       "type": "TemplateMatch"
-    },
-    "timeout": 60000
+    }
   },
   "点开设置": {
     "action": {
