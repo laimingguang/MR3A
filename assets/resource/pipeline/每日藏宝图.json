@@ -122,8 +122,9 @@
     "enabled": false,
     "max_hit": 1,
     "next": [
-      "藏宝图主页-self"
-    ]
+      "识别藏宝图是否为空（保留三个）"
+    ],
+    "timeout": 2000
   },
   "加入队伍": {
     "next": [
@@ -925,6 +926,25 @@
         "green_mask": true,
         "template": [
           "藏宝图.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "识别藏宝图是否为空（保留三个）": {
+    "next": [
+      "藏宝图主页-self"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          1132,
+          348,
+          72,
+          116
+        ],
+        "template": [
+          "藏宝图右侧还有.png"
         ]
       },
       "type": "TemplateMatch"
