@@ -316,7 +316,14 @@
   },
   "点击月度试炼": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          925,
+          87,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "max_hit": 1,
@@ -356,7 +363,14 @@
   },
   "点击每日试炼": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          1149,
+          90,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "max_hit": 1,
@@ -399,7 +413,14 @@
   },
   "点击试炼奖励": {
     "action": {
-      "param": {},
+      "param": {
+        "target": [
+          700,
+          90,
+          1,
+          1
+        ]
+      },
       "type": "Click"
     },
     "max_hit": 1,
