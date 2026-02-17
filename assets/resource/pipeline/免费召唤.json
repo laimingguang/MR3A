@@ -42,6 +42,7 @@
         "jump_back": true,
         "name": "免费召唤确定"
       },
+      "银钥匙不足",
       "白银武库主页面再次检测"
     ],
     "post_wait_freezes": {
@@ -276,6 +277,31 @@
       "type": "OCR"
     }
   },
+  "点击金钥宝库防止jumpback卡死": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "max_hit": 1,
+    "recognition": {
+      "param": {
+        "roi": [
+          11,
+          17,
+          290,
+          622
+        ],
+        "template": [
+          "金钥宝库.png"
+        ],
+        "threshold": [
+          0.85
+        ]
+      },
+      "type": "TemplateMatch"
+    },
+    "timeout": 5000
+  },
   "炼化确定": {
     "action": {
       "param": {},
@@ -379,7 +405,8 @@
         ]
       },
       "type": "OCR"
-    }
+    },
+    "timeout": 3000
   },
   "白银武库主页面再次检测": {
     "recognition": {
@@ -468,5 +495,35 @@
       "type": "TemplateMatch"
     },
     "timeout": 5000
+  },
+  "银钥匙不足": {
+    "action": {
+      "param": {
+        "target": [
+          941,
+          501,
+          1,
+          1
+        ]
+      },
+      "type": "Click"
+    },
+    "next": [
+      "点击金钥宝库防止jumpback卡死"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "银钥匙不足"
+        ],
+        "roi": [
+          501,
+          76,
+          255,
+          84
+        ]
+      },
+      "type": "OCR"
+    }
   }
 }
