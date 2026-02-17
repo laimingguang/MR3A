@@ -116,13 +116,15 @@
       "type": "Click"
     },
     "next": [
-      "忍币确定购买",
+      {
+        "jump_back": true,
+        "name": "忍币确定购买"
+      },
       "忍币不足"
     ],
-    "post_wait_freezes": {
-      "threshold": 0.7,
-      "time": 300
-    },
+    "on_error": [
+      "返回上级识别忍币节点"
+    ],
     "recognition": {
       "param": {
         "expected": [
@@ -136,7 +138,8 @@
         ]
       },
       "type": "OCR"
-    }
+    },
+    "timeout": 2000
   },
   "忍币确定购买": {
     "action": {
@@ -396,6 +399,7 @@
       "type": "OCR"
     }
   },
+  "返回上级识别忍币节点": {},
   "进入商店": {
     "action": {
       "param": {},
