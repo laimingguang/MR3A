@@ -13,7 +13,10 @@
       },
       "白银武库主页面再次检测"
     ],
-    "post_wait_freezes": 400,
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 1500
+    },
     "recognition": {
       "param": {
         "expected": [
@@ -41,7 +44,10 @@
       },
       "白银武库主页面再次检测"
     ],
-    "post_wait_freezes": 400,
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 1500
+    },
     "recognition": {
       "param": {
         "roi": [
@@ -70,7 +76,10 @@
       },
       "白银武库主页面再次检测"
     ],
-    "post_wait_freezes": 400,
+    "post_wait_freezes": {
+      "threshold": 0.8,
+      "time": 1500
+    },
     "recognition": {
       "param": {
         "expected": [
