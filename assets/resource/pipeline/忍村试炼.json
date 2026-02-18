@@ -26,7 +26,7 @@
           "包子数5.png"
         ],
         "threshold": [
-          0.9
+          0.91
         ]
       },
       "type": "TemplateMatch"
@@ -46,6 +46,9 @@
         ],
         "template": [
           "包子数6.png"
+        ],
+        "threshold": [
+          0.91
         ]
       },
       "type": "TemplateMatch"
@@ -67,7 +70,7 @@
           "包子数7.png"
         ],
         "threshold": [
-          0.9
+          0.91
         ]
       },
       "type": "TemplateMatch"
@@ -89,7 +92,7 @@
           "包子数8.png"
         ],
         "threshold": [
-          0.9
+          0.91
         ]
       },
       "type": "TemplateMatch"
@@ -111,7 +114,7 @@
           "包子数9.png"
         ],
         "threshold": [
-          0.9
+          0.91
         ]
       },
       "type": "TemplateMatch"
