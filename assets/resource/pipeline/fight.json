@@ -34,7 +34,7 @@
     "rate_limit": 50,
     "recognition": {
       "param": {
-        "count": 200,
+        "count": 300,
         "lower": [
           [
             255,
