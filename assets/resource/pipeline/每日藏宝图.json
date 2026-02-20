@@ -65,6 +65,11 @@
       "type": "OCR"
     }
   },
+  "再次检查_藏宝图": {
+    "next": [
+      "准备"
+    ]
+  },
   "准备": {
     "action": {
       "param": {},
@@ -78,8 +83,12 @@
       "寻宝助力",
       {
         "jump_back": true,
-        "name": "进入了战斗-other_副本22"
+        "name": "进入了战斗-藏宝图"
       }
+    ],
+    "on_error": [
+      "超时准备退出_藏宝图",
+      "再次检查_藏宝图"
     ],
     "recognition": {
       "param": {
@@ -95,7 +104,7 @@
       },
       "type": "OCR"
     },
-    "timeout": -1
+    "timeout": 4000
   },
   "刷新": {
     "action": {
@@ -1004,6 +1013,77 @@
       "战斗-self藏宝图"
     ]
   },
+  "超时准备退出-确定_副本3": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "超时准备退出但是进入了战斗_副本4",
+      "寻宝助力"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "确定"
+        ],
+        "roi": [
+          690,
+          446,
+          241,
+          168
+        ]
+      },
+      "type": "OCR"
+    }
+  },
+  "超时准备退出_藏宝图": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "超时准备退出-确定_副本3",
+      "超时准备退出但是进入了战斗_副本4",
+      "寻宝助力"
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          0,
+          0,
+          125,
+          100
+        ],
+        "template": [
+          "返回按钮.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
+  "超时准备退出但是进入了战斗_副本4": {
+    "next": [
+      {
+        "jump_back": true,
+        "name": "进入了战斗-藏宝图"
+      }
+    ],
+    "recognition": {
+      "param": {
+        "roi": [
+          10,
+          560,
+          162,
+          159
+        ],
+        "template": [
+          "进入战斗中.png"
+        ]
+      },
+      "type": "TemplateMatch"
+    }
+  },
   "返回": {
     "action": {
       "param": {},
@@ -1036,9 +1116,9 @@
     },
     "timeout": 3000
   },
-  "进入了战斗-other_副本22": {
+  "进入了战斗-self藏宝图": {
     "next": [
-      "fight接口3"
+      "fight接口2"
     ],
     "recognition": {
       "param": {
@@ -1055,9 +1135,9 @@
       "type": "TemplateMatch"
     }
   },
-  "进入了战斗-self藏宝图": {
+  "进入了战斗-藏宝图": {
     "next": [
-      "fight接口2"
+      "fight接口3"
     ],
     "recognition": {
       "param": {
