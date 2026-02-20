@@ -37,16 +37,13 @@
     "recognition": {
       "param": {
         "roi": [
-          338,
-          389,
-          184,
-          186
+          371,
+          423,
+          94,
+          103
         ],
         "template": [
           "家族祈福转盘.png"
-        ],
-        "threshold": [
-          0.9
         ]
       },
       "type": "TemplateMatch"
