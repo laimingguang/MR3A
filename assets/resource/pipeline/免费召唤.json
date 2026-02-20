@@ -15,7 +15,7 @@
     ],
     "post_wait_freezes": {
       "threshold": 0.8,
-      "time": 1500
+      "time": 2000
     },
     "recognition": {
       "param": {
@@ -47,7 +47,7 @@
     ],
     "post_wait_freezes": {
       "threshold": 0.8,
-      "time": 1500
+      "time": 2000
     },
     "recognition": {
       "param": {
@@ -79,7 +79,7 @@
     ],
     "post_wait_freezes": {
       "threshold": 0.8,
-      "time": 1500
+      "time": 2000
     },
     "recognition": {
       "param": {
