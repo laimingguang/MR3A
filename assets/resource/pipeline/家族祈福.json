@@ -155,13 +155,13 @@
     ],
     "post_wait_freezes": {
       "target": [
-        76,
-        144,
-        414,
-        412
+        34,
+        25,
+        371,
+        385
       ],
-      "threshold": 0.7,
-      "time": 1000
+      "threshold": 0.65,
+      "time": 1500
     },
     "recognition": {
       "param": {
