@@ -75,29 +75,6 @@
       "返回"
     ]
   },
-  "准备": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "点击准备后"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "准备"
-        ],
-        "roi": [
-          1036,
-          620,
-          168,
-          90
-        ]
-      },
-      "type": "OCR"
-    }
-  },
   "刷新": {
     "action": {
       "param": {},
@@ -215,7 +192,7 @@
   "已进入队伍": {
     "next": [
       "满了",
-      "准备",
+      "点击准备-藏宝图",
       "寻宝助力",
       {
         "jump_back": true,
@@ -359,13 +336,36 @@
       "type": "TemplateMatch"
     }
   },
+  "点击准备-藏宝图": {
+    "action": {
+      "param": {},
+      "type": "Click"
+    },
+    "next": [
+      "点击准备后"
+    ],
+    "recognition": {
+      "param": {
+        "expected": [
+          "准备"
+        ],
+        "roi": [
+          1036,
+          620,
+          168,
+          90
+        ]
+      },
+      "type": "OCR"
+    }
+  },
   "点击准备后": {
     "next": [
       {
         "jump_back": true,
         "name": "确定0"
       },
-      "寻宝助力",
+      "助力次数",
       {
         "jump_back": true,
         "name": "进入了战斗-藏宝图"
