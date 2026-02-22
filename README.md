@@ -92,7 +92,7 @@ MR3A/
 ## 致谢
 
 - [MaaFramework](https://github.com/MaaXYZ/MaaFramework) - 强大的自动化框架
-- [MaaAssistant](https://github.com/MaaXYZ/MFAAvalonia) - 优秀的GUI工具
+- [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia) - 优秀的GUI工具
 - 所有贡献者和支持者
 
 ## 联系方式
