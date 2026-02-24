@@ -101,22 +101,12 @@
             "name": "神品传颂藏宝图",
             "entry": "每日藏宝图entry",
             "option": [
+                "选择藏宝图属性",
                 "只刷神品不刷传颂"
             ],
             "pipeline_override": {
-                "识别藏宝图是否满了": {
-                    "enabled": false
-                },
-                "识别属性": {
-                    "expected": [
-                        ".*"
-                    ]
-                },
-                "只刷神品和传颂": {
-                    "enabled": true
-                },
                 "满了": {
-                    "enabled": false
+                    "enabled": true
                 }
             }
         },
@@ -407,9 +397,9 @@
                 {
                     "name": "任意属性",
                     "pipeline_override": {
-                        "识别属性": {
+                        "识别藏宝图属性": {
                             "expected": [
-                                ".*"
+                                "神炎国|海之国|云之国|雷王山|藏宝图"
                             ]
                         },
                         "识别属性self藏宝图": {
@@ -422,7 +412,7 @@
                 {
                     "name": "神炎国",
                     "pipeline_override": {
-                        "识别属性": {
+                        "识别藏宝图属性": {
                             "expected": [
                                 "神炎国"
                             ]
@@ -437,7 +427,7 @@
                 {
                     "name": "海之国",
                     "pipeline_override": {
-                        "识别属性": {
+                        "识别藏宝图属性": {
                             "expected": [
                                 "海之国"
                             ]
@@ -452,7 +442,7 @@
                 {
                     "name": "雷王山",
                     "pipeline_override": {
-                        "识别属性": {
+                        "识别藏宝图属性": {
                             "expected": [
                                 "雷王山"
                             ]
@@ -467,7 +457,7 @@
                 {
                     "name": "云之国",
                     "pipeline_override": {
-                        "识别属性": {
+                        "识别藏宝图属性": {
                             "expected": [
                                 "云之国"
                             ]
@@ -543,7 +533,7 @@
                     "name": "Yes",
                     "label": "开启",
                     "pipeline_override": {
-                        "识别品质": {
+                        "识别藏宝图品质": {
                             "expected": [
                                 "神品"
                             ]
@@ -554,7 +544,7 @@
                     "name": "No",
                     "label": "关闭",
                     "pipeline_override": {
-                        "识别品质": {
+                        "识别藏宝图品质": {
                             "expected": [
                                 "神品|传颂"
                             ]
