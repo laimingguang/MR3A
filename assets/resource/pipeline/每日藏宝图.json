@@ -1138,6 +1138,7 @@
             "再次检查返回"
         ],
         "post_delay": 0,
+        "rate_limit": 100,
         "recognition": {
             "param": {
                 "roi": [
