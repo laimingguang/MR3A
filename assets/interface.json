@@ -105,8 +105,11 @@
                 "只刷神品不刷传颂"
             ],
             "pipeline_override": {
+                "识别藏宝图是否满了": {
+                    "enabled": false
+                },
                 "满了": {
-                    "enabled": true
+                    "enabled": false
                 }
             }
         },
