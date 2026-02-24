@@ -100,6 +100,9 @@
         {
             "name": "神品传颂藏宝图",
             "entry": "每日藏宝图entry",
+            "option": [
+                "只刷神品不刷传颂"
+            ],
             "pipeline_override": {
                 "识别藏宝图是否满了": {
                     "enabled": false
@@ -526,6 +529,35 @@
                     "pipeline_override": {
                         "满了": {
                             "enable": true
+                        }
+                    }
+                }
+            ]
+        },
+        "只刷神品不刷传颂": {
+            "type": "switch",
+            "label": "不刷传颂",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {
+                        "识别品质": {
+                            "expected": [
+                                "神品"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "识别品质": {
+                            "expected": [
+                                "神品|传颂"
+                            ]
                         }
                     }
                 }
