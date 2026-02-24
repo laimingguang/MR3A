@@ -75,35 +75,26 @@
             "返回"
         ]
     },
-    "准备点击加入队伍": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "识别并点击藏宝图加入队伍"
-            },
-            "没有加入队伍"
-        ],
-        "rate_limit": 50
-    },
     "刷新": {
         "action": {
             "param": {},
             "type": "Click"
         },
+        "pre_delay": 0,
         "rate_limit": 50,
         "recognition": {
             "param": {
-                "roi": [
-                    863,
-                    585,
-                    181,
-                    133
+                "expected": [
+                    "刷新"
                 ],
-                "template": [
-                    "藏宝图刷新.png"
+                "roi": [
+                    884,
+                    623,
+                    159,
+                    87
                 ]
             },
-            "type": "TemplateMatch"
+            "type": "OCR"
         }
     },
     "刷自己的藏宝图": {
@@ -144,6 +135,10 @@
             {
                 "jump_back": true,
                 "name": "点到了好友"
+            },
+            {
+                "jump_back": true,
+                "name": "点到玩家信息了"
             },
             "满了",
             "点击准备-藏宝图",
@@ -253,9 +248,14 @@
                 "jump_back": true,
                 "name": "点太快点到了好友"
             },
+            {
+                "jump_back": true,
+                "name": "点太快点到玩家信息了"
+            },
             "藏宝图主页并点击"
         ],
-        "rate_limit": 50
+        "rate_limit": 50,
+        "timeout": 120000
     },
     "满了": {
         "enabled": true,
@@ -461,6 +461,35 @@
             "type": "OCR"
         }
     },
+    "点到玩家信息了": {
+        "action": {
+            "param": {
+                "target": [
+                    776,
+                    696,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "个人信息"
+                ],
+                "roi": [
+                    139,
+                    71,
+                    116,
+                    43
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "点太快点到了好友": {
         "action": {
             "param": {
@@ -473,6 +502,8 @@
             },
             "type": "Click"
         },
+        "post_delay": 0,
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "expected": [
@@ -483,6 +514,35 @@
                     5,
                     163,
                     117
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点太快点到玩家信息了": {
+        "action": {
+            "param": {
+                "target": [
+                    776,
+                    696,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "个人信息"
+                ],
+                "roi": [
+                    139,
+                    71,
+                    116,
+                    43
                 ]
             },
             "type": "OCR"
@@ -782,7 +842,7 @@
             "已进入队伍",
             "藏宝图主页并点击"
         ],
-        "rate_limit": 50,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "green_mask": true,
@@ -937,7 +997,7 @@
         "on_error": [
             "藏宝图列表页"
         ],
-        "rate_limit": 50,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "expected": [
@@ -945,9 +1005,9 @@
                 ],
                 "order_by": "Random",
                 "roi": [
-                    157,
+                    230,
                     149,
-                    1047,
+                    888,
                     281
                 ]
             },
@@ -957,9 +1017,13 @@
     },
     "识别藏宝图属性": {
         "next": [
-            "准备点击加入队伍"
+            {
+                "jump_back": true,
+                "name": "识别并点击藏宝图加入队伍"
+            },
+            "没有加入队伍"
         ],
-        "rate_limit": 50,
+        "rate_limit": 10,
         "recognition": {
             "param": {
                 "expected": [
