@@ -18,15 +18,18 @@
 
 遇到问题？欢迎来提 [ISSUE](https://github.com/originalsage/MR3A/issues) 反馈，我们会第一时间处理！更多功能正在路上，敬请期待 ✨
 
+
 ## 快速开始
 
-**新手上路**：绝大部分用户下载release中的win-x86-64压缩包即可
+**新手上路**：绝大部分用户下载[release](https://github.com/originalsage/MR3A/releases/latest)中的MR3A-win-x86_64-vxxx.zip压缩包即可
+
+推荐使用mumu模拟器或雷电模拟器
 
 ## 项目简介
 
 MR3A 是一个专门为《忍者必须死3》设计的自动化脚本项目，利用 MaaFramework 强大的图像识别和自动化能力，帮助玩家自动完成日常任务，提升游戏体验。
 
-> 💡 **提示**：新版本会自动更新，无需手动操作哦~
+> 💡 **提示**：新版本会自动检测更新，可通过设置中选择github自动更新哦~
 
 ## 功能特性
 
