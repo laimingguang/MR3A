@@ -557,7 +557,7 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "确定"
+                    "确定|下一页"
                 ],
                 "roi": [
                     521,
@@ -578,7 +578,7 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "确定"
+                    "确定|下一页"
                 ],
                 "roi": [
                     521,
