@@ -792,6 +792,9 @@
         "next": [
             "识别品质self藏宝图"
         ],
+        "on_error": [
+            "self藏宝图换下一个"
+        ],
         "recognition": {
             "param": {
                 "expected": [
@@ -805,7 +808,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 1500
     },
     "藏宝图主页并点击": {
         "action": {
@@ -929,9 +933,6 @@
         "next": [
             "点击自己的藏宝图"
         ],
-        "on_error": [
-            "self藏宝图换下一个"
-        ],
         "recognition": {
             "param": {
                 "expected": [
@@ -945,8 +946,7 @@
                 ]
             },
             "type": "OCR"
-        },
-        "timeout": 1500
+        }
     },
     "识别并点击藏宝图加入队伍": {
         "action": {
