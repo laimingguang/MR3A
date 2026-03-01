@@ -1,529 +1,529 @@
 {
-  "4000忍币召唤": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "enabled": true,
-    "max_hit": 1,
-    "next": [
-      {
-        "jump_back": true,
-        "name": "免费召唤确定"
-      },
-      "白银武库主页面再次检测"
-    ],
-    "post_wait_freezes": {
-      "threshold": 0.8,
-      "time": 2000
-    },
-    "recognition": {
-      "param": {
-        "expected": [
-          "4000"
+    "4000忍币召唤": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "enabled": true,
+        "max_hit": 1,
+        "next": [
+            {
+                "jump_back": true,
+                "name": "免费召唤确定"
+            },
+            "白银武库主页面再次检测"
         ],
-        "roi": [
-          643,
-          617,
-          147,
-          76
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 2000
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "4000"
+                ],
+                "roi": [
+                    643,
+                    617,
+                    147,
+                    76
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "使用钥匙召唤": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "免费召唤确定"
+            },
+            "银钥匙不足",
+            "白银武库主页面再次检测"
+        ],
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 2000
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    628,
+                    614,
+                    314,
+                    75
+                ],
+                "template": [
+                    "白银钥匙.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "免费召唤": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "next": [
+            {
+                "jump_back": true,
+                "name": "免费召唤确定"
+            },
+            "白银武库主页面再次检测"
+        ],
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 2000
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "每日首次免费"
+                ],
+                "roi": [
+                    552,
+                    525,
+                    398,
+                    193
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "免费召唤entry": {
+        "next": [
+            "点击进入召唤页面"
         ]
-      },
-      "type": "OCR"
+    },
+    "免费召唤确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_delay": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    330,
+                    585,
+                    471,
+                    130
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "免费炼化": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "炼化确定"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    294,
+                    573,
+                    292,
+                    81
+                ],
+                "template": [
+                    "咒印炼化免费.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "召唤上滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    140,
+                    500,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        140,
+                        200,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    200
+                ]
+            },
+            "type": "Swipe"
+        },
+        "max_hit": 1
+    },
+    "召唤主页面": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "金钥宝库任务"
+            },
+            {
+                "jump_back": true,
+                "name": "白钥武库任务"
+            },
+            {
+                "jump_back": true,
+                "name": "召唤上滑"
+            },
+            "退出召唤"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    232,
+                    101
+                ],
+                "template": [
+                    "召唤.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "召唤主页面再次check": {
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    232,
+                    101
+                ],
+                "template": [
+                    "召唤.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "点击咒印炼化": {
+        "action": {
+            "param": {
+                "target_offset": [
+                    23,
+                    -50,
+                    -48,
+                    12
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "炼化页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "咒印炼化"
+                ],
+                "roi": [
+                    1096,
+                    285,
+                    183,
+                    204
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击进入召唤页面": {
+        "action": {
+            "param": {
+                "target_offset": [
+                    -25,
+                    -42,
+                    -4,
+                    11
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "召唤主页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "召唤"
+                ],
+                "roi": [
+                    6,
+                    574,
+                    765,
+                    141
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击金钥宝库防止jumpback卡死": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "recognition": {
+            "param": {
+                "roi": [
+                    11,
+                    17,
+                    290,
+                    622
+                ],
+                "template": [
+                    "金钥宝库.png"
+                ],
+                "threshold": [
+                    0.85
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 5000
+    },
+    "炼化确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "退出炼化页面"
+        ],
+        "pre_wait_freezes": {
+            "threshold": 0.85,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    294,
+                    558,
+                    335,
+                    154
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "炼化页面": {
+        "next": [
+            "免费炼化",
+            "退出炼化页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "本周勾玉炼化次数"
+                ],
+                "roi": [
+                    1004,
+                    68,
+                    273,
+                    127
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "白钥武库任务": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "next": [
+            "白银武库主页面"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    11,
+                    17,
+                    290,
+                    622
+                ],
+                "template": [
+                    "白银武库.png"
+                ],
+                "threshold": [
+                    0.85
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "白银武库主页面": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "免费召唤"
+            },
+            {
+                "jump_back": true,
+                "name": "使用钥匙召唤"
+            },
+            {
+                "jump_back": true,
+                "name": "4000忍币召唤"
+            },
+            "返回上级节点"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "每次召唤必得"
+                ],
+                "roi": [
+                    819,
+                    216,
+                    239,
+                    144
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 3000
+    },
+    "白银武库主页面再次检测": {
+        "recognition": {
+            "param": {
+                "expected": [
+                    "每次召唤必得"
+                ],
+                "roi": [
+                    819,
+                    216,
+                    239,
+                    144
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "返回上级节点": {},
+    "退出召唤": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    201,
+                    117
+                ],
+                "template": [
+                    "退出召唤按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "退出炼化页面": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "召唤主页面再次check"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "金钥宝库任务": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "next": [
+            "点击咒印炼化"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    11,
+                    17,
+                    290,
+                    622
+                ],
+                "template": [
+                    "金钥宝库.png"
+                ],
+                "threshold": [
+                    0.85
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 5000
+    },
+    "银钥匙不足": {
+        "action": {
+            "param": {
+                "target": [
+                    941,
+                    501,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "点击金钥宝库防止jumpback卡死"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "银钥匙不足"
+                ],
+                "roi": [
+                    501,
+                    76,
+                    255,
+                    84
+                ]
+            },
+            "type": "OCR"
+        }
     }
-  },
-  "使用钥匙召唤": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      {
-        "jump_back": true,
-        "name": "免费召唤确定"
-      },
-      "银钥匙不足",
-      "白银武库主页面再次检测"
-    ],
-    "post_wait_freezes": {
-      "threshold": 0.8,
-      "time": 2000
-    },
-    "recognition": {
-      "param": {
-        "roi": [
-          628,
-          614,
-          314,
-          75
-        ],
-        "template": [
-          "白银钥匙.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "免费召唤": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "max_hit": 1,
-    "next": [
-      {
-        "jump_back": true,
-        "name": "免费召唤确定"
-      },
-      "白银武库主页面再次检测"
-    ],
-    "post_wait_freezes": {
-      "threshold": 0.8,
-      "time": 2000
-    },
-    "recognition": {
-      "param": {
-        "expected": [
-          "每日首次免费"
-        ],
-        "roi": [
-          552,
-          525,
-          398,
-          193
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "免费召唤entry": {
-    "next": [
-      "点击进入召唤页面"
-    ]
-  },
-  "免费召唤确定": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "post_delay": 400,
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
-        ],
-        "roi": [
-          330,
-          585,
-          471,
-          130
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "免费炼化": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "炼化确定"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "免费"
-        ],
-        "roi": [
-          294,
-          573,
-          292,
-          81
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "召唤上滑": {
-    "action": {
-      "param": {
-        "begin": [
-          140,
-          500,
-          1,
-          1
-        ],
-        "end": [
-          [
-            140,
-            200,
-            1,
-            1
-          ]
-        ],
-        "end_hold": [
-          200
-        ]
-      },
-      "type": "Swipe"
-    },
-    "max_hit": 1
-  },
-  "召唤主页面": {
-    "next": [
-      {
-        "jump_back": true,
-        "name": "金钥宝库任务"
-      },
-      {
-        "jump_back": true,
-        "name": "白钥武库任务"
-      },
-      {
-        "jump_back": true,
-        "name": "召唤上滑"
-      },
-      "退出召唤"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          232,
-          101
-        ],
-        "template": [
-          "召唤.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "召唤主页面再次check": {
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          232,
-          101
-        ],
-        "template": [
-          "召唤.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "点击咒印炼化": {
-    "action": {
-      "param": {
-        "target_offset": [
-          23,
-          -50,
-          -48,
-          12
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "炼化页面"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "咒印炼化"
-        ],
-        "roi": [
-          1096,
-          285,
-          183,
-          204
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "点击进入召唤页面": {
-    "action": {
-      "param": {
-        "target_offset": [
-          -25,
-          -42,
-          -4,
-          11
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "召唤主页面"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "召唤"
-        ],
-        "roi": [
-          6,
-          574,
-          765,
-          141
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "点击金钥宝库防止jumpback卡死": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "max_hit": 1,
-    "recognition": {
-      "param": {
-        "roi": [
-          11,
-          17,
-          290,
-          622
-        ],
-        "template": [
-          "金钥宝库.png"
-        ],
-        "threshold": [
-          0.85
-        ]
-      },
-      "type": "TemplateMatch"
-    },
-    "timeout": 5000
-  },
-  "炼化确定": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "退出炼化页面"
-    ],
-    "pre_wait_freezes": {
-      "threshold": 0.85,
-      "time": 300
-    },
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
-        ],
-        "roi": [
-          294,
-          558,
-          335,
-          154
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "炼化页面": {
-    "next": [
-      "免费炼化",
-      "退出炼化页面"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "本周勾玉炼化次数"
-        ],
-        "roi": [
-          1004,
-          68,
-          273,
-          127
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "白钥武库任务": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "max_hit": 1,
-    "next": [
-      "白银武库主页面"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          11,
-          17,
-          290,
-          622
-        ],
-        "template": [
-          "白银武库.png"
-        ],
-        "threshold": [
-          0.85
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "白银武库主页面": {
-    "next": [
-      {
-        "jump_back": true,
-        "name": "免费召唤"
-      },
-      {
-        "jump_back": true,
-        "name": "使用钥匙召唤"
-      },
-      {
-        "jump_back": true,
-        "name": "4000忍币召唤"
-      },
-      "返回上级节点"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "每次召唤必得"
-        ],
-        "roi": [
-          819,
-          216,
-          239,
-          144
-        ]
-      },
-      "type": "OCR"
-    },
-    "timeout": 3000
-  },
-  "白银武库主页面再次检测": {
-    "recognition": {
-      "param": {
-        "expected": [
-          "每次召唤必得"
-        ],
-        "roi": [
-          819,
-          216,
-          239,
-          144
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "返回上级节点": {},
-  "退出召唤": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          201,
-          117
-        ],
-        "template": [
-          "退出召唤按钮.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "退出炼化页面": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "召唤主页面再次check"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          125,
-          100
-        ],
-        "template": [
-          "返回按钮.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "金钥宝库任务": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "max_hit": 1,
-    "next": [
-      "点击咒印炼化"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          11,
-          17,
-          290,
-          622
-        ],
-        "template": [
-          "金钥宝库.png"
-        ],
-        "threshold": [
-          0.85
-        ]
-      },
-      "type": "TemplateMatch"
-    },
-    "timeout": 5000
-  },
-  "银钥匙不足": {
-    "action": {
-      "param": {
-        "target": [
-          941,
-          501,
-          1,
-          1
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "点击金钥宝库防止jumpback卡死"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "银钥匙不足"
-        ],
-        "roi": [
-          501,
-          76,
-          255,
-          84
-        ]
-      },
-      "type": "OCR"
-    }
-  }
 }
