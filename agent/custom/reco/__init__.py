@@ -1,5 +1,9 @@
 from .general import *
 
 __all__ = [
-    "GeneralRecognition"
+    "MultiRecognition",
+    "Count",
+    "CheckStopping",
+    "ColorOCR",
+    "ColorOCRWithFallback"
 ]
