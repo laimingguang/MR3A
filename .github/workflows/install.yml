@@ -1,9 +1,7 @@
-name: install
-
 on:
   push:
     tags:
-      - "v*"
+      - "v[0-9]+.[0-9]+.[0-9]+*"
     branches:
       - "**"
     paths:
@@ -19,6 +17,10 @@ on:
       - "**.py"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   meta:
     runs-on: ubuntu-latest
@@ -29,17 +31,22 @@ jobs:
       - id: set_tag
         run: |
           # 检查标签格式
-          is_release=${{ startsWith(github.ref, 'refs/tags/v') }}
-          tag=$(git describe --tags --match "v*" ${{ github.ref }} || true)
-          if [[ $tag != v* ]]; then
+          if [[ ${{ github.ref }} =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*)?$ ]]; then
+            is_release=true
+            tag=${GITHUB_REF#refs/tags/}
+            echo "Release tag format is valid: $tag"
+          else
+            is_release=false
+            # 获取最新的发布标签
             tag=$(curl -sX GET "https://api.github.com/repos/${{ github.repository }}/releases/latest" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | awk '/tag_name/{print $4}' FS='["|"]')
-            if [[ $tag != v* ]]; then
+            if [[ ! $tag =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+)?$ ]]; then
+              echo "No valid release tag found, using v0.0.0"
               tag="v0.0.0"
             fi
             tag=$(date "+$tag-%y%m%d-$(git rev-parse --short HEAD)")
           fi
 
-          if ! $($is_release) ; then
+          if [ "$is_release" != "true" ] ; then
             prefix=${tag%-*-*}
             suffix=${tag#$prefix-}
             tag="$prefix-ci.$suffix"
@@ -64,9 +71,13 @@ jobs:
     needs: meta
     strategy:
       matrix:
-        arch: [x86_64, aarch64]
+        include:
+          - arch: x86_64
+            runner: windows-latest
+          - arch: aarch64
+            runner: windows-11-arm
       fail-fast: false
-    runs-on: ${{ matrix.arch == 'x86_64' && 'windows-latest' || 'windows-11-arm' }}
+    runs-on: ${{ matrix.runner }}
 
     steps:
       - uses: actions/checkout@v4
@@ -102,12 +113,12 @@ jobs:
           out-file-path: "MFA"
           extract: true
 
-      - name: Clean up MFAAvalonia archive
+      - name: Clean up MFAAvalonia archive on Windows
         shell: bash
         run: |
           ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
           rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
+          echo "Archive cleanup command executed for MFAAvalonia on Windows."
 
       - name: Remove built-in runtime in MFA
         shell: bash
@@ -130,7 +141,7 @@ jobs:
           if [ -d "MFA" ]; then
             echo "Copying MFA files to install directory..."
             mkdir -p install
-            rsync -av --ignore-existing MFA/ install/
+            cp -rpvn MFA/. install/
             echo "MFA files copied successfully."
           else
             echo "MFA directory not found, skipping copy."
@@ -142,99 +153,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
-          path: "install"
-
-  macos:
-    needs: meta
-    strategy:
-      matrix:
-        arch: [x86_64, aarch64]
-      fail-fast: false
-    runs-on: ${{ matrix.arch == 'x86_64' && 'macos-15-intel' || 'macos-latest' }}
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - name: Set platform variables
-        id: platform
-        shell: bash
-        run: |
-          if [ "${{ matrix.arch }}" = "x86_64" ]; then
-            echo "tag=x64" >> $GITHUB_OUTPUT
-          else
-            echo "tag=arm64" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: MaaXYZ/MaaFramework
-          fileName: "MAA-macos-${{ matrix.arch }}*"
-          latest: true
-          out-file-path: "deps"
-          extract: true
-
-      - name: Download MFAAvalonia
-        id: download_mfa
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-osx-${{ steps.platform.outputs.tag }}*"
-          latest: true
-          out-file-path: "MFA"
-          extract: true
-
-      - name: Clean up MFAAvalonia archive
-        shell: bash
-        run: |
-          ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
-          rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
-
-      - name: Remove built-in runtime in MFA
-        shell: bash
-        run: |
-          rm -rf MFA/runtimes
-      
-      - name: Setup Embed Python on macOS
-        shell: bash
-        run: |
-          python3 tools/setup_embed_python.py
-          EMBED_PYTHON_PATH="./install/python/bin/python3"
-          if [ -f "$EMBED_PYTHON_PATH" ]; then
-            echo "Setting execute permission for $EMBED_PYTHON_PATH"
-            chmod +x "$EMBED_PYTHON_PATH"
-          else
-            echo "Warning: Embedded Python executable not found at $EMBED_PYTHON_PATH. Skipping chmod."
-          fi
-
-      - name: Download Python dependencies
-        shell: bash
-        run: |
-          ./install/python/bin/python3 -m pip install -r requirements.txt
-
-      - name: Install
-        shell: bash
-        run: |
-          if [ -d "MFA" ]; then
-            echo "Copying MFA files to install directory..."
-            mkdir -p install
-            rsync -av --ignore-existing MFA/ install/
-            echo "MFA files copied successfully."
-          else
-            echo "MFA directory not found, skipping copy."
-          fi
-
-          # 安装 Python 依赖
-          ./install/python/bin/python3 -m pip install -r tools/requirements.txt
-          ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} macos ${{ matrix.arch }}
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: MR3A-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
+          name: MR3A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
           path: "install"
 
   linux:
@@ -242,7 +161,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [x86_64, aarch64]
+        arch: [aarch64, x86_64]
       fail-fast: false
 
     steps:
@@ -260,7 +179,7 @@ jobs:
             echo "tag=arm64" >> $GITHUB_OUTPUT
           fi
 
-      - name: Download MaaFramework
+      - name: Download MaaFramework for Linux
         uses: robinraju/release-downloader@v1
         with:
           repository: MaaXYZ/MaaFramework
@@ -269,7 +188,7 @@ jobs:
           out-file-path: "deps"
           extract: true
 
-      - name: Download MFAAvalonia
+      - name: Download MFAAvalonia for Linux
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
@@ -279,12 +198,12 @@ jobs:
           out-file-path: "MFA"
           extract: true
 
-      - name: Clean up MFAAvalonia archive
+      - name: Clean up MFAAvalonia archive on Linux
         shell: bash
         run: |
           ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
           rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
+          echo "Archive cleanup command executed for MFAAvalonia on Linux."
 
       - name: Remove built-in runtime in MFA
         shell: bash
@@ -308,16 +227,16 @@ jobs:
         run: |
           ./install/python/bin/python3 -m pip install -r requirements.txt
 
-      - name: Install
+      - name: Install on Linux
         shell: bash
         run: |
           if [ -d "MFA" ]; then
-            echo "Copying MFA files to install directory..."
+            echo "Copying MFA files to install directory on Linux..."
             mkdir -p install
             rsync -av --ignore-existing MFA/ install/
             echo "MFA files copied successfully."
           else
-            echo "MFA directory not found, skipping copy."
+            echo "MFA directory not found on Linux, skipping copy."
           fi
 
           # 安装 Python 依赖
@@ -326,42 +245,103 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
+          name: MR3A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
           path: "install"
 
-  android:
+  macos:
     needs: meta
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [aarch64, x86_64]
+        include:
+          - arch: x86_64
+            runner: macos-15-intel
+          - arch: aarch64
+            runner: macos-latest
       fail-fast: false
+    runs-on: ${{ matrix.runner }}
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
 
-      - name: Download MaaFramework
+      - name: Set platform variables
+        id: platform
+        shell: bash
+        run: |
+          if [ "${{ matrix.arch }}" = "x86_64" ]; then
+            echo "tag=x64" >> $GITHUB_OUTPUT
+          else
+            echo "tag=arm64" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download MaaFramework for macOS
         uses: robinraju/release-downloader@v1
         with:
           repository: MaaXYZ/MaaFramework
-          fileName: "MAA-android-${{ matrix.arch }}*"
+          fileName: "MAA-macos-${{ matrix.arch }}*"
           latest: true
           out-file-path: "deps"
           extract: true
 
-      - name: Install
+      - name: Download MFAAvalonia for macOS
+        id: download_mfa
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: SweetSmellFox/MFAAvalonia
+          fileName: "MFAAvalonia-*-osx-${{ steps.platform.outputs.tag }}*"
+          latest: true
+          out-file-path: "MFA"
+          extract: true
+
+      - name: Clean up MFAAvalonia archive on macOS
         shell: bash
         run: |
-          # 对于Android，我们只需要安装基本依赖
-          python -m pip install -r requirements.txt
-          python -m pip install -r tools/requirements.txt
-          python tools/install.py ${{ needs.meta.outputs.tag }} android ${{ matrix.arch }}
+          ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
+          rm -f "${ARCHIVE_FILE_PATH}"
+          echo "Archive cleanup command executed for MFAAvalonia on macOS."
+
+      - name: Remove built-in runtime in MFA
+        shell: bash
+        run: |
+          rm -rf MFA/runtimes
+      
+      - name: Setup Embed Python on macOS
+        shell: bash
+        run: |
+          python3 tools/setup_embed_python.py
+          EMBED_PYTHON_PATH="./install/python/bin/python3"
+          if [ -f "$EMBED_PYTHON_PATH" ]; then
+            echo "Setting execute permission for $EMBED_PYTHON_PATH"
+            chmod +x "$EMBED_PYTHON_PATH"
+          else
+            echo "Warning: Embedded Python executable not found at $EMBED_PYTHON_PATH. Skipping chmod."
+          fi
+
+      - name: Download Python dependencies
+        shell: bash
+        run: |
+          ./install/python/bin/python3 -m pip install -r requirements.txt
+
+      - name: Install on macOS
+        shell: bash
+        run: |
+          if [ -d "MFA" ]; then
+            echo "Copying MFA files to install directory on macOS..."
+            mkdir -p install
+            rsync -av --ignore-existing MFA/ install/
+            echo "MFA files copied successfully."
+          else
+            echo "MFA directory not found on macOS, skipping copy."
+          fi
+
+          # 安装 Python 依赖
+          ./install/python/bin/python3 -m pip install -r tools/requirements.txt
+          ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} macos ${{ matrix.arch }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-android-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
+          name: MR3A-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
           path: "install"
 
   changelog:
@@ -392,14 +372,15 @@ jobs:
 
   release:
     if: ${{ needs.meta.outputs.is_release == 'true' }}
-    needs: [meta, windows, macos, linux, android, changelog]
+    needs: [meta, windows, linux, macos, changelog]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
           path: assets
 
-      - run: |
+      - name: Process and package artifacts
+        run: |
           cd assets
           for f in *; do
             if [[ $f == *"win"* ]]; then
@@ -440,7 +421,7 @@ jobs:
               echo "Created archive with preserved permissions: $f.tar.gz"
             fi
           done
-          
+
       - uses: softprops/action-gh-release@v2
         with:
           files: assets/*
@@ -449,9 +430,6 @@ jobs:
           draft: false
           prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
 
-        # Mirror酱为第三方分发服务，新项目默认关闭
-        # 若有需要请联系 Mirror酱 开通，直接自行开启是无法使用的
-        # https://mirrorchyan.com/
       - name: Trigger MirrorChyanUploading
         if: false
         # if: ${{ github.repository_owner == 'MaaXYZ' }}

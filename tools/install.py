@@ -9,10 +9,59 @@ from configure import configure_ocr_model
 
 def remove_json_comments(json_string):
     """移除 JSON 字符串中的注释"""
-    # 移除单行注释
-    json_string = re.sub(r'//.*$', '', json_string, flags=re.MULTILINE)
-    # 移除多行注释
-    json_string = re.sub(r'/\*.*?\*/', '', json_string, flags=re.DOTALL)
+    # 状态机：0=正常，1=字符串，2=转义字符
+    state = 0
+    result = []
+    i = 0
+    n = len(json_string)
+    
+    while i < n:
+        if state == 0:
+            if json_string[i:i+2] == '//':
+                # 找到单行注释，跳过到行尾
+                end = json_string.find('\n', i)
+                if end == -1:
+                    break
+                i = end
+            elif json_string[i:i+2] == '/*':
+                # 找到多行注释，跳过到注释结束
+                end = json_string.find('*/', i+2)
+                if end == -1:
+                    break
+                i = end + 2
+            elif json_string[i] == '"':
+                # 进入字符串
+                result.append(json_string[i])
+                state = 1
+                i += 1
+            else:
+                # 正常字符
+                result.append(json_string[i])
+                i += 1
+        elif state == 1:
+            if json_string[i] == '\\':
+                # 进入转义字符
+                result.append(json_string[i])
+                state = 2
+                i += 1
+            elif json_string[i] == '"':
+                # 退出字符串
+                result.append(json_string[i])
+                state = 0
+                i += 1
+            else:
+                # 字符串内字符
+                result.append(json_string[i])
+                i += 1
+        elif state == 2:
+            # 转义字符，直接添加
+            result.append(json_string[i])
+            state = 1
+            i += 1
+    
+    # 移除多余的空白行
+    json_string = ''.join(result)
+    json_string = '\n'.join([line for line in json_string.split('\n') if line.strip()])
     return json_string
 
 

@@ -82,6 +82,17 @@ def get_python_executable_path(base_dir, os_type):
             return py_path
         else:
             return None  # 未找到
+    elif os_type == "Linux":  # Linux
+        # python-build-standalone 通常包含 python 和 python3
+        # 我们优先使用 python3 (通常 python 是指向 python3 的符号链接)
+        py3_path = os.path.join(base_dir, "bin", "python3")
+        py_path = os.path.join(base_dir, "bin", "python")
+        if os.path.exists(py3_path):
+            return py3_path
+        elif os.path.exists(py_path):  # 作为备选
+            return py_path
+        else:
+            return None  # 未找到
     return None
 
 
@@ -250,13 +261,18 @@ def main():
             download_file(download_url, tar_filepath)
             # python-build-standalone 的包解压后通常包含一个名为 'python' 的顶层目录
             # 我们需要将这个 'python' 目录的内容移动到 DEST_DIR
-            temp_extract_dir = os.path.join(DEST_DIR, "_temp_extract")
+            temp_extract_dir = os.path.join(os.path.dirname(DEST_DIR), "_temp_extract")
             os.makedirs(temp_extract_dir, exist_ok=True)
             extract_tar(tar_filepath, temp_extract_dir)
 
             extracted_python_root = os.path.join(temp_extract_dir, "python")
             if os.path.isdir(extracted_python_root):
                 print(f"正在移动 {extracted_python_root} 的内容到 {DEST_DIR}")
+                # 先清空目标目录
+                if os.path.exists(DEST_DIR):
+                    shutil.rmtree(DEST_DIR)
+                os.makedirs(DEST_DIR, exist_ok=True)
+                # 移动整个python目录的内容
                 for item_name in os.listdir(extracted_python_root):
                     s = os.path.join(extracted_python_root, item_name)
                     d = os.path.join(DEST_DIR, item_name)
@@ -268,6 +284,72 @@ def main():
                 return
         except Exception as e:
             print(f"macOS Python 下载或解压失败: {e}")
+            if os.path.exists(temp_extract_dir):
+                shutil.rmtree(temp_extract_dir)
+            return
+        finally:
+            if os.path.exists(tar_filepath):
+                os.remove(tar_filepath)
+
+        # 为 bin 目录下的可执行文件设置执行权限
+        bin_dir = os.path.join(DEST_DIR, "bin")
+        if os.path.isdir(bin_dir):
+            print(f"正在为 {bin_dir} 中的文件设置执行权限...")
+            for item_name in os.listdir(bin_dir):
+                item_path = os.path.join(bin_dir, item_name)
+                if os.path.isfile(item_path) and not os.access(item_path, os.X_OK):
+                    try:
+                        current_mode = os.stat(item_path).st_mode
+                        os.chmod(
+                            item_path,
+                            current_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH,
+                        )
+                        print(f"  已为 {item_name} 设置执行权限。")
+                    except Exception as e:
+                        print(f"  为 {item_name} 设置执行权限失败: {e}")
+        python_executable_final_path = get_python_executable_path(DEST_DIR, os_type)
+    elif os_type == "Linux":  # Linux
+        # 映射platform.machine()到python-build-standalone的架构名称
+        arch_mapping = {"x86_64": "x86_64", "arm64": "aarch64", "aarch64": "aarch64"}
+        pbs_arch = arch_mapping.get(os_arch, os_arch)
+
+        if pbs_arch not in ["x86_64", "aarch64"]:
+            print(f"错误: 不支持的 Linux 架构: {os_arch} -> {pbs_arch}")
+            return
+
+        # 文件名格式: cpython-{PYTHON_VERSION}+{RELEASE_TAG_DATE}-{ARCH}-unknown-linux-gnu-install_only.tar.gz
+        pbs_filename = f"cpython-{PYTHON_VERSION_TARGET}+{PYTHON_BUILD_STANDALONE_RELEASE_TAG}-{pbs_arch}-unknown-linux-gnu-install_only.tar.gz"
+        download_url = f"https://github.com/indygreg/python-build-standalone/releases/download/{PYTHON_BUILD_STANDALONE_RELEASE_TAG}/{pbs_filename}"
+        tar_filename = pbs_filename  # 使用原始文件名
+        tar_filepath = os.path.join(DEST_DIR, tar_filename)  # 下载到目标目录内
+
+        try:
+            download_file(download_url, tar_filepath)
+            # python-build-standalone 的包解压后通常包含一个名为 'python' 的顶层目录
+            # 我们需要将这个 'python' 目录的内容移动到 DEST_DIR
+            temp_extract_dir = os.path.join(os.path.dirname(DEST_DIR), "_temp_extract")
+            os.makedirs(temp_extract_dir, exist_ok=True)
+            extract_tar(tar_filepath, temp_extract_dir)
+
+            extracted_python_root = os.path.join(temp_extract_dir, "python")
+            if os.path.isdir(extracted_python_root):
+                print(f"正在移动 {extracted_python_root} 的内容到 {DEST_DIR}")
+                # 先清空目标目录
+                if os.path.exists(DEST_DIR):
+                    shutil.rmtree(DEST_DIR)
+                os.makedirs(DEST_DIR, exist_ok=True)
+                # 移动整个python目录的内容
+                for item_name in os.listdir(extracted_python_root):
+                    s = os.path.join(extracted_python_root, item_name)
+                    d = os.path.join(DEST_DIR, item_name)
+                    shutil.move(s, d)
+                shutil.rmtree(temp_extract_dir)  # 清理临时解压目录
+            else:
+                print(f"错误: 解压后未找到预期的 'python' 子目录于 {temp_extract_dir}")
+                shutil.rmtree(temp_extract_dir)
+                return
+        except Exception as e:
+            print(f"Linux Python 下载或解压失败: {e}")
             if os.path.exists(temp_extract_dir):
                 shutil.rmtree(temp_extract_dir)
             return
