@@ -3,12 +3,12 @@ from pathlib import Path
 import shutil
 import sys
 import json
+import re
 
 from configure import configure_ocr_model
 
 def remove_json_comments(json_string):
     """移除 JSON 字符串中的注释"""
-    import re
     # 移除单行注释
     json_string = re.sub(r'//.*$', '', json_string, flags=re.MULTILINE)
     # 移除多行注释
@@ -134,15 +134,18 @@ def install_agent():
     )
 
     with open(install_path / "interface.json", "r", encoding="utf-8") as f:
+        content = f.read()
+        # 移除JSON注释
+        content = remove_json_comments(content)
         import json
-        interface = json.load(f)
+        interface = json.loads(content)
 
     if os_name == "win":
         interface["agent"]["child_exec"] = r"./python/python.exe"
     elif os_name == "macos":
         interface["agent"]["child_exec"] = r"./python/bin/python3"
     elif os_name == "linux":
-        interface["agent"]["child_exec"] = r"python3"
+        interface["agent"]["child_exec"] = r"./python/bin/python3"
 
     interface["agent"]["child_args"] = ["-u", r"./agent/main.py"]
 
