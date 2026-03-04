@@ -124,6 +124,8 @@ jobs:
             echo "Skipping copy MFA for Android."
           fi
 
+          # 安装 Python 依赖
+          python -m pip install -r requirements.txt
           cd tools/
           python -m pip install -r ./requirements.txt
           python ./install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
