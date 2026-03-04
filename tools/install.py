@@ -5,6 +5,8 @@ import sys
 import json
 import re
 
+# 添加当前目录到Python路径
+sys.path.append(str(Path(__file__).parent))
 from configure import configure_ocr_model
 
 def remove_json_comments(json_string):
