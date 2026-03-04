@@ -2,17 +2,18 @@ from pathlib import Path
 
 import shutil
 import sys
-
-try:
-    import jsonc
-except ModuleNotFoundError as e:
-    raise ImportError(
-        "Missing dependency 'json-with-comments' (imported as 'jsonc').\n"
-        f"Install it with:\n  {sys.executable} -m pip install json-with-comments\n"
-        "Or add it to your project's requirements."
-    ) from e
+import json
 
 from configure import configure_ocr_model
+
+def remove_json_comments(json_string):
+    """移除 JSON 字符串中的注释"""
+    import re
+    # 移除单行注释
+    json_string = re.sub(r'//.*$', '', json_string, flags=re.MULTILINE)
+    # 移除多行注释
+    json_string = re.sub(r'/\*.*?\*/', '', json_string, flags=re.DOTALL)
+    return json_string
 
 
 working_dir = Path(__file__).parent.parent.resolve()
@@ -112,14 +113,6 @@ def install_resource():
         working_dir / "assets" / "interface.json",
         install_path,
     )
-
-    with open(install_path / "interface.json", "r", encoding="utf-8") as f:
-        interface = jsonc.load(f)
-
-    interface["version"] = version
-
-    with open(install_path / "interface.json", "w", encoding="utf-8") as f:
-        jsonc.dump(interface, f, ensure_ascii=False, indent=4)
 
 
 def install_chores():

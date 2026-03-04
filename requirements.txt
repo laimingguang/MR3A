@@ -1,0 +1,6 @@
+maafw==v5.7.1
+loguru
+pillow
+pytz
+requests
+json-with-comments
