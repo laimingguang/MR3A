@@ -108,6 +108,22 @@ jobs:
         run: |
           rm -rf MFA/runtimes
       
+      - name: Setup Embed Python
+        shell: bash
+        run: |
+          python tools/setup_embed_python.py
+          
+      - name: Download Python dependencies
+        shell: bash
+        run: |
+          if [[ "${{ matrix.os }}" == "win" ]]; then
+            ./install/python/python.exe -m pip install -r requirements.txt
+          elif [[ "${{ matrix.os }}" == "macos" ]]; then
+            ./install/python/bin/python3 -m pip install -r requirements.txt
+          else
+            python -m pip install -r requirements.txt
+          fi
+
       - name: Install
         shell: bash
         run: |
@@ -125,11 +141,16 @@ jobs:
           fi
 
           # 安装 Python 依赖
-          python -m pip install -r requirements.txt
-          cd tools/
-          python -m pip install -r ./requirements.txt
-          python ./install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
-          cd ..
+          if [[ "${{ matrix.os }}" == "win" ]]; then
+            ./install/python/python.exe -m pip install -r tools/requirements.txt
+            ./install/python/python.exe tools/install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
+          elif [[ "${{ matrix.os }}" == "macos" ]]; then
+            ./install/python/bin/python3 -m pip install -r tools/requirements.txt
+            ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
+          else
+            python -m pip install -r tools/requirements.txt
+            python tools/install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
+          fi
 
       - uses: actions/upload-artifact@v4
         with:
