@@ -1,7 +1,7 @@
 # MR3A - 忍者必须死3自动化脚本
 
 <div align="center">
-  <img src="assets/MR3A_logo.jpg" alt="MR3A Logo" width="200"/>
+  <img src="assets/logo.png" alt="MR3A Logo" width="256" height="256"/>
   
   [![GitHub release (latest by date)](https://img.shields.io/github/v/release/originalsage/MR3A)](https://github.com/originalsage/MR3A/releases)
   [![License](https://img.shields.io/github/license/originalsage/MR3A)](LICENSE)
