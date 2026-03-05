@@ -1,0 +1,49 @@
+{
+    "3v3_kn_an": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_ying"
+            },
+            "type": "Custom"
+        },
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "3v3entry": {
+        "next": [
+            "识别到下滑按钮"
+        ],
+        "rate_limit": 20,
+        "timeout": 600000
+    },
+    "识别到下滑按钮": {
+        "next": [
+            "3v3_kn_an"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    229,
+                    613,
+                    1,
+                    1
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    }
+}

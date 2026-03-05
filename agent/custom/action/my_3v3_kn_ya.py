@@ -3,8 +3,8 @@ from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
 
-@AgentServer.custom_action("my_3v3_kn_ying")
-class my_3v3_kn_ying(CustomAction):
+@AgentServer.custom_action("my_3v3_kn_ya")
+class my_3v3_kn_ya(CustomAction):
     def run(
         self,
         context: Context,
@@ -29,30 +29,23 @@ class my_3v3_kn_ying(CustomAction):
             # ===================
             # click(200, 620, t) 为下翻
             # click(1100, 620, t) 为跳跃
-            click(1, 1, 3092)
-            click(1100, 620, 320)
-            click(1100, 620, 1110)
-            click(1100, 620, 302)
-            click(1100, 620, 1112)
-            click(1100, 620, 112)
-            click(1100, 620, 112)
-            click(200, 620, 212)
-            click(1100, 620, 672)
-            click(1100, 620, 502)
-            click(1100, 620, 128)
-            click(200, 620, 99)
-            click(1100, 620, 419)
-            click(200, 620, 199)
-            click(1100, 620, 419)
-            click(1100, 620, 450)
-            click(200, 620, 15650)
-            click(1100, 620, 2700)
-            click(1100, 620, 1600)
-            click(1100, 620, 1000)
-            click(1100, 620, 1000)
+            click(1, 1, 9000)
+            click(200, 620, 3250)
             click(1100, 620, 250)
-            click(1100, 620, 250)
-            click(1100, 620, 7000)
+            click(1100, 620, 1820)
+            click(200, 620, 363)
+            click(1100, 620, 350)
+            click(1100, 620, 350)
+            click(1100, 620, 5500)
+            click(1100, 620, 1500)
+            click(200, 620, 2500)
+            click(200, 620, 620)
+            click(200, 620, 13080)
+            click(1100, 620, 1000)
+            click(1100, 620, 500)
+            click(1100, 620, 1200)
+            click(1100, 620, 300)
+            click(1100, 620, 4000)
             # ===================
             # 结束点击序列
             # ===================

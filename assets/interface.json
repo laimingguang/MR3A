@@ -31,6 +31,10 @@
     },
     "task": [
         {
+            "name": "3v3",
+            "entry": "3v3entry"
+        },
+        {
             "name": "启动游戏",
             "entry": "启动流程",
             "option": [
