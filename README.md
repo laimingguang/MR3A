@@ -121,7 +121,9 @@ MR3A/
 - **GitHub Issues**: [提交问题](https://github.com/originalsage/MR3A/issues)
 
 ---
+## Star History
 
+[![Star History Chart](https://api.star-history.com/image?repos=originalsage/MR3A&type=date&legend=top-left)](https://www.star-history.com/?repos=originalsage%2FMR3A&type=date&legend=bottom-right)
 <div align="center">
   
   🌟 如果你觉得这个项目对你有帮助，请给个⭐Star支持一下！
