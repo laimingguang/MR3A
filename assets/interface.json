@@ -31,10 +31,6 @@
     },
     "task": [
         {
-            "name": "3v3",
-            "entry": "3v3entry"
-        },
-        {
             "name": "启动游戏",
             "entry": "启动流程",
             "option": [
@@ -94,6 +90,13 @@
         {
             "name": "每日悬赏",
             "entry": "每日悬赏entry"
+        },
+        {
+            "name": "3v3",
+            "entry": "3v3entry",
+            "option": [
+                "满了也刷（最好不要）"
+            ]
         },
         {
             "name": "领取战令",
@@ -411,6 +414,24 @@
                             "enable": false
                         }
                     }
+                }
+            ]
+        },
+        "满了也刷（最好不要）": {
+            "type": "switch",
+            "label": "满了也刷（最好不要）",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "3v3每日任务满了": {
+                            "next": "识别并点击匹配模式"
+                        }
+                    }
+                },
+                {
+                    "name": "No"
                 }
             ]
         },

@@ -1,24 +1,1579 @@
 {
-    "3v3_kn_an": {
+    "3v3_kn_an_p1": {
         "action": {
             "param": {
-                "custom_action": "my_3v3_kn_ying"
+                "custom_action": "my_3v3_kn_an_p1"
             },
             "type": "Custom"
         },
+        "next": [
+            "p1购卡1_1"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "3v3_kn_ya_p1": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_ya_p1"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "p1购卡1_2"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "3v3_kn_ying_p1": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_ying_p1"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "p1购卡1_0"
+        ],
         "post_delay": 0,
         "pre_delay": 0
     },
     "3v3entry": {
         "next": [
-            "识别到下滑按钮"
+            "3v3识别并点击决斗场",
+            {
+                "jump_back": true,
+                "name": "3v3entry返回主页面"
+            }
+        ]
+    },
+    "3v3entry返回主页面": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "3v3退出确定"
+        ],
+        "post_delay": 1200,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 1000
+    },
+    "3v3任务确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    506,
+                    582,
+                    251,
+                    109
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3任务领取": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "3v3任务确定"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    961,
+                    197,
+                    177,
+                    75
+                ],
+                "template": [
+                    "3v3任务领取按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3决斗场返回主页": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_delay": 1500,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3勾选困难难度": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "3v3难度确定"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    365,
+                    61,
+                    143,
+                    484
+                ],
+                "template": [
+                    "3v3困难.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3困难图": {
+        "next": [
+            "3v3樱之谷",
+            "3v3暗之狱",
+            "3v3鸦之巢"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "困难"
+                ],
+                "roi": [
+                    800,
+                    140,
+                    219,
+                    60
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3控制难度": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "3v3难度上滑"
+        ],
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "难度选择"
+                ],
+                "roi": [
+                    202,
+                    599,
+                    327,
+                    119
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3暗之狱": {
+        "next": [
+            "3v3点击完成1"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "暗之狱"
+                ],
+                "roi": [
+                    800,
+                    140,
+                    219,
+                    60
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3检验在决斗场中": {
+        "next": [
+            "识别并点击3v3"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    84,
+                    0,
+                    284,
+                    114
+                ],
+                "template": [
+                    "决斗场主页.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3樱之谷": {
+        "next": [
+            "3v3点击完成0"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "樱之谷"
+                ],
+                "roi": [
+                    800,
+                    140,
+                    219,
+                    60
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3每日任务没满": {
+        "action": {
+            "param": {
+                "target": [
+                    1225,
+                    200,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "识别并点击匹配模式"
+        ],
+        "on_error": [
+            "没有匹配模式说明时间不符合"
+        ],
+        "timeout": 2500
+    },
+    "3v3每日任务满了": {
+        "action": {
+            "param": {
+                "target": [
+                    1225,
+                    200,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "3v3返回决斗场"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "已领取"
+                ],
+                "roi": [
+                    939,
+                    174,
+                    211,
+                    107
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3点击准备": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "准备"
+                ],
+                "roi": [
+                    533,
+                    553,
+                    211,
+                    101
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 60000
+    },
+    "3v3点击单人匹配": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "匹配"
+                ],
+                "roi": [
+                    559,
+                    650,
+                    188,
+                    59
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 240000
+    },
+    "3v3点击完成0": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "识别到下滑按钮0"
         ],
         "rate_limit": 20,
-        "timeout": 600000
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    1007,
+                    623,
+                    219,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 180000
     },
-    "识别到下滑按钮": {
+    "3v3点击完成1": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
         "next": [
-            "3v3_kn_an"
+            "识别到下滑按钮1"
+        ],
+        "rate_limit": 20,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    1007,
+                    623,
+                    219,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 180000
+    },
+    "3v3点击完成2": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "识别到下滑按钮_2"
+        ],
+        "rate_limit": 20,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    1007,
+                    623,
+                    219,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 180000
+    },
+    "3v3确定进入了作战页面": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "3v3进入准备页面"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3结算确定"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3继续0"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3继续1"
+            },
+            "回到了3v3主页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    1036,
+                    626,
+                    143,
+                    76
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 360000
+    },
+    "3v3红色点赞": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    94,
+                    549,
+                    707,
+                    86
+                ],
+                "template": [
+                    "红色点赞.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3结算点击确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    1064,
+                    638,
+                    178,
+                    78
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3结算确定": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "3v3蓝色点赞"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3红色点赞"
+            }
+        ],
+        "on_error": [
+            "3v3结算点击确定"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    1064,
+                    638,
+                    178,
+                    78
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 2000
+    },
+    "3v3继续0": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "继续"
+                ],
+                "roi": [
+                    506,
+                    657,
+                    244,
+                    59
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3继续1": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "继续"
+                ],
+                "roi": [
+                    995,
+                    515,
+                    252,
+                    143
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3蓝色点赞": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    94,
+                    549,
+                    707,
+                    86
+                ],
+                "template": [
+                    "蓝色点赞.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3识别并点击决斗场": {
+        "action": {
+            "param": {
+                "target_offset": [
+                    90,
+                    -18,
+                    -38,
+                    -8
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "3v3检验在决斗场中"
+        ],
+        "post_wait_freezes": 300,
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    716,
+                    358,
+                    454,
+                    360
+                ],
+                "template": [
+                    "决斗场.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3返回决斗场": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "3v3决斗场返回主页",
+            {
+                "jump_back": true,
+                "name": "3v3退出确定_副本"
+            }
+        ],
+        "post_delay": 1500,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3进入准备页面": {
+        "next": [
+            "3v3困难图"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    1036,
+                    626,
+                    143,
+                    76
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3退出确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    727,
+                    503,
+                    165,
+                    49
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3退出确定_副本": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    727,
+                    503,
+                    165,
+                    49
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3难度上滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    650,
+                    200,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        650,
+                        520,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "关闭3v3难度所有勾选1"
+            }
+        ],
+        "on_error": [
+            "3v3难度下滑"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "难度"
+                ],
+                "roi": [
+                    538,
+                    36,
+                    204,
+                    56
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 1000
+    },
+    "3v3难度下滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    650,
+                    520,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        650,
+                        200,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "关闭3v3难度所有勾选2"
+            }
+        ],
+        "on_error": [
+            "选择3v3难度"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "难度"
+                ],
+                "roi": [
+                    538,
+                    36,
+                    204,
+                    56
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 1000
+    },
+    "3v3难度确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "3v3点击单人匹配"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3点击准备"
+            },
+            "3v3确定进入了作战页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    554,
+                    608,
+                    196,
+                    101
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3鸦之巢": {
+        "next": [
+            "3v3点击完成2"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "鸦之巢"
+                ],
+                "roi": [
+                    800,
+                    140,
+                    219,
+                    60
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡1_0": {
+        "action": {
+            "param": {
+                "target": [
+                    251,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡2_0"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡1_1": {
+        "action": {
+            "param": {
+                "target": [
+                    251,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡2_1"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡1_2": {
+        "action": {
+            "param": {
+                "target": [
+                    251,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡2_2"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡2_0": {
+        "action": {
+            "param": {
+                "target": [
+                    492,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡3_0"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡2_1": {
+        "action": {
+            "param": {
+                "target": [
+                    492,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡3_1"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡2_2": {
+        "action": {
+            "param": {
+                "target": [
+                    492,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡3_2"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡3_0": {
+        "action": {
+            "param": {
+                "target": [
+                    711,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡4_0"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡3_1": {
+        "action": {
+            "param": {
+                "target": [
+                    711,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡4_1"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡3_2": {
+        "action": {
+            "param": {
+                "target": [
+                    711,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "p1购卡4_2"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "p1购卡4_0": {
+        "action": {
+            "param": {
+                "target": [
+                    934,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "发现3v3_boss_0"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 40000
+    },
+    "p1购卡4_1": {
+        "action": {
+            "param": {
+                "target": [
+                    934,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "发现3v3_boss_1"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 40000
+    },
+    "p1购卡4_2": {
+        "action": {
+            "param": {
+                "target": [
+                    934,
+                    360,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "发现3v3_boss_2"
+        ],
+        "post_delay": 0,
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "卡片商店"
+                ],
+                "roi": [
+                    535,
+                    27,
+                    213,
+                    79
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 40000
+    },
+    "关闭3v3难度所有勾选1": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    795,
+                    87,
+                    96,
+                    483
+                ],
+                "template": [
+                    "3v3难度勾选.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "关闭3v3难度所有勾选2": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    795,
+                    87,
+                    96,
+                    483
+                ],
+                "template": [
+                    "3v3难度勾选.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "匹配页面": {
+        "next": [
+            "3v3控制难度"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "好友"
+                ],
+                "roi": [
+                    821,
+                    9,
+                    135,
+                    52
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "发现3v3_boss_0": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_fight"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "打完boss还活着进入kn_ying_p2"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "count": 300,
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    225,
+                    361,
+                    20,
+                    20
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        },
+        "timeout": 40000
+    },
+    "发现3v3_boss_1": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_fight"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "打完boss还活着进入kn_an_p2"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "count": 300,
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    225,
+                    361,
+                    20,
+                    20
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        },
+        "timeout": 40000
+    },
+    "发现3v3_boss_2": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_fight"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "打完boss还活着进入kn_ya_p2"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "count": 300,
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    225,
+                    361,
+                    20,
+                    20
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        },
+        "timeout": 40000
+    },
+    "回到了3v3主页面": {
+        "next": [
+            "点击每日任务"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "决斗场"
+                ],
+                "roi": [
+                    73,
+                    3,
+                    252,
+                    82
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "困难暗之狱_副本25": {
+        "rate_limit": 20,
+        "recognition": {
+            "param": {
+                "template": [
+                    "3v3困难暗之狱.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 180000
+    },
+    "打完boss还活着进入kn_an_p2": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_an_p2"
+            },
+            "type": "Custom"
+        },
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    961,
+                    128,
+                    122,
+                    124
+                ],
+                "template": [
+                    "33金鱼币.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "打完boss还活着进入kn_ya_p2": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_ya_p2"
+            },
+            "type": "Custom"
+        },
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    961,
+                    128,
+                    122,
+                    124
+                ],
+                "template": [
+                    "33金鱼币.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "打完boss还活着进入kn_ying_p2": {
+        "action": {
+            "param": {
+                "custom_action": "my_3v3_kn_ying_p2"
+            },
+            "type": "Custom"
+        },
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    961,
+                    128,
+                    122,
+                    124
+                ],
+                "template": [
+                    "33金鱼币.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "没有匹配模式说明时间不符合": {
+        "next": [
+            "3v3返回决斗场"
+        ]
+    },
+    "点击每日任务": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "3v3任务领取"
+            },
+            "3v3每日任务满了"
+        ],
+        "on_error": [
+            "3v3每日任务没满"
+        ],
+        "post_delay": 400,
+        "recognition": {
+            "param": {
+                "roi": [
+                    674,
+                    10,
+                    587,
+                    90
+                ],
+                "template": [
+                    "3v3每日任务.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 2000
+    },
+    "识别到下滑按钮0": {
+        "next": [
+            "3v3_kn_ying_p1"
         ],
         "post_delay": 0,
         "pre_delay": 0,
@@ -45,5 +1600,130 @@
             },
             "type": "ColorMatch"
         }
+    },
+    "识别到下滑按钮1": {
+        "next": [
+            "3v3_kn_an_p1"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    229,
+                    613,
+                    1,
+                    1
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "识别到下滑按钮_2": {
+        "next": [
+            "3v3_kn_ya_p1"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "roi": [
+                    229,
+                    613,
+                    1,
+                    1
+                ],
+                "upper": [
+                    255,
+                    255,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "识别并点击3v3": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "进入了3v3页面"
+        ],
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "template": [
+                    "3v3.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "识别并点击匹配模式": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "匹配页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "匹配模式|返回队伍"
+                ],
+                "roi": [
+                    576,
+                    382,
+                    698,
+                    190
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "进入了3v3页面": {
+        "next": [
+            "点击每日任务"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "决斗场"
+                ],
+                "roi": [
+                    73,
+                    3,
+                    252,
+                    82
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "选择3v3难度": {
+        "next": [
+            "3v3勾选困难难度"
+        ]
     }
 }

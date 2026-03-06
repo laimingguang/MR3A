@@ -3,8 +3,8 @@ from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
 
-@AgentServer.custom_action("my_3v3_kn_ya")
-class my_3v3_kn_ya(CustomAction):
+@AgentServer.custom_action("my_3v3_kn_ya_p1")
+class my_3v3_kn_ya_p1(CustomAction):
     def run(
         self,
         context: Context,
