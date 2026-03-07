@@ -204,6 +204,12 @@
             "type": "OCR"
         }
     },
+    "3v3控制难度入口": {
+        "max_hit": 1,
+        "next": [
+            "3v3控制难度"
+        ]
+    },
     "3v3暗之狱": {
         "next": [
             "3v3点击完成1"
@@ -309,7 +315,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 2000
     },
     "3v3点击准备": {
         "action": {
@@ -357,9 +364,8 @@
             "type": "Click"
         },
         "next": [
-            "识别到下滑按钮0"
+            "3v3进入战斗了0"
         ],
-        "rate_limit": 20,
         "recognition": {
             "param": {
                 "expected": [
@@ -382,9 +388,8 @@
             "type": "Click"
         },
         "next": [
-            "识别到下滑按钮1"
+            "3v3进入战斗了1"
         ],
-        "rate_limit": 20,
         "recognition": {
             "param": {
                 "expected": [
@@ -407,9 +412,8 @@
             "type": "Click"
         },
         "next": [
-            "识别到下滑按钮_2"
+            "3v3进入战斗了2"
         ],
-        "rate_limit": 20,
         "recognition": {
             "param": {
                 "expected": [
@@ -460,7 +464,7 @@
             },
             "type": "OCR"
         },
-        "timeout": 360000
+        "timeout": 420000
     },
     "3v3红色点赞": {
         "action": {
@@ -630,11 +634,11 @@
             "type": "Click"
         },
         "next": [
-            "3v3决斗场返回主页",
             {
                 "jump_back": true,
                 "name": "3v3退出确定_副本"
-            }
+            },
+            "3v3决斗场返回主页"
         ],
         "post_delay": 1500,
         "recognition": {
@@ -670,6 +674,69 @@
             },
             "type": "OCR"
         }
+    },
+    "3v3进入战斗了0": {
+        "next": [
+            "识别到下滑按钮0"
+        ],
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
+                ],
+                "template": [
+                    "进入战斗中.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 180000
+    },
+    "3v3进入战斗了1": {
+        "next": [
+            "识别到下滑按钮1"
+        ],
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
+                ],
+                "template": [
+                    "进入战斗中.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 180000
+    },
+    "3v3进入战斗了2": {
+        "next": [
+            "识别到下滑按钮2"
+        ],
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
+                ],
+                "template": [
+                    "进入战斗中.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 180000
     },
     "3v3退出确定": {
         "action": {
@@ -806,17 +873,6 @@
             "param": {},
             "type": "Click"
         },
-        "next": [
-            {
-                "jump_back": true,
-                "name": "3v3点击单人匹配"
-            },
-            {
-                "jump_back": true,
-                "name": "3v3点击准备"
-            },
-            "3v3确定进入了作战页面"
-        ],
         "recognition": {
             "param": {
                 "expected": [
@@ -830,8 +886,7 @@
                 ]
             },
             "type": "OCR"
-        },
-        "timeout": 240000
+        }
     },
     "3v3鸦之巢": {
         "next": [
@@ -1281,7 +1336,19 @@
     },
     "匹配页面": {
         "next": [
-            "3v3控制难度"
+            {
+                "jump_back": true,
+                "name": "3v3控制难度入口"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3点击单人匹配"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3点击准备"
+            },
+            "3v3确定进入了作战页面"
         ],
         "recognition": {
             "param": {
@@ -1296,7 +1363,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 300000
     },
     "发现3v3_boss_0": {
         "action": {
@@ -1433,18 +1501,6 @@
             },
             "type": "OCR"
         }
-    },
-    "困难暗之狱_副本25": {
-        "rate_limit": 20,
-        "recognition": {
-            "param": {
-                "template": [
-                    "3v3困难暗之狱.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 180000
     },
     "打完boss还活着进入kn_an_p2": {
         "action": {
@@ -1630,7 +1686,7 @@
             "type": "ColorMatch"
         }
     },
-    "识别到下滑按钮_2": {
+    "识别到下滑按钮2": {
         "next": [
             "3v3_kn_ya_p1"
         ],
