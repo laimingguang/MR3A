@@ -29,7 +29,7 @@ class my_3v3_kn_ying_p1(CustomAction):
             # ===================
             # click(200, 620, t) 为下翻
             # click(1100, 620, t) 为跳跃
-            click(1, 1, 3092)
+            click(1, 1, 3069)
             click(1100, 620, 320)
             click(1100, 620, 1110)
             click(1100, 620, 302)
