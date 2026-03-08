@@ -536,6 +536,27 @@
         },
         "timeout": 2000
     },
+    "3v3结算确定_关闭残留": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    1064,
+                    638,
+                    178,
+                    78
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 2000
+    },
     "3v3继续0": {
         "action": {
             "param": {},
@@ -556,7 +577,47 @@
             "type": "OCR"
         }
     },
+    "3v3继续0_关闭残留": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "继续"
+                ],
+                "roi": [
+                    506,
+                    657,
+                    244,
+                    59
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "3v3继续1": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "继续"
+                ],
+                "roi": [
+                    995,
+                    515,
+                    252,
+                    143
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "3v3继续1_关闭残留": {
         "action": {
             "param": {},
             "type": "Click"
@@ -1722,8 +1783,21 @@
             "type": "Click"
         },
         "next": [
-            "进入了3v3页面"
+            "进入了3v3页面",
+            {
+                "jump_back": true,
+                "name": "3v3继续1_关闭残留"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3继续0_关闭残留"
+            },
+            {
+                "jump_back": true,
+                "name": "3v3结算确定_关闭残留"
+            }
         ],
+        "post_wait_freezes": 500,
         "recognition": {
             "param": {
                 "green_mask": true,
