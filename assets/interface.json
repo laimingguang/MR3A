@@ -93,10 +93,7 @@
         },
         {
             "name": "3v3",
-            "entry": "3v3entry",
-            "option": [
-                "满了也刷（最好不要）"
-            ]
+            "entry": "3v3entry"
         },
         {
             "name": "领取战令",
@@ -159,7 +156,7 @@
             "default_case": "官服",
             "cases": [
                 {
-                    "name": "vivo服",
+                    "name": "vivo",
                     "pipeline_override": {
                         "启动应用": {
                             "action": {
@@ -177,6 +174,18 @@
                             "action": {
                                 "param": {
                                     "package": "com.pandadastudio.ninjamustdie3"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "华为",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.huawei"
                                 }
                             }
                         }
