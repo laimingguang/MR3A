@@ -16,7 +16,7 @@
     ],
     "resource": [
         {
-            "name": "官服",
+            "name": "通用",
             "path": [
                 "./resource"
             ]
