@@ -105,7 +105,7 @@ class AspectRatioChecker(TaskerEventSink):
             logger.error(
                 f"🚨 分辨率比例不匹配！任务已停止。"
                 f"当前: {width}x{height} (比例: {actual_ratio:.4f})，"
-                f"MR3A 仅支持 16:9 比例，请调整为: 2560x1440, 1920x1080, 1600x900, 1920x1080(推荐)"
+                f"MR3A 仅支持 16:9 比例，请调整为: 2560x1440, 1920x1080, 1600x900, 1280x720 (推荐)"
             )
 
             # 停止任务
