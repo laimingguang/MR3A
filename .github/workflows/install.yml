@@ -107,7 +107,7 @@ jobs:
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
-          repository: SweetSmellFox/MFAAvalonia
+          repository: MaaXYZ/MFAAvalonia
           fileName: "MFAAvalonia-*-win-${{ steps.platform.outputs.tag }}*"
           latest: true
           out-file-path: "MFA"
@@ -124,7 +124,29 @@ jobs:
         shell: bash
         run: |
           rm -rf MFA/runtimes
-      
+          
+      - name: Convert PNG to ICO
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          # 安装 ImageMagick
+          choco install imagemagick -y
+
+          # 转换 PNG 到 ICO
+          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 MR3A.ico
+
+      - name: Modify MFAAvalonia exe icon
+        if: matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          # 下载 rcedit
+          curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
+
+          # 修改 exe 图标
+          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "MR3A.ico"
+
+          echo "MFAAvalonia icon modified successfully"
+
       - name: Setup Embed Python on Windows
         shell: bash
         run: |
@@ -150,7 +172,20 @@ jobs:
           # 安装 Python 依赖
           ./install/python/python.exe -m pip install -r tools/requirements.txt
           ./install/python/python.exe tools/install.py ${{ needs.meta.outputs.tag }} win ${{ matrix.arch }}
+      - name: Copy custom icons
+        shell: bash
+        run: |
+          # 删除 MFAA 自带的 Assets 文件夹
+          if [ -d "install/Assets" ]; then
+            rm -rf install/Assets
+            echo "Removed original Assets folder"
+          fi
 
+          # MFAA 版本的图标放根目录
+          if [ -f "MR3A.ico" ]; then
+            cp MR3A.ico install/logo.ico
+            echo "Copied custom icon to install/logo.ico"
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: MR3A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
@@ -192,7 +227,7 @@ jobs:
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
-          repository: SweetSmellFox/MFAAvalonia
+          repository: MaaXYZ/MFAAvalonia
           fileName: "MFAAvalonia-*-linux-${{ steps.platform.outputs.tag }}*"
           latest: true
           out-file-path: "MFA"
@@ -221,6 +256,14 @@ jobs:
           else
             echo "Warning: Embedded Python executable not found at $EMBED_PYTHON_PATH. Skipping chmod."
           fi
+      - name: Convert PNG to ICO
+        shell: bash
+        run: |
+          # 安装 ImageMagick（如果未安装）
+          sudo apt-get update && sudo apt-get install -y imagemagick
+
+          # 转换 PNG 到 ICO
+          convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 MR3A.ico
 
       - name: Download Python dependencies
         shell: bash
@@ -242,7 +285,20 @@ jobs:
           # 安装 Python 依赖
           ./install/python/bin/python3 -m pip install -r tools/requirements.txt
           ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} linux ${{ matrix.arch }}
+      - name: Copy custom icons
+        shell: bash
+        run: |
+          # 删除 MFAA 自带的 Assets 文件夹
+          if [ -d "install/Assets" ]; then
+            rm -rf install/Assets
+            echo "Removed original Assets folder"
+          fi
 
+          # MFAA 版本的图标放根目录
+          if [ -f "MR3A.ico" ]; then
+            cp MR3A.ico install/logo.ico
+            echo "Copied custom icon to install/logo.ico"
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: MR3A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
@@ -288,7 +344,7 @@ jobs:
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
-          repository: SweetSmellFox/MFAAvalonia
+          repository: MaaXYZ/MFAAvalonia
           fileName: "MFAAvalonia-*-osx-${{ steps.platform.outputs.tag }}*"
           latest: true
           out-file-path: "MFA"
@@ -305,7 +361,15 @@ jobs:
         shell: bash
         run: |
           rm -rf MFA/runtimes
-      
+      - name: Convert PNG to ICO
+        shell: bash
+        run: |
+          # 安装 ImageMagick（如果未安装）
+          brew install imagemagick
+
+          # 转换 PNG 到 ICO
+          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 MR3A.ico
+
       - name: Setup Embed Python on macOS
         shell: bash
         run: |
@@ -338,6 +402,20 @@ jobs:
           # 安装 Python 依赖
           ./install/python/bin/python3 -m pip install -r tools/requirements.txt
           ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} macos ${{ matrix.arch }}
+      - name: Copy custom icons
+        shell: bash
+        run: |
+          # 删除 MFAA 自带的 Assets 文件夹
+          if [ -d "install/Assets" ]; then
+            rm -rf install/Assets
+            echo "Removed original Assets folder"
+          fi
+
+          # MFAA 版本的图标放根目录
+          if [ -f "MR3A.ico" ]; then
+            cp MR3A.ico install/logo.ico
+            echo "Copied custom icon to install/logo.ico"
+          fi
 
       - uses: actions/upload-artifact@v4
         with:
