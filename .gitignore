@@ -449,7 +449,6 @@ install
 
 # Tools
 tools/ImageCropper/**/*.png
-/copy_to_mfa.bat
 config
 debug
 
