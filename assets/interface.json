@@ -33,7 +33,8 @@
             "name": "启动游戏",
             "entry": "启动流程",
             "option": [
-                "区服配置"
+                "请选择服务器",
+                "请选择区服"
             ]
         },
         {
@@ -150,22 +151,10 @@
         }
     ],
     "option": {
-        "区服配置": {
+        "请选择服务器": {
             "type": "select",
             "default_case": "官服",
             "cases": [
-                {
-                    "name": "vivo",
-                    "pipeline_override": {
-                        "启动应用": {
-                            "action": {
-                                "param": {
-                                    "package": "com.pandadastudio.ninjamustdie3.vivo"
-                                }
-                            }
-                        }
-                    }
-                },
                 {
                     "name": "官服",
                     "pipeline_override": {
@@ -173,6 +162,18 @@
                             "action": {
                                 "param": {
                                     "package": "com.pandadastudio.ninjamustdie3"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "vivo",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.vivo"
                                 }
                             }
                         }
@@ -187,6 +188,52 @@
                                     "package": "com.pandadastudio.ninjamustdie3.huawei"
                                 }
                             }
+                        }
+                    }
+                }
+            ]
+        },
+        "请选择区服": {
+            "type": "select",
+            "default_case": "上次登录",
+            "cases": [
+                {
+                    "name": "上次登录",
+                    "pipeline_override": {
+                        "跳过切换区": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "一区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "一服"
+                        }
+                    }
+                },
+                {
+                    "name": "二区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "二服"
+                        }
+                    }
+                },
+                {
+                    "name": "三区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "三服"
+                        }
+                    }
+                },
+                {
+                    "name": "四区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "四服"
                         }
                     }
                 }
