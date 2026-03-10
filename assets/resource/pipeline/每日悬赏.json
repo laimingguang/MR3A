@@ -999,6 +999,7 @@
             "param": {},
             "type": "Click"
         },
+        "post_delay": 2000,
         "recognition": {
             "param": {
                 "roi": [
@@ -1317,6 +1318,9 @@
         "next": [
             "点击地区-other"
         ],
+        "on_error": [
+            "点击聊天-other卡了"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -1330,7 +1334,13 @@
                 ]
             },
             "type": "TemplateMatch"
-        }
+        },
+        "timeout": 5000
+    },
+    "点击聊天-other卡了": {
+        "next": [
+            "点击聊天-other"
+        ]
     },
     "点击聊天-self悬赏": {
         "action": {
