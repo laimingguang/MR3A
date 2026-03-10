@@ -9,7 +9,7 @@
     "version": "1.3.0",
     "controller": [
         {
-            "name": "ADB",
+            "name": "模拟器",
             "type": "Adb"
         }
     ],
@@ -36,7 +36,7 @@
                 "请选择服务器",
                 "请选择区服"
             ],
-            "description": "忍三主页面或者mumu模拟器打开时使用"
+            "description": "忍三主页面或者模拟器打开时使用"
         },
         {
             "name": "神龙契约",
