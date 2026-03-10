@@ -190,6 +190,42 @@
                             }
                         }
                     }
+                },
+                {
+                    "name": "小米",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.mi"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "9游",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.aligames"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "b服",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.bilibili"
+                                }
+                            }
+                        }
+                    }
                 }
             ]
         },
