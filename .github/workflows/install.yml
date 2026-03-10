@@ -195,7 +195,7 @@ jobs:
           fi
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
+          name: MR3A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
           path: "install"
 
   linux:
@@ -308,7 +308,7 @@ jobs:
           fi
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
+          name: MR3A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
           path: "install"
 
   macos:
@@ -426,7 +426,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MR3A-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
+          name: MR3A-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
           path: "install"
 
   changelog:
