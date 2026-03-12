@@ -54,6 +54,13 @@
             "entry": "忍者小屋修炼entry"
         },
         {
+            "name": "通灵巡逻",
+            "entry": "通灵巡逻entry",
+            "option": [
+                "有忍阶任务才巡逻"
+            ]
+        },
+        {
             "name": "忍村试炼",
             "entry": "忍村试炼entry",
             "option": [
@@ -95,7 +102,7 @@
         {
             "name": "3v3（仅支持困难图）",
             "entry": "3v3entry",
-            "description": "当前3v3只支持困难图，依赖固定延时点击，不要在3v3跑图中关闭该任务"
+            "description": "当前3v3只支持困难图，依赖固定延时点击，不要在3v3跑图中关闭该任务，不要在3v3跑图中关闭该任务"
         },
         {
             "name": "领取战令",
@@ -139,7 +146,7 @@
         {
             "name": "S/SS/首领",
             "entry": "每日悬赏entry",
-            "description": "这个任务除了ABCD都会进，设计上是一直刷的，有概率停止，后面我再修",
+            "description": "这个任务除了ABCD都会进，设计上是一直挂着的，有概率停止，后面我再修",
             "pipeline_override": {
                 "忽略悬赏是否满都清自己的低级悬赏": {
                     "enabled": false
@@ -333,6 +340,29 @@
                     "expected": "{好友昵称}"
                 }
             }
+        },
+        "有忍阶任务才巡逻": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "关闭后没任务也会尝试巡逻",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "忍阶任务有才巡逻": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "忍阶任务有才巡逻": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
         },
         "是否留至少5个包子": {
             "type": "switch",
