@@ -2,17 +2,22 @@
     "不关闭组队": {},
     "主页面": {
         "next": [
+            "二次验证主页面",
             {
                 "jump_back": true,
                 "name": "每日签到"
+            },
+            {
+                "jump_back": true,
+                "name": "活动签到"
             }
         ],
         "on_error": [
             "关闭弹窗"
         ],
         "post_wait_freezes": {
-            "threshold": 0.9,
-            "time": 1000
+            "threshold": 0.85,
+            "time": 1500
         },
         "recognition": {
             "param": {
@@ -54,6 +59,28 @@
                     "主页面.png"
                 ],
                 "threshold": 0.85
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "二次验证主页面": {
+        "next": [
+            "主页面really"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    38,
+                    576,
+                    669,
+                    127
+                ],
+                "template": [
+                    "商店.png"
+                ],
+                "threshold": [
+                    0.75
+                ]
             },
             "type": "TemplateMatch"
         }
@@ -305,6 +332,10 @@
             "param": {},
             "type": "Click"
         },
+        "post_wait_freezes": {
+            "threshold": 0.95,
+            "time": 1500
+        },
         "recognition": {
             "param": {
                 "expected": [
@@ -335,6 +366,46 @@
         "next": [
             "每日签到确定"
         ]
+    },
+    "没有勾勾则点左上角_活动": {
+        "action": {
+            "param": {
+                "target": [
+                    227,
+                    389,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "签到确定_活动"
+        ]
+    },
+    "活动签到": {
+        "max_hit": 1,
+        "next": [
+            "识别勾勾_活动"
+        ],
+        "on_error": [
+            "没有勾勾则点左上角_活动"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "限定结神符"
+                ],
+                "roi": [
+                    164,
+                    393,
+                    392,
+                    281
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 1200
     },
     "点击区切换按钮": {
         "action": {
@@ -378,6 +449,30 @@
                 ]
             },
             "type": "TemplateMatch"
+        }
+    },
+    "签到确定_活动": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "threshold": 0.95,
+            "time": 1500
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    521,
+                    585,
+                    262,
+                    124
+                ]
+            },
+            "type": "OCR"
         }
     },
     "设置页上滑": {
@@ -430,6 +525,23 @@
             "每日签到确定"
         ]
     },
+    "识别到index右侧无勾勾_活动": {
+        "action": {
+            "param": {
+                "target": "识别勾勾_活动",
+                "target_offset": [
+                    101,
+                    -88,
+                    38,
+                    39
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "签到确定_活动"
+        ]
+    },
     "识别到index右侧有勾勾": {
         "action": {
             "param": {
@@ -462,6 +574,38 @@
             "type": "TemplateMatch"
         }
     },
+    "识别到index右侧有勾勾_活动": {
+        "action": {
+            "param": {
+                "target": "识别勾勾_活动",
+                "target_offset": [
+                    -863,
+                    114,
+                    39,
+                    40
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "签到确定_活动"
+        ],
+        "recognition": {
+            "param": {
+                "roi": "识别勾勾_活动",
+                "roi_offset": [
+                    166,
+                    -46,
+                    86,
+                    92
+                ],
+                "template": [
+                    "活动勾勾.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "识别勾勾": {
         "next": [
             "识别到index右侧有勾勾"
@@ -482,6 +626,32 @@
                 ],
                 "template": [
                     "签到勾勾.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 500
+    },
+    "识别勾勾_活动": {
+        "next": [
+            "识别到index右侧有勾勾_活动"
+        ],
+        "on_error": [
+            "识别到index右侧无勾勾_活动"
+        ],
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "index": -1,
+                "order_by": "Vertical",
+                "roi": [
+                    134,
+                    224,
+                    821,
+                    468
+                ],
+                "template": [
+                    "活动勾勾.png"
                 ]
             },
             "type": "TemplateMatch"
