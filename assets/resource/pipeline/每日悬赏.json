@@ -125,6 +125,10 @@
     },
     "other悬赏": {
         "next": [
+            {
+                "jump_back": true,
+                "name": "点击悬赏令聊天消息2"
+            },
             "加入队伍-other",
             "进入了地区悬赏"
         ],
@@ -234,6 +238,35 @@
             "type": "TemplateMatch"
         }
     },
+    "关闭地区聊天页面": {
+        "action": {
+            "param": {
+                "target": [
+                    1277,
+                    301,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "rate_limit": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "筛选"
+                ],
+                "roi": [
+                    786,
+                    202,
+                    119,
+                    41
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": -1
+    },
     "关闭活动玩法-other": {
         "action": {
             "param": {},
@@ -300,12 +333,11 @@
     },
     "加入队伍-other": {
         "next": [
-            "点击",
+            "点击悬赏令聊天消息",
             "有文字",
             "跳过低级悬赏",
             "可以进入"
         ],
-        "post_delay": 0,
         "rate_limit": 50,
         "recognition": {
             "param": {
@@ -322,7 +354,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": -1
     },
     "可以进入": {
         "action": {
@@ -336,8 +369,12 @@
             "加入队伍-other",
             "点击聊天-other"
         ],
+        "on_error": [
+            "other悬赏"
+        ],
         "post_delay": 0,
-        "rate_limit": 50
+        "rate_limit": 50,
+        "timeout": 5000
     },
     "右侧还有悬赏": {
         "action": {
@@ -369,7 +406,11 @@
     },
     "地区悬赏": {
         "next": [
-            "点击聊天-other"
+            "点击聊天-other",
+            {
+                "jump_back": true,
+                "name": "关闭地区聊天页面"
+            }
         ]
     },
     "地区页面0": {
@@ -637,6 +678,9 @@
             "加入队伍-other",
             "进入了地区悬赏"
         ],
+        "on_error": [
+            "other悬赏"
+        ],
         "post_delay": 0,
         "rate_limit": 50,
         "recognition": {
@@ -653,7 +697,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 5000
     },
     "检查悬赏任务是否满了": {
         "next": [
@@ -840,7 +885,7 @@
             "点击准备"
         ],
         "post_delay": 0,
-        "rate_limit": 200,
+        "rate_limit": 100,
         "recognition": {
             "param": {
                 "expected": [
@@ -979,6 +1024,7 @@
                 "name": "满了返回-magic"
             }
         ],
+        "rate_limit": 200,
         "recognition": {
             "param": {
                 "roi": [
@@ -1013,32 +1059,6 @@
                 ]
             },
             "type": "TemplateMatch"
-        }
-    },
-    "点击": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "加入队伍-other",
-            "进入了地区悬赏"
-        ],
-        "post_delay": 0,
-        "rate_limit": 50,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "悬赏令"
-                ],
-                "roi": [
-                    97,
-                    601,
-                    250,
-                    54
-                ]
-            },
-            "type": "OCR"
         }
     },
     "点击准备": {
@@ -1252,6 +1272,57 @@
                 ]
             },
             "type": "TemplateMatch"
+        }
+    },
+    "点击悬赏令聊天消息": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "加入队伍-other",
+            "进入了地区悬赏"
+        ],
+        "on_error": [
+            "other悬赏"
+        ],
+        "pre_delay": 0,
+        "rate_limit": 50,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "悬赏令"
+                ],
+                "roi": [
+                    97,
+                    601,
+                    250,
+                    54
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 5000
+    },
+    "点击悬赏令聊天消息2": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "悬赏令"
+                ],
+                "roi": [
+                    97,
+                    601,
+                    250,
+                    54
+                ]
+            },
+            "type": "OCR"
         }
     },
     "点击空白处关闭-other": {
@@ -1581,6 +1652,9 @@
             "加入队伍-other",
             "进入了地区悬赏"
         ],
+        "on_error": [
+            "other悬赏"
+        ],
         "post_delay": 0,
         "rate_limit": 50,
         "recognition": {
@@ -1597,7 +1671,8 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 5000
     },
     "跳过检查日常悬赏是否满了": {
         "enabled": false,
@@ -1612,7 +1687,7 @@
             "点击聊天-other"
         ],
         "post_delay": 0,
-        "rate_limit": 200,
+        "rate_limit": 100,
         "recognition": {
             "param": {
                 "roi": [
@@ -1670,7 +1745,11 @@
         "next": [
             "满了返回"
         ],
+        "on_error": [
+            "点击聊天-other"
+        ],
         "post_delay": 0,
+        "rate_limit": 200,
         "recognition": {
             "param": {
                 "expected": [
