@@ -293,6 +293,12 @@
         ],
         "recognition": {
             "param": {
+                "roi": [
+                    21,
+                    133,
+                    379,
+                    468
+                ],
                 "template": [
                     "主页面.png"
                 ]
