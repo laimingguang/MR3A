@@ -55,9 +55,12 @@
             },
             {
                 "jump_back": true,
-                "name": "忍阶任务退出"
+                "name": "点击下一忍阶2_忍阶任务"
             },
             "回到主页面任务结束"
+        ],
+        "on_error": [
+            "忍阶任务退出"
         ],
         "post_wait_freezes": 1000,
         "recognition": {
@@ -73,9 +76,21 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 1500
     },
     "忍阶宝箱继续": {
+        "action": {
+            "param": {
+                "target": [
+                    1263,
+                    304,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
         "recognition": {
             "param": {
                 "expected": [
@@ -118,6 +133,28 @@
             },
             "type": "Click"
         }
+    },
+    "点击下一忍阶2_忍阶任务": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下一忍阶"
+                ],
+                "roi": [
+                    1005,
+                    623,
+                    251,
+                    90
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 400
     },
     "点击下一忍阶_忍阶任务": {
         "next": [
