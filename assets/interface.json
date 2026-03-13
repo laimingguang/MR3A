@@ -31,12 +31,12 @@
     "task": [
         {
             "name": "启动游戏",
-            "entry": "启动流程",
+            "entry": "启动游戏entry",
             "option": [
                 "请选择服务器",
                 "请选择区服"
             ],
-            "description": "忍三主页面或者模拟器打开时使用"
+            "description": "模拟器打开后或者忍三主页面使用，可以处理一些弹窗以及签到了"
         },
         {
             "name": "神龙契约",
@@ -59,6 +59,15 @@
             "option": [
                 "有忍阶任务才巡逻"
             ]
+        },
+        {
+            "name": "竞技场",
+            "entry": "竞技场entry",
+            "option": [
+                "有忍阶任务则跑酷一次",
+                "老板娘问答"
+            ],
+            "description": "竞技场跑酷是直接挂机的，老板娘问答是随机选的"
         },
         {
             "name": "忍村试炼",
@@ -363,6 +372,51 @@
                     "name": "No",
                     "pipeline_override": {
                         "忍阶任务有才巡逻": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "有忍阶任务则跑酷一次": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "关闭后则不会跑竞技场",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "竞技场跑酷一次": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "竞技场跑酷一次": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "老板娘问答": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "老板娘问答": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "老板娘问答": {
                             "enabled": false
                         }
                     }
