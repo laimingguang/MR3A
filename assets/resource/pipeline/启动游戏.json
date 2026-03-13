@@ -2,36 +2,26 @@
     "不关闭组队": {},
     "主页面": {
         "next": [
-            "二次验证主页面",
-            {
-                "jump_back": true,
-                "name": "每日签到"
-            },
-            {
-                "jump_back": true,
-                "name": "活动签到"
-            }
-        ],
-        "on_error": [
-            "关闭弹窗"
+            "验证主页面"
         ],
         "post_wait_freezes": {
             "threshold": 0.85,
-            "time": 1500
+            "time": 400
         },
         "recognition": {
             "param": {
-                "green_mask": true,
                 "roi": [
-                    0,
-                    0,
-                    500,
-                    712
+                    38,
+                    576,
+                    669,
+                    127
                 ],
                 "template": [
-                    "主页面.png"
+                    "商店.png"
                 ],
-                "threshold": 0.85
+                "threshold": [
+                    0.75
+                ]
             },
             "type": "TemplateMatch"
         },
@@ -63,61 +53,22 @@
             "type": "TemplateMatch"
         }
     },
-    "二次验证主页面": {
-        "next": [
-            "主页面really"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    38,
-                    576,
-                    669,
-                    127
-                ],
-                "template": [
-                    "商店.png"
-                ],
-                "threshold": [
-                    0.75
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
     "关闭弹窗": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "处理登录活动弹窗1"
-            },
-            {
-                "jump_back": true,
-                "name": "处理登录活动弹窗2"
-            },
-            {
-                "jump_back": true,
-                "name": "处理登录活动弹窗3"
-            }
-        ],
-        "on_error": [
-            "关闭弹窗结束，默认回到主页面了"
+            "处理登录活动弹窗1",
+            "处理登录活动弹窗2",
+            "处理登录活动弹窗3"
         ],
         "timeout": 2000
-    },
-    "关闭弹窗结束，默认回到主页面了": {
-        "next": [
-            "主页面really"
-        ],
-        "on_error": [
-            "关闭弹窗"
-        ]
     },
     "关闭设置": {
         "action": {
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "启动结束"
+        ],
         "recognition": {
             "param": {
                 "green_mask": true,
@@ -181,25 +132,35 @@
     },
     "启动流程": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "识别登录"
-            },
-            {
-                "jump_back": true,
-                "name": "启动应用"
-            },
-            {
-                "jump_back": true,
-                "name": "需要更新"
-            },
-            {
-                "jump_back": true,
-                "name": "同意隐私保护提示"
-            },
-            "主页面"
+            "主页面",
+            "识别登录",
+            "启动应用",
+            "每日签到",
+            "活动签到",
+            "需要更新",
+            "同意隐私保护提示",
+            "关闭弹窗"
         ],
         "timeout": 90000
+    },
+    "启动游戏entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "启动流程"
+            }
+        ]
+    },
+    "启动结束": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "启动流程"
+                }
+            },
+            "type": "Custom"
+        }
     },
     "处理登录活动弹窗1": {
         "action": {
@@ -397,10 +358,10 @@
                     "限定结神符"
                 ],
                 "roi": [
-                    164,
-                    393,
-                    392,
-                    281
+                    61,
+                    357,
+                    455,
+                    220
                 ]
             },
             "type": "OCR"
@@ -506,7 +467,8 @@
                 366
             ],
             "time": 200
-        }
+        },
+        "timeout": 2000
     },
     "识别到index右侧无勾勾": {
         "action": {
@@ -530,10 +492,10 @@
             "param": {
                 "target": "识别勾勾_活动",
                 "target_offset": [
-                    101,
-                    -88,
-                    38,
-                    39
+                    110,
+                    -74,
+                    32,
+                    35
                 ]
             },
             "type": "Click"
@@ -757,5 +719,32 @@
             },
             "type": "OCR"
         }
+    },
+    "验证主页面": {
+        "next": [
+            "主页面really"
+        ],
+        "post_wait_freezes": {
+            "threshold": 0.85,
+            "time": 400
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    38,
+                    576,
+                    669,
+                    127
+                ],
+                "template": [
+                    "商店.png"
+                ],
+                "threshold": [
+                    0.75
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 1200
     }
 }
