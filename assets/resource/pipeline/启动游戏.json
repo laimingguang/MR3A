@@ -57,9 +57,10 @@
         "next": [
             "处理登录活动弹窗1",
             "处理登录活动弹窗2",
-            "处理登录活动弹窗3"
+            "处理登录活动弹窗3",
+            "处理登录活动弹窗4"
         ],
-        "timeout": 2000
+        "timeout": 1500
     },
     "关闭设置": {
         "action": {
@@ -218,6 +219,27 @@
                 ],
                 "template": [
                     "叉叉2.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "处理登录活动弹窗4": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    833,
+                    5,
+                    440,
+                    441
+                ],
+                "template": [
+                    "叉叉3.png"
                 ]
             },
             "type": "TemplateMatch"
@@ -668,7 +690,8 @@
         "enabled": false,
         "next": [
             "点击登录"
-        ]
+        ],
+        "timeout": 2000
     },
     "选择几区": {
         "action": {
@@ -711,10 +734,10 @@
                     "确定"
                 ],
                 "roi": [
-                    389,
-                    278,
-                    718,
-                    316
+                    360,
+                    276,
+                    731,
+                    382
                 ]
             },
             "type": "OCR"
