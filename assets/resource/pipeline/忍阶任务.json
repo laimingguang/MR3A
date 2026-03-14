@@ -43,6 +43,15 @@
             "type": "TemplateMatch"
         }
     },
+    "忍阶任务退回主页面": {
+        "next": [
+            "回到主页面任务结束",
+            {
+                "jump_back": true,
+                "name": "忍阶任务退出"
+            }
+        ]
+    },
     "忍阶任务页面": {
         "next": [
             {
@@ -56,11 +65,10 @@
             {
                 "jump_back": true,
                 "name": "点击下一忍阶2_忍阶任务"
-            },
-            "回到主页面任务结束"
+            }
         ],
         "on_error": [
-            "忍阶任务退出"
+            "忍阶任务退回主页面"
         ],
         "post_wait_freezes": 1000,
         "recognition": {
