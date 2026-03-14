@@ -617,6 +617,10 @@
             },
             {
                 "jump_back": true,
+                "name": "点到了个人信息-self"
+            },
+            {
+                "jump_back": true,
                 "name": "进入了战斗-self"
             },
             "悬赏令主页-self",
@@ -1056,6 +1060,10 @@
                 "jump_back": true,
                 "name": "点击空白处关闭-other"
             },
+            {
+                "jump_back": true,
+                "name": "点到了个人信息-other"
+            },
             " 回到了主页面",
             {
                 "jump_back": true,
@@ -1435,6 +1443,60 @@
                     246,
                     1253,
                     241
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点到了个人信息-other": {
+        "action": {
+            "param": {
+                "target": [
+                    1269,
+                    366,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "个人信息"
+                ],
+                "roi": [
+                    57,
+                    33,
+                    255,
+                    127
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点到了个人信息-self": {
+        "action": {
+            "param": {
+                "target": [
+                    1269,
+                    366,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "个人信息"
+                ],
+                "roi": [
+                    57,
+                    33,
+                    255,
+                    127
                 ]
             },
             "type": "OCR"
