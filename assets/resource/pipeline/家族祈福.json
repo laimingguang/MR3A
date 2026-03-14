@@ -1,182 +1,186 @@
 {
-  "今日免费祈福": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "祈福确定"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "每日首次免费"
+    "今日免费祈福": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "祈福确定"
         ],
-        "roi": [
-          138,
-          568,
-          372,
-          143
+        "recognition": {
+            "param": {
+                "expected": [
+                    "每日首次免费"
+                ],
+                "roi": [
+                    138,
+                    568,
+                    372,
+                    143
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "家族祈福entry": {
+        "next": [
+            "进入家族",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ]
-      },
-      "type": "OCR"
+    },
+    "家族祈福转盘": {
+        "next": [
+            "转盘红点"
+        ],
+        "on_error": [
+            "没有红点"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    371,
+                    423,
+                    94,
+                    103
+                ],
+                "template": [
+                    "家族祈福转盘.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 1000
+    },
+    "家族返回": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    170,
+                    144
+                ],
+                "template": [
+                    "家族返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "没有红点": {
+        "next": [
+            "家族返回"
+        ]
+    },
+    "祈福确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "转盘返回"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    475,
+                    511,
+                    354,
+                    200
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "转盘红点": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "今日免费祈福"
+        ],
+        "recognition": {
+            "param": {
+                "roi": "家族祈福转盘",
+                "roi_offset": [
+                    6,
+                    -64,
+                    58,
+                    55
+                ],
+                "template": [
+                    "红点.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "转盘返回": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "家族返回"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "进入家族": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "家族祈福转盘"
+        ],
+        "post_wait_freezes": {
+            "target": [
+                34,
+                25,
+                371,
+                385
+            ],
+            "threshold": 0.65,
+            "time": 1500
+        },
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    747,
+                    73,
+                    419,
+                    645
+                ],
+                "template": [
+                    "家族.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     }
-  },
-  "家族祈福entry": {
-    "next": [
-      "进入家族"
-    ]
-  },
-  "家族祈福转盘": {
-    "next": [
-      "转盘红点"
-    ],
-    "on_error": [
-      "没有红点"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          371,
-          423,
-          94,
-          103
-        ],
-        "template": [
-          "家族祈福转盘.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    },
-    "timeout": 1000
-  },
-  "家族返回": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          170,
-          144
-        ],
-        "template": [
-          "家族返回按钮.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "没有红点": {
-    "next": [
-      "家族返回"
-    ]
-  },
-  "祈福确定": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "转盘返回"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
-        ],
-        "roi": [
-          475,
-          511,
-          354,
-          200
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "转盘红点": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "今日免费祈福"
-    ],
-    "recognition": {
-      "param": {
-        "roi": "家族祈福转盘",
-        "roi_offset": [
-          6,
-          -64,
-          58,
-          55
-        ],
-        "template": [
-          "红点.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "转盘返回": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "家族返回"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          125,
-          100
-        ],
-        "template": [
-          "返回按钮.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "进入家族": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "next": [
-      "家族祈福转盘"
-    ],
-    "post_wait_freezes": {
-      "target": [
-        34,
-        25,
-        371,
-        385
-      ],
-      "threshold": 0.65,
-      "time": 1500
-    },
-    "recognition": {
-      "param": {
-        "green_mask": true,
-        "roi": [
-          747,
-          73,
-          419,
-          645
-        ],
-        "template": [
-          "家族.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  }
 }

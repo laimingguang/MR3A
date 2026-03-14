@@ -424,7 +424,11 @@
     },
     "竞技场entry": {
         "next": [
-            "竞技场任务"
+            "竞技场检查主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ]
     },
     "竞技场任务": {
@@ -456,6 +460,25 @@
                 ],
                 "template": [
                     "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "竞技场检查主页面": {
+        "next": [
+            "竞技场任务"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    9,
+                    143,
+                    411,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
                 ]
             },
             "type": "TemplateMatch"

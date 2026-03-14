@@ -189,7 +189,7 @@
             "识别集会所",
             {
                 "jump_back": true,
-                "name": "藏宝图entry返回主页面"
+                "name": "back"
             }
         ]
     },
@@ -741,27 +741,6 @@
                 ]
             },
             "type": "OCR"
-        }
-    },
-    "藏宝图entry返回主页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_delay": 1200,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
         }
     },
     "藏宝图主页": {

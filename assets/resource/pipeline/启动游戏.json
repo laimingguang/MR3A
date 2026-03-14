@@ -55,10 +55,7 @@
     },
     "关闭弹窗": {
         "next": [
-            "处理登录活动弹窗1",
-            "处理登录活动弹窗2",
-            "处理登录活动弹窗3",
-            "处理登录活动弹窗4"
+            "处理登录活动弹窗"
         ],
         "timeout": 1500
     },
@@ -163,47 +160,7 @@
             "type": "Custom"
         }
     },
-    "处理登录活动弹窗1": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "roi": [
-                    833,
-                    5,
-                    440,
-                    441
-                ],
-                "template": [
-                    "叉叉0.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "处理登录活动弹窗2": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "roi": [
-                    833,
-                    5,
-                    440,
-                    441
-                ],
-                "template": [
-                    "叉叉1.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "处理登录活动弹窗3": {
+    "处理登录活动弹窗": {
         "action": {
             "param": {},
             "type": "Click"
@@ -218,27 +175,9 @@
                     441
                 ],
                 "template": [
-                    "叉叉2.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "处理登录活动弹窗4": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "roi": [
-                    833,
-                    5,
-                    440,
-                    441
-                ],
-                "template": [
+                    "叉叉0.png",
+                    "叉叉1.png",
+                    "叉叉2.png",
                     "叉叉3.png"
                 ]
             },

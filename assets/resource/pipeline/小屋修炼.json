@@ -1,162 +1,166 @@
 {
-  " 修炼完成": {
-    "action": {
-      "param": {
-        "target_offset": [
-          34,
-          -32,
-          -66,
-          -11
-        ]
-      },
-      "type": "Click"
-    },
-    "next": [
-      "确定碎片"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          15,
-          528,
-          503,
-          190
+    " 修炼完成": {
+        "action": {
+            "param": {
+                "target_offset": [
+                    34,
+                    -32,
+                    -66,
+                    -11
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "确定碎片"
         ],
-        "template": [
-          "修炼完成.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "小屋有红点": {
-    "action": {
-      "param": {
-        "target": "识别忍者小屋"
-      },
-      "type": "Click"
+        "recognition": {
+            "param": {
+                "roi": [
+                    15,
+                    528,
+                    503,
+                    190
+                ],
+                "template": [
+                    "修炼完成.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
-    "next": [
-      " 修炼完成",
-      "忍者修炼"
-    ],
-    "on_error": [
-      "小屋返回"
-    ],
-    "recognition": {
-      "param": {
-        "roi": "识别忍者小屋",
-        "roi_offset": [
-          35,
-          -66,
-          -8,
-          39
+    "小屋有红点": {
+        "action": {
+            "param": {
+                "target": "识别忍者小屋"
+            },
+            "type": "Click"
+        },
+        "next": [
+            " 修炼完成",
+            "忍者修炼"
         ],
-        "template": [
-          "红点.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    },
-    "timeout": 2500
-  },
-  "小屋没红点": {},
-  "小屋返回": {
-    "action": {
-      "param": {},
-      "type": "Click"
-    },
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          138,
-          100
+        "on_error": [
+            "小屋返回"
         ],
-        "template": [
-          "返回按钮.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "忍者修炼": {
-    "next": [
-      "小屋返回"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          15,
-          528,
-          503,
-          190
-        ],
-        "template": [
-          "忍者修炼.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "忍者小屋修炼entry": {
-    "next": [
-      "识别忍者小屋"
-    ]
-  },
-  "确定碎片": {
-    "action": {
-      "param": {},
-      "type": "Click"
+        "recognition": {
+            "param": {
+                "roi": "识别忍者小屋",
+                "roi_offset": [
+                    35,
+                    -66,
+                    -8,
+                    39
+                ],
+                "template": [
+                    "红点.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 2500
     },
-    "next": [
-      "确定继续修炼"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "确定继续修炼": {
-    "action": {
-      "param": {},
-      "type": "Click"
+    "小屋没红点": {},
+    "小屋返回": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    138,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
-    "next": [
-      "小屋返回"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "识别忍者小屋": {
-    "next": [
-      "小屋有红点",
-      "小屋没红点"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "忍者小屋"
+    "忍者修炼": {
+        "next": [
+            "小屋返回"
         ],
-        "roi": [
-          0,
-          0,
-          500,
-          700
+        "recognition": {
+            "param": {
+                "roi": [
+                    15,
+                    528,
+                    503,
+                    190
+                ],
+                "template": [
+                    "忍者修炼.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "忍者小屋修炼entry": {
+        "next": [
+            "识别忍者小屋",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ]
-      },
-      "type": "OCR"
+    },
+    "确定碎片": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "确定继续修炼"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "确定继续修炼": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "小屋返回"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "识别忍者小屋": {
+        "next": [
+            "小屋有红点",
+            "小屋没红点"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "忍者小屋"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    700
+                ]
+            },
+            "type": "OCR"
+        }
     }
-  }
 }

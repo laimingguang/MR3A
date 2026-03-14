@@ -1,136 +1,140 @@
 {
-  "无神龙契约图标": {},
-  "神龙契约check主页面": {
-    "next": [
-      "识别并点击神龙契约",
-      "无神龙契约图标"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          0,
-          0,
-          500,
-          712
+    "无神龙契约图标": {},
+    "神龙契约check主页面": {
+        "next": [
+            "识别并点击神龙契约",
+            "无神龙契约图标"
         ],
-        "template": [
-          "主页面.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "神龙契约确定": {
-    "action": {
-      "param": {},
-      "type": "Click"
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
-    "next": [
-      "退出神龙契约"
-    ],
-    "post_wait_freezes": 400,
-    "recognition": {
-      "param": {
-        "expected": [
-          "确定"
+    "神龙契约确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "退出神龙契约"
         ],
-        "roi": [
-          503,
-          484,
-          335,
-          184
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "神龙契约领取": {
-    "action": {
-      "param": {},
-      "type": "Click"
+        "post_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    503,
+                    484,
+                    335,
+                    184
+                ]
+            },
+            "type": "OCR"
+        }
     },
-    "next": [
-      "神龙契约确定"
-    ],
-    "recognition": {
-      "param": {
-        "roi": [
-          1049,
-          241,
-          222,
-          259
+    "神龙契约领取": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "神龙契约确定"
         ],
-        "template": [
-          "神龙契约领取.png"
-        ]
-      },
-      "type": "TemplateMatch"
-    }
-  },
-  "识别并点击神龙契约": {
-    "action": {
-      "param": {},
-      "type": "Click"
+        "recognition": {
+            "param": {
+                "roi": [
+                    1049,
+                    241,
+                    222,
+                    259
+                ],
+                "template": [
+                    "神龙契约领取.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
-    "next": [
-      "神龙契约领取"
-    ],
-    "recognition": {
-      "param": {
-        "expected": [
-          "神龙契约"
+    "识别并点击神龙契约": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "神龙契约领取"
         ],
-        "roi": [
-          0,
-          0,
-          400,
-          710
-        ]
-      },
-      "type": "OCR"
-    }
-  },
-  "退出神龙契约": {
-    "action": {
-      "param": {
-        "target_offset": [
-          723,
-          -174,
-          -135,
-          10
-        ]
-      },
-      "type": "Click"
+        "recognition": {
+            "param": {
+                "expected": [
+                    "神龙契约"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    400,
+                    710
+                ]
+            },
+            "type": "OCR"
+        }
     },
-    "pre_delay": 300,
-    "pre_wait_freezes": {
-      "target": [
-        13,
-        151,
-        1248,
-        454
-      ],
-      "threshold": 0.95,
-      "time": 1000
+    "退出神龙契约": {
+        "action": {
+            "param": {
+                "target_offset": [
+                    723,
+                    -174,
+                    -135,
+                    10
+                ]
+            },
+            "type": "Click"
+        },
+        "pre_delay": 300,
+        "pre_wait_freezes": {
+            "target": [
+                13,
+                151,
+                1248,
+                454
+            ],
+            "threshold": 0.95,
+            "time": 1000
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    418,
+                    220,
+                    261,
+                    95
+                ],
+                "template": [
+                    "神龙契约页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
-    "recognition": {
-      "param": {
-        "roi": [
-          418,
-          220,
-          261,
-          95
-        ],
-        "template": [
-          "神龙契约页面.png"
+    "领取神龙契约entry": {
+        "next": [
+            "神龙契约check主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ]
-      },
-      "type": "TemplateMatch"
     }
-  },
-  "领取神龙契约entry": {
-    "next": [
-      "神龙契约check主页面"
-    ]
-  }
 }
