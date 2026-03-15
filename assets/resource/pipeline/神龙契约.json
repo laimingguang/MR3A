@@ -1,8 +1,31 @@
 {
-    "无神龙契约图标": {},
-    "神龙契约check主页面": {
+    "无神龙契约图标": {
         "next": [
-            "识别并点击神龙契约",
+            "神龙契约回到了主页面"
+        ]
+    },
+    "神龙契约回到了主页面": {
+        "focus": "任务完成：神龙契约",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "神龙契约检查主页面": {
+        "next": [
+            "识别并点击神龙契约"
+        ],
+        "on_error": [
             "无神龙契约图标"
         ],
         "recognition": {
@@ -18,7 +41,8 @@
                 ]
             },
             "type": "TemplateMatch"
-        }
+        },
+        "timeout": 500
     },
     "神龙契约确定": {
         "action": {
@@ -28,7 +52,10 @@
         "next": [
             "退出神龙契约"
         ],
-        "post_wait_freezes": 400,
+        "post_wait_freezes": {
+            "threshold": 0.85,
+            "time": 400
+        },
         "recognition": {
             "param": {
                 "expected": [
@@ -93,15 +120,18 @@
     "退出神龙契约": {
         "action": {
             "param": {
-                "target_offset": [
-                    723,
-                    -174,
-                    -135,
-                    10
+                "target": [
+                    712,
+                    52,
+                    1,
+                    1
                 ]
             },
             "type": "Click"
         },
+        "next": [
+            "神龙契约回到了主页面"
+        ],
         "pre_delay": 300,
         "pre_wait_freezes": {
             "target": [
@@ -110,8 +140,8 @@
                 1248,
                 454
             ],
-            "threshold": 0.95,
-            "time": 1000
+            "threshold": 0.9,
+            "time": 400
         },
         "recognition": {
             "param": {
@@ -130,7 +160,7 @@
     },
     "领取神龙契约entry": {
         "next": [
-            "神龙契约check主页面",
+            "神龙契约检查主页面",
             {
                 "jump_back": true,
                 "name": "back"
