@@ -83,6 +83,48 @@
             "type": "TemplateMatch"
         }
     },
+    "jjc饭团不足": {
+        "next": [
+            "jjc饭团不足点击取消"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "饭团不足"
+                ],
+                "roi": [
+                    414,
+                    283,
+                    441,
+                    162
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "jjc饭团不足点击取消": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "饭团不足返回jjc页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "取消"
+                ],
+                "roi": [
+                    306,
+                    395,
+                    309,
+                    209
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "决斗场退回主页_jjc": {
         "action": {
             "param": {},
@@ -167,7 +209,7 @@
             },
             "type": "OCR"
         },
-        "timeout": 1500
+        "timeout": 1000
     },
     "有任务竞技场跑酷一次": {
         "next": [
@@ -197,10 +239,6 @@
             "type": "Click"
         },
         "next": [
-            {
-                "jump_back": true,
-                "name": "竞技场继续"
-            },
             {
                 "jump_back": true,
                 "name": "竞技场确定"
@@ -339,9 +377,10 @@
                 "jump_back": true,
                 "name": "jjc结算确定1"
             },
-            "回到了竞技场主页"
+            "回到了竞技场主页",
+            "jjc饭团不足"
         ],
-        "timeout": 300000
+        "timeout": 600000
     },
     "点击竞技场": {
         "action": {
@@ -444,7 +483,11 @@
             "竞技场任务结束"
         ]
     },
-    "竞技场任务结束": {},
+    "竞技场任务结束": {
+        "next": [
+            "竞技场回到了主页面"
+        ]
+    },
     "竞技场任务退出": {
         "action": {
             "param": {},
@@ -460,6 +503,23 @@
                 ],
                 "template": [
                     "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "竞技场回到了主页面": {
+        "focus": "任务完成：竞技场",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
                 ]
             },
             "type": "TemplateMatch"
@@ -488,7 +548,13 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "a"
+                    "确定|继续"
+                ],
+                "roi": [
+                    403,
+                    360,
+                    560,
+                    327
                 ]
             },
             "type": "OCR"
@@ -505,16 +571,6 @@
                     392,
                     227,
                     322
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "竞技场继续": {
-        "recognition": {
-            "param": {
-                "expected": [
-                    "a"
                 ]
             },
             "type": "OCR"
@@ -537,12 +593,6 @@
         ],
         "recognition": {
             "param": {
-                "roi": [
-                    465,
-                    528,
-                    409,
-                    170
-                ],
                 "template": [
                     "经典模式.png"
                 ]
@@ -577,7 +627,7 @@
             },
             "type": "OCR"
         },
-        "timeout": 2000
+        "timeout": 1000
     },
     "老板娘问答图标_问答": {
         "action": {
@@ -658,7 +708,7 @@
             },
             "type": "OCR"
         },
-        "timeout": 1500
+        "timeout": 500
     },
     "进入了决斗场_jjc": {
         "next": [
@@ -768,6 +818,29 @@
             "jjc退回决斗场"
         ],
         "post_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "饭团不足返回jjc页面": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "jjc退回决斗场"
+        ],
         "recognition": {
             "param": {
                 "roi": [
