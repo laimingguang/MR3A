@@ -56,6 +56,10 @@
         "next": [
             "点击聊天"
         ],
+        "post_wait_freezes": {
+            "threshold": 0.85,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "roi": [
@@ -69,6 +73,60 @@
                 ]
             },
             "type": "TemplateMatch"
+        }
+    },
+    "好友聊天上滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    800,
+                    130,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        800,
+                        600,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    726,
+                    63
+                ],
+                "template": [
+                    "私聊页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "没有聊天好友了": {
+        "next": [
+            "退出好友忍币任务"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "选择好友"
+                ],
+                "roi": [
+                    200,
+                    285,
+                    355,
+                    170
+                ]
+            },
+            "type": "OCR"
         }
     },
     "点击好友礼包": {
@@ -101,15 +159,7 @@
             "type": "Click"
         },
         "next": [
-            {
-                "jump_back": true,
-                "name": "点击好友礼包"
-            },
-            {
-                "jump_back": true,
-                "name": "叉掉好友"
-            },
-            "退出好友忍币任务"
+            "确定在好友聊天页面"
         ],
         "recognition": {
             "param": {
@@ -126,6 +176,37 @@
             "type": "OCR"
         }
     },
+    "确定在好友聊天页面": {
+        "next": [
+            "没有聊天好友了",
+            {
+                "jump_back": true,
+                "name": "点击好友礼包"
+            },
+            {
+                "jump_back": true,
+                "name": "叉掉好友"
+            },
+            {
+                "jump_back": true,
+                "name": "好友聊天上滑"
+            }
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    726,
+                    63
+                ],
+                "template": [
+                    "私聊页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "退出好友忍币任务": {
         "action": {
             "param": {
@@ -137,6 +218,7 @@
                 ]
             },
             "type": "Click"
-        }
+        },
+        "focus": "任务完成：好友忍币"
     }
 }
