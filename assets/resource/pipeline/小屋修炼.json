@@ -29,6 +29,59 @@
             "type": "TemplateMatch"
         }
     },
+    "修炼饭团不够包子": {
+        "action": {
+            "param": {
+                "target": [
+                    1068,
+                    362,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "购买饭团"
+                ],
+                "roi": [
+                    500,
+                    173,
+                    284,
+                    127
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "小屋修炼entry": {
+        "next": [
+            "识别忍者小屋",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    },
+    "小屋修炼回到主页面": {
+        "focus": "任务完成：小屋修炼",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "小屋有红点": {
         "action": {
             "param": {
@@ -66,6 +119,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "小屋修炼回到主页面"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -100,15 +156,6 @@
             "type": "TemplateMatch"
         }
     },
-    "忍者小屋修炼entry": {
-        "next": [
-            "识别忍者小屋",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
-        ]
-    },
     "确定碎片": {
         "action": {
             "param": {},
@@ -117,10 +164,20 @@
         "next": [
             "确定继续修炼"
         ],
+        "pre_wait_freezes": {
+            "threshold": 0.85,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "expected": [
                     "确定"
+                ],
+                "roi": [
+                    316,
+                    254,
+                    638,
+                    461
                 ]
             },
             "type": "OCR"
@@ -132,12 +189,26 @@
             "type": "Click"
         },
         "next": [
+            {
+                "jump_back": true,
+                "name": "修炼饭团不够包子"
+            },
             "小屋返回"
         ],
+        "post_wait_freezes": {
+            "threshold": 0.85,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "expected": [
                     "确定"
+                ],
+                "roi": [
+                    316,
+                    254,
+                    638,
+                    461
                 ]
             },
             "type": "OCR"
@@ -145,7 +216,9 @@
     },
     "识别忍者小屋": {
         "next": [
-            "小屋有红点",
+            "小屋有红点"
+        ],
+        "on_error": [
             "小屋没红点"
         ],
         "recognition": {
@@ -161,6 +234,7 @@
                 ]
             },
             "type": "OCR"
-        }
+        },
+        "timeout": 500
     }
 }
