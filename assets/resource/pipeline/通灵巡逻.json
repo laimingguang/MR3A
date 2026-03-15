@@ -49,7 +49,7 @@
             "type": "Click"
         },
         "next": [
-            "退出巡逻页面"
+            "退出巡逻页面再次运行"
         ],
         "recognition": {
             "param": {
@@ -101,6 +101,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "通灵巡逻完成回到主页面"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -270,7 +273,7 @@
         "on_error": [
             "没有通灵兽说明还在巡逻"
         ],
-        "timeout": 1500
+        "timeout": 500
     },
     "确认在主页面则点击忍阶_巡逻": {
         "action": {
@@ -377,6 +380,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "通灵巡逻完成回到主页面"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -392,7 +398,7 @@
             "type": "TemplateMatch"
         }
     },
-    "退出巡逻页面": {
+    "退出巡逻页面再次运行": {
         "action": {
             "param": {},
             "type": "Click"
@@ -580,6 +586,23 @@
             "忍阶任务有才巡逻",
             "直接去巡逻"
         ]
+    },
+    "通灵巡逻完成回到主页面": {
+        "focus": "任务完成：通灵巡逻",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
     "通灵巡逻检查主页面": {
         "next": [
