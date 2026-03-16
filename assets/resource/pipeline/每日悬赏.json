@@ -149,71 +149,6 @@
         },
         "timeout": -1
     },
-    "self-退出悬赏页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "self-集会所主页"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "self-退出集会所页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "检查悬赏任务是否满了"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "self-集会所主页": {
-        "next": [
-            "self-退出集会所页面"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "集会所"
-                ],
-                "roi": [
-                    100,
-                    8,
-                    198,
-                    106
-                ]
-            },
-            "type": "OCR"
-        }
-    },
     "关闭3v3-other": {
         "action": {
             "param": {},
@@ -698,6 +633,23 @@
             }
         ]
     },
+    "每日悬赏完成回到了主页面": {
+        "focus": "任务完成：每日悬赏",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "没人打悬赏退出": {
         "action": {
             "param": {},
@@ -936,6 +888,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "每日悬赏完成回到了主页面"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -1592,7 +1547,7 @@
     },
     "自己的低级悬赏清完了": {
         "next": [
-            "self-退出悬赏页面"
+            "悬赏令主页-check"
         ]
     },
     "识别到出发的同时别人退了导致的异常": {
