@@ -36,7 +36,7 @@
                 "请选择服务器",
                 "请选择区服"
             ],
-            "description": "<span style=\"color:tomato;font-size:15px\">领取拉普拉斯论坛奖励仅支持默认 UI</span>"
+            "description": "<span style=\"color:tomato;font-size:15px\">模拟器打开后或者忍三主页面使用，可以处理一些弹窗以及签到</span>"
         },
         {
             "name": "神龙契约",
