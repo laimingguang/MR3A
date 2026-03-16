@@ -138,7 +138,7 @@
         }
     },
     "3v3回到主页面": {
-        "focus": "任务完成：3v3",
+        "focus": "任务完成：3v3✅",
         "recognition": {
             "param": {
                 "roi": [
