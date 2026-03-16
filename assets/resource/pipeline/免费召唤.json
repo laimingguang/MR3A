@@ -105,6 +105,23 @@
             }
         ]
     },
+    "免费召唤回到了主页面": {
+        "focus": "任务完成：免费召唤",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "免费召唤确定": {
         "action": {
             "param": {},
@@ -434,6 +451,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "免费召唤回到了主页面"
+        ],
         "recognition": {
             "param": {
                 "roi": [

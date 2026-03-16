@@ -267,6 +267,23 @@
             }
         ]
     },
+    "每日商店回到了主页面": {
+        "focus": "任务完成：每日商店",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "点击悬赏商店": {
         "action": {
             "param": {},
@@ -442,6 +459,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "每日商店回到了主页面"
+        ],
         "pre_wait_freezes": 400,
         "recognition": {
             "param": {

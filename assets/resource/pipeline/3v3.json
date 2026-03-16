@@ -95,6 +95,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "3v3回到主页面"
+        ],
         "post_delay": 1500,
         "recognition": {
             "param": {
@@ -129,6 +132,23 @@
                 ],
                 "template": [
                     "3v3困难.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "3v3回到主页面": {
+        "focus": "任务完成：3v3",
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
                 ]
             },
             "type": "TemplateMatch"
