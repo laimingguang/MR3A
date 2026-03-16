@@ -36,7 +36,7 @@
                 "请选择服务器",
                 "请选择区服"
             ],
-            "description": "模拟器打开后或者忍三主页面使用，可以处理一些弹窗以及签到了"
+            "description": "<span style=\"color:tomato;font-size:15px\">领取拉普拉斯论坛奖励仅支持默认 UI</span>"
         },
         {
             "name": "神龙契约",
@@ -68,7 +68,7 @@
                 "有忍阶任务则跑酷一次",
                 "老板娘问答"
             ],
-            "description": "竞技场跑酷是直接挂机的，老板娘问答是随机选的"
+            "description": "<span style=\"color:tomato;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
         },
         {
             "name": "忍村试炼",
@@ -112,12 +112,12 @@
         {
             "name": "3v3（仅支持困难图）",
             "entry": "3v3entry",
-            "description": "当前3v3只支持困难图，依赖固定延时点击，不要在3v3跑图中关闭该任务，不要在3v3跑图中关闭该任务"
+            "description": "<span style=\"color:tomato;font-size:15px\">当前 3v3 只支持困难图，依赖固定延时点击，目前还是有些问题还在测试中，以及不要在 3v3 跑图中关闭该任务</span>"
         },
         {
             "name": "忍阶任务",
             "entry": "忍阶任务entry",
-            "description": "领取每日忍阶声望"
+            "description": "<span style=\"color:tomato;font-size:15px\">领取每日忍阶声望</span>"
         },
         {
             "name": "领取战令",
@@ -161,7 +161,7 @@
         {
             "name": "S/SS/首领",
             "entry": "每日悬赏entry",
-            "description": "这个任务除了ABCD都会进，设计上是一直挂着的，有概率停止，后面我再修",
+            "description": "<span style=\"color:tomato;font-size:15px\">这个任务除了 ABCD 都会进，设计上是一直挂着的，有概率停止，后面我再修</span>",
             "pipeline_override": {
                 "忽略悬赏是否满都清自己的低级悬赏": {
                     "enabled": false
