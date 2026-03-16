@@ -57,7 +57,8 @@
             "name": "通灵巡逻",
             "entry": "通灵巡逻entry",
             "option": [
-                "有忍阶任务才巡逻"
+                "有忍阶任务才巡逻",
+                "巡逻关卡"
             ]
         },
         {
@@ -373,6 +374,60 @@
                     "pipeline_override": {
                         "忍阶任务有才巡逻": {
                             "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "巡逻关卡": {
+            "type": "select",
+            "default_case": "雾之湖",
+            "cases": [
+                {
+                    "name": "雾之湖",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "雾之湖"
+                        }
+                    }
+                },
+                {
+                    "name": "忍村",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "忍村"
+                        }
+                    }
+                },
+                {
+                    "name": "忍之谷",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "忍之谷"
+                        }
+                    }
+                },
+                {
+                    "name": "竹叶寨",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "竹叶寨"
+                        }
+                    }
+                },
+                {
+                    "name": "雷王山",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "雷王山"
+                        }
+                    }
+                },
+                {
+                    "name": "云之国",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "云之国"
                         }
                     }
                 }
