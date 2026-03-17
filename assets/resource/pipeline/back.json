@@ -6,9 +6,7 @@
     },
     "主页面检测_back": {
         "next": [
-            "主页面检测again_back"
-        ],
-        "on_error": [
+            "主页面检测again_back",
             "退回主页面entry"
         ],
         "recognition": {
@@ -24,8 +22,7 @@
                 ]
             },
             "type": "TemplateMatch"
-        },
-        "timeout": 3000
+        }
     },
     "主页面检测again_back": {
         "recognition": {
@@ -86,11 +83,12 @@
                 "expected": [
                     "确定|返回|继续"
                 ],
+                "order_by": "Random",
                 "roi": [
                     245,
-                    422,
-                    760,
-                    281
+                    363,
+                    1020,
+                    330
                 ]
             },
             "type": "OCR"
