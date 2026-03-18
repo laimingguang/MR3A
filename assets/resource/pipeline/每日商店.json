@@ -141,10 +141,18 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20,
         "post_wait_freezes": {
             "threshold": 0.9,
             "time": 300
+        },
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 13
+                }
+            },
+            "type": "Custom"
         }
     },
     "是否忍币购买悬赏": {

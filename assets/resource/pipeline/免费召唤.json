@@ -5,7 +5,6 @@
             "type": "Click"
         },
         "enabled": true,
-        "max_hit": 1,
         "next": [
             {
                 "jump_back": true,
@@ -69,7 +68,6 @@
             "param": {},
             "type": "Click"
         },
-        "max_hit": 1,
         "next": [
             {
                 "jump_back": true,
@@ -98,15 +96,47 @@
     },
     "免费召唤entry": {
         "next": [
-            "点击进入召唤页面",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "免费召唤入口"
+            },
+            "免费召唤任务出错"
         ]
     },
-    "免费召唤回到了主页面": {
-        "focus": "任务完成：免费召唤✅",
+    "免费召唤任务出错": {
+        "focus": "任务出错：免费召唤❌"
+    },
+    "免费召唤任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "免费召唤任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：免费召唤✅"
+    },
+    "免费召唤入口": {
+        "max_hit": 3,
+        "next": [
+            "重置免费召唤内部节点计数器"
+        ]
+    },
+    "免费召唤回到主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "免费召唤入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "免费召唤任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -189,7 +219,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 1
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "召唤主页面": {
         "next": [
@@ -303,7 +341,6 @@
             "param": {},
             "type": "Click"
         },
-        "max_hit": 1,
         "recognition": {
             "param": {
                 "roi": [
@@ -320,8 +357,7 @@
                 ]
             },
             "type": "TemplateMatch"
-        },
-        "timeout": 5000
+        }
     },
     "炼化确定": {
         "action": {
@@ -370,12 +406,11 @@
             "type": "OCR"
         }
     },
-    "白钥武库任务": {
+    "白钥武库": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "max_hit": 1,
         "next": [
             "白银武库主页面"
         ],
@@ -395,6 +430,20 @@
                 ]
             },
             "type": "TemplateMatch"
+        }
+    },
+    "白钥武库任务": {
+        "next": [
+            "白钥武库"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
         }
     },
     "白银武库主页面": {
@@ -452,7 +501,7 @@
             "type": "Click"
         },
         "next": [
-            "免费召唤回到了主页面"
+            "免费召唤回到主页面"
         ],
         "recognition": {
             "param": {
@@ -492,12 +541,26 @@
             "type": "TemplateMatch"
         }
     },
-    "金钥宝库任务": {
+    "重置免费召唤内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "点击进入召唤页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    },
+    "金钥宝库": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "max_hit": 1,
         "next": [
             "点击咒印炼化"
         ],
@@ -519,6 +582,20 @@
             "type": "TemplateMatch"
         },
         "timeout": 5000
+    },
+    "金钥宝库任务": {
+        "next": [
+            "金钥宝库"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "银钥匙不足": {
         "action": {

@@ -463,11 +463,11 @@
     },
     "竞技场entry": {
         "next": [
-            "竞技场检查主页面",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "竞技场入口"
+            },
+            "竞技场任务出错"
         ]
     },
     "竞技场任务": {
@@ -483,9 +483,24 @@
             "竞技场任务结束"
         ]
     },
+    "竞技场任务出错": {
+        "focus": "任务出错：竞技场❌"
+    },
+    "竞技场任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "竞技场任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：竞技场✅"
+    },
     "竞技场任务结束": {
         "next": [
-            "竞技场回到了主页面"
+            "竞技场回到主页面"
         ]
     },
     "竞技场任务退出": {
@@ -508,8 +523,25 @@
             "type": "TemplateMatch"
         }
     },
-    "竞技场回到了主页面": {
-        "focus": "任务完成：竞技场✅",
+    "竞技场入口": {
+        "max_hit": 3,
+        "next": [
+            "重置竞技场内部节点计数器"
+        ]
+    },
+    "竞技场回到主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "竞技场入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "竞技场任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -578,10 +610,18 @@
     },
     "竞技场跑酷一次": {
         "enabled": true,
-        "max_hit": 1,
         "next": [
             "确认在主页面则点击忍阶_jjc"
-        ]
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "经典模式": {
         "action": {
@@ -601,10 +641,18 @@
         }
     },
     "老板娘问答": {
-        "max_hit": 1,
         "next": [
             "点击决斗场_jjc"
-        ]
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "老板娘问答图标": {
         "next": [
@@ -749,6 +797,21 @@
             },
             "type": "OCR"
         }
+    },
+    "重置竞技场内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "竞技场检查主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     },
     "问答完成": {
         "next": [

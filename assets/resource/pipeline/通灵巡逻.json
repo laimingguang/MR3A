@@ -19,7 +19,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 1
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "巡逻下滑": {
         "action": {
@@ -41,7 +49,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 1
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "巡逻奖励确定": {
         "action": {
@@ -574,11 +590,11 @@
     },
     "通灵巡逻entry": {
         "next": [
-            "通灵巡逻检查主页面",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "通灵巡逻入口"
+            },
+            "通灵巡逻任务出错"
         ]
     },
     "通灵巡逻任务": {
@@ -587,8 +603,40 @@
             "直接去巡逻"
         ]
     },
+    "通灵巡逻任务出错": {
+        "focus": "任务出错：通灵巡逻❌"
+    },
+    "通灵巡逻任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "通灵巡逻任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：通灵巡逻✅"
+    },
+    "通灵巡逻入口": {
+        "max_hit": 3,
+        "next": [
+            "重置通灵巡逻内部节点计数器"
+        ]
+    },
     "通灵巡逻完成回到主页面": {
-        "focus": "任务完成：通灵巡逻✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "通灵巡逻入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "通灵巡逻任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -622,6 +670,21 @@
             },
             "type": "TemplateMatch"
         }
+    },
+    "重置通灵巡逻内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "通灵巡逻检查主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     },
     "领取巡逻奖励": {
         "action": {

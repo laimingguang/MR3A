@@ -99,10 +99,18 @@
     },
     "刷自己的藏宝图": {
         "enabled": false,
-        "max_hit": 1,
         "next": [
             "识别藏宝图是否为空（保留三个）"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 2000
     },
     "助力次数": {
@@ -186,12 +194,61 @@
     },
     "每日藏宝图entry": {
         "next": [
-            "识别集会所",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "每日藏宝图入口"
+            },
+            "每日藏宝图任务出错"
         ]
+    },
+    "每日藏宝图任务出错": {
+        "focus": "任务出错：每日藏宝图❌"
+    },
+    "每日藏宝图任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日藏宝图任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：每日藏宝图✅"
+    },
+    "每日藏宝图入口": {
+        "max_hit": 3,
+        "next": [
+            "重置每日藏宝图内部节点计数器"
+        ]
+    },
+    "每日藏宝图回到主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日藏宝图入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "每日藏宝图任务完成"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
     "没人打藏宝图": {
         "action": {
@@ -279,11 +336,65 @@
             "type": "OCR"
         }
     },
+    "满了藏宝图关闭助力次数页面": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "满了藏宝图返回"
+        ],
+        "pre_wait_freezes": {
+            "threshold": 0.85,
+            "time": 400
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "满了藏宝图返回": {
         "action": {
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "满了藏宝图返回主页面"
+        ],
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "满了藏宝图返回主页面": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "每日藏宝图回到主页面"
+        ],
         "pre_wait_freezes": 400,
         "recognition": {
             "param": {
@@ -1040,10 +1151,7 @@
     },
     "识别藏宝图是否满了": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "满了藏宝图返回"
-            }
+            "满了藏宝图关闭助力次数页面"
         ],
         "recognition": {
             "param": {
@@ -1235,5 +1343,20 @@
             },
             "type": "TemplateMatch"
         }
+    },
+    "重置每日藏宝图内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "识别集会所",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     }
 }

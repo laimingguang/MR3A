@@ -357,7 +357,13 @@
         },
         "max_hit": 3
     },
-    "领取饭团entry": {
+    "重置领取饭团内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
         "next": [
             "识别好友",
             {
@@ -366,8 +372,49 @@
             }
         ]
     },
+    "领取饭团entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "领取饭团入口"
+            },
+            "领取饭团任务出错"
+        ]
+    },
+    "领取饭团任务出错": {
+        "focus": "任务出错：领取饭团❌"
+    },
+    "领取饭团任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取饭团任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：领取饭团✅"
+    },
+    "领取饭团入口": {
+        "max_hit": 3,
+        "next": [
+            "重置领取饭团内部节点计数器"
+        ]
+    },
     "领取饭团回到了主页面": {
-        "focus": "任务完成：领取饭团✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取饭团入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "领取饭团任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [

@@ -58,15 +58,47 @@
     },
     "小屋修炼entry": {
         "next": [
-            "识别忍者小屋",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "小屋修炼入口"
+            },
+            "小屋修炼任务出错"
+        ]
+    },
+    "小屋修炼任务出错": {
+        "focus": "任务出错：好友忍币❌"
+    },
+    "小屋修炼任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "小屋修炼任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：小屋修炼✅"
+    },
+    "小屋修炼入口": {
+        "max_hit": 3,
+        "next": [
+            "重置小屋修炼内部节点计数器"
         ]
     },
     "小屋修炼回到主页面": {
-        "focus": "任务完成：小屋修炼✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "小屋修炼入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "小屋修炼任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -240,5 +272,20 @@
             "type": "OCR"
         },
         "timeout": 500
+    },
+    "重置小屋修炼内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "识别忍者小屋",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     }
 }

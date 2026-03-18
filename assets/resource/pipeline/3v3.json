@@ -40,12 +40,27 @@
     },
     "3v3entry": {
         "next": [
-            "3v3识别并点击决斗场",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "3v3入口"
+            },
+            "3v3任务出错"
         ]
+    },
+    "3v3任务出错": {
+        "focus": "任务出错：3v3❌"
+    },
+    "3v3任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "3v3任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：3v3悬赏✅"
     },
     "3v3任务确定": {
         "action": {
@@ -89,6 +104,12 @@
             },
             "type": "TemplateMatch"
         }
+    },
+    "3v3入口": {
+        "max_hit": 3,
+        "next": [
+            "重置3v3内部节点计数器"
+        ]
     },
     "3v3决斗场返回主页": {
         "action": {
@@ -138,7 +159,18 @@
         }
     },
     "3v3回到主页面": {
-        "focus": "任务完成：3v3✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "3v3入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "3v3任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -200,10 +232,18 @@
         }
     },
     "3v3控制难度入口": {
-        "max_hit": 1,
         "next": [
             "3v3控制难度"
-        ]
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "3v3暗之狱": {
         "next": [
@@ -692,7 +732,7 @@
         "next": [
             {
                 "jump_back": true,
-                "name": "3v3退出确定_副本"
+                "name": "3v3退出确定"
             },
             "3v3决斗场返回主页"
         ],
@@ -794,7 +834,7 @@
         },
         "timeout": 180000
     },
-    "3v3退出确定_副本": {
+    "3v3退出确定": {
         "action": {
             "param": {},
             "type": "Click"
@@ -909,6 +949,9 @@
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "匹配页面"
+        ],
         "recognition": {
             "param": {
                 "expected": [
@@ -1372,10 +1415,7 @@
     },
     "匹配页面": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "3v3控制难度入口"
-            },
+            "3v3控制难度入口",
             {
                 "jump_back": true,
                 "name": "3v3点击单人匹配"
@@ -1828,6 +1868,21 @@
     "选择3v3难度": {
         "next": [
             "3v3勾选困难难度"
+        ]
+    },
+    "重置3v3内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "3v3识别并点击决斗场",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ]
     }
 }

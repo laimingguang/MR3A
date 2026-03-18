@@ -9,8 +9,49 @@
             "退出神龙契约"
         ]
     },
+    "神龙契约entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "神龙契约入口"
+            },
+            "神龙契约任务出错"
+        ]
+    },
+    "神龙契约任务出错": {
+        "focus": "任务出错：神龙契约❌"
+    },
+    "神龙契约任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "神龙契约任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：神龙契约✅"
+    },
+    "神龙契约入口": {
+        "max_hit": 3,
+        "next": [
+            "重置神龙契约内部节点计数器"
+        ]
+    },
     "神龙契约回到了主页面": {
-        "focus": "任务完成：神龙契约✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "神龙契约入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "神龙契约任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -167,7 +208,13 @@
             "type": "TemplateMatch"
         }
     },
-    "领取神龙契约entry": {
+    "重置神龙契约内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
         "next": [
             "神龙契约检查主页面",
             {

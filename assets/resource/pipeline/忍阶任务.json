@@ -20,15 +20,47 @@
     },
     "忍阶任务entry": {
         "next": [
-            "确认在主页面则点击忍阶_忍阶任务",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "忍阶任务入口"
+            },
+            "忍阶任务任务出错"
+        ]
+    },
+    "忍阶任务任务出错": {
+        "focus": "任务出错：忍阶任务❌"
+    },
+    "忍阶任务任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍阶任务任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：忍阶任务✅"
+    },
+    "忍阶任务入口": {
+        "max_hit": 3,
+        "next": [
+            "重置忍阶任务内部节点计数器"
         ]
     },
     "忍阶任务回到了主页面": {
-        "focus": "任务完成：忍阶任务✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍阶任务入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "忍阶任务任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -266,6 +298,21 @@
             },
             "type": "TemplateMatch"
         }
+    },
+    "重置忍阶任务内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "确认在主页面则点击忍阶_忍阶任务",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     },
     "领取每周随机道具": {
         "action": {

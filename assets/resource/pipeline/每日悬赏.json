@@ -626,15 +626,47 @@
     },
     "每日悬赏entry": {
         "next": [
-            "悬赏检查主页面",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "每日悬赏入口"
+            },
+            "每日悬赏任务出错"
+        ]
+    },
+    "每日悬赏任务出错": {
+        "focus": "任务出错：每日悬赏❌"
+    },
+    "每日悬赏任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日悬赏任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：每日悬赏✅"
+    },
+    "每日悬赏入口": {
+        "max_hit": 3,
+        "next": [
+            "重置每日悬赏内部节点计数器"
         ]
     },
     "每日悬赏完成回到了主页面": {
-        "focus": "任务完成：每日悬赏✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日悬赏入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "每日悬赏任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -808,10 +840,18 @@
         }
     },
     "清自己的悬赏": {
-        "max_hit": 1,
         "next": [
             "进入集会所-self"
-        ]
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
     },
     "满了-other": {
         "enabled": true,
@@ -1177,7 +1217,8 @@
             "type": "Click"
         },
         "next": [
-            "悬赏令主页-check"
+            "悬赏令主页-check",
+            "点击悬赏令-check"
         ],
         "recognition": {
             "param": {
@@ -1200,7 +1241,8 @@
             "type": "Click"
         },
         "next": [
-            "悬赏令主页-self"
+            "悬赏令主页-self",
+            "点击悬赏令-self"
         ],
         "recognition": {
             "param": {
@@ -1768,9 +1810,10 @@
             "type": "Click"
         },
         "next": [
-            "集会所主页-check"
+            "集会所主页-check",
+            "进入集会所-check"
         ],
-        "post_wait_freezes": 1000,
+        "post_wait_freezes": 400,
         "recognition": {
             "param": {
                 "roi": [
@@ -1792,7 +1835,8 @@
             "type": "Click"
         },
         "next": [
-            "集会所主页-self"
+            "集会所主页-self",
+            "进入集会所-self"
         ],
         "recognition": {
             "param": {
@@ -1809,6 +1853,21 @@
             "type": "TemplateMatch"
         }
     },
+    "重置每日悬赏内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "悬赏检查主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    },
     "集会所主页-check": {
         "next": [
             "点击悬赏令-check",
@@ -1817,7 +1876,7 @@
                 "name": "集会所右滑-check"
             }
         ],
-        "post_wait_freezes": 1000,
+        "post_wait_freezes": 400,
         "recognition": {
             "param": {
                 "expected": [
@@ -1878,6 +1937,15 @@
                 ]
             },
             "type": "Swipe"
+        },
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
         }
     },
     "集会所右滑-self": {
@@ -1903,6 +1971,14 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 3
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     }
 }

@@ -21,12 +21,61 @@
     },
     "好友忍币entry": {
         "next": [
-            "好友忍币进入聊天",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "好友忍币入口"
+            },
+            "好友忍币任务出错"
         ]
+    },
+    "好友忍币任务出错": {
+        "focus": "任务出错：好友忍币❌"
+    },
+    "好友忍币任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "好友忍币任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：好友忍币✅"
+    },
+    "好友忍币入口": {
+        "max_hit": 3,
+        "next": [
+            "重置好友忍币内部节点计数器"
+        ]
+    },
+    "好友忍币回到主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "好友忍币入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "好友忍币任务完成"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
     },
     "好友忍币确定": {
         "action": {
@@ -57,7 +106,7 @@
             "点击聊天"
         ],
         "post_wait_freezes": {
-            "threshold": 0.85,
+            "threshold": 0.8,
             "time": 300
         },
         "recognition": {
@@ -219,6 +268,23 @@
             },
             "type": "Click"
         },
-        "focus": "任务完成：好友忍币✅"
+        "next": [
+            "好友忍币回到主页面"
+        ]
+    },
+    "重置好友忍币内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "好友忍币进入聊天",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     }
 }

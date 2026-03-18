@@ -146,11 +146,32 @@
     },
     "忍村试炼entry": {
         "next": [
-            "识别集会所1",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "忍村试炼入口"
+            },
+            "忍村试炼任务出错"
+        ]
+    },
+    "忍村试炼任务出错": {
+        "focus": "任务出错：忍村试炼❌"
+    },
+    "忍村试炼任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍村试炼任出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：忍村试炼✅"
+    },
+    "忍村试炼入口": {
+        "max_hit": 3,
+        "next": [
+            "重置忍村试炼内部节点计数器"
         ]
     },
     "忍村试炼再次返回": {
@@ -177,7 +198,18 @@
         }
     },
     "忍村试炼回到主页面": {
-        "focus": "任务完成：忍村试炼✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍村试炼入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "忍村试炼任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -502,7 +534,6 @@
         }
     },
     "试炼关卡1": {
-        "max_hit": 1,
         "next": [
             "识别试炼关卡数字-1",
             {
@@ -513,10 +544,18 @@
         "on_error": [
             "忍村试炼返回"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 5000
     },
     "试炼关卡2": {
-        "max_hit": 1,
         "next": [
             "识别试炼关卡数字-2",
             {
@@ -527,10 +566,18 @@
         "on_error": [
             "忍村试炼返回"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 5000
     },
     "试炼关卡3": {
-        "max_hit": 1,
         "next": [
             "识别试炼关卡数字-3",
             {
@@ -541,10 +588,18 @@
         "on_error": [
             "忍村试炼返回"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 5000
     },
     "试炼关卡4": {
-        "max_hit": 1,
         "next": [
             "识别试炼关卡数字-4",
             {
@@ -555,10 +610,18 @@
         "on_error": [
             "忍村试炼返回"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 5000
     },
     "试炼关卡5": {
-        "max_hit": 1,
         "next": [
             "识别试炼关卡数字-5",
             {
@@ -569,6 +632,15 @@
         "on_error": [
             "忍村试炼返回"
         ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
         "timeout": 5000
     },
     "试炼左滑1": {
@@ -594,7 +666,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     },
     "试炼左滑2": {
         "action": {
@@ -619,7 +699,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     },
     "试炼左滑3": {
         "action": {
@@ -644,7 +732,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     },
     "试炼左滑4": {
         "action": {
@@ -669,7 +765,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     },
     "试炼左滑5": {
         "action": {
@@ -694,7 +798,15 @@
             },
             "type": "Swipe"
         },
-        "max_hit": 20
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            },
+            "type": "Custom"
+        }
     },
     "试炼购买饭团": {
         "action": {
@@ -726,5 +838,20 @@
             },
             "type": "OCR"
         }
+    },
+    "重置忍村试炼内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "识别集会所1",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
     }
 }
