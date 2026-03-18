@@ -932,7 +932,8 @@
             "type": "Click"
         },
         "next": [
-            "点击聊天-other"
+            "点击聊天-other",
+            "满了返回"
         ],
         "recognition": {
             "param": {
