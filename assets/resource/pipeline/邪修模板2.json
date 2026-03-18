@@ -28,9 +28,6 @@
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
-                    "recognition": {
-                        "type": "DirectHit"
-                    },
                     "target": 1
                 }
             },
@@ -49,9 +46,6 @@
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
-                    "recognition": {
-                        "type": "DirectHit"
-                    },
                     "target": 1
                 }
             },
