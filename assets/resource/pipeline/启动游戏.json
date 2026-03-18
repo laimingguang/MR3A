@@ -511,7 +511,47 @@
             "type": "TemplateMatch"
         }
     },
-    "识别到index右侧有勾勾_活动": {
+    "识别到index右侧有勾勾下滑_活动": {
+        "action": {
+            "param": {
+                "begin": [
+                    650,
+                    563,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        650,
+                        355,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "max_hit": 1,
+        "next": [
+            "识别勾勾_活动"
+        ],
+        "recognition": {
+            "param": {
+                "roi": "识别勾勾_活动",
+                "roi_offset": [
+                    166,
+                    -46,
+                    86,
+                    92
+                ],
+                "template": [
+                    "活动勾勾.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "识别到index右侧有勾勾点击领取_活动": {
         "action": {
             "param": {
                 "target": "识别勾勾_活动",
@@ -571,7 +611,8 @@
     },
     "识别勾勾_活动": {
         "next": [
-            "识别到index右侧有勾勾_活动"
+            "识别到index右侧有勾勾下滑_活动",
+            "识别到index右侧有勾勾点击领取_活动"
         ],
         "on_error": [
             "识别到index右侧无勾勾_活动"
