@@ -161,7 +161,7 @@
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
-                    "node_name": "忍村试炼任出错"
+                    "node_name": "忍村试炼任务出错"
                 }
             },
             "type": "Custom"
