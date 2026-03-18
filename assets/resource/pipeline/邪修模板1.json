@@ -1,0 +1,57 @@
+{
+    "_任务A": {
+        "doc": "重尝3次",
+        "max_hit": 3,
+        "next": [
+            "_任务A标志",
+            {
+                "jump_back": true,
+                "name": "_返回主页面"
+            }
+        ]
+    },
+    "_任务A入口": {
+        "doc": "不带max_hit的任务",
+        "next": [
+            {
+                "jump_back": true,
+                "name": "_任务A"
+            }
+        ]
+    },
+    "_任务A内容": {
+        "doc": "此处允许出错从而jumpback,依赖maafw5.8.1以前的特性",
+        "next": [
+            "_任务A完成标志_并禁用节点“_任务A”"
+        ]
+    },
+    "_任务A完成标志_并禁用节点“_任务A”": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {}
+            },
+            "type": "Custom"
+        },
+        "recognition": {
+            "param": {
+                "template": ""
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "_任务A标志": {
+        "next": [
+            "_任务A内容"
+        ],
+        "recognition": {
+            "param": {
+                "template": ""
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "_返回主页面": {
+        "doc": "出错处理，用于各个页面都返回主页面，需要考虑到每个页面"
+    }
+}
