@@ -1702,7 +1702,7 @@
     },
     "进入了战斗-other": {
         "next": [
-            "fight接口1"
+            "fight"
         ],
         "recognition": {
             "param": {
@@ -1721,7 +1721,7 @@
     },
     "进入了战斗-self": {
         "next": [
-            "fight接口0"
+            "fight"
         ],
         "recognition": {
             "param": {
