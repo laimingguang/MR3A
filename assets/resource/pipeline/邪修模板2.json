@@ -13,7 +13,7 @@
                 "jump_back": true,
                 "name": "C"
             },
-            "ResetB"
+            "ResetBC"
         ]
     },
     "B": {
@@ -52,35 +52,18 @@
             "type": "Custom"
         }
     },
-    "ResetB": {
+    "ResetBC": {
         "action": {
             "param": {
-                "custom_action": "ResetCount",
-                "custom_action_param": {
-                    "node_name": "B"
-                }
+                "custom_action": "ResetCount"
             },
             "type": "Custom"
         },
         "next": [
-            "ResetC"
+            "error_back_a"
         ]
     },
-    "ResetC": {
-        "action": {
-            "param": {
-                "custom_action": "ResetCount",
-                "custom_action_param": {
-                    "node_name": "C"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "errorbacka"
-        ]
-    },
-    "errorbacka": {
+    "error_back_a": {
         "next": [
             "A"
         ]
