@@ -1,58 +1,4 @@
 {
-    "C级悬赏": {
-        "max_hit": 1,
-        "next": [
-            {
-                "jump_back": true,
-                "name": "悬赏可购买"
-            }
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    18,
-                    106,
-                    1036,
-                    159
-                ],
-                "template": [
-                    "C级悬赏令.png"
-                ],
-                "threshold": [
-                    0.85
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 1000
-    },
-    "D级悬赏": {
-        "max_hit": 1,
-        "next": [
-            {
-                "jump_back": true,
-                "name": "悬赏可购买"
-            }
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    18,
-                    106,
-                    1036,
-                    159
-                ],
-                "template": [
-                    "D级悬赏令.png"
-                ],
-                "threshold": [
-                    0.85
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 1000
-    },
     "忍币不足": {
         "action": {
             "param": {
@@ -161,82 +107,44 @@
             "type": "OCR"
         }
     },
-    "悬赏可购买": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+    "悬赏商店任务": {
         "next": [
-            "悬赏商店忍币购买"
+            "点击限购商店"
         ],
         "recognition": {
             "param": {
-                "roi": "D级悬赏",
-                "roi_offset": [
-                    -82,
-                    377,
-                    97,
-                    101
-                ],
-                "template": [
-                    "悬赏商店忍币.png"
-                ]
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
             },
-            "type": "TemplateMatch"
+            "type": "Custom"
         }
-    },
-    "悬赏商店任务": {
-        "max_hit": 1,
-        "next": [
-            "点击限购商店"
-        ]
     },
     "悬赏商店右滑": {
         "action": {
             "param": {
                 "begin": [
-                    1000,
-                    400,
+                    800,
+                    390,
                     1,
                     1
                 ],
                 "end": [
                     [
-                        200,
-                        400,
+                        300,
+                        390,
                         1,
                         1
                     ]
-                ],
-                "end_hold": [
-                    500
                 ]
             },
             "type": "Swipe"
         },
-        "max_hit": 3
-    },
-    "悬赏商店忍币购买": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "确定领取悬赏"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "购买"
-                ],
-                "roi": [
-                    513,
-                    450,
-                    298,
-                    125
-                ]
-            },
-            "type": "OCR"
+        "max_hit": 20,
+        "post_wait_freezes": {
+            "threshold": 0.9,
+            "time": 300
         }
     },
     "是否忍币购买悬赏": {
@@ -244,31 +152,67 @@
         "next": [
             {
                 "jump_back": true,
-                "name": "D级悬赏"
+                "name": "点击悬赏购买按钮"
             },
             {
                 "jump_back": true,
-                "name": "C级悬赏"
+                "name": "点击悬赏购买确定按钮"
             },
+            {
+                "jump_back": true,
+                "name": "点击悬赏商店忍币"
+            },
+            "识别到C级悬赏",
             {
                 "jump_back": true,
                 "name": "悬赏商店右滑"
-            },
-            "退出悬赏商店"
+            }
         ],
         "post_wait_freezes": 300
     },
     "每日商店entry": {
         "next": [
-            "进入商店",
             {
                 "jump_back": true,
-                "name": "back"
-            }
+                "name": "每日商店入口"
+            },
+            "每日商店任务出错"
+        ]
+    },
+    "每日商店任务出错": {
+        "focus": "任务出错：每日商店❌"
+    },
+    "每日商店任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日商店任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：每日商店✅"
+    },
+    "每日商店入口": {
+        "max_hit": 3,
+        "next": [
+            "重置每日商店内部节点计数器"
         ]
     },
     "每日商店回到了主页面": {
-        "focus": "任务完成：每日商店✅",
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每日商店入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "每日商店任务完成"
+        ],
         "recognition": {
             "param": {
                 "roi": [
@@ -308,6 +252,78 @@
                     108,
                     174,
                     544
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击悬赏商店忍币": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    37,
+                    484,
+                    763,
+                    160
+                ],
+                "template": [
+                    "悬赏商店忍币.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "点击悬赏购买按钮": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "购买"
+                ],
+                "roi": [
+                    535,
+                    457,
+                    276,
+                    122
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击悬赏购买确定按钮": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    527,
+                    582,
+                    243,
+                    101
                 ]
             },
             "type": "OCR"
@@ -364,7 +380,7 @@
             "type": "OCR"
         }
     },
-    "确定领取悬赏": {
+    "确定领取免费悬赏": {
         "action": {
             "param": {},
             "type": "Click"
@@ -390,19 +406,46 @@
     },
     "神秘商店任务": {
         "enabled": true,
-        "max_hit": 1,
         "next": [
             "点击神秘商店"
-        ]
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "识别到C级悬赏": {
+        "next": [
+            "识别到已购买说明购买完成"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "C级悬赏"
+                ],
+                "roi": [
+                    183,
+                    97,
+                    872,
+                    114
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 2000
     },
     "识别到免费悬赏": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "max_hit": 1,
         "next": [
-            "确定领取悬赏"
+            "确定领取免费悬赏"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -415,6 +458,23 @@
                     382,
                     352,
                     282
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "识别到已购买说明购买完成": {
+        "recognition": {
+            "param": {
+                "expected": [
+                    "已购买"
+                ],
+                "roi": "识别到C级悬赏",
+                "roi_offset": [
+                    -71,
+                    403,
+                    127,
+                    92
                 ]
             },
             "type": "OCR"
@@ -499,11 +559,34 @@
             "type": "OCR"
         }
     },
+    "重置每日商店内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "进入商店",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    },
     "领取免费悬赏": {
-        "max_hit": 1,
         "next": [
             "识别到免费悬赏"
         ],
-        "timeout": 1000
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            },
+            "type": "Custom"
+        },
+        "timeout": 400
     }
 }
