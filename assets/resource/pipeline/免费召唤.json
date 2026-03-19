@@ -1,53 +1,14 @@
 {
-    "4000忍币召唤": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "enabled": true,
-        "next": [
-            {
-                "jump_back": true,
-                "name": "免费召唤确定"
-            },
-            "白银武库主页面再次检测"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 2000
-        },
-        "recognition": {
-            "param": {
-                "expected": [
-                    "4000"
-                ],
-                "roi": [
-                    643,
-                    617,
-                    147,
-                    76
-                ]
-            },
-            "type": "OCR"
-        }
-    },
     "使用钥匙召唤": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            {
-                "jump_back": true,
-                "name": "免费召唤确定"
-            },
             "银钥匙不足",
-            "白银武库主页面再次检测"
+            "没有弹出银钥匙不足"
         ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 2000
-        },
+        "post_delay": 3000,
         "recognition": {
             "param": {
                 "roi": [
@@ -68,17 +29,7 @@
             "param": {},
             "type": "Click"
         },
-        "next": [
-            {
-                "jump_back": true,
-                "name": "免费召唤确定"
-            },
-            "白银武库主页面再次检测"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 2000
-        },
+        "post_delay": 3000,
         "recognition": {
             "param": {
                 "expected": [
@@ -157,7 +108,7 @@
             "param": {},
             "type": "Click"
         },
-        "post_delay": 400,
+        "post_delay": 3000,
         "recognition": {
             "param": {
                 "expected": [
@@ -276,6 +227,7 @@
             "type": "TemplateMatch"
         }
     },
+    "没有弹出银钥匙不足": {},
     "点击咒印炼化": {
         "action": {
             "param": {
@@ -450,6 +402,10 @@
         "next": [
             {
                 "jump_back": true,
+                "name": "免费召唤确定"
+            },
+            {
+                "jump_back": true,
                 "name": "免费召唤"
             },
             {
@@ -458,10 +414,20 @@
             },
             {
                 "jump_back": true,
-                "name": "4000忍币召唤"
+                "name": "花费忍币召唤"
             },
-            "返回上级节点"
+            "白银武库结束返回"
         ],
+        "post_wait_freezes": {
+            "target": [
+                950,
+                22,
+                324,
+                684
+            ],
+            "threshold": 0.8,
+            "time": 500
+        },
         "recognition": {
             "param": {
                 "expected": [
@@ -476,9 +442,9 @@
             },
             "type": "OCR"
         },
-        "timeout": 3000
+        "timeout": 2000
     },
-    "白银武库主页面再次检测": {
+    "白银武库结束返回": {
         "recognition": {
             "param": {
                 "expected": [
@@ -494,7 +460,28 @@
             "type": "OCR"
         }
     },
-    "返回上级节点": {},
+    "花费忍币召唤": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "enabled": true,
+        "post_delay": 3000,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "4000"
+                ],
+                "roi": [
+                    643,
+                    617,
+                    147,
+                    76
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "退出召唤": {
         "action": {
             "param": {},
