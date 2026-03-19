@@ -101,7 +101,7 @@
             "name": "免费召唤",
             "entry": "免费召唤entry",
             "option": [
-                "是否使用4000忍币召唤白银武库"
+                "忍币召唤白银武库"
             ]
         },
         {
@@ -645,21 +645,31 @@
                 }
             ]
         },
-        "是否使用4000忍币召唤白银武库": {
-            "type": "switch",
-            "label": "花费4000忍币召唤白银武库",
-            "default_case": "Yes",
+        "忍币召唤白银武库": {
+            "type": "select",
+            "default_case": "不花费忍币",
             "cases": [
                 {
-                    "name": "Yes",
-                    "label": "开启"
+                    "name": "不花费忍币",
+                    "pipeline_override": {
+                        "花费忍币召唤": {
+                            "enable": false
+                        }
+                    }
                 },
                 {
-                    "name": "No",
-                    "label": "关闭",
+                    "name": "花费4000忍币",
                     "pipeline_override": {
-                        "4000忍币召唤": {
-                            "enable": false
+                        "花费忍币召唤": {
+                            "expected": "4000"
+                        }
+                    }
+                },
+                {
+                    "name": "花费8000忍币",
+                    "pipeline_override": {
+                        "花费忍币召唤": {
+                            "expected": "4000|8000"
                         }
                     }
                 }
