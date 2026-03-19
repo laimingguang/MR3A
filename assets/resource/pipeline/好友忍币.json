@@ -146,17 +146,12 @@
         },
         "recognition": {
             "param": {
-                "roi": [
-                    0,
-                    0,
-                    726,
-                    63
-                ],
-                "template": [
-                    "私聊页面.png"
-                ]
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
             },
-            "type": "TemplateMatch"
+            "type": "Custom"
         }
     },
     "没有聊天好友了": {
