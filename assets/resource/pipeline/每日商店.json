@@ -142,7 +142,13 @@
             "type": "Swipe"
         },
         "post_wait_freezes": {
-            "threshold": 0.9,
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
+            "threshold": 0.8,
             "time": 300
         },
         "recognition": {
@@ -158,6 +164,7 @@
     "是否忍币购买悬赏": {
         "enabled": true,
         "next": [
+            "购买悬赏忍币不足",
             {
                 "jump_back": true,
                 "name": "点击悬赏购买按钮"
@@ -176,7 +183,16 @@
                 "name": "悬赏商店右滑"
             }
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": {
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
+            "threshold": 0.8,
+            "time": 300
+        }
     },
     "每日商店entry": {
         "next": [
@@ -271,6 +287,12 @@
             "type": "Click"
         },
         "post_wait_freezes": {
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
             "threshold": 0.8,
             "time": 300
         },
@@ -295,6 +317,12 @@
             "type": "Click"
         },
         "post_wait_freezes": {
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
             "threshold": 0.8,
             "time": 300
         },
@@ -319,6 +347,12 @@
             "type": "Click"
         },
         "post_wait_freezes": {
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
             "threshold": 0.8,
             "time": 300
         },
@@ -431,6 +465,9 @@
         "next": [
             "识别到已购买说明购买完成"
         ],
+        "on_error": [
+            "是否忍币购买悬赏"
+        ],
         "recognition": {
             "param": {
                 "expected": [
@@ -445,7 +482,7 @@
             },
             "type": "OCR"
         },
-        "timeout": 2000
+        "timeout": 1500
     },
     "识别到免费悬赏": {
         "action": {
@@ -483,6 +520,43 @@
                     403,
                     127,
                     92
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "购买悬赏忍币不足": {
+        "action": {
+            "param": {
+                "target": [
+                    287,
+                    21,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "pre_wait_freezes": {
+            "target": [
+                946,
+                30,
+                330,
+                679
+            ],
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "忍币不足"
+                ],
+                "roi": [
+                    514,
+                    59,
+                    241,
+                    117
                 ]
             },
             "type": "OCR"
