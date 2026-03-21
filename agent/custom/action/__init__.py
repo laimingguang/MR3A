@@ -5,6 +5,8 @@ __all__ = [
     "DisableNode",
     "NodeOverride",
     "ResetCount",
+    "AddExpected",
+    "SubExpected",
     "fight",
     "my_3v3_kn_an_p1",
     "my_3v3_kn_an_p2",
