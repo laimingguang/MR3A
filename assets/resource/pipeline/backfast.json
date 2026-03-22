@@ -48,6 +48,8 @@
         }
     },
     "主页面检测again_bf": {
+        "post_delay": 0,
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "roi": [
@@ -79,6 +81,7 @@
             "threshold": 0.8,
             "time": 400
         },
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "expected": [
@@ -103,6 +106,7 @@
             "threshold": 0.8,
             "time": 400
         },
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "green_mask": true,
@@ -132,6 +136,7 @@
             "threshold": 0.8,
             "time": 400
         },
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "expected": [
@@ -157,6 +162,7 @@
             "threshold": 0.8,
             "time": 400
         },
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "roi": [
