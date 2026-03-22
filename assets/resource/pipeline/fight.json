@@ -89,7 +89,7 @@
             },
             "type": "ColorMatch"
         },
-        "timeout": 5000
+        "timeout": 15000
     },
     "发现下翻按钮": {
         "next": [
