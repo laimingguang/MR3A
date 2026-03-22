@@ -556,10 +556,7 @@
                 "jump_back": true,
                 "name": "点击出发_self"
             },
-            {
-                "jump_back": true,
-                "name": "识别到进入了战斗_self"
-            }
+            "识别到进入了战斗_self"
         ],
         "on_error": [
             "没人打悬赏退出_self"
