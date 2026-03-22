@@ -162,26 +162,14 @@
             "entry": "每日悬赏entry",
             "description": "<span style=\"color:tomato;font-size:15px\">这个任务除了 ABCD 都会进，设计上是一直挂着的，有概率停止，后面我再修</span>",
             "pipeline_override": {
-                "忽略悬赏是否满都清自己的低级悬赏": {
-                    "enabled": false
+                "忽略满没满优先清理自己的悬赏": {
+                    "enable": false
                 },
                 "跳过检查日常悬赏是否满了": {
-                    "enabled": true
+                    "enable": true
                 },
-                "跳过低级悬赏": {
-                    "enabled": true
-                },
-                "地区悬赏": {
-                    "next": [
-                        {
-                            "jump_back": true,
-                            "name": "点击聊天-other"
-                        },
-                        {
-                            "jump_back": true,
-                            "name": "关闭地区聊天页面"
-                        }
-                    ]
+                "忽略目标类型悬赏_reg": {
+                    "expected": "A|B|C|D"
                 },
                 "每日悬赏任务出错": {
                     "focus": "任务出错：S/SS/首领❌"

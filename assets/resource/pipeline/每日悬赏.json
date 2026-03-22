@@ -1,31 +1,61 @@
 {
-    " 回到了主页面": {
+    "ABCD悬赏都满了_cf": {
         "next": [
-            "检查悬赏任务是否满了"
+            "点击宝箱_cf"
         ],
-        "rate_limit": 3000,
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "ABCD悬赏都满了返回主页面": {
+        "next": [
+            "每日悬赏完成回到了主页面"
+        ],
         "recognition": {
             "param": {
+                "green_mask": true,
                 "roi": [
                     0,
-                    149,
-                    400,
-                    449
+                    0,
+                    500,
+                    712
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "threshold": 0.85
             },
             "type": "TemplateMatch"
         }
     },
-    "A级": {
+    "A级悬赏_cf": {
+        "next": [
+            "A级悬赏满了_cf",
+            "B级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "A/A\\+级"
+                ],
+                "roi": [
+                    1017,
+                    144,
+                    230,
+                    504
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "A级悬赏_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击邀请好友"
+            "点击邀请好友_self"
         ],
         "recognition": {
             "param": {
@@ -45,13 +75,64 @@
             "type": "TemplateMatch"
         }
     },
-    "B级": {
+    "A级悬赏没满_cf": {
+        "next": [
+            "悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "A级悬赏满了_cf": {
+        "next": [
+            "修改节点忽略A类型悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "(\\d)/\\1"
+                ],
+                "roi": "A级悬赏_cf",
+                "roi_offset": [
+                    139,
+                    -7,
+                    -20,
+                    14
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "B级悬赏_cf": {
+        "next": [
+            "B级悬赏满了_cf",
+            "C级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "B级"
+                ],
+                "roi": [
+                    1017,
+                    144,
+                    230,
+                    504
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "B级悬赏_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击邀请好友"
+            "点击邀请好友_self"
         ],
         "recognition": {
             "param": {
@@ -71,13 +152,64 @@
             "type": "TemplateMatch"
         }
     },
-    "C级": {
+    "B级悬赏没满_cf": {
+        "next": [
+            "悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "B级悬赏满了_cf": {
+        "next": [
+            "修改节点忽略B悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "(\\d)/\\1"
+                ],
+                "roi": "B级悬赏_cf",
+                "roi_offset": [
+                    119,
+                    -5,
+                    26,
+                    9
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "C级悬赏_cf": {
+        "next": [
+            "C级悬赏满了_cf",
+            "D级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "C级"
+                ],
+                "roi": [
+                    1017,
+                    144,
+                    230,
+                    504
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "C级悬赏_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击邀请好友"
+            "点击邀请好友_self"
         ],
         "recognition": {
             "param": {
@@ -97,13 +229,64 @@
             "type": "TemplateMatch"
         }
     },
-    "D级": {
+    "C级悬赏没满_cf": {
+        "next": [
+            "悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "C级悬赏满了_cf": {
+        "next": [
+            "修改节点忽略C悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "(\\d)/\\1"
+                ],
+                "roi": "C级悬赏_cf",
+                "roi_offset": [
+                    119,
+                    -5,
+                    26,
+                    9
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "D级悬赏_cf": {
+        "next": [
+            "D级悬赏满了_cf",
+            "检查悬赏满没满结束_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "D级"
+                ],
+                "roi": [
+                    1017,
+                    144,
+                    230,
+                    504
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "D级悬赏_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击邀请好友"
+            "点击邀请好友_self"
         ],
         "recognition": {
             "param": {
@@ -123,126 +306,263 @@
             "type": "TemplateMatch"
         }
     },
-    "other悬赏": {
+    "D级悬赏没满_cf": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "点击悬赏令聊天消息2"
-            },
-            "加入队伍-other",
-            "进入了地区悬赏"
+            "悬赏没满_cf"
         ],
-        "rate_limit": 200,
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "D级悬赏满了_cf": {
+        "next": [
+            "修改节点忽略D悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "expected": [
-                    "筛选"
+                    "(\\d)/\\1"
                 ],
-                "roi": [
-                    786,
-                    202,
+                "roi": "D级悬赏_cf",
+                "roi_offset": [
                     119,
-                    41
+                    -5,
+                    26,
+                    9
                 ]
             },
             "type": "OCR"
-        },
-        "timeout": -1
-    },
-    "关闭3v3-other": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "max_hit": 1,
-        "recognition": {
-            "param": {
-                "roi": [
-                    738,
-                    300,
-                    216,
-                    56
-                ],
-                "template": [
-                    "筛选按钮开.png"
-                ],
-                "threshold": [
-                    0.9
-                ]
-            },
-            "type": "TemplateMatch"
         }
     },
-    "关闭地区聊天页面": {
+    "checkfull": {
+        "next": [
+            "跳过检查日常悬赏是否满了",
+            "进入集会所_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "修改节点忽略A类型悬赏_cf": {
+        "action": {
+            "param": {
+                "custom_action": "AddExpected",
+                "custom_action_param": {
+                    "node_name": "忽略目标类型悬赏_reg",
+                    "value": "A"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭节点A级悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "修改节点忽略B悬赏_cf": {
+        "action": {
+            "param": {
+                "custom_action": "AddExpected",
+                "custom_action_param": {
+                    "node_name": "忽略目标类型悬赏_reg",
+                    "value": "B"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭节点B级悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "修改节点忽略C悬赏_cf": {
+        "action": {
+            "param": {
+                "custom_action": "AddExpected",
+                "custom_action_param": {
+                    "node_name": "忽略目标类型悬赏_reg",
+                    "value": "C"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭节点C级悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "修改节点忽略D悬赏_cf": {
+        "action": {
+            "param": {
+                "custom_action": "AddExpected",
+                "custom_action_param": {
+                    "node_name": "忽略目标类型悬赏_reg",
+                    "value": "D"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭节点D级悬赏没满_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭检查节点A级悬赏满了_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "A级悬赏满了_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "B级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭检查节点B级悬赏满了_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "B级悬赏满了_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "C级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭检查节点C级悬赏满了_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "C级悬赏满了_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "D级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭检查节点D级悬赏满了_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "D级悬赏满了_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "检查悬赏满没满结束_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭节点A级悬赏没满_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "A级悬赏没满_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭检查节点A级悬赏满了_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭节点B级悬赏没满_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "B级悬赏没满_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭检查节点B级悬赏满了_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭节点C级悬赏没满_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "C级悬赏没满_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭检查节点C级悬赏满了_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭节点D级悬赏没满_cf": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "D级悬赏没满_cf"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "关闭检查节点D级悬赏满了_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "关闭邀请页面_self": {
         "action": {
             "param": {
                 "target": [
-                    1277,
-                    301,
+                    655,
+                    652,
                     1,
                     1
                 ]
             },
             "type": "Click"
         },
-        "rate_limit": 200,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "筛选"
-                ],
-                "roi": [
-                    786,
-                    202,
-                    119,
-                    41
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": -1
-    },
-    "关闭活动玩法-other": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "max_hit": 1,
-        "recognition": {
-            "param": {
-                "roi": [
-                    730,
-                    355,
-                    224,
-                    54
-                ],
-                "template": [
-                    "筛选按钮开.png"
-                ],
-                "threshold": [
-                    0.9
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "关闭邀请页面": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    -1025,
-                    -16,
-                    28,
-                    29
-                ]
-            },
-            "type": "Click"
-        },
         "next": [
-            "点击出发"
+            {
+                "jump_back": true,
+                "name": "点击出发_self"
+            },
+            {
+                "jump_back": true,
+                "name": "识别到进入了战斗_self"
+            }
         ],
         "on_error": [
-            "没人打悬赏退出"
+            "没人打悬赏退出_self"
         ],
         "rate_limit": 50,
         "recognition": {
@@ -261,57 +581,18 @@
         },
         "timeout": 56000
     },
-    "再次检查": {
+    "刷地区的悬赏": {
         "next": [
-            "点击准备"
-        ]
-    },
-    "加入队伍-other": {
-        "next": [
-            "点击悬赏令聊天消息",
-            "有文字",
-            "跳过低级悬赏",
-            "可以进入"
-        ],
-        "rate_limit": 50,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "加入队伍"
-                ],
-                "index": -1,
-                "order_by": "Vertical",
-                "roi": [
-                    400,
-                    235,
-                    203,
-                    457
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": -1
-    },
-    "可以进入": {
-        "action": {
-            "param": {
-                "target": "加入队伍-other"
-            },
-            "type": "Click"
-        },
-        "next": [
-            "进入了地区悬赏",
-            "加入队伍-other",
-            "点击聊天-other"
-        ],
-        "on_error": [
-            "other悬赏"
+            "识别并点击聊天_reg",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
         ],
         "post_delay": 0,
-        "rate_limit": 50,
-        "timeout": 5000
+        "pre_delay": 0
     },
-    "右侧还有悬赏": {
+    "右侧还有悬赏_self": {
         "action": {
             "param": {
                 "target": [
@@ -339,30 +620,84 @@
             "type": "TemplateMatch"
         }
     },
-    "地区悬赏": {
+    "地区悬赏点击准备_reg": {
+        "action": {
+            "param": {
+                "target": "进入了地区悬赏_reg"
+            },
+            "type": "Click"
+        },
         "next": [
-            "点击聊天-other",
-            {
-                "jump_back": true,
-                "name": "关闭地区聊天页面"
-            }
-        ]
+            "识别到进入了战斗_reg",
+            "识别并点击聊天_reg",
+            "点击太快点到了邀请好友2_reg"
+        ],
+        "on_error": [
+            "返回主页面并checkfull"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
+        "timeout": 40000
     },
-    "地区页面0": {
+    "地区悬赏识别到加入队伍_reg": {
+        "next": [
+            "有文字_reg",
+            "忽略目标类型悬赏_reg",
+            "点击加入队伍_reg"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
+        "recognition": {
+            "param": {
+                "index": -1,
+                "roi": [
+                    429,
+                    249,
+                    151,
+                    400
+                ],
+                "template": [
+                    "加入队伍.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "地区悬赏页面_reg": {
         "next": [
             {
                 "jump_back": true,
-                "name": "打开悬赏令-other"
+                "name": "点击悬赏令聊天消息_reg"
+            },
+            "地区悬赏识别到加入队伍_reg",
+            "进入了地区悬赏_reg",
+            "识别并点击聊天_reg"
+        ],
+        "on_error": [
+            "返回主页面并checkfull"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
+        "timeout": 20000
+    },
+    "地区页面_reg": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "筛选打开悬赏令_reg"
             },
             {
                 "jump_back": true,
-                "name": "关闭3v3-other"
+                "name": "筛选关闭3v3_reg"
             },
             {
                 "jump_back": true,
-                "name": "关闭活动玩法-other"
+                "name": "筛选关闭活动玩法_reg"
             },
-            "other悬赏"
+            "地区悬赏页面_reg"
         ],
         "recognition": {
             "param": {
@@ -379,14 +714,25 @@
             "type": "OCR"
         }
     },
-    "展开筛选": {
+    "展开筛选_reg": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "地区页面0"
+            "地区页面_reg",
+            "展开筛选_reg"
         ],
+        "post_wait_freezes": {
+            "target": [
+                741,
+                225,
+                519,
+                471
+            ],
+            "threshold": 0.8,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "roi": [
@@ -402,87 +748,146 @@
             "type": "TemplateMatch"
         }
     },
-    "忽略悬赏是否满都清自己的低级悬赏": {
-        "next": [
-            "清自己的悬赏"
-        ]
-    },
-    "悬赏令主页-check": {
-        "next": [
-            "点击宝箱"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "悬赏令"
-                ],
-                "roi": [
-                    103,
-                    6,
-                    195,
-                    101
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "悬赏令主页-self": {
-        "next": [
-            "A级",
-            "B级",
-            "C级",
-            "D级",
-            {
-                "jump_back": true,
-                "name": "右侧还有悬赏"
-            }
-        ],
-        "on_error": [
-            "自己的低级悬赏清完了"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "悬赏令"
-                ],
-                "roi": [
-                    103,
-                    6,
-                    195,
-                    101
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": 3000
-    },
-    "悬赏异常返回": {
+    "展开队员奖励次数_cf": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "确定离开队伍"
+            "展开队员奖励次数成功_cf",
+            "展开队员奖励次数_cf"
+        ],
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "队员奖励次数"
+                ],
+                "roi": [
+                    1030,
+                    642,
+                    236,
+                    68
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "展开队员奖励次数成功_cf": {
+        "next": [
+            "A级悬赏_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "今日|本周"
+                ],
+                "roi": [
+                    1017,
+                    144,
+                    230,
+                    504
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "忽略满没满优先清理自己的悬赏": {
+        "enabled": true,
+        "next": [
+            "清自己的悬赏"
+        ]
+    },
+    "忽略目标类型悬赏_reg": {
+        "next": [
+            "地区悬赏页面_reg"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "LLS"
+                ],
+                "roi": "地区悬赏识别到加入队伍_reg",
+                "roi_offset": [
+                    -196,
+                    -165,
+                    57,
+                    33
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "悬赏令主页_cf": {
+        "next": [
+            "展开队员奖励次数_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "悬赏令"
+                ],
+                "roi": [
+                    103,
+                    6,
+                    195,
+                    101
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "悬赏令主页_self": {
+        "next": [
+            "A级悬赏_self",
+            "B级悬赏_self",
+            "C级悬赏_self",
+            "D级悬赏_self",
+            {
+                "jump_back": true,
+                "name": "右侧还有悬赏_self"
+            }
+        ],
+        "on_error": [
+            "自己的低级悬赏清完了_self"
         ],
         "recognition": {
             "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
+                "expected": [
+                    "悬赏令"
                 ],
-                "template": [
-                    "返回按钮.png"
+                "roi": [
+                    103,
+                    6,
+                    195,
+                    101
                 ]
             },
-            "type": "TemplateMatch"
-        }
+            "type": "OCR"
+        },
+        "timeout": 2000
     },
-    "悬赏检查主页面": {
+    "悬赏没满_cf": {
         "next": [
-            "忽略悬赏是否满都清自己的低级悬赏",
-            "检查悬赏任务是否满了"
+            "悬赏没满返回到主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "悬赏没满返回到主页面": {
+        "next": [
+            "刷地区的悬赏"
         ],
         "recognition": {
             "param": {
@@ -501,128 +906,39 @@
             "type": "TemplateMatch"
         }
     },
-    "悬赏满了0": {
+    "有文字_reg": {
         "next": [
-            "悬赏满了1",
-            "没满"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "已领取"
-                ],
-                "roi": [
-                    735,
-                    281,
-                    151,
-                    89
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "悬赏满了1": {
-        "next": [
-            "满了-叉"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "已领取"
-                ],
-                "roi": [
-                    728,
-                    450,
-                    155,
-                    81
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "战斗-self": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "确定-self"
-            },
-            {
-                "jump_back": true,
-                "name": "点击空白处关闭-self"
-            },
-            {
-                "jump_back": true,
-                "name": "点到了个人信息-self"
-            },
-            {
-                "jump_back": true,
-                "name": "进入了战斗-self"
-            },
-            "悬赏令主页-self",
-            "点击出发"
-        ],
-        "on_error": [
-            "识别到出发的同时别人退了导致的异常",
-            "超时但是悬赏未打完"
-        ],
-        "timeout": 7000
-    },
-    "打开悬赏令-other": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "max_hit": 1,
-        "recognition": {
-            "param": {
-                "roi": [
-                    735,
-                    246,
-                    213,
-                    57
-                ],
-                "template": [
-                    "筛选按钮关.png"
-                ],
-                "threshold": [
-                    0.9
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "有文字": {
-        "next": [
-            "加入队伍-other",
-            "进入了地区悬赏"
-        ],
-        "on_error": [
-            "other悬赏"
+            "地区悬赏页面_reg"
         ],
         "post_delay": 0,
-        "rate_limit": 50,
+        "pre_delay": 0,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "expected": [
                     ".*"
                 ],
-                "roi": "加入队伍-other",
+                "roi": "地区悬赏识别到加入队伍_reg",
                 "roi_offset": [
-                    -136,
-                    -66,
-                    67,
-                    24
+                    -178,
+                    -75,
+                    46,
+                    37
                 ]
             },
             "type": "OCR"
-        },
-        "timeout": 5000
+        }
     },
-    "检查悬赏任务是否满了": {
+    "检查悬赏满没满结束_cf": {
         "next": [
-            "跳过检查日常悬赏是否满了",
-            "进入集会所-check"
-        ]
+            "A级悬赏没满_cf",
+            "B级悬赏没满_cf",
+            "C级悬赏没满_cf",
+            "D级悬赏没满_cf",
+            "ABCD悬赏都满了_cf"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
     },
     "每日悬赏entry": {
         "next": [
@@ -649,7 +965,7 @@
         "focus": "任务完成：每日悬赏✅"
     },
     "每日悬赏入口": {
-        "max_hit": 3,
+        "max_hit": 1,
         "next": [
             "重置每日悬赏内部节点计数器"
         ]
@@ -682,14 +998,38 @@
             "type": "TemplateMatch"
         }
     },
-    "没人打悬赏退出": {
+    "每日悬赏确认在主页面": {
+        "next": [
+            "忽略满没满优先清理自己的悬赏",
+            "checkfull"
+        ],
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "threshold": 0.85
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "没人打悬赏退出_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "没人打悬赏退出-确定"
+            "没人打悬赏退出确定_self",
+            "没人打悬赏退出_self"
         ],
+        "post_wait_freezes": 400,
         "recognition": {
             "param": {
                 "roi": [
@@ -705,13 +1045,13 @@
             "type": "TemplateMatch"
         }
     },
-    "没人打悬赏退出-确定": {
+    "没人打悬赏退出确定_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "悬赏令主页-self"
+            "悬赏令主页_self"
         ],
         "recognition": {
             "param": {
@@ -728,387 +1068,18 @@
             "type": "OCR"
         }
     },
-    "没满": {
-        "next": [
-            "没满-叉"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "未完成"
-                ],
-                "roi": [
-                    746,
-                    281,
-                    133,
-                    251
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "没满-叉": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "没满-退出悬赏页面"
-        ],
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "roi": [
-                    885,
-                    43,
-                    316,
-                    260
-                ],
-                "template": [
-                    "叉叉0.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "没满-退出悬赏页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "没满-集会所主页-check"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "没满-退出集会所页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "清自己的悬赏",
-            "地区悬赏"
-        ],
-        "post_delay": 400,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "没满-集会所主页-check": {
-        "next": [
-            "没满-退出集会所页面"
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "集会所"
-                ],
-                "roi": [
-                    100,
-                    8,
-                    198,
-                    106
-                ]
-            },
-            "type": "OCR"
-        }
-    },
     "清自己的悬赏": {
         "next": [
-            "进入集会所-self"
-        ],
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            },
-            "type": "Custom"
-        }
+            "进入集会所_self"
+        ]
     },
-    "满了-other": {
-        "enabled": true,
-        "next": [
-            "进入后发现是低级悬赏",
-            "点击准备"
-        ],
-        "post_delay": 0,
-        "rate_limit": 100,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "次数上限"
-                ],
-                "roi": [
-                    498,
-                    65,
-                    461,
-                    76
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "满了-叉": {
+    "点击出发_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "next": [
-            "满了-退出悬赏页面"
-        ],
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "roi": [
-                    885,
-                    43,
-                    316,
-                    260
-                ],
-                "template": [
-                    "叉叉0.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了-退出悬赏页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "满了-集会所主页-check"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了-退出集会所页面-check": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "每日悬赏完成回到了主页面"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了-集会所主页-check": {
-        "next": [
-            "满了-退出集会所页面-check"
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "集会所"
-                ],
-                "roi": [
-                    100,
-                    8,
-                    198,
-                    106
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "满了确认离开队伍": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "点击聊天-other",
-            "满了返回"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "确定"
-                ],
-                "roi": [
-                    690,
-                    446,
-                    241,
-                    168
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "满了返回": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "满了确认离开队伍",
-            "点击聊天-other",
-            {
-                "jump_back": true,
-                "name": "满了返回-magic"
-            }
-        ],
-        "rate_limit": 200,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了返回-magic": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_delay": 2000,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击准备": {
-        "action": {
-            "param": {
-                "target": "进入了地区悬赏"
-            },
-            "type": "Click"
-        },
-        "next": [
-            {
-                "jump_back": true,
-                "name": "确定-other"
-            },
-            {
-                "jump_back": true,
-                "name": "点击空白处关闭-other"
-            },
-            {
-                "jump_back": true,
-                "name": "点到了个人信息-other"
-            },
-            " 回到了主页面",
-            {
-                "jump_back": true,
-                "name": "进入了战斗-other"
-            }
-        ],
-        "on_error": [
-            "点击准备的一瞬间被踢进入了角斗场",
-            "超时准备退出",
-            "再次检查"
-        ],
-        "rate_limit": 1000,
-        "timeout": 40000
-    },
-    "点击准备的一瞬间被踢进入了角斗场": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    -75,
-                    12,
-                    -144,
-                    -18
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            " 回到了主页面"
-        ],
-        "recognition": {
-            "param": {
-                "template": [
-                    "决斗场主页.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击出发": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "战斗-self"
-        ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 50,
         "recognition": {
             "param": {
                 "expected": [
@@ -1124,13 +1095,28 @@
             "type": "OCR"
         }
     },
-    "点击发送消息": {
+    "点击加入队伍_reg": {
+        "action": {
+            "param": {
+                "target": "地区悬赏识别到加入队伍_reg"
+            },
+            "type": "Click"
+        },
+        "next": [
+            "进入了地区悬赏_reg",
+            "地区悬赏页面_reg"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1
+    },
+    "点击发送消息_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "关闭邀请页面"
+            "关闭邀请页面_self"
         ],
         "post_delay": 300,
         "recognition": {
@@ -1148,7 +1134,7 @@
             "type": "OCR"
         }
     },
-    "点击地区-other": {
+    "点击地区_reg": {
         "action": {
             "param": {
                 "target_offset": [
@@ -1161,8 +1147,9 @@
             "type": "Click"
         },
         "next": [
-            "地区页面0",
-            "展开筛选"
+            "地区页面_reg",
+            "展开筛选_reg",
+            "点击地区_reg"
         ],
         "recognition": {
             "param": {
@@ -1179,7 +1166,64 @@
             "type": "OCR"
         }
     },
-    "点击宝箱": {
+    "点击太快点到了邀请好友2_reg": {
+        "action": {
+            "param": {
+                "target": [
+                    646,
+                    495,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "地区悬赏点击准备_reg"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "好友"
+                ],
+                "roi": [
+                    805,
+                    8,
+                    154,
+                    98
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击太快点到了邀请好友_reg": {
+        "action": {
+            "param": {
+                "target": [
+                    646,
+                    495,
+                    1,
+                    1
+                ]
+            },
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "好友"
+                ],
+                "roi": [
+                    805,
+                    8,
+                    154,
+                    98
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击宝箱_cf": {
         "action": {
             "param": {
                 "target_offset": [
@@ -1192,9 +1236,8 @@
             "type": "Click"
         },
         "next": [
-            "确定-check",
-            "没满",
-            "悬赏满了0"
+            "确定_cf",
+            "识别每日悬赏已领取_cf"
         ],
         "recognition": {
             "param": {
@@ -1211,14 +1254,44 @@
             "type": "OCR"
         }
     },
-    "点击悬赏令-check": {
+    "点击悬赏令_cf": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "悬赏令主页-check",
-            "点击悬赏令-check"
+            "悬赏令主页_cf",
+            "点击悬赏令_cf"
+        ],
+        "post_delay": 0,
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    65,
+                    1273,
+                    217
+                ],
+                "template": [
+                    "template_1770909921766.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "点击悬赏令_self": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "悬赏令主页_self",
+            "点击悬赏令_self"
         ],
         "recognition": {
             "param": {
@@ -1235,82 +1308,37 @@
             "type": "TemplateMatch"
         }
     },
-    "点击悬赏令-self": {
+    "点击悬赏令聊天消息_reg": {
         "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "悬赏令主页-self",
-            "点击悬赏令-self"
-        ],
-        "recognition": {
             "param": {
-                "roi": [
+                "target_offset": [
+                    150,
                     0,
-                    65,
-                    1273,
-                    217
-                ],
-                "template": [
-                    "template_1770909921766.png"
+                    0,
+                    0
                 ]
             },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击悬赏令聊天消息": {
-        "action": {
-            "param": {},
             "type": "Click"
         },
-        "next": [
-            "加入队伍-other",
-            "进入了地区悬赏"
-        ],
-        "on_error": [
-            "other悬赏"
-        ],
+        "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 50,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "expected": [
                     "悬赏令"
                 ],
                 "roi": [
-                    97,
+                    70,
                     601,
-                    250,
-                    54
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": 5000
-    },
-    "点击悬赏令聊天消息2": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "pre_delay": 0,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "悬赏令"
-                ],
-                "roi": [
-                    97,
-                    601,
-                    250,
+                    300,
                     54
                 ]
             },
             "type": "OCR"
         }
     },
-    "点击空白处关闭-other": {
+    "点击空白处关闭_reg": {
         "action": {
             "param": {
                 "target_offset": [
@@ -1338,7 +1366,7 @@
             "type": "OCR"
         }
     },
-    "点击空白处关闭-self": {
+    "点击空白处关闭_self": {
         "action": {
             "param": {
                 "target_offset": [
@@ -1350,7 +1378,7 @@
             },
             "type": "Click"
         },
-        "rate_limit": 2000,
+        "rate_limit": 3000,
         "recognition": {
             "param": {
                 "expected": [
@@ -1366,45 +1394,18 @@
             "type": "OCR"
         }
     },
-    "点击聊天-other": {
+    "点击聊天_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击地区-other"
-        ],
-        "on_error": [
-            "点击聊天-other卡了"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    149,
-                    400,
-                    449
-                ],
-                "template": [
-                    "主页面.png"
-                ]
+            {
+                "jump_back": true,
+                "name": "等待发送消息冷却"
             },
-            "type": "TemplateMatch"
-        },
-        "timeout": 5000
-    },
-    "点击聊天-other卡了": {
-        "next": [
-            "点击聊天-other"
-        ]
-    },
-    "点击聊天-self悬赏": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "点击发送消息"
+            "点击发送消息_self",
+            "点击聊天_self"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -1422,13 +1423,14 @@
             "type": "OCR"
         }
     },
-    "点击邀请好友": {
+    "点击邀请好友_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击聊天-self悬赏"
+            "点击聊天_self",
+            "点击邀请好友_self"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -1446,7 +1448,7 @@
             "type": "OCR"
         }
     },
-    "点到了个人信息-other": {
+    "点到了个人信息_reg": {
         "action": {
             "param": {
                 "target": [
@@ -1473,7 +1475,7 @@
             "type": "OCR"
         }
     },
-    "点到了个人信息-self": {
+    "点到了个人信息_self": {
         "action": {
             "param": {
                 "target": [
@@ -1500,14 +1502,18 @@
             "type": "OCR"
         }
     },
-    "确定-check": {
+    "确定_cf": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "点击宝箱"
+            "点击宝箱_cf"
         ],
+        "post_wait_freezes": {
+            "threshold": 0.9,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "expected": [
@@ -1523,7 +1529,7 @@
             "type": "OCR"
         }
     },
-    "确定-other": {
+    "确定_reg": {
         "action": {
             "param": {},
             "type": "Click"
@@ -1544,12 +1550,12 @@
             "type": "OCR"
         }
     },
-    "确定-self": {
+    "确定_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "rate_limit": 2000,
+        "rate_limit": 3000,
         "recognition": {
             "param": {
                 "expected": [
@@ -1565,110 +1571,255 @@
             "type": "OCR"
         }
     },
-    "确定离开队伍": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "悬赏令主页-self"
-        ],
+    "等待发送消息冷却": {
         "recognition": {
             "param": {
                 "expected": [
-                    "确定"
+                    "可以再次发送消息"
                 ],
                 "roi": [
-                    732,
-                    473,
-                    168,
-                    100
+                    881,
+                    574,
+                    336,
+                    106
                 ]
             },
             "type": "OCR"
         }
     },
-    "自己的低级悬赏清完了": {
-        "next": [
-            "悬赏令主页-check"
-        ]
-    },
-    "识别到出发的同时别人退了导致的异常": {
-        "next": [
-            "悬赏异常返回"
-        ],
+    "筛选关闭3v3_reg": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "max_hit": 1,
         "recognition": {
             "param": {
                 "roi": [
-                    6,
-                    627,
-                    66,
-                    87
+                    738,
+                    300,
+                    216,
+                    56
                 ],
                 "template": [
-                    "悬赏页面小人.png"
+                    "筛选按钮开.png"
+                ],
+                "threshold": [
+                    0.9
                 ]
             },
             "type": "TemplateMatch"
         }
     },
-    "超时但是悬赏未打完": {
-        "next": [
-            "战斗-self"
-        ]
-    },
-    "超时准备退出": {
+    "筛选关闭活动玩法_reg": {
         "action": {
             "param": {},
             "type": "Click"
         },
-        "next": [
-            "超时准备退出-确定",
-            "超时准备退出但是进入了战斗",
-            " 回到了主页面"
-        ],
+        "max_hit": 1,
         "recognition": {
             "param": {
                 "roi": [
-                    0,
-                    0,
-                    125,
-                    100
+                    730,
+                    355,
+                    224,
+                    54
                 ],
                 "template": [
-                    "返回按钮.png"
+                    "筛选按钮开.png"
+                ],
+                "threshold": [
+                    0.9
                 ]
             },
             "type": "TemplateMatch"
         }
     },
-    "超时准备退出-确定": {
+    "筛选打开悬赏令_reg": {
         "action": {
             "param": {},
             "type": "Click"
         },
+        "max_hit": 1,
+        "recognition": {
+            "param": {
+                "roi": [
+                    735,
+                    246,
+                    213,
+                    57
+                ],
+                "template": [
+                    "筛选按钮关.png"
+                ],
+                "threshold": [
+                    0.9
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "自己的低级悬赏清完了_self": {
         "next": [
-            "超时准备退出但是进入了战斗",
-            " 回到了主页面"
+            "悬赏令主页_cf"
+        ]
+    },
+    "识别到地区悬赏次数已满_reg": {
+        "next": [
+            "进入后发现是低级悬赏_reg",
+            "地区悬赏点击准备_reg",
+            {
+                "jump_back": true,
+                "name": "点击太快点到了邀请好友_reg"
+            }
         ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "expected": [
-                    "确定"
+                    "次数上限"
                 ],
                 "roi": [
-                    690,
-                    446,
-                    241,
-                    168
+                    498,
+                    65,
+                    461,
+                    76
                 ]
             },
             "type": "OCR"
         }
     },
-    "超时准备退出但是进入了战斗": {
+    "识别到进入了战斗_reg": {
         "next": [
-            "点击准备"
+            {
+                "jump_back": true,
+                "name": "调用fight_reg"
+            },
+            {
+                "jump_back": true,
+                "name": "确定_reg"
+            },
+            {
+                "jump_back": true,
+                "name": "点击空白处关闭_reg"
+            },
+            {
+                "jump_back": true,
+                "name": "点到了个人信息_reg"
+            },
+            "进入战斗后回到主页面_reg"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
+                ],
+                "template": [
+                    "进入战斗中.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 480000
+    },
+    "识别到进入了战斗_self": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "调用fight_self"
+            },
+            {
+                "jump_back": true,
+                "name": "确定_self"
+            },
+            {
+                "jump_back": true,
+                "name": "点击空白处关闭_self"
+            },
+            {
+                "jump_back": true,
+                "name": "点到了个人信息_self"
+            },
+            "进入战斗后回到悬赏令页面_self"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
+                ],
+                "template": [
+                    "进入战斗中.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 480000
+    },
+    "识别并点击聊天_reg": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "点击地区_reg",
+            "识别并点击聊天_reg"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    149,
+                    400,
+                    449
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "识别每日悬赏已领取_cf": {
+        "next": [
+            "ABCD悬赏都满了返回主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "已领取"
+                ],
+                "roi": [
+                    716,
+                    435,
+                    197,
+                    125
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "调用fight_reg": {
+        "next": [
+            "fight"
         ],
         "recognition": {
             "param": {
@@ -1685,48 +1836,105 @@
             "type": "TemplateMatch"
         }
     },
-    "跳过低级悬赏": {
-        "enabled": false,
+    "调用fight_self": {
         "next": [
-            "加入队伍-other",
-            "进入了地区悬赏"
+            "fight"
         ],
-        "on_error": [
-            "other悬赏"
-        ],
-        "post_delay": 0,
-        "rate_limit": 50,
         "recognition": {
             "param": {
-                "expected": [
-                    "A|B|C|D"
+                "roi": [
+                    10,
+                    560,
+                    162,
+                    159
                 ],
-                "roi": "加入队伍-other",
-                "roi_offset": [
-                    -196,
-                    -165,
-                    57,
-                    33
+                "template": [
+                    "进入战斗中.png"
                 ]
             },
-            "type": "OCR"
-        },
-        "timeout": 5000
+            "type": "TemplateMatch"
+        }
     },
     "跳过检查日常悬赏是否满了": {
         "enabled": false,
         "next": [
-            "地区悬赏"
-        ]
-    },
-    "进入了地区悬赏": {
-        "next": [
-            "满了-other",
-            "点击准备",
-            "点击聊天-other"
+            "刷地区的悬赏"
         ],
         "post_delay": 0,
-        "rate_limit": 100,
+        "pre_delay": 0
+    },
+    "返回主页面不checkfull": {
+        "next": [
+            "返回主页面不checkfull识别到主页面",
+            {
+                "jump_back": true,
+                "name": "backfast"
+            }
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "返回主页面不checkfull识别到主页面": {
+        "next": [
+            "识别并点击聊天_reg"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "返回主页面并checkfull": {
+        "next": [
+            "返回主页面并checkfull识别到主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "返回主页面并checkfull识别到主页面": {
+        "next": [
+            "checkfull"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "进入了地区悬赏_reg": {
+        "next": [
+            "识别到地区悬赏次数已满_reg",
+            "地区悬赏点击准备_reg",
+            {
+                "jump_back": true,
+                "name": "点击太快点到了邀请好友_reg"
+            }
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "roi": [
@@ -1740,55 +1948,20 @@
                 ]
             },
             "type": "TemplateMatch"
-        }
+        },
+        "timeout": -1
     },
-    "进入了战斗-other": {
+    "进入后发现是低级悬赏_reg": {
         "next": [
-            "fight"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    10,
-                    560,
-                    162,
-                    159
-                ],
-                "template": [
-                    "进入战斗中.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "进入了战斗-self": {
-        "next": [
-            "fight"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    10,
-                    560,
-                    162,
-                    159
-                ],
-                "template": [
-                    "进入战斗中.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "进入后发现是低级悬赏": {
-        "next": [
-            "满了返回"
-        ],
-        "on_error": [
-            "点击聊天-other"
+            "返回主页面不checkfull",
+            {
+                "jump_back": true,
+                "name": "点击太快点到了邀请好友_reg"
+            }
         ],
         "post_delay": 0,
-        "rate_limit": 200,
+        "pre_delay": 0,
+        "rate_limit": 1,
         "recognition": {
             "param": {
                 "expected": [
@@ -1804,16 +1977,61 @@
             "type": "OCR"
         }
     },
-    "进入集会所-check": {
+    "进入战斗后回到主页面_reg": {
+        "next": [
+            "checkfull"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    149,
+                    400,
+                    449
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "threshold": [
+                    0.8
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "进入战斗后回到悬赏令页面_self": {
+        "next": [
+            "悬赏令主页_self"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "悬赏令"
+                ],
+                "roi": [
+                    103,
+                    6,
+                    195,
+                    101
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "进入集会所_cf": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "集会所主页-check",
-            "进入集会所-check"
+            "集会所主页_cf",
+            "进入集会所_cf"
         ],
-        "post_wait_freezes": 400,
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "pre_delay": 0,
         "recognition": {
             "param": {
                 "roi": [
@@ -1829,15 +2047,19 @@
             "type": "TemplateMatch"
         }
     },
-    "进入集会所-self": {
+    "进入集会所_self": {
         "action": {
             "param": {},
             "type": "Click"
         },
         "next": [
-            "集会所主页-self",
-            "进入集会所-self"
+            "集会所主页_self",
+            "进入集会所_self"
         ],
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "roi": [
@@ -1861,43 +2083,19 @@
             "type": "Custom"
         },
         "next": [
-            "悬赏检查主页面",
+            "每日悬赏确认在主页面",
             {
                 "jump_back": true,
                 "name": "back"
             }
         ]
     },
-    "集会所主页-check": {
+    "集会所主页_cf": {
         "next": [
-            "点击悬赏令-check",
+            "点击悬赏令_cf",
             {
                 "jump_back": true,
-                "name": "集会所右滑-check"
-            }
-        ],
-        "post_wait_freezes": 400,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "集会所"
-                ],
-                "roi": [
-                    100,
-                    8,
-                    198,
-                    106
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "集会所主页-self": {
-        "next": [
-            "点击悬赏令-self",
-            {
-                "jump_back": true,
-                "name": "集会所右滑-self"
+                "name": "集会所右滑_cf"
             }
         ],
         "recognition": {
@@ -1915,7 +2113,30 @@
             "type": "OCR"
         }
     },
-    "集会所右滑-check": {
+    "集会所主页_self": {
+        "next": [
+            "点击悬赏令_self",
+            {
+                "jump_back": true,
+                "name": "集会所右滑_self"
+            }
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "集会所"
+                ],
+                "roi": [
+                    100,
+                    8,
+                    198,
+                    106
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "集会所右滑_cf": {
         "action": {
             "param": {
                 "begin": [
@@ -1938,17 +2159,21 @@
             },
             "type": "Swipe"
         },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
         "recognition": {
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
-                    "target": 20
+                    "target": 8
                 }
             },
             "type": "Custom"
         }
     },
-    "集会所右滑-self": {
+    "集会所右滑_self": {
         "action": {
             "param": {
                 "begin": [
