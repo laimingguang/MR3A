@@ -1965,7 +1965,7 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "A|B|C|D"
+                    "A|B|C|D|SS"
                 ],
                 "roi": [
                     405,
