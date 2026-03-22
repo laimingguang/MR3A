@@ -511,7 +511,51 @@
             "type": "TemplateMatch"
         }
     },
-    "识别到index右侧有勾勾下滑_活动": {
+    "识别到index右侧有勾勾先下滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    744,
+                    450,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        744,
+                        300,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "max_hit": 1,
+        "next": [
+            "识别勾勾"
+        ],
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "roi": "识别勾勾",
+                "roi_offset": [
+                    166,
+                    -46,
+                    86,
+                    92
+                ],
+                "template": [
+                    "签到勾勾.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "识别到index右侧有勾勾先下滑_活动": {
         "action": {
             "param": {
                 "begin": [
@@ -585,6 +629,7 @@
     },
     "识别勾勾": {
         "next": [
+            "识别到index右侧有勾勾先下滑",
             "识别到index右侧有勾勾"
         ],
         "on_error": [
@@ -611,7 +656,7 @@
     },
     "识别勾勾_活动": {
         "next": [
-            "识别到index右侧有勾勾下滑_活动",
+            "识别到index右侧有勾勾先下滑_活动",
             "识别到index右侧有勾勾点击领取_活动"
         ],
         "on_error": [
