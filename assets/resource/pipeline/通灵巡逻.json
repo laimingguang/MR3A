@@ -82,6 +82,25 @@
             "type": "OCR"
         }
     },
+    "巡逻饭团不足": {
+        "next": [
+            "饭团不足退出巡逻"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "饭团不足"
+                ],
+                "roi": [
+                    963,
+                    577,
+                    314,
+                    136
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "忍阶任务有才巡逻": {
         "enabled": true,
         "next": [
@@ -196,7 +215,8 @@
             "type": "Click"
         },
         "next": [
-            "点击开始巡逻"
+            "点击开始巡逻",
+            "巡逻饭团不足"
         ]
     },
     "点击下一忍阶_巡逻": {
@@ -254,6 +274,12 @@
             "param": {
                 "expected": [
                     "开始巡逻"
+                ],
+                "roi": [
+                    963,
+                    577,
+                    314,
+                    136
                 ]
             },
             "type": "OCR"
@@ -466,7 +492,8 @@
             "type": "Click"
         },
         "next": [
-            "点击开始巡逻"
+            "点击开始巡逻",
+            "巡逻饭团不足"
         ],
         "recognition": {
             "param": {
@@ -492,7 +519,8 @@
             "type": "Click"
         },
         "next": [
-            "点击开始巡逻"
+            "点击开始巡逻",
+            "巡逻饭团不足"
         ],
         "recognition": {
             "param": {
@@ -518,7 +546,8 @@
             "type": "Click"
         },
         "next": [
-            "点击开始巡逻"
+            "点击开始巡逻",
+            "巡逻饭团不足"
         ],
         "recognition": {
             "param": {
@@ -707,6 +736,30 @@
                 ]
             },
             "type": "OCR"
+        }
+    },
+    "饭团不足退出巡逻": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "退出巡逻并任务结束"
+        ],
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            },
+            "type": "TemplateMatch"
         }
     }
 }
