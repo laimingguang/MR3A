@@ -59,6 +59,26 @@
             "type": "OCR"
         }
     },
+    "jjc结算确定2": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    490,
+                    531,
+                    317,
+                    128
+                ]
+            },
+            "type": "OCR"
+        }
+    },
     "jjc退回决斗场": {
         "action": {
             "param": {},
@@ -376,6 +396,10 @@
             {
                 "jump_back": true,
                 "name": "jjc结算确定1"
+            },
+            {
+                "jump_back": true,
+                "name": "jjc结算确定2"
             },
             "回到了竞技场主页",
             "jjc饭团不足"
