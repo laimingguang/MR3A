@@ -578,6 +578,28 @@
         },
         "timeout": 56000
     },
+    "再次点击准备如果卡了的话": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "pre_delay": 0,
+        "rate_limit": 1,
+        "recognition": {
+            "param": {
+                "roi": [
+                    1045,
+                    634,
+                    132,
+                    65
+                ],
+                "template": [
+                    "准备.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "刷地区的悬赏": {
         "next": [
             "识别并点击聊天_reg",
@@ -626,8 +648,15 @@
         },
         "next": [
             "识别到进入了战斗_reg",
-            "识别并点击聊天_reg",
-            "点击太快点到了邀请好友2_reg"
+            {
+                "jump_back": true,
+                "name": "点击太快点到了邀请好友_reg"
+            },
+            {
+                "jump_back": true,
+                "name": "再次点击准备如果卡了的话"
+            },
+            "识别并点击聊天_reg"
         ],
         "on_error": [
             "返回主页面并checkfull"
@@ -1158,36 +1187,6 @@
                     14,
                     133,
                     59
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击太快点到了邀请好友2_reg": {
-        "action": {
-            "param": {
-                "target": [
-                    646,
-                    495,
-                    1,
-                    1
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "地区悬赏点击准备_reg"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "好友"
-                ],
-                "roi": [
-                    805,
-                    8,
-                    154,
-                    98
                 ]
             },
             "type": "OCR"
@@ -1945,8 +1944,7 @@
                 ]
             },
             "type": "TemplateMatch"
-        },
-        "timeout": -1
+        }
     },
     "进入后发现是低级悬赏_reg": {
         "next": [
