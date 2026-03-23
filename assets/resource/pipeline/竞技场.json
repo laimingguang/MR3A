@@ -577,32 +577,42 @@
         }
     },
     "竞技场确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
         "recognition": {
             "param": {
                 "expected": [
                     "确定|继续"
                 ],
+                "order_by": "Random",
                 "roi": [
                     403,
                     360,
-                    560,
-                    327
+                    569,
+                    355
                 ]
             },
             "type": "OCR"
         }
     },
     "竞技场确定_问答": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
         "recognition": {
             "param": {
                 "expected": [
                     "确定|继续"
                 ],
+                "order_by": "Random",
                 "roi": [
                     403,
                     360,
-                    560,
-                    327
+                    569,
+                    355
                 ]
             },
             "type": "OCR"
