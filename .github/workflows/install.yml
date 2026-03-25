@@ -153,7 +153,7 @@ jobs:
       - name: Setup Embed Python on Windows
         shell: bash
         run: |
-          python tools/setup_embed_python.py
+          python tools/ci/setup_embed_python.py
           
       - name: Download Python dependencies
         shell: bash
@@ -179,7 +179,7 @@ jobs:
 
           # 安装 Python 依赖
           ./install/python/python.exe -m pip install -r tools/requirements.txt
-          ./install/python/python.exe tools/install.py ${{ needs.meta.outputs.tag }} win ${{ matrix.arch }}
+          ./install/python/python.exe tools/ci/install.py ${{ needs.meta.outputs.tag }} win ${{ matrix.arch }}
       - name: Copy custom icons
         shell: bash
         run: |
@@ -256,7 +256,7 @@ jobs:
       - name: Setup Embed Python on Linux
         shell: bash
         run: |
-          python3 tools/setup_embed_python.py
+          python3 tools/ci/setup_embed_python.py
           EMBED_PYTHON_PATH="./install/python/bin/python3"
           if [ -f "$EMBED_PYTHON_PATH" ]; then
             echo "Setting execute permission for $EMBED_PYTHON_PATH"
@@ -292,7 +292,7 @@ jobs:
 
           # 安装 Python 依赖
           ./install/python/bin/python3 -m pip install -r tools/requirements.txt
-          ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} linux ${{ matrix.arch }}
+          ./install/python/bin/python3 tools/ci/install.py ${{ needs.meta.outputs.tag }} linux ${{ matrix.arch }}
       - name: Copy custom icons
         shell: bash
         run: |
@@ -381,7 +381,7 @@ jobs:
       - name: Setup Embed Python on macOS
         shell: bash
         run: |
-          python3 tools/setup_embed_python.py
+          python3 tools/ci/setup_embed_python.py
           EMBED_PYTHON_PATH="./install/python/bin/python3"
           if [ -f "$EMBED_PYTHON_PATH" ]; then
             echo "Setting execute permission for $EMBED_PYTHON_PATH"
@@ -409,7 +409,7 @@ jobs:
 
           # 安装 Python 依赖
           ./install/python/bin/python3 -m pip install -r tools/requirements.txt
-          ./install/python/bin/python3 tools/install.py ${{ needs.meta.outputs.tag }} macos ${{ matrix.arch }}
+          ./install/python/bin/python3 tools/ci/install.py ${{ needs.meta.outputs.tag }} macos ${{ matrix.arch }}
       - name: Copy custom icons
         shell: bash
         run: |

@@ -1,18 +1,20 @@
 from pathlib import Path
-
 import shutil
 
-assets_dir = Path(__file__).parent.parent.resolve() / "assets"
+
+# tools/ci/configure.py -> repo root -> assets
+assets_dir = Path(__file__).parent.parent.parent / "assets"
 
 
 def configure_ocr_model():
     assets_ocr_dir = assets_dir / "MaaCommonAssets" / "OCR"
     if not assets_ocr_dir.exists():
         print(f"File Not Found: {assets_ocr_dir}")
-        exit(1)
+        raise FileNotFoundError(assets_ocr_dir)
 
+    # Copy default OCR model only if dir does not exist
     ocr_dir = assets_dir / "resource" / "model" / "ocr"
-    if not ocr_dir.exists():   # copy default OCR model only if dir does not exist
+    if not ocr_dir.exists():
         shutil.copytree(
             assets_dir / "MaaCommonAssets" / "OCR" / "ppocr_v5" / "zh_cn",
             ocr_dir,
@@ -24,5 +26,5 @@ def configure_ocr_model():
 
 if __name__ == "__main__":
     configure_ocr_model()
-
     print("OCR model configured.")
+
