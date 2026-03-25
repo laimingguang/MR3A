@@ -81,6 +81,10 @@
             "param": {},
             "type": "Click"
         },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 400
+        },
         "recognition": {
             "param": {
                 "roi": [
@@ -99,15 +103,6 @@
             "type": "TemplateMatch"
         }
     },
-    "忍阶任务退回主页面": {
-        "next": [
-            "回到主页面任务结束",
-            {
-                "jump_back": true,
-                "name": "忍阶任务退出"
-            }
-        ]
-    },
     "忍阶任务页面": {
         "next": [
             {
@@ -121,10 +116,12 @@
             {
                 "jump_back": true,
                 "name": "点击下一忍阶2_忍阶任务"
-            }
-        ],
-        "on_error": [
-            "忍阶任务退回主页面"
+            },
+            {
+                "jump_back": true,
+                "name": "忍阶任务退出"
+            },
+            "回到主页面任务结束"
         ],
         "post_wait_freezes": 1000,
         "recognition": {
