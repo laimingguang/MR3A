@@ -584,7 +584,6 @@
             "type": "Click"
         },
         "pre_delay": 0,
-        "rate_limit": 1,
         "recognition": {
             "param": {
                 "roi": [
@@ -663,7 +662,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "timeout": 40000
     },
     "地区悬赏识别到加入队伍_reg": {
@@ -674,7 +673,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "index": -1,
@@ -706,7 +705,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "timeout": 20000
     },
     "地区页面_reg": {
@@ -832,7 +831,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "expected": [
@@ -938,7 +937,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "expected": [
@@ -1134,7 +1133,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1
+        "rate_limit": 101
     },
     "点击发送消息_self": {
         "action": {
@@ -1318,7 +1317,7 @@
         },
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "expected": [
@@ -1671,7 +1670,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "expected": [
@@ -1930,7 +1929,7 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "roi": [
@@ -1956,11 +1955,11 @@
         ],
         "post_delay": 0,
         "pre_delay": 0,
-        "rate_limit": 1,
+        "rate_limit": 101,
         "recognition": {
             "param": {
                 "expected": [
-                    "A|B|C|D|SS"
+                    "SS"
                 ],
                 "roi": [
                     405,
