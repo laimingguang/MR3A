@@ -674,15 +674,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_神龙契约": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
@@ -691,15 +691,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_家族祈福": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
@@ -708,15 +708,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_好友忍币": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
@@ -725,15 +725,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_领取邮件": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
@@ -742,15 +742,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_忍阶任务": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
@@ -759,15 +759,15 @@
             "default_case": "Yes",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
                     "pipeline_override": {
                         "领取奖励_领取战令": {
                             "enable": false
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ]
         },
