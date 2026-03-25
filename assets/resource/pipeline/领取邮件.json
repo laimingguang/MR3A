@@ -1,0 +1,269 @@
+{
+    "一键领取点击确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    541,
+                    592,
+                    206,
+                    103
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "恭喜获得称号": {
+        "recognition": {
+            "param": {
+                "expected": [
+                    "恭喜获得称号"
+                ],
+                "roi": "邮件关闭状态",
+                "roi_offset": [
+                    56,
+                    -24,
+                    133,
+                    53
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击一键领取邮件": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            {
+                "jump_back": true,
+                "name": "一键领取点击确定"
+            },
+            {
+                "jump_back": true,
+                "name": "阅读恭喜获得称号邮件"
+            },
+            "结束领取邮件"
+        ],
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "一键领取"
+                ],
+                "roi": [
+                    67,
+                    561,
+                    360,
+                    122
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "结束领取邮件": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "领取邮件回到了主页面"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    1057,
+                    17,
+                    211,
+                    170
+                ],
+                "template": [
+                    "叉叉0.png",
+                    "叉叉1.png",
+                    "叉叉2.png",
+                    "叉叉3.png",
+                    "叉叉4.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "识别并点击邮件": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "邮件页面",
+            "识别并点击邮件"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    1084,
+                    5,
+                    197,
+                    89
+                ],
+                "template": [
+                    "邮件.png",
+                    "邮件1.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "邮件关闭状态": {
+        "recognition": {
+            "param": {
+                "roi": [
+                    69,
+                    128,
+                    338,
+                    463
+                ],
+                "template": [
+                    "邮件关闭状态.png"
+                ],
+                "threshold": [
+                    0.75
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "邮件页面": {
+        "next": [
+            "点击一键领取邮件"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "邮件"
+                ],
+                "roi": [
+                    568,
+                    59,
+                    157,
+                    75
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "重置领取邮件内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "领取邮件检查主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    },
+    "阅读恭喜获得称号邮件": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "all_of": [
+                    "邮件关闭状态",
+                    "恭喜获得称号"
+                ]
+            },
+            "type": "And"
+        }
+    },
+    "领取邮件entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "领取邮件入口"
+            },
+            "领取邮件任务出错"
+        ]
+    },
+    "领取邮件任务出错": {
+        "focus": "任务出错：神龙契约❌"
+    },
+    "领取邮件任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取邮件任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：领取邮件✅"
+    },
+    "领取邮件入口": {
+        "max_hit": 3,
+        "next": [
+            "重置领取邮件内部节点计数器"
+        ]
+    },
+    "领取邮件回到了主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取邮件入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "领取邮件任务完成"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "领取邮件检查主页面": {
+        "next": [
+            "识别并点击邮件"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        },
+        "timeout": 500
+    }
+}
