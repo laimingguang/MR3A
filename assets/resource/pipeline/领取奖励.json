@@ -1,0 +1,70 @@
+{
+    "领取奖励_好友忍币": {
+        "max_hit": 1,
+        "next": [
+            "好友忍币entry"
+        ]
+    },
+    "领取奖励_家族祈福": {
+        "max_hit": 1,
+        "next": [
+            "家族祈福entry"
+        ]
+    },
+    "领取奖励_忍阶任务": {
+        "max_hit": 1,
+        "next": [
+            "忍阶任务entry"
+        ]
+    },
+    "领取奖励_神龙契约": {
+        "max_hit": 1,
+        "next": [
+            "神龙契约entry"
+        ]
+    },
+    "领取奖励_领取战令": {
+        "max_hit": 1,
+        "next": [
+            "领取战令entry"
+        ]
+    },
+    "领取奖励_领取邮件": {
+        "max_hit": 1,
+        "next": [
+            "领取邮件entry"
+        ]
+    },
+    "领取奖励entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "领取奖励_神龙契约"
+            },
+            {
+                "jump_back": true,
+                "name": "领取奖励_家族祈福"
+            },
+            {
+                "jump_back": true,
+                "name": "领取奖励_好友忍币"
+            },
+            {
+                "jump_back": true,
+                "name": "领取奖励_领取邮件"
+            },
+            {
+                "jump_back": true,
+                "name": "领取奖励_忍阶任务"
+            },
+            {
+                "jump_back": true,
+                "name": "领取奖励_领取战令"
+            },
+            "领取奖励结束"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "领取奖励结束": {}
+}
