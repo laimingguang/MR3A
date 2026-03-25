@@ -38,10 +38,6 @@
             "description": "<span style=\"color:deepskyblue;font-size:15px\">模拟器打开后或者忍三主页面使用，可以处理一些弹窗以及签到</span>"
         },
         {
-            "name": "神龙契约",
-            "entry": "神龙契约entry"
-        },
-        {
             "name": "领取饭团",
             "entry": "领取饭团entry",
             "option": [
@@ -67,7 +63,7 @@
                 "有忍阶任务则跑酷一次",
                 "老板娘问答"
             ],
-            "description": "<span style=\"color:tomato;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
         },
         {
             "name": "忍村试炼",
@@ -90,14 +86,6 @@
             ]
         },
         {
-            "name": "好友忍币",
-            "entry": "好友忍币entry"
-        },
-        {
-            "name": "家族祈福",
-            "entry": "家族祈福entry"
-        },
-        {
             "name": "免费召唤",
             "entry": "免费召唤entry",
             "option": [
@@ -111,16 +99,19 @@
         {
             "name": "3v3（仅支持困难图）",
             "entry": "3v3entry",
-            "description": "<span style=\"color:tomato;font-size:15px\">当前 3v3 只支持困难图，依赖固定延时点击，目前还是有些问题还在测试中，以及不要在 3v3 跑图中关闭该任务</span>"
+            "description": "<span style=\"color:tomato;font-size:15px\">当前 3v3 只支持困难图，依赖固定延时点击，目前还是有些问题还在测试中，想长期用的话还是被动带不灭吧，以及不要在 3v3 跑图中关闭该任务</span>"
         },
         {
-            "name": "忍阶任务",
-            "entry": "忍阶任务entry",
-            "description": "<span style=\"color:tomato;font-size:15px\">领取每日忍阶声望</span>"
-        },
-        {
-            "name": "领取战令",
-            "entry": "领取战令entry"
+            "name": "领取奖励",
+            "entry": "领取奖励entry",
+            "option": [
+                "神龙契约",
+                "家族祈福",
+                "好友忍币",
+                "领取邮件",
+                "忍阶任务",
+                "领取战令"
+            ]
         },
         {
             "name": "每日藏宝图",
@@ -160,7 +151,7 @@
         {
             "name": "S/SS/首领",
             "entry": "每日悬赏entry",
-            "description": "<span style=\"color:tomato;font-size:15px\">这个任务除了 ABCD 都会进，设计上是一直挂着的，有概率停止，后面我再修</span>",
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">任务除了 ABCD 都会进，是一直挂着的</span>",
             "pipeline_override": {
                 "忽略满没满优先清理自己的悬赏": {
                     "enable": false
@@ -169,7 +160,7 @@
                     "enable": true
                 },
                 "忽略目标类型悬赏_reg": {
-                    "expected": "A|B|C|D"
+                    "expected": "LLS"
                 },
                 "每日悬赏任务出错": {
                     "focus": "任务出错：S/SS/首领❌"
@@ -673,6 +664,108 @@
                     "pipeline_override": {
                         "3v3每日任务满了": {
                             "next": "识别并点击匹配模式"
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "神龙契约": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_神龙契约": {
+                            "enable": false
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "家族祈福": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_家族祈福": {
+                            "enable": false
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "好友忍币": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_好友忍币": {
+                            "enable": false
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "领取邮件": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_领取邮件": {
+                            "enable": false
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "忍阶任务": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_忍阶任务": {
+                            "enable": false
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "领取战令": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "领取奖励_领取战令": {
+                            "enable": false
                         }
                     }
                 },
