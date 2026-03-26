@@ -1959,7 +1959,7 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "A|BC|D|SS"
+                    "A|B|C|D|SS"
                 ],
                 "roi": [
                     405,
