@@ -157,7 +157,7 @@
                     "enable": true
                 },
                 "忽略目标类型悬赏_reg": {
-                    "expected": "LLS"
+                    "expected": "A|B|C|D"
                 },
                 "每日悬赏任务出错": {
                     "focus": "任务出错：S/SS/首领❌"
