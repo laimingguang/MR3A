@@ -779,8 +779,7 @@
             "type": "Click"
         },
         "next": [
-            "展开队员奖励次数成功_cf",
-            "展开队员奖励次数_cf"
+            "展开队员奖励次数成功_cf"
         ],
         "pre_delay": 0,
         "recognition": {
@@ -807,7 +806,7 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "今日|本周"
+                    "今日"
                 ],
                 "roi": [
                     1017,
