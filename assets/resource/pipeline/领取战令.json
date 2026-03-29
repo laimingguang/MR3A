@@ -367,7 +367,8 @@
             "type": "Click"
         },
         "next": [
-            "月度试炼页面"
+            "月度试炼页面",
+            "点击月度试炼"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -413,7 +414,8 @@
             "type": "Click"
         },
         "next": [
-            "每日试炼页面"
+            "每日试炼页面",
+            "点击每日试炼"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -462,7 +464,8 @@
             "type": "Click"
         },
         "next": [
-            "试炼奖励页面"
+            "试炼奖励页面",
+            "点击试炼奖励"
         ],
         "post_wait_freezes": 300,
         "recognition": {
