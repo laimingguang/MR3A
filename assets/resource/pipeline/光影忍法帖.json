@@ -1,0 +1,553 @@
+{
+    "光影忍法帖entry": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "光影忍法帖入口"
+            },
+            "光影忍法帖任务出错"
+        ]
+    },
+    "光影忍法帖主页面": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "光影忍法帖点击开始匹配"
+            },
+            "光影忍法帖匹配成功"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "创建房间"
+                ],
+                "roi": [
+                    435,
+                    501,
+                    414,
+                    195
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 60000
+    },
+    "光影忍法帖任务出错": {
+        "focus": "任务出错：光影忍法帖❌"
+    },
+    "光影忍法帖任务完成": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "光影忍法帖任务出错"
+                }
+            },
+            "type": "Custom"
+        },
+        "focus": "任务完成：光影忍法帖✅"
+    },
+    "光影忍法帖入口": {
+        "max_hit": 1,
+        "next": [
+            "重置光影忍法帖内部节点计数器"
+        ]
+    },
+    "光影忍法帖匹配成功": {
+        "next": [
+            "换牌页面发现宝物",
+            "换牌页面没发现宝物选择"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "放弃换牌"
+                ],
+                "roi": [
+                    476,
+                    431,
+                    341,
+                    168
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖卡牌选够了": {
+        "next": [
+            "光影忍法帖点击选择完毕"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "剩余选择0张"
+                ],
+                "roi": [
+                    1045,
+                    553,
+                    216,
+                    162
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖回到了主页面": {
+        "action": {
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "光影忍法帖入口"
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "光影忍法帖任务完成"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "光影忍法帖对战结束回到主页面了": {
+        "next": [
+            "光影忍法帖主页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "创建房间"
+                ],
+                "roi": [
+                    435,
+                    501,
+                    414,
+                    195
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖对战页面": {
+        "next": [
+            {
+                "jump_back": true,
+                "name": "对手选牌中"
+            },
+            "己方选牌",
+            {
+                "jump_back": true,
+                "name": "光影忍法帖结束确定"
+            },
+            "光影忍法帖对战结束回到主页面了"
+        ],
+        "timeout": 40000
+    },
+    "光影忍法帖检查集会所主页": {
+        "next": [
+            "进人光影忍法帖活动",
+            {
+                "jump_back": true,
+                "name": "光影忍法帖集会所右滑"
+            }
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "集会所"
+                ],
+                "roi": [
+                    100,
+                    8,
+                    198,
+                    106
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 400
+    },
+    "光影忍法帖点击开始匹配": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "post_delay": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "开始匹配"
+                ],
+                "roi": [
+                    463,
+                    417,
+                    338,
+                    263
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖点击选择完毕": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "光影忍法帖对战页面"
+        ],
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "选择完毕"
+                ],
+                "roi": [
+                    1045,
+                    553,
+                    216,
+                    162
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖确认在主页面": {
+        "next": [
+            "光影忍法帖进入集会所"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    12,
+                    133,
+                    379,
+                    468
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "光影忍法帖结束确定": {
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确定"
+                ],
+                "roi": [
+                    544,
+                    512,
+                    214,
+                    133
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "光影忍法帖进入集会所": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "光影忍法帖检查集会所主页"
+        ],
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "roi": [
+                    665,
+                    357,
+                    615,
+                    341
+                ],
+                "template": [
+                    "集会所.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "光影忍法帖集会所右滑": {
+        "action": {
+            "param": {
+                "begin": [
+                    1200,
+                    400,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        400,
+                        400,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    500
+                ]
+            },
+            "type": "Swipe"
+        },
+        "post_wait_freezes": {
+            "threshold": 0.8,
+            "time": 300
+        },
+        "recognition": {
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 4
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "对手选牌中": {
+        "recognition": {
+            "param": {
+                "expected": [
+                    "对手选牌中"
+                ],
+                "roi": [
+                    1045,
+                    553,
+                    216,
+                    162
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "己方选牌": {
+        "next": [
+            "点击所有光影忍法帖武器"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "剩余选择"
+                ],
+                "roi": [
+                    1045,
+                    553,
+                    216,
+                    162
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "换牌页面发现宝物": {
+        "action": {
+            "param": {
+                "custom_action": "ClickFilteredResults",
+                "custom_action_param": {
+                    "delay_ms": 200
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "换牌页面选择换牌"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    96,
+                    182,
+                    1064,
+                    184
+                ],
+                "template": [
+                    "光影忍法帖宝物.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "换牌页面没发现宝物选择": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "光影忍法帖对战页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "放弃换牌"
+                ],
+                "roi": [
+                    306,
+                    338,
+                    688,
+                    211
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "换牌页面选择换牌": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "光影忍法帖对战页面"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确认换牌"
+                ],
+                "roi": [
+                    306,
+                    338,
+                    688,
+                    211
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "点击所有光影忍法帖宝物": {
+        "action": {
+            "param": {
+                "custom_action": "ClickFilteredResults",
+                "custom_action_param": {
+                    "delay_ms": 200
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "光影忍法帖卡牌选够了"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    168,
+                    60,
+                    867,
+                    376
+                ],
+                "template": [
+                    "光影忍法帖宝物.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "点击所有光影忍法帖忍者": {
+        "action": {
+            "param": {
+                "custom_action": "ClickFilteredResults",
+                "custom_action_param": {
+                    "delay_ms": 200
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "光影忍法帖卡牌选够了",
+            "点击所有光影忍法帖宝物"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    168,
+                    60,
+                    867,
+                    376
+                ],
+                "template": [
+                    "光影忍法帖忍者.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "点击所有光影忍法帖武器": {
+        "action": {
+            "param": {
+                "custom_action": "ClickFilteredResults",
+                "custom_action_param": {
+                    "delay_ms": 200
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "光影忍法帖卡牌选够了",
+            "点击所有光影忍法帖忍者"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    168,
+                    60,
+                    867,
+                    376
+                ],
+                "template": [
+                    "光影忍法帖武器.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "进人光影忍法帖活动": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "光影忍法帖主页面"
+        ],
+        "recognition": {
+            "param": {
+                "template": [
+                    "光影忍法帖.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "重置光影忍法帖内部节点计数器": {
+        "action": {
+            "param": {
+                "custom_action": "ResetCount"
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "光影忍法帖确认在主页面",
+            {
+                "jump_back": true,
+                "name": "back"
+            }
+        ]
+    }
+}
