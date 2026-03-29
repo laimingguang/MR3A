@@ -7,6 +7,7 @@ __all__ = [
     "ResetCount",
     "AddExpected",
     "SubExpected",
+    "ClickFilteredResults",
     "fight",
     "my_3v3_kn_an_p1",
     "my_3v3_kn_an_p2",

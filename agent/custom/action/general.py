@@ -1,14 +1,75 @@
 import os
 import json
+import time
 from datetime import datetime
+from typing import Iterator, Optional, Tuple
 
 from PIL import Image
 from maa.agent.agent_server import AgentServer
 from maa.custom_action import CustomAction
 from maa.context import Context
+from maa.define import (
+    AndRecognitionResult,
+    OrRecognitionResult,
+    RecognitionDetail,
+    Rect,
+)
 
 from utils import logger
 from custom.reco import Count
+
+
+def _box_to_center(box: object) -> Optional[Tuple[int, int]]:
+    """将 box 转为中心点坐标；部分路径下 box 为 list / dict 而非 Rect。"""
+    if box is None:
+        return None
+    if isinstance(box, Rect):
+        return int(box.x + box.w // 2), int(box.y + box.h // 2)
+    if isinstance(box, (list, tuple)):
+        if len(box) >= 4:
+            x, y, w, h = int(box[0]), int(box[1]), int(box[2]), int(box[3])
+            return x + w // 2, y + h // 2
+        if len(box) >= 2:
+            return int(box[0]), int(box[1])
+        return None
+    if isinstance(box, dict):
+        if all(k in box for k in ("x", "y", "w", "h")):
+            x = int(box["x"])
+            y = int(box["y"])
+            w = int(box["w"])
+            h = int(box["h"])
+            return x + w // 2, y + h // 2
+        if "x" in box and "y" in box:
+            return int(box["x"]), int(box["y"])
+        return None
+    if hasattr(box, "x") and hasattr(box, "y"):
+        x, y = int(box.x), int(box.y)  # type: ignore[attr-defined]
+        w = int(getattr(box, "w", 0) or 0)
+        h = int(getattr(box, "h", 0) or 0)
+        if w or h:
+            return x + w // 2, y + h // 2
+        return x, y
+    return None
+
+
+def _iter_rects_from_filtered_item(
+    item: object,
+) -> Iterator[object]:
+    """从单条 filtered_results 条目中解析出需要点击的 box（Rect / list / 等）。"""
+    if isinstance(item, (AndRecognitionResult, OrRecognitionResult)):
+        for sub in item.sub_results or []:
+            if isinstance(sub, RecognitionDetail):
+                if sub.box is not None:
+                    yield sub.box
+                else:
+                    for nested in sub.filtered_results or []:
+                        yield from _iter_rects_from_filtered_item(nested)
+            else:
+                yield from _iter_rects_from_filtered_item(sub)
+        return
+    box = getattr(item, "box", None)
+    if box is not None:
+        yield box
 
 
 @AgentServer.custom_action("DisableNode")
@@ -247,5 +308,75 @@ class SubExpected(CustomAction):
         })
         
         logger.debug(f"已从节点 {node_name} 移除值: {value}，新的expected: {new_expected}")
+        return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("ClickFilteredResults")
+class ClickFilteredResults(CustomAction):
+    """
+    依次点击本节点识别结果中 filtered_results（或 all_results）里每一项的包围盒中心。
+
+    适用于 OCR / TemplateMatch 等多结果场景；内置 Click 默认只会用 index 选中的一条，
+    本动作对列表内（经框架过滤后的）每条结果各点一次。
+
+    custom_action_param 为 JSON 字符串，可选字段：
+        delay_ms: 每次点击后的间隔毫秒，默认 200
+        max_clicks: 最多点击次数，0 表示不限制，默认 0
+        source: "filtered"（默认）或 "all"，若需要点击未过滤的全量结果可设为 all
+    """
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        delay_ms = 200
+        max_clicks = 0
+        source = "filtered"
+        if argv.custom_action_param:
+            try:
+                param = json.loads(argv.custom_action_param)
+                delay_ms = int(param.get("delay_ms", delay_ms))
+                max_clicks = int(param.get("max_clicks", max_clicks))
+                source = str(param.get("source", source)).lower()
+            except Exception as e:
+                logger.warning(f"ClickFilteredResults: 参数解析失败，使用默认值 ({e})")
+
+        rd = argv.reco_detail
+        if rd is None or not rd.hit:
+            logger.warning("ClickFilteredResults: 当前节点未识别命中，跳过点击")
+            return CustomAction.RunResult(success=False)
+
+        if source == "all":
+            items = list(rd.all_results or [])
+        else:
+            items = list(rd.filtered_results or [])
+
+        if not items:
+            logger.warning("ClickFilteredResults: 结果列表为空")
+            return CustomAction.RunResult(success=False)
+
+        ctrl = context.tasker.controller
+        clicked = 0
+        for entry in items:
+            for raw_box in _iter_rects_from_filtered_item(entry):
+                if max_clicks and clicked >= max_clicks:
+                    break
+                center = _box_to_center(raw_box)
+                if center is None:
+                    continue
+                x, y = center
+                ctrl.post_click(x, y).wait()
+                clicked += 1
+                if delay_ms > 0:
+                    time.sleep(delay_ms / 1000.0)
+            if max_clicks and clicked >= max_clicks:
+                break
+
+        if clicked == 0:
+            logger.warning("ClickFilteredResults: 未解析到任何可点击的 box")
+            return CustomAction.RunResult(success=False)
+
+        logger.debug(f"ClickFilteredResults: 已点击 {clicked} 次 (source={source})")
         return CustomAction.RunResult(success=True)
 
