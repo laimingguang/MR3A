@@ -243,6 +243,10 @@
         }
     },
     "光影忍法帖结束确定": {
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
         "recognition": {
             "param": {
                 "expected": [
