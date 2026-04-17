@@ -78,8 +78,7 @@
             "name": "每日商店",
             "entry": "每日商店entry",
             "option": [
-                "忍币购买神秘商店",
-                "忍币购买悬赏商店"
+                "忍币购买神秘商店"
             ]
         },
         {
@@ -142,25 +141,6 @@
                         "没有加入队伍",
                         "已进入队伍"
                     ]
-                }
-            }
-        },
-        {
-            "name": "S/SS/首领",
-            "entry": "每日悬赏entry",
-            "description": "<span style=\"color:deepskyblue;font-size:15px\">任务除了 ABCD 都会进，是一直挂着的</span>",
-            "pipeline_override": {
-                "忽略满没满优先清理自己的悬赏": {
-                    "enable": false
-                },
-                "跳过检查日常悬赏是否满了": {
-                    "enable": true
-                },
-                "忽略目标类型悬赏_reg": {
-                    "expected": "A|B|C|D"
-                },
-                "每日悬赏任务出错": {
-                    "focus": "任务出错：S/SS/首领❌"
                 }
             }
         },
