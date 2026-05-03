@@ -615,24 +615,26 @@
                 {
                     "name": "不花费忍币",
                     "pipeline_override": {
-                        "花费忍币召唤": {
-                            "enable": false
+                        "忍币召唤结束标志": {
+                            "enable": true,
+                            "expected": "4000|8000"
                         }
                     }
                 },
                 {
                     "name": "花费4000忍币",
                     "pipeline_override": {
-                        "花费忍币召唤": {
-                            "expected": "4000"
+                        "忍币召唤结束标志": {
+                            "enable": true,
+                            "expected": "8000"
                         }
                     }
                 },
                 {
                     "name": "花费8000忍币",
                     "pipeline_override": {
-                        "花费忍币召唤": {
-                            "expected": "4000|8000"
+                        "忍币召唤结束标志": {
+                            "enable": false
                         }
                     }
                 }

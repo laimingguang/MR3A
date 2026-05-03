@@ -1,15 +1,7 @@
 {
     "使用钥匙召唤": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "银钥匙不足",
-            "没有弹出银钥匙不足"
-        ],
-        "post_delay": 3000,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     628,
@@ -20,36 +12,37 @@
                 "template": [
                     "白银钥匙.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "免费召唤": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "post_delay": 3000,
+        "post_delay": 500
+    },
+    "每日首次免费": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "每日首次免费"
-                ],
                 "roi": [
                     552,
                     525,
                     398,
                     193
+                ],
+                "expected": [
+                    "每日首次免费"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "免费召唤entry": {
         "next": [
             {
-                "jump_back": true,
-                "name": "免费召唤入口"
+                "name": "免费召唤入口",
+                "jump_back": true
             },
             "免费召唤任务出错"
         ]
@@ -59,13 +52,13 @@
     },
     "免费召唤任务完成": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
                     "node_name": "免费召唤任务出错"
                 }
-            },
-            "type": "Custom"
+            }
         },
         "focus": "任务完成：免费召唤✅"
     },
@@ -76,19 +69,8 @@
         ]
     },
     "免费召唤回到主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "免费召唤入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "免费召唤任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -99,40 +81,43 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "免费召唤入口"
+                }
+            }
+        },
+        "next": [
+            "免费召唤任务完成"
+        ]
     },
     "免费召唤确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_delay": 3000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     330,
                     585,
                     471,
                     130
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "免费炼化": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "炼化确定"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     294,
@@ -143,12 +128,27 @@
                 "template": [
                     "咒印炼化免费.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "炼化确定"
+        ]
     },
     "召唤上滑": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 2
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     140,
@@ -167,36 +167,12 @@
                 "end_hold": [
                     200
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "召唤主页面": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "金钥宝库任务"
-            },
-            {
-                "jump_back": true,
-                "name": "白钥武库任务"
-            },
-            {
-                "jump_back": true,
-                "name": "召唤上滑"
-            },
-            "退出召唤"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -207,12 +183,23 @@
                 "template": [
                     "召唤.png"
                 ]
+            }
+        },
+        "next": [
+            {
+                "name": "金钥宝库任务",
+                "jump_back": true
             },
-            "type": "TemplateMatch"
-        }
+            {
+                "name": "白钥武库任务",
+                "jump_back": true
+            },
+            "退出召唤"
+        ]
     },
     "召唤主页面再次check": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -223,13 +210,26 @@
                 "template": [
                     "召唤.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         }
     },
-    "没有弹出银钥匙不足": {},
     "点击咒印炼化": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1096,
+                    285,
+                    183,
+                    204
+                ],
+                "expected": [
+                    "咒印炼化"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     23,
@@ -237,29 +237,29 @@
                     -48,
                     12
                 ]
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "炼化页面"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "咒印炼化"
-                ],
-                "roi": [
-                    1096,
-                    285,
-                    183,
-                    204
-                ]
-            },
-            "type": "OCR"
-        }
+        ]
     },
     "点击进入召唤页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    6,
+                    574,
+                    765,
+                    141
+                ],
+                "expected": [
+                    "召唤"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     -25,
@@ -267,106 +267,61 @@
                     -4,
                     11
                 ]
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "召唤主页面"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "召唤"
-                ],
-                "roi": [
-                    6,
-                    574,
-                    765,
-                    141
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击金钥宝库防止jumpback卡死": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "roi": [
-                    11,
-                    17,
-                    290,
-                    622
-                ],
-                "template": [
-                    "金钥宝库.png"
-                ],
-                "threshold": [
-                    0.85
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "炼化确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "退出炼化页面"
-        ],
-        "pre_wait_freezes": {
-            "threshold": 0.85,
-            "time": 300
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     294,
                     558,
                     335,
                     154
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 300,
+            "threshold": 0.85
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "退出炼化页面"
+        ]
     },
     "炼化页面": {
-        "next": [
-            "免费炼化",
-            "退出炼化页面"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "本周勾玉炼化次数"
-                ],
                 "roi": [
                     1004,
                     68,
                     273,
                     127
+                ],
+                "expected": [
+                    "本周勾玉炼化次数"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "白钥武库": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            "白银武库主页面"
-        ],
+            "免费炼化",
+            "退出炼化页面"
+        ]
+    },
+    "白钥武库": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     11,
@@ -380,117 +335,101 @@
                 "threshold": [
                     0.85
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "白银武库主页面"
+        ]
     },
     "白钥武库任务": {
-        "next": [
-            "白钥武库"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
+            }
+        },
+        "next": [
+            "白钥武库",
+            {
+                "name": "召唤上滑",
+                "jump_back": true
+            }
+        ]
     },
     "白银武库主页面": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "免费召唤确定"
-            },
-            {
-                "jump_back": true,
-                "name": "免费召唤"
-            },
-            {
-                "jump_back": true,
-                "name": "使用钥匙召唤"
-            },
-            {
-                "jump_back": true,
-                "name": "花费忍币召唤"
-            },
-            "白银武库结束返回"
-        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    819,
+                    216,
+                    239,
+                    144
+                ],
+                "expected": [
+                    "每次召唤必得"
+                ]
+            }
+        },
         "post_wait_freezes": {
+            "time": 500,
             "target": [
                 950,
                 22,
                 324,
                 684
             ],
-            "threshold": 0.8,
-            "time": 500
+            "threshold": 0.8
         },
-        "recognition": {
-            "param": {
-                "expected": [
-                    "每次召唤必得"
-                ],
-                "roi": [
-                    819,
-                    216,
-                    239,
-                    144
-                ]
+        "next": [
+            {
+                "name": "免费召唤确定",
+                "jump_back": true
             },
-            "type": "OCR"
-        },
-        "timeout": 2000
-    },
-    "白银武库结束返回": {
-        "recognition": {
-            "param": {
-                "expected": [
-                    "每次召唤必得"
-                ],
-                "roi": [
-                    819,
-                    216,
-                    239,
-                    144
-                ]
+            {
+                "name": "每日首次免费",
+                "jump_back": true
             },
-            "type": "OCR"
-        }
+            "银钥匙不足",
+            "忍币召唤结束标志",
+            {
+                "name": "使用钥匙召唤",
+                "jump_back": true
+            },
+            {
+                "name": "花费忍币召唤",
+                "jump_back": true
+            }
+        ]
     },
     "花费忍币召唤": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "enabled": true,
-        "post_delay": 3000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "4000"
-                ],
                 "roi": [
                     643,
                     617,
                     147,
                     76
+                ],
+                "expected": [
+                    "4000|8000"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "退出召唤": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "免费召唤回到主页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -501,19 +440,18 @@
                 "template": [
                     "退出召唤按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "退出炼化页面": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "召唤主页面再次check"
-        ],
+            "免费召唤回到主页面"
+        ]
+    },
+    "退出炼化页面": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -524,34 +462,33 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "召唤主页面再次check"
+        ]
     },
     "重置免费召唤内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
-            "点击进入召唤页面",
+            "免费召唤检查主页面",
             {
-                "jump_back": true,
-                "name": "back"
+                "name": "back",
+                "jump_back": true
             }
         ]
     },
     "金钥宝库": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "点击咒印炼化"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     11,
@@ -565,27 +502,51 @@
                 "threshold": [
                     0.85
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
-        "timeout": 5000
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 5000,
+        "next": [
+            "点击咒印炼化"
+        ]
     },
     "金钥宝库任务": {
-        "next": [
-            "金钥宝库"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
+            }
+        },
+        "next": [
+            "金钥宝库",
+            {
+                "name": "召唤上滑",
+                "jump_back": true
+            }
+        ]
     },
     "银钥匙不足": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    478,
+                    41,
+                    304,
+                    140
+                ],
+                "expected": [
+                    "银钥匙不足"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     941,
@@ -593,25 +554,43 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
+        }
+    },
+    "免费召唤检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    9,
+                    143,
+                    411,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
         },
         "next": [
-            "点击金钥宝库防止jumpback卡死"
-        ],
+            "点击进入召唤页面"
+        ]
+    },
+    "忍币召唤结束标志": {
+        "enabled": true,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "银钥匙不足"
-                ],
                 "roi": [
-                    501,
-                    76,
-                    255,
-                    84
+                    643,
+                    617,
+                    147,
+                    76
+                ],
+                "expected": [
+                    "4000|8000"
                 ]
-            },
-            "type": "OCR"
+            }
         }
     }
 }
