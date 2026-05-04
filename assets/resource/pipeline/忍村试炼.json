@@ -11,10 +11,8 @@
         ]
     },
     "包子5结束": {
-        "next": [
-            "忍村试炼返回"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1174,
@@ -28,15 +26,15 @@
                 "threshold": [
                     0.91
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "包子6结束": {
+            }
+        },
         "next": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "包子6结束": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1174,
@@ -50,15 +48,15 @@
                 "threshold": [
                     0.91
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "包子7结束": {
+            }
+        },
         "next": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "包子7结束": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1174,
@@ -72,15 +70,15 @@
                 "threshold": [
                     0.91
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "包子8结束": {
+            }
+        },
         "next": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "包子8结束": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1174,
@@ -94,15 +92,15 @@
                 "threshold": [
                     0.91
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "包子9结束": {
+            }
+        },
         "next": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "包子9结束": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1174,
@@ -116,12 +114,24 @@
                 "threshold": [
                     0.91
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "忍村试炼返回"
+        ]
     },
-    "向右滑动": {
+    "向右滑动找忍村试炼": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 10
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     1200,
@@ -140,15 +150,14 @@
                 "end_hold": [
                     400
                 ]
-            },
-            "type": "Swipe"
+            }
         }
     },
     "忍村试炼entry": {
         "next": [
             {
-                "jump_back": true,
-                "name": "忍村试炼入口"
+                "name": "忍村试炼入口",
+                "jump_back": true
             },
             "忍村试炼任务出错"
         ]
@@ -158,13 +167,13 @@
     },
     "忍村试炼任务完成": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
                     "node_name": "忍村试炼任务出错"
                 }
-            },
-            "type": "Custom"
+            }
         },
         "focus": "任务完成：忍村试炼✅"
     },
@@ -175,14 +184,8 @@
         ]
     },
     "忍村试炼再次返回": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "忍村试炼回到主页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -193,24 +196,18 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "忍村试炼回到主页面": {
+            }
+        },
         "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "忍村试炼入口"
-                }
-            },
-            "type": "Custom"
+            "type": "Click"
         },
         "next": [
-            "忍村试炼任务完成"
-        ],
+            "忍村试炼回到主页面"
+        ]
+    },
+    "忍村试炼回到主页面": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -221,47 +218,50 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "忍村试炼确定": {
+            }
+        },
         "action": {
-            "param": {},
-            "type": "Click"
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍村试炼入口"
+                }
+            }
         },
         "next": [
-            "准备扫荡"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 300
-        },
+            "忍村试炼任务完成"
+        ]
+    },
+    "忍村试炼确定": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     438,
                     523,
                     439,
                     193
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "忍村试炼返回": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
+        "post_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
+        },
         "next": [
-            "忍村试炼再次返回"
-        ],
-        "post_wait_freezes": 300,
+            "准备扫荡"
+        ]
+    },
+    "忍村试炼返回": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -272,9 +272,15 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 300,
+        "next": [
+            "忍村试炼再次返回"
+        ]
     },
     "没有扫荡按钮": {
         "next": [
@@ -282,15 +288,8 @@
         ]
     },
     "点击忍村试炼": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "移动至最右侧"
-        ],
-        "post_wait_freezes": 1000,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -301,36 +300,42 @@
                 "template": [
                     "忍村试炼.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击扫荡": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "忍村试炼确定",
-            "试炼购买饭团"
-        ],
+            "忍村试炼页面",
+            "点击忍村试炼"
+        ]
+    },
+    "点击扫荡": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "扫荡"
-                ],
                 "roi": [
                     750,
                     574,
                     190,
                     113
+                ],
+                "expected": [
+                    "扫荡"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "忍村试炼确定",
+            "试炼购买饭团"
+        ]
     },
     "移动至最右侧": {
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     1200,
@@ -346,9 +351,10 @@
                         1
                     ]
                 ]
-            },
-            "type": "Swipe"
+            }
         },
+        "repeat": 4,
+        "repeat_delay": 200,
         "next": [
             "试炼关卡1",
             "试炼关卡2",
@@ -356,132 +362,115 @@
             "试炼关卡4",
             "试炼关卡5",
             "忍村试炼返回"
-        ],
-        "repeat": 4,
-        "repeat_delay": 200
+        ]
     },
     "识别试炼关卡数字-1": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    3,
-                    94,
-                    -11,
-                    -16
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "准备扫荡"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    1,
+                    219,
+                    1270,
+                    31
+                ],
                 "expected": [
                     "第50关"
-                ],
-                "roi": [
-                    1,
-                    219,
-                    1270,
-                    31
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    3,
+                    94,
+                    -11,
+                    -16
+                ]
+            }
+        },
+        "next": [
+            "准备扫荡"
+        ]
     },
     "识别试炼关卡数字-2": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    3,
-                    94,
-                    -11,
-                    -16
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "准备扫荡"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    1,
+                    219,
+                    1270,
+                    31
+                ],
                 "expected": [
                     "第49关"
-                ],
-                "roi": [
-                    1,
-                    219,
-                    1270,
-                    31
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    3,
+                    94,
+                    -11,
+                    -16
+                ]
+            }
+        },
+        "next": [
+            "准备扫荡"
+        ]
     },
     "识别试炼关卡数字-3": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    3,
-                    94,
-                    -11,
-                    -16
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "准备扫荡"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    1,
+                    219,
+                    1270,
+                    31
+                ],
                 "expected": [
                     "第48关"
-                ],
-                "roi": [
-                    1,
-                    219,
-                    1270,
-                    31
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    3,
+                    94,
+                    -11,
+                    -16
+                ]
+            }
+        },
+        "next": [
+            "准备扫荡"
+        ]
     },
     "识别试炼关卡数字-4": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    3,
-                    94,
-                    -11,
-                    -16
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "准备扫荡"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    1,
+                    219,
+                    1270,
+                    31
+                ],
                 "expected": [
                     "第47关"
-                ],
-                "roi": [
-                    1,
-                    219,
-                    1270,
-                    31
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "识别试炼关卡数字-5": {
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     3,
@@ -489,162 +478,189 @@
                     -11,
                     -16
                 ]
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "准备扫荡"
-        ],
+        ]
+    },
+    "识别试炼关卡数字-5": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "第46关"
-                ],
                 "roi": [
                     1,
                     219,
                     1270,
                     31
+                ],
+                "expected": [
+                    "第46关"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    3,
+                    94,
+                    -11,
+                    -16
+                ]
+            }
+        },
+        "next": [
+            "准备扫荡"
+        ]
     },
     "识别集会所1": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "集会所.png"
+                ],
+                "green_mask": true
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "点击忍村试炼",
             {
-                "jump_back": true,
-                "name": "向右滑动"
-            }
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "template": [
-                    "集会所.png"
-                ]
+                "name": "悬赏讨伐失败1",
+                "jump_back": true
             },
-            "type": "TemplateMatch"
-        }
+            {
+                "name": "向右滑动找忍村试炼",
+                "jump_back": true
+            }
+        ]
     },
     "试炼关卡1": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "timeout": 5000,
         "next": [
             "识别试炼关卡数字-1",
             {
-                "jump_back": true,
-                "name": "试炼左滑1"
+                "name": "试炼左滑1",
+                "jump_back": true
             }
         ],
         "on_error": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "试炼关卡2": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 5000
-    },
-    "试炼关卡2": {
+        "timeout": 5000,
         "next": [
             "识别试炼关卡数字-2",
             {
-                "jump_back": true,
-                "name": "试炼左滑2"
+                "name": "试炼左滑2",
+                "jump_back": true
             }
         ],
         "on_error": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "试炼关卡3": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 5000
-    },
-    "试炼关卡3": {
+        "timeout": 5000,
         "next": [
             "识别试炼关卡数字-3",
             {
-                "jump_back": true,
-                "name": "试炼左滑3"
+                "name": "试炼左滑3",
+                "jump_back": true
             }
         ],
         "on_error": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "试炼关卡4": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 5000
-    },
-    "试炼关卡4": {
+        "timeout": 5000,
         "next": [
             "识别试炼关卡数字-4",
             {
-                "jump_back": true,
-                "name": "试炼左滑4"
+                "name": "试炼左滑4",
+                "jump_back": true
             }
         ],
         "on_error": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "试炼关卡5": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 5000
-    },
-    "试炼关卡5": {
+        "timeout": 5000,
         "next": [
             "识别试炼关卡数字-5",
             {
-                "jump_back": true,
-                "name": "试炼左滑5"
+                "name": "试炼左滑5",
+                "jump_back": true
             }
         ],
         "on_error": [
             "忍村试炼返回"
-        ],
+        ]
+    },
+    "试炼左滑1": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
-                    "target": 1
+                    "target": 20
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 5000
-    },
-    "试炼左滑1": {
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     100,
@@ -663,21 +679,21 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "试炼左滑2": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     100,
@@ -696,21 +712,21 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "试炼左滑3": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     100,
@@ -729,21 +745,21 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "试炼左滑4": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     100,
@@ -762,21 +778,21 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "试炼左滑5": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     100,
@@ -795,21 +811,26 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "试炼购买饭团": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    544,
+                    176,
+                    192,
+                    127
+                ],
+                "expected": [
+                    "购买饭团"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     887,
@@ -817,41 +838,64 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_delay": 500,
         "next": [
             "忍村试炼返回"
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "购买饭团"
-                ],
-                "roi": [
-                    544,
-                    176,
-                    192,
-                    127
-                ]
-            },
-            "type": "OCR"
-        }
+        ]
     },
     "重置忍村试炼内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "识别集会所1",
             {
-                "jump_back": true,
-                "name": "back"
+                "name": "back",
+                "jump_back": true
             }
         ]
+    },
+    "忍村试炼页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    8,
+                    595,
+                    246,
+                    122
+                ],
+                "expected": [
+                    "关卡列表"
+                ]
+            }
+        },
+        "next": [
+            "移动至最右侧"
+        ]
+    },
+    "悬赏讨伐失败1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    500,
+                    465,
+                    285,
+                    247
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     }
 }
