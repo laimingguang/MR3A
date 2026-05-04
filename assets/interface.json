@@ -90,7 +90,11 @@
         },
         {
             "name": "每日悬赏",
-            "entry": "每日悬赏entry"
+            "entry": "每日悬赏entry",
+            "option": [
+                "每日悬赏族员组队超时时间",
+                "每日悬赏好友组队超时时间"
+            ]
         },
         {
             "name": "3v3（仅支持困难图）",
@@ -639,6 +643,56 @@
                     }
                 }
             ]
+        },
+        "每日悬赏族员组队超时时间": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "邀请族员超时时间",
+                    "description": "未持有神龙契约时，脚本会尝试邀请家族成员完成每日悬赏任务。在邀请界面停留超过此处设定的时间后，将跳过本次族员邀请并继续后续流程。请填写**正整数秒**（例如 180 表示 3 分钟）。",
+                    "default": "180",
+                    "pipeline_type": "string",
+                    "verify": "^[1-9]\\d{0,5}$",
+                    "pattern_msg": "请输入 1～999999 之间的整数秒"
+                }
+            ],
+            "pipeline_override": {
+                "每日悬赏家族组队显示未完成": {
+                    "action": {
+                        "param": {
+                            "custom_action_param": {
+                                "duration_ms": "{邀请族员超时时间}000",
+                                "scope": "每日悬赏家族组队deadline"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "每日悬赏好友组队超时时间": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "邀请好友超时时间",
+                    "description": "未持有神龙契约时，脚本会尝试邀请好友完成每日悬赏任务。在邀请界面停留超过此处设定的时间后，将跳过本次好友邀请并继续后续流程。请填写**正整数秒**（例如 180 表示 3 分钟）。",
+                    "default": "180",
+                    "pipeline_type": "string",
+                    "verify": "^[1-9]\\d{0,5}$",
+                    "pattern_msg": "请输入 1～999999 之间的整数秒"
+                }
+            ],
+            "pipeline_override": {
+                "每日悬赏好友组队显示未完成": {
+                    "action": {
+                        "param": {
+                            "custom_action_param": {
+                                "duration_ms": "{邀请好友超时时间}000",
+                                "scope": "每日悬赏好友组队deadline"
+                            }
+                        }
+                    }
+                }
+            }
         },
         "满了也刷（最好不要）": {
             "type": "switch",
