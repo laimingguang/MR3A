@@ -6,6 +6,7 @@ __all__ = [
     "LoopDeadlineArm",
     "LoopDeadlineReset",
     "DisableNode",
+    "EnableNode",
     "NodeOverride",
     "ResetCount",
     "AddExpected",

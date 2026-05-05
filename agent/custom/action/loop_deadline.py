@@ -4,7 +4,7 @@ from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
 
-from custom.loop_deadline.params import normalize_duration_ms, parse_pipeline_json_param
+from custom.pipeline_params import normalize_duration_ms, parse_pipeline_json_param
 from custom.loop_deadline.store import LoopDeadlineStore
 from utils import logger
 

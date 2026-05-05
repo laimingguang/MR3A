@@ -17,6 +17,45 @@ from maa.define import (
 
 from utils import logger
 from custom.reco import Count
+from custom.pipeline_params import parse_pipeline_json_param
+
+
+def _run_set_node_enabled(
+    context: Context,
+    argv: CustomAction.RunArg,
+    enabled: bool,
+) -> CustomAction.RunResult:
+    label = "EnableNode" if enabled else "DisableNode"
+    try:
+        param = parse_pipeline_json_param(argv.custom_action_param)
+    except (json.JSONDecodeError, TypeError) as e:
+        logger.error(f"{label}: 参数解析失败: {e}")
+        return CustomAction.RunResult(success=False)
+
+    if not param:
+        logger.error(f"{label}: custom_action_param 为空，缺少 node_name")
+        return CustomAction.RunResult(success=False)
+
+    node_name = param.get("node_name")
+    if not isinstance(node_name, str):
+        logger.error(
+            f"{label}: node_name 必须为字符串，实际为 {type(node_name).__name__}"
+        )
+        return CustomAction.RunResult(success=False)
+
+    name = node_name.strip()
+    if not name:
+        logger.error(f"{label}: node_name 为空或仅空白")
+        return CustomAction.RunResult(success=False)
+
+    if not context.override_pipeline({name: {"enabled": enabled}}):
+        logger.error(
+            f"{label}: override_pipeline 失败 (node={name!r}, enabled={enabled})"
+        )
+        return CustomAction.RunResult(success=False)
+
+    logger.debug(f"{label}: {name!r} -> enabled={enabled}")
+    return CustomAction.RunResult(success=True)
 
 
 def _box_to_center(box: object) -> Optional[Tuple[int, int]]:
@@ -75,12 +114,15 @@ def _iter_rects_from_filtered_item(
 @AgentServer.custom_action("DisableNode")
 class DisableNode(CustomAction):
     """
-    将特定 node 设置为 disable 状态 。
+    将特定 node 设置为禁用（enabled: false）。
 
     参数格式:
     {
         "node_name": "结点名称"
     }
+
+    custom_action_param 须为 JSON 字符串或可序列化为对象的 dict。
+    node_name 须为非空字符串；解析失败或 override_pipeline 失败时返回 success=False。
     """
 
     def run(
@@ -88,12 +130,29 @@ class DisableNode(CustomAction):
         context: Context,
         argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
+        return _run_set_node_enabled(context, argv, False)
 
-        node_name = json.loads(argv.custom_action_param)["node_name"]
 
-        context.override_pipeline({f"{node_name}": {"enabled": False}})
+@AgentServer.custom_action("EnableNode")
+class EnableNode(CustomAction):
+    """
+    将特定 node 设置为启用（enabled: true）。
 
-        return CustomAction.RunResult(success=True)
+    参数格式:
+    {
+        "node_name": "结点名称"
+    }
+
+    custom_action_param 须为 JSON 字符串或可序列化为对象的 dict。
+    node_name 须为非空字符串；解析失败或 override_pipeline 失败时返回 success=False。
+    """
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        return _run_set_node_enabled(context, argv, True)
 
 
 @AgentServer.custom_action("NodeOverride")

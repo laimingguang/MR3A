@@ -5,7 +5,7 @@ from maa.context import Context
 from maa.custom_recognition import CustomRecognition
 from maa.define import RectType
 
-from custom.loop_deadline.params import parse_pipeline_json_param
+from custom.pipeline_params import parse_pipeline_json_param
 from custom.loop_deadline.store import LoopDeadlineStore
 from utils import logger
 
