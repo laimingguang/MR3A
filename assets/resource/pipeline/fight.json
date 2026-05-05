@@ -1,46 +1,105 @@
 {
+    "common_boss_delay": {
+        "pre_delay": 0,
+        "post_delay": 2400,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
     "fight": {
         "next": [
-            "发现下滑按钮",
-            "发现下翻按钮"
-        ],
-        "rate_limit": 200,
-        "timeout": 120000
+            "fight_common",
+            "fight_better"
+        ]
     },
-    "发现boss": {
+    "fight_better": {
+        "timeout": 120000,
+        "rate_limit": 200,
         "next": [
-            "转绳上"
-        ],
-        "post_delay": 0,
+            "发现下滑按钮_bt",
+            "发现下翻按钮_bt"
+        ]
+    },
+    "fight_better_boss_delay": {
         "pre_delay": 0,
-        "rate_limit": 100,
+        "post_delay": 0,
+        "next": [
+            "common_boss_delay",
+            "血影80delay",
+            "青炎剑80delay",
+            "歼灭者V型80delay",
+            "新建节点10"
+        ]
+    },
+    "fight_common": {
+        "timeout": 120000,
+        "rate_limit": 200,
+        "next": [
+            "发现下滑按钮_cm",
+            "发现下翻按钮_cm"
+        ]
+    },
+    "发现boss_cm": {
         "recognition": {
+            "type": "ColorMatch",
             "param": {
-                "count": 300,
-                "lower": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
-                ],
                 "roi": [
                     225,
                     361,
                     20,
                     20
                 ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
                 "upper": [
                     255,
                     255,
                     255
-                ]
-            },
-            "type": "ColorMatch"
-        }
+                ],
+                "count": 300
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 100,
+        "next": [
+            "转绳上_cm"
+        ]
     },
-    "发现下滑按钮": {
+    "发现下滑按钮_bt": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    230,
+                    612,
+                    1,
+                    1
+                ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "upper": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     230,
@@ -48,36 +107,35 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_delay": 0,
+        "timeout": 15000,
+        "rate_limit": 100,
         "next": [
-            {
-                "jump_back": true,
-                "name": "持续点击下滑按钮"
-            },
-            "发现boss"
+            "[JumpBack]持续点击下滑按钮_bt",
+            "转绳上_bt"
         ],
         "on_error": [
-            "没见到boss就被打死了"
-        ],
-        "post_delay": 0,
-        "pre_delay": 0,
-        "rate_limit": 100,
+            "没见到boss就被打死了_bt"
+        ]
+    },
+    "发现下滑按钮_cm": {
         "recognition": {
+            "type": "ColorMatch",
             "param": {
+                "roi": [
+                    230,
+                    612,
+                    1,
+                    1
+                ],
                 "lower": [
                     [
                         255,
                         255,
                         255
                     ]
-                ],
-                "roi": [
-                    230,
-                    612,
-                    1,
-                    1
                 ],
                 "upper": [
                     [
@@ -86,71 +144,41 @@
                         255
                     ]
                 ]
-            },
-            "type": "ColorMatch"
+            }
         },
-        "timeout": 15000
-    },
-    "发现下翻按钮": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    230,
+                    612,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 0,
+        "timeout": 15000,
+        "rate_limit": 100,
         "next": [
-            "发现boss"
+            "[JumpBack]持续点击下滑按钮_cm",
+            "发现boss_cm"
         ],
         "on_error": [
-            "没见到boss就被打死了"
-        ],
-        "post_delay": 0,
-        "pre_delay": 0,
-        "rate_limit": 100,
+            "没见到boss就被打死了_cm"
+        ]
+    },
+    "发现下翻按钮_bt": {
         "recognition": {
+            "type": "ColorMatch",
             "param": {
-                "lower": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
-                ],
                 "roi": [
                     189,
                     606,
                     1,
                     1
                 ],
-                "upper": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
-                ]
-            },
-            "type": "ColorMatch"
-        }
-    },
-    "开大": {
-        "action": {
-            "param": {
-                "custom_action": "fight"
-            },
-            "type": "Custom"
-        }
-    },
-    "持续点击下滑按钮": {
-        "action": {
-            "param": {
-                "target": [
-                    230,
-                    612,
-                    1,
-                    1
-                ]
-            },
-            "type": "Click"
-        },
-        "post_delay": 0,
-        "pre_delay": 0,
-        "recognition": {
-            "param": {
                 "lower": [
                     [
                         255,
@@ -158,11 +186,41 @@
                         255
                     ]
                 ],
+                "upper": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 100,
+        "next": [
+            "转绳上_bt"
+        ],
+        "on_error": [
+            "没见到boss就被打死了_bt"
+        ]
+    },
+    "发现下翻按钮_cm": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
                 "roi": [
-                    230,
-                    612,
+                    189,
+                    606,
                     1,
                     1
+                ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
                 ],
                 "upper": [
                     [
@@ -171,25 +229,187 @@
                         255
                     ]
                 ]
-            },
-            "type": "ColorMatch"
-        }
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 100,
+        "next": [
+            "发现boss_cm"
+        ],
+        "on_error": [
+            "没见到boss就被打死了_cm"
+        ]
     },
-    "没见到boss就被打死了": {},
-    "转绳上": {
+    "开大_bt": {
+        "pre_delay": 0,
         "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "fight",
+                "custom_action_param": {
+                    "mode": 0
+                }
+            }
+        },
+        "post_delay": 0
+    },
+    "开大_cm": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "fight"
+            }
+        },
+        "post_delay": 0
+    },
+    "持续点击下滑按钮_bt": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    230,
+                    612,
+                    1,
+                    1
+                ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "upper": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    230,
+                    612,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 0
+    },
+    "持续点击下滑按钮_cm": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    230,
+                    612,
+                    1,
+                    1
+                ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "upper": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    230,
+                    612,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 0
+    },
+    "新建节点10": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "歼灭者V型80delay": {
+        "pre_delay": 0,
+        "post_delay": 3500,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "没见到boss就被打死了_bt": {},
+    "没见到boss就被打死了_cm": {},
+    "用户配置延迟": {
+        "pre_delay": 5000,
+        "next": [
+            "开大_bt"
+        ]
+    },
+    "血影80delay": {
+        "pre_delay": 0,
+        "post_delay": 2400,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "转绳上_bt": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     1090,
                     620
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "next": [
-            "开大"
-        ],
         "post_delay": 0,
-        "pre_delay": 0
+        "next": [
+            "fight_better_boss_delay"
+        ]
+    },
+    "转绳上_cm": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    620
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "开大_cm"
+        ]
+    },
+    "青炎剑80delay": {
+        "pre_delay": 0,
+        "post_delay": 3000,
+        "next": [
+            "用户配置延迟"
+        ]
     }
 }

@@ -262,6 +262,7 @@
             }
         },
         "timeout": 56000,
+        "rate_limit": 300,
         "next": [
             "[JumpBack]每日悬赏点击出发",
             "每日悬赏识别到进入了战斗"
@@ -300,7 +301,7 @@
             "threshold": 0.8
         },
         "next": [
-            "每日悬赏点击邀请好友",
+            "每日悬赏队伍页面",
             "每日悬赏创建队伍"
         ]
     },
@@ -951,7 +952,8 @@
         },
         "next": [
             "每日悬赏组队点开了邀请好友",
-            "每日悬赏组队页面点击好友"
+            "每日悬赏组队页面点击好友",
+            "每日悬赏点击邀请好友"
         ]
     },
     "每日悬赏组队页面点击聊天": {
@@ -998,7 +1000,8 @@
         },
         "next": [
             "每日悬赏组队点开了邀请族员",
-            "每日悬赏组队页面点击邀请族员"
+            "每日悬赏组队页面点击邀请族员",
+            "每日悬赏点击邀请好友"
         ]
     },
     "每日悬赏结算确定": {
@@ -1566,6 +1569,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "timeout": 60000,
+        "rate_limit": 300,
         "next": [
             "邀请模块再次展开了聊天",
             "[JumpBack]邀请模块识别并点击点击邀请好友",
@@ -1631,5 +1635,411 @@
         "next": [
             "每日悬赏完成回到了主页面"
         ]
+    },
+    "每日悬赏队伍页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    517,
+                    233,
+                    244,
+                    251
+                ],
+                "expected": [
+                    "点击邀请好友"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "next": [
+            "识别到血影 Lv.80",
+            "识别到青炎剑 Lv.80",
+            "识别到歼灭者V型 Lv.80",
+            "未知boss"
+        ]
+    },
+    "识别到歼灭者V型 Lv.80": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    267,
+                    6,
+                    737,
+                    141
+                ],
+                "expected": [
+                    "歼灭者V型.+80"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "fight": {
+                        "next": [
+                            "fight_better"
+                        ]
+                    },
+                    "fight_better_boss_delay": {
+                        "next": [
+                            "歼灭者V型80delay"
+                        ]
+                    }
+                }
+            }
+        },
+        "next": [
+            "识别角色"
+        ]
+    },
+    "识别到血影 Lv.80": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    267,
+                    6,
+                    737,
+                    141
+                ],
+                "expected": [
+                    "血影.+80"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "fight": {
+                        "next": [
+                            "fight_better"
+                        ]
+                    },
+                    "fight_better_boss_delay": {
+                        "next": [
+                            "血影80delay"
+                        ]
+                    }
+                }
+            }
+        },
+        "next": [
+            "识别角色"
+        ]
+    },
+    "识别到青炎剑 Lv.80": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    267,
+                    6,
+                    737,
+                    141
+                ],
+                "expected": [
+                    "青炎剑.+80"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "fight": {
+                        "next": [
+                            "fight_better"
+                        ]
+                    },
+                    "fight_better_boss_delay": {
+                        "next": [
+                            "青炎剑80delay"
+                        ]
+                    }
+                }
+            }
+        },
+        "next": [
+            "识别角色"
+        ]
+    },
+    "未知boss": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "fight": {
+                        "next": [
+                            "fight_common"
+                        ]
+                    }
+                }
+            }
+        },
+        "next": [
+            "识别角色"
+        ]
+    },
+    "识别角色": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]识别角色模块",
+            "每日悬赏点击邀请好友"
+        ]
+    },
+    "识别角色模块": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "进入忍者页面",
+            "[JumpBack]点击战斗部署"
+        ]
+    },
+    "点击战斗部署": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    282,
+                    593,
+                    709,
+                    122
+                ],
+                "expected": [
+                    "战斗部署|者"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 400
+    },
+    "进入忍者页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "忍者.png"
+                ]
+            }
+        },
+        "next": [
+            "进入命格页面",
+            "[JumpBack]点击命格"
+        ]
+    },
+    "点击命格": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1080,
+                    63,
+                    192,
+                    157
+                ],
+                "template": [
+                    "命.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "进入命格页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "命格.png"
+                ]
+            }
+        },
+        "next": [
+            "识别到双焰",
+            "识别到剑心",
+            "普通角色"
+        ]
+    },
+    "识别到双焰": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    75,
+                    144,
+                    292,
+                    105
+                ],
+                "expected": [
+                    "双焰"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "开大_bt": {
+                        "action": {
+                            "param": {
+                                "custom_action_param": {
+                                    "mode": 1
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "识别角色结束"
+        ]
+    },
+    "识别到剑心": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    75,
+                    144,
+                    292,
+                    105
+                ],
+                "expected": [
+                    "剑心"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "开大_bt": {
+                        "action": {
+                            "param": {
+                                "custom_action_param": {
+                                    "mode": 2
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "识别角色结束"
+        ]
+    },
+    "普通角色": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "NodeOverride",
+                "custom_action_param": {
+                    "开大_bt": {
+                        "action": {
+                            "param": {
+                                "custom_action_param": {
+                                    "mode": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "识别角色结束"
+        ]
+    },
+    "识别角色结束": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "命格页面返回忍者页面",
+            "[JumpBack]新建节点20"
+        ]
+    },
+    "忍者页面返回队伍页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    517,
+                    233,
+                    244,
+                    251
+                ],
+                "expected": [
+                    "点击邀请好友"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "命格页面返回忍者页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "忍者.png"
+                ]
+            }
+        },
+        "next": [
+            "忍者页面返回队伍页面",
+            "[JumpBack]新建节点20"
+        ]
+    },
+    "新建节点20": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
     }
 }
