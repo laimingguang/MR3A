@@ -17,7 +17,11 @@ def parse_pipeline_json_param(raw: JsonParam) -> Dict[str, Any]:
         s = raw.strip()
         if not s:
             return {}
-        return json.loads(s)
+        parsed: Any = json.loads(s)
+        # 顶层 JSON null / 数组 / 标量等不是对象时，按「无参」处理，避免 .get 报错
+        if isinstance(parsed, dict):
+            return parsed
+        return {}
     raise TypeError(
         f"custom_*_param 应为 JSON 字符串或 dict，实际为 {type(raw).__name__}"
     )

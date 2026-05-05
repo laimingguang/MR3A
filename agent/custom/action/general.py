@@ -165,6 +165,17 @@ class NodeOverride(CustomAction):
         "node_name": {"被覆盖参数": "覆盖值",...},
         "node_name1": {"被覆盖参数": "覆盖值",...}
     }
+    
+    {
+        "fight": {
+            "next": [
+                "fight_better"
+            ]
+        },
+        "fight_better_delay": {
+            "next": ["歼灭者V型 Lv.80delay"]
+        }
+    }
     """
 
     def run(
