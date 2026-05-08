@@ -1,7 +1,8 @@
-import time
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
+
+from custom.interruptible import interruptible_click, TaskStopRequested
 
 @AgentServer.custom_action("my_3v3_kn_an_p1")
 class my_3v3_kn_an_p1(CustomAction):
@@ -17,13 +18,10 @@ class my_3v3_kn_an_p1(CustomAction):
         其中 x,y 是点击坐标，t 是延迟时间（毫秒）
         """
         try:
-            # 执行点击操作的函数
             def click(x, y, delay_ms=0):
-                """执行点击并延迟"""
-                context.tasker.controller.post_click(x, y).wait()
-                if delay_ms > 0:
-                    time.sleep(delay_ms / 1000)
-            
+                if not interruptible_click(context, x, y, delay_ms):
+                    raise TaskStopRequested
+
             # ===================
             # 在这里添加你的点击序列
             # ===================
@@ -56,8 +54,10 @@ class my_3v3_kn_an_p1(CustomAction):
             # ===================
             # 结束点击序列
             # ===================
-            
+
             return CustomAction.RunResult(success=True)
+        except TaskStopRequested:
+            return CustomAction.RunResult(success=False)
         except Exception as e:
             import logging
             logging.error(f"执行3v3点击时出错: {e}")
