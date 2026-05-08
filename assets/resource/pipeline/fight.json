@@ -1,7 +1,7 @@
 {
     "common_boss_delay": {
         "pre_delay": 0,
-        "post_delay": 2400,
+        "post_delay": 4000,
         "next": [
             "用户配置延迟"
         ]
@@ -28,7 +28,9 @@
             "血影80delay",
             "青炎剑80delay",
             "歼灭者V型80delay",
-            "新建节点10"
+            "鬼头陀80delay",
+            "焰纹黑龙80delay",
+            "刀疤蝠80delay"
         ]
     },
     "fight_common": {
@@ -344,16 +346,9 @@
         },
         "post_delay": 0
     },
-    "新建节点10": {
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "用户配置延迟"
-        ]
-    },
     "歼灭者V型80delay": {
         "pre_delay": 0,
-        "post_delay": 3500,
+        "post_delay": 3700,
         "next": [
             "用户配置延迟"
         ]
@@ -362,13 +357,15 @@
     "没见到boss就被打死了_cm": {},
     "用户配置延迟": {
         "pre_delay": 5000,
+        "post_delay": 0,
+        "rate_limit": 100,
         "next": [
-            "开大_bt"
+            "测试延迟节点"
         ]
     },
     "血影80delay": {
         "pre_delay": 0,
-        "post_delay": 2400,
+        "post_delay": 2900,
         "next": [
             "用户配置延迟"
         ]
@@ -407,7 +404,36 @@
     },
     "青炎剑80delay": {
         "pre_delay": 0,
-        "post_delay": 3000,
+        "post_delay": 3700,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "鬼头陀80delay": {
+        "pre_delay": 0,
+        "post_delay": 8600,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "测试延迟节点": {
+        "inverse": true,
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
+    },
+    "焰纹黑龙80delay": {
+        "pre_delay": 0,
+        "post_delay": 9000,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
+    "刀疤蝠80delay": {
+        "pre_delay": 0,
+        "post_delay": 6500,
         "next": [
             "用户配置延迟"
         ]
