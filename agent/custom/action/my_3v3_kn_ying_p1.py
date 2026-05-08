@@ -1,7 +1,8 @@
-import time
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
+
+from custom.interruptible import interruptible_click, TaskStopRequested
 
 @AgentServer.custom_action("my_3v3_kn_ying_p1")
 class my_3v3_kn_ying_p1(CustomAction):
@@ -17,47 +18,86 @@ class my_3v3_kn_ying_p1(CustomAction):
         其中 x,y 是点击坐标，t 是延迟时间（毫秒）
         """
         try:
-            # 执行点击操作的函数
             def click(x, y, delay_ms=0):
-                """执行点击并延迟"""
-                context.tasker.controller.post_click(x, y).wait()
-                if delay_ms > 0:
-                    time.sleep(delay_ms / 1000)
-            
+                if not interruptible_click(context, x, y, delay_ms):
+                    raise TaskStopRequested
+
             # ===================
             # 在这里添加你的点击序列
             # ===================
             # click(200, 620, t) 为下翻
             # click(1100, 620, t) 为跳跃
-            click(1, 1, 3069)
+            click(1, 1, 3040)
             click(1100, 620, 320)
-            click(1100, 620, 1110)
-            click(1100, 620, 302)
-            click(1100, 620, 1112)
-            click(1100, 620, 112)
-            click(1100, 620, 112)
-            click(200, 620, 212)
-            click(1100, 620, 672)
-            click(1100, 620, 502)
-            click(1100, 620, 128)
-            click(200, 620, 99)
-            click(1100, 620, 419)
-            click(200, 620, 199)
-            click(1100, 620, 419)
-            click(1100, 620, 450)
-            click(200, 620, 15650)
-            click(1100, 620, 2700)
-            click(1100, 620, 1600)
-            click(1100, 620, 1000)
-            click(1100, 620, 1000)
-            click(1100, 620, 250)
-            click(1100, 620, 250)
-            click(1100, 620, 7000)
+            click(1100, 620, 750)
+            click(200, 620, 400)
+            click(1100, 620, 300)
+            click(1100, 620, 550)
+            click(200, 620, 650)
+            click(1100, 620,2900)
+
+            click(1100, 620, 300)
+            click(1100, 620,670)
+            click(200, 620, 100)
+            click(1100, 620,300)
+            click(1100, 620,1000)
+
+            click(1100, 620,300)
+            click(1100, 620,500)
+            click(200, 620, 450)
+
+            click(1100, 620,300)
+            click(200, 620, 300)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 400)
+
+            click(1100, 620,400)
+            click(200, 620, 3000)
+
+            click(200, 620, 1000)
+            click(200, 620, 1000)
+            click(200, 620, 1000)
+            click(200, 620, 1000)
+            click(200, 620, 4500)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 1800)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 900)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 500)
+
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 400)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 200)
+
+            click(1100, 620,300)
+            click(1100, 620,300)
+            click(200, 620, 600)
+
+            click(200, 620, 1000)
+            click(200, 620, 1000)
+            click(200, 620, 5000)
+
             # ===================
             # 结束点击序列
             # ===================
-            
+
             return CustomAction.RunResult(success=True)
+        except TaskStopRequested:
+            return CustomAction.RunResult(success=False)
         except Exception as e:
             import logging
             logging.error(f"执行3v3点击时出错: {e}")
