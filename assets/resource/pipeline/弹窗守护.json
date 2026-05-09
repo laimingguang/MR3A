@@ -1,0 +1,21 @@
+{
+    "好友弹窗取消邀请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    406,
+                    485,
+                    129,
+                    80
+                ],
+                "expected": [
+                    "拒绝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}
