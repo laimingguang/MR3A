@@ -649,7 +649,7 @@
             "type": "input",
             "inputs": [
                 {
-                    "name": "邀请族员超时时间",
+                    "name": "邀请族员超时时间（秒）",
                     "description": "未持有神龙契约时，脚本会尝试邀请家族成员完成每日悬赏任务。在邀请界面停留超过此处设定的时间后，将跳过本次族员邀请并继续后续流程。请填写**正整数秒**（例如 180 表示 3 分钟）。",
                     "default": "180",
                     "pipeline_type": "string",
@@ -662,7 +662,7 @@
                     "action": {
                         "param": {
                             "custom_action_param": {
-                                "duration_ms": "{邀请族员超时时间}000",
+                                "duration_ms": "{邀请族员超时时间（秒）}000",
                                 "scope": "每日悬赏家族组队deadline"
                             }
                         }
@@ -674,7 +674,7 @@
             "type": "input",
             "inputs": [
                 {
-                    "name": "邀请好友超时时间",
+                    "name": "邀请好友超时时间（秒）",
                     "description": "同上",
                     "default": "180",
                     "pipeline_type": "string",
@@ -687,7 +687,7 @@
                     "action": {
                         "param": {
                             "custom_action_param": {
-                                "duration_ms": "{邀请好友超时时间}000",
+                                "duration_ms": "{邀请好友超时时间（秒）}000",
                                 "scope": "每日悬赏好友组队deadline"
                             }
                         }
@@ -699,7 +699,7 @@
             "type": "input",
             "inputs": [
                 {
-                    "name": "悬赏开大前的延迟时间",
+                    "name": "开大前间隔（毫秒）",
                     "description": "每日悬赏下滑上翻后到开大的延迟时间，数值越大开大越晚，正整数，单位毫秒。例如 5000 表示等待 5 秒后再开大。默认5000 毫秒不变即可，小椒三式推荐配置为 1000 毫秒。",
                     "default": "5000",
                     "pipeline_type": "int",
@@ -709,7 +709,7 @@
             ],
             "pipeline_override": {
                 "用户配置延迟": {
-                    "pre_delay": "{悬赏开大前延迟}"
+                    "pre_delay": "{开大前间隔（毫秒）}"
                 }
             }
         },
