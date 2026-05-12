@@ -193,8 +193,12 @@ class _WatchdogCore:
 # 模块级共享 core；两个 sink 都引用它
 _core = _WatchdogCore()
 
+# ---------------------------------------------------------------------------
+# 弹窗守护：当前关闭向 Agent 的注册（不挂 tasker_sink / context_sink）。
+# 恢复时：取消下面两处装饰器行的注释即可，无需改 main。
+# ---------------------------------------------------------------------------
 
-@AgentServer.tasker_sink()
+# @AgentServer.tasker_sink()
 class PopupWatchdog(TaskerEventSink):
     """生命周期 sink：仅打日志，便于排查启停时点。"""
 
@@ -235,7 +239,7 @@ class PopupWatchdog(TaskerEventSink):
             _core.notify_task_finished(detail.task_id)
 
 
-@AgentServer.context_sink()
+# @AgentServer.context_sink()
 class _PopupCheckSink(ContextEventSink):
     """检查 sink：在 Maa 回调线程内做节流检查。"""
 
