@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Callable, Dict, List, Mapping, MutableMapping, Optional, Sequence, Tuple, Union, cast
 
 import requests
@@ -321,6 +322,57 @@ def _leaf_value_for_override(
     return _value_to_remote_text(raw_remote)
 
 
+def _single_url_fetch_to_text(
+    u: str,
+    *,
+    method: str,
+    headers: Optional[Dict[str, Any]],
+    req_params: Optional[Dict[str, Any]],
+    json_body: Any,
+    data_body: Any,
+    timeout: Any,
+    verify: bool,
+    body_json_regex: Optional[str],
+    log_failures: bool,
+) -> Optional[str]:
+    """请求单 URL；成功返回响应体中用于 json.loads 的字符串，失败返回 None。"""
+    logf = logger.warning if log_failures else logger.debug
+    try:
+        resp = requests.request(
+            method,
+            u,
+            headers=headers,
+            params=req_params,
+            json=json_body if json_body is not None else None,
+            data=data_body,
+            timeout=timeout,
+            verify=verify,
+        )
+    except requests.RequestException as e:
+        logf(f"RemoteJsonOverrideExpected: {u} 请求异常: {e}")
+        return None
+
+    if not resp.ok:
+        logf(f"RemoteJsonOverrideExpected: {u} HTTP {resp.status_code}")
+        return None
+
+    text = resp.text
+    if body_json_regex:
+        m = re.search(body_json_regex, text, re.DOTALL)
+        if not m or not m.groups():
+            logf(f"RemoteJsonOverrideExpected: {u} body_json_regex 未匹配")
+            return None
+        text = m.group(1)
+
+    try:
+        json.loads(text)
+    except json.JSONDecodeError as e:
+        logf(f"RemoteJsonOverrideExpected: {u} JSON 无效: {e}")
+        return None
+
+    return text
+
+
 def _fetch_first_ok_json_text(
     urls: List[str],
     *,
@@ -332,48 +384,55 @@ def _fetch_first_ok_json_text(
     timeout: Any,
     verify: bool,
     body_json_regex: Optional[str],
+    parallel_mirrors: bool,
 ) -> str:
-    last_log: Optional[str] = None
-    for u in urls:
-        try:
-            resp = requests.request(
-                method,
+    if parallel_mirrors and len(urls) > 1:
+
+        def _work(u: str) -> Tuple[str, Optional[str]]:
+            return u, _single_url_fetch_to_text(
                 u,
+                method=method,
                 headers=headers,
-                params=req_params,
-                json=json_body if json_body is not None else None,
-                data=data_body,
+                req_params=req_params,
+                json_body=json_body,
+                data_body=data_body,
                 timeout=timeout,
                 verify=verify,
+                body_json_regex=body_json_regex,
+                log_failures=False,
             )
-        except requests.RequestException as e:
-            last_log = f"{u} 请求异常: {e}"
-            logger.warning(f"RemoteJsonOverrideExpected: {last_log}")
-            continue
 
-        if not resp.ok:
-            last_log = f"{u} HTTP {resp.status_code}"
-            logger.warning(f"RemoteJsonOverrideExpected: {last_log}")
-            continue
-
-        text = resp.text
-        if body_json_regex:
-            m = re.search(body_json_regex, text, re.DOTALL)
-            if not m or not m.groups():
-                last_log = f"{u} body_json_regex 未匹配"
-                logger.warning(f"RemoteJsonOverrideExpected: {last_log}")
-                continue
-            text = m.group(1)
-
+        pool = ThreadPoolExecutor(max_workers=len(urls))
         try:
-            json.loads(text)
-        except json.JSONDecodeError as e:
-            last_log = f"{u} JSON 无效: {e}"
-            logger.warning(f"RemoteJsonOverrideExpected: {last_log}")
-            continue
+            futures = [pool.submit(_work, u) for u in urls]
+            for fut in as_completed(futures):
+                u, text = fut.result()
+                if text is not None:
+                    logger.debug(f"RemoteJsonOverrideExpected: 并行竞速成功 {u}")
+                    return text
+        finally:
+            pool.shutdown(wait=False, cancel_futures=True)
 
-        logger.debug(f"RemoteJsonOverrideExpected: 使用镜像成功 {u}")
-        return text
+        raise RuntimeError("所有镜像 URL 均失败（并行）")
+
+    last_log: Optional[str] = None
+    for u in urls:
+        text = _single_url_fetch_to_text(
+            u,
+            method=method,
+            headers=headers,
+            req_params=req_params,
+            json_body=json_body,
+            data_body=data_body,
+            timeout=timeout,
+            verify=verify,
+            body_json_regex=body_json_regex,
+            log_failures=True,
+        )
+        if text is not None:
+            logger.debug(f"RemoteJsonOverrideExpected: 顺序拉取成功 {u}")
+            return text
+        last_log = f"{u} 失败"
 
     raise RuntimeError(last_log or "所有镜像 URL 均失败")
 
@@ -393,6 +452,10 @@ class RemoteJsonOverrideExpected(CustomAction):
       - 值 **对象**：须含 json_key；可选 set / target、expected_as_list（仅 expected 字段）。
 
     非 OCR 的 ``set``（如 ``action.param.input_text``）仅支持字符串/数字/布尔等标量（数字会转成字符串）。
+
+    **parallel_mirrors**（可选，默认 ``true``）：存在多个镜像 URL 时默认**并发**请求各镜像，
+    取**最先**返回且 JSON 合法的一条（更快，但同一时刻出站请求更多）；设为 ``false`` 则改为顺序尝试；仅单 URL 时始终顺序。
+    拉取成功不写入 **info**（命中镜像见 **debug**：``顺序拉取成功`` / ``并行竞速成功``）；并行时单条失败亦用 **debug**。
 
     InputText 示例::
 
@@ -488,6 +551,10 @@ class RemoteJsonOverrideExpected(CustomAction):
         json_body = param.get("json")
         data_body = param.get("data")
 
+        parallel_mirrors = param.get("parallel_mirrors", True)
+        if not isinstance(parallel_mirrors, bool):
+            parallel_mirrors = True
+
         try:
             text = _fetch_first_ok_json_text(
                 try_urls,
@@ -499,6 +566,7 @@ class RemoteJsonOverrideExpected(CustomAction):
                 timeout=timeout,
                 verify=verify,
                 body_json_regex=body_json_regex,
+                parallel_mirrors=parallel_mirrors,
             )
         except RuntimeError as e:
             logger.error(f"RemoteJsonOverrideExpected: {e}")
