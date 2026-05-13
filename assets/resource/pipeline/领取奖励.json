@@ -36,35 +36,31 @@
         ]
     },
     "领取奖励entry": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "领取奖励_神龙契约"
-            },
-            {
-                "jump_back": true,
-                "name": "领取奖励_家族祈福"
-            },
-            {
-                "jump_back": true,
-                "name": "领取奖励_好友忍币"
-            },
-            {
-                "jump_back": true,
-                "name": "领取奖励_领取邮件"
-            },
-            {
-                "jump_back": true,
-                "name": "领取奖励_忍阶任务"
-            },
-            {
-                "jump_back": true,
-                "name": "领取奖励_领取战令"
-            },
-            "领取奖励结束"
-        ],
+        "pre_delay": 0,
         "post_delay": 0,
-        "pre_delay": 0
+        "next": [
+            "[JumpBack]领取奖励_神龙契约",
+            "[JumpBack]领取奖励_家族祈福",
+            "[JumpBack]领取奖励_好友忍币",
+            "[JumpBack]领取奖励_领取邮件",
+            "[JumpBack]领取奖励_忍阶任务",
+            "[JumpBack]领取奖励_领取战令",
+            "[JumpBack]领取奖励_活动奖励",
+            "[JumpBack]领取奖励_每周兑换码",
+            "领取奖励结束"
+        ]
     },
-    "领取奖励结束": {}
+    "领取奖励结束": {},
+    "领取奖励_活动奖励": {
+        "max_hit": 1,
+        "next": [
+            "活动奖励entry"
+        ]
+    },
+    "领取奖励_每周兑换码": {
+        "max_hit": 1,
+        "next": [
+            "每周兑换码entry"
+        ]
+    }
 }

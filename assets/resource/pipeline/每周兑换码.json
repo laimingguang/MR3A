@@ -1,0 +1,352 @@
+{
+    "每周兑换码entry": {
+        "next": [
+            "[JumpBack]每周兑换码入口",
+            "每周兑换码任务出错"
+        ]
+    },
+    "每周兑换码任务出错": {
+        "focus": "任务出错：活动奖励❌"
+    },
+    "每周兑换码入口": {
+        "max_hit": 3,
+        "next": [
+            "重置每周兑换码内部节点计数器"
+        ]
+    },
+    "每周兑换码检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "next": [
+            "兑换码点击设置"
+        ]
+    },
+    "重置每周兑换码内部节点计数器": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount"
+            }
+        },
+        "next": [
+            "每周兑换码检查主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "关闭兑换码输入页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1052,
+                    16,
+                    219,
+                    170
+                ],
+                "template": [
+                    "叉叉1.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "关闭兑换码设置页面"
+        ]
+    },
+    "关闭兑换码设置页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1052,
+                    16,
+                    219,
+                    170
+                ],
+                "template": [
+                    "叉叉1.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "每周兑换码完成回到了主页面"
+        ]
+    },
+    "每周兑换码任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码任务出错"
+                }
+            }
+        },
+        "focus": "任务完成：每周兑换码✅"
+    },
+    "每周兑换码完成回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码入口"
+                }
+            }
+        },
+        "next": [
+            "每周兑换码任务完成"
+        ]
+    },
+    "兑换码点击设置": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1252,
+                    40,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 1000,
+        "next": [
+            "兑换码设置页面",
+            "兑换码点击设置"
+        ]
+    },
+    "兑换码设置页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    540,
+                    40,
+                    182,
+                    84
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "next": [
+            "点击兑换码"
+        ]
+    },
+    "点击兑换码": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    72,
+                    481,
+                    1075,
+                    178
+                ],
+                "expected": [
+                    "兑换码"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                481,
+                217,
+                312,
+                374
+            ],
+            "threshold": 0.8
+        },
+        "next": [
+            "兑换码展开页面",
+            "点击兑换码"
+        ]
+    },
+    "兑换码展开页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    422,
+                    285,
+                    474,
+                    116
+                ],
+                "expected": [
+                    "兑换码"
+                ]
+            }
+        },
+        "next": [
+            "点击请输入兑换码",
+            "没有输入兑换码选项"
+        ]
+    },
+    "点击请输入兑换码": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    422,
+                    285,
+                    474,
+                    116
+                ],
+                "expected": [
+                    "请输入兑换码"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500,
+        "next": [
+            "获取兑换码"
+        ]
+    },
+    "没有输入兑换码选项": {},
+    "获取兑换码": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "RemoteJsonOverrideExpected",
+                "custom_action_param": {
+                    "path": "assets/remote/game-meta.json",
+                    "overrides": {
+                        "输入兑换码": {
+                            "json_key": "兑换码",
+                            "set": "action.param.input_text"
+                        }
+                    }
+                }
+            }
+        },
+        "next": [
+            "输入兑换码"
+        ]
+    },
+    "输入兑换码": {
+        "action": {
+            "type": "InputText",
+            "param": {
+                "input_text": ""
+            }
+        },
+        "next": [
+            "兑换码不能为空",
+            "兑换操作太频繁",
+            "[JumpBack]兑换码点击确定"
+        ]
+    },
+    "兑换码点击确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    503,
+                    484,
+                    273,
+                    95
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "兑换码不能为空": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    489,
+                    198,
+                    274,
+                    114
+                ],
+                "expected": [
+                    "兑换码不能为空|无效的礼包码|已达到兑换次数上限"
+                ]
+            }
+        },
+        "next": [
+            "关闭兑换码输入页面"
+        ]
+    },
+    "兑换操作太频繁": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    489,
+                    198,
+                    274,
+                    114
+                ],
+                "expected": [
+                    "兑换操作太频繁"
+                ]
+            }
+        },
+        "post_delay": 5000
+    }
+}
