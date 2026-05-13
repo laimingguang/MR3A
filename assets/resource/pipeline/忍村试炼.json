@@ -120,7 +120,7 @@
             "忍村试炼返回"
         ]
     },
-    "向右滑动找忍村试炼": {
+    "向右滑动找忍村试炼计数": {
         "recognition": {
             "type": "Custom",
             "param": {
@@ -130,35 +130,15 @@
                 }
             }
         },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1200,
-                    400,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        600,
-                        400,
-                        1,
-                        1
-                    ]
-                ],
-                "end_hold": [
-                    400
-                ]
-            }
-        }
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "向右滑动找忍村试炼"
+        ]
     },
     "忍村试炼entry": {
         "next": [
-            {
-                "name": "忍村试炼入口",
-                "jump_back": true
-            },
+            "[JumpBack]忍村试炼入口",
             "忍村试炼任务出错"
         ]
     },
@@ -281,6 +261,44 @@
         "next": [
             "忍村试炼再次返回"
         ]
+    },
+    "忍村试炼页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    8,
+                    595,
+                    246,
+                    122
+                ],
+                "expected": [
+                    "关卡列表"
+                ]
+            }
+        },
+        "next": [
+            "移动至最右侧"
+        ]
+    },
+    "悬赏讨伐失败1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    500,
+                    465,
+                    285,
+                    247
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     },
     "没有扫荡按钮": {
         "next": [
@@ -514,7 +532,7 @@
             "准备扫荡"
         ]
     },
-    "识别集会所1": {
+    "忍村试炼点击集会所": {
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -527,16 +545,14 @@
         "action": {
             "type": "Click"
         },
+        "post_wait_freezes": {
+            "time": 400,
+            "threshold": 0.85
+        },
         "next": [
-            "点击忍村试炼",
-            {
-                "name": "悬赏讨伐失败1",
-                "jump_back": true
-            },
-            {
-                "name": "向右滑动找忍村试炼",
-                "jump_back": true
-            }
+            "忍村试炼集会所主页",
+            "[JumpBack]悬赏讨伐失败1",
+            "忍村试炼点击集会所"
         ]
     },
     "试炼关卡1": {
@@ -552,10 +568,7 @@
         "timeout": 5000,
         "next": [
             "识别试炼关卡数字-1",
-            {
-                "name": "试炼左滑1",
-                "jump_back": true
-            }
+            "[JumpBack]试炼左滑1"
         ],
         "on_error": [
             "忍村试炼返回"
@@ -574,10 +587,7 @@
         "timeout": 5000,
         "next": [
             "识别试炼关卡数字-2",
-            {
-                "name": "试炼左滑2",
-                "jump_back": true
-            }
+            "[JumpBack]试炼左滑2"
         ],
         "on_error": [
             "忍村试炼返回"
@@ -596,10 +606,7 @@
         "timeout": 5000,
         "next": [
             "识别试炼关卡数字-3",
-            {
-                "name": "试炼左滑3",
-                "jump_back": true
-            }
+            "[JumpBack]试炼左滑3"
         ],
         "on_error": [
             "忍村试炼返回"
@@ -618,10 +625,7 @@
         "timeout": 5000,
         "next": [
             "识别试炼关卡数字-4",
-            {
-                "name": "试炼左滑4",
-                "jump_back": true
-            }
+            "[JumpBack]试炼左滑4"
         ],
         "on_error": [
             "忍村试炼返回"
@@ -640,10 +644,7 @@
         "timeout": 5000,
         "next": [
             "识别试炼关卡数字-5",
-            {
-                "name": "试炼左滑5",
-                "jump_back": true
-            }
+            "[JumpBack]试炼左滑5"
         ],
         "on_error": [
             "忍村试炼返回"
@@ -853,49 +854,89 @@
             }
         },
         "next": [
-            "识别集会所1",
-            {
-                "name": "back",
-                "jump_back": true
-            }
+            "忍村试炼确认在主页面",
+            "[JumpBack]back"
         ]
     },
-    "忍村试炼页面": {
+    "忍村试炼集会所主页": {
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    8,
-                    595,
-                    246,
-                    122
+                    21,
+                    3,
+                    379,
+                    132
                 ],
-                "expected": [
-                    "关卡列表"
+                "template": [
+                    "集会所主页.png"
                 ]
             }
         },
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
-            "移动至最右侧"
+            "点击忍村试炼",
+            "[JumpBack]向右滑动找忍村试炼计数"
         ]
     },
-    "悬赏讨伐失败1": {
+    "向右滑动找忍村试炼": {
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    500,
-                    465,
-                    285,
-                    247
+                    21,
+                    3,
+                    379,
+                    132
                 ],
-                "expected": [
-                    "确定"
+                "template": [
+                    "集会所主页.png"
                 ]
             }
         },
         "action": {
-            "type": "Click"
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1200,
+                    400,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        600,
+                        400,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    400
+                ]
+            }
         }
+    },
+    "忍村试炼确认在主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true,
+                "threshold": 0.85
+            }
+        },
+        "next": [
+            "忍村试炼点击集会所"
+        ]
     }
 }
