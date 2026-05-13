@@ -1,136 +1,79 @@
 {
-    "每周兑换码entry": {
-        "next": [
-            "[JumpBack]每周兑换码入口",
-            "每周兑换码任务出错"
-        ]
-    },
-    "每周兑换码任务出错": {
-        "focus": "任务出错：活动奖励❌"
-    },
-    "每周兑换码入口": {
-        "max_hit": 3,
-        "next": [
-            "重置每周兑换码内部节点计数器"
-        ]
-    },
-    "每周兑换码检查主页面": {
+    "兑换操作太频繁": {
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    0,
-                    0,
-                    500,
-                    712
+                    489,
+                    198,
+                    274,
+                    114
                 ],
-                "template": [
-                    "主页面.png"
+                "expected": [
+                    "兑换操作太频繁"
+                ]
+            }
+        },
+        "post_delay": 5000
+    },
+    "兑换码不能为空": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    489,
+                    198,
+                    274,
+                    114
+                ],
+                "expected": [
+                    "兑换码不能为空|无效的礼包码|已达到兑换次数上限"
                 ]
             }
         },
         "next": [
-            "兑换码点击设置"
+            "关闭兑换码输入页面"
         ]
     },
-    "重置每周兑换码内部节点计数器": {
-        "action": {
-            "type": "Custom",
+    "兑换码展开页面": {
+        "recognition": {
+            "type": "OCR",
             "param": {
-                "custom_action": "ResetCount"
+                "roi": [
+                    422,
+                    285,
+                    474,
+                    116
+                ],
+                "expected": [
+                    "兑换码"
+                ]
             }
         },
         "next": [
-            "每周兑换码检查主页面",
-            "[JumpBack]back"
+            "点击请输入兑换码",
+            "没有输入兑换码选项"
         ]
     },
-    "关闭兑换码输入页面": {
+    "兑换码点击确定": {
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    1052,
-                    16,
-                    219,
-                    170
+                    503,
+                    484,
+                    273,
+                    95
                 ],
-                "template": [
-                    "叉叉1.png"
-                ],
-                "green_mask": true
+                "expected": [
+                    "确定"
+                ]
             }
         },
         "action": {
             "type": "Click"
         },
-        "post_delay": 1000,
-        "next": [
-            "关闭兑换码设置页面"
-        ]
-    },
-    "关闭兑换码设置页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    1052,
-                    16,
-                    219,
-                    170
-                ],
-                "template": [
-                    "叉叉1.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "每周兑换码完成回到了主页面"
-        ]
-    },
-    "每周兑换码任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每周兑换码任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：每周兑换码✅"
-    },
-    "每周兑换码完成回到了主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    4,
-                    136,
-                    434,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每周兑换码入口"
-                }
-            }
-        },
-        "next": [
-            "每周兑换码任务完成"
-        ]
+        "post_delay": 1000
     },
     "兑换码点击设置": {
         "recognition": {
@@ -183,6 +126,128 @@
             "点击兑换码"
         ]
     },
+    "关闭兑换码设置页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1052,
+                    16,
+                    219,
+                    170
+                ],
+                "template": [
+                    "叉叉1.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "每周兑换码完成回到了主页面"
+        ]
+    },
+    "关闭兑换码输入页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1052,
+                    16,
+                    219,
+                    170
+                ],
+                "template": [
+                    "叉叉1.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "关闭兑换码设置页面"
+        ]
+    },
+    "每周兑换码entry": {
+        "next": [
+            "[JumpBack]每周兑换码入口",
+            "每周兑换码任务出错"
+        ]
+    },
+    "每周兑换码任务出错": {
+        "focus": "任务出错：活动奖励❌"
+    },
+    "每周兑换码任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码任务出错"
+                }
+            }
+        },
+        "focus": "任务完成：每周兑换码✅"
+    },
+    "每周兑换码入口": {
+        "max_hit": 3,
+        "next": [
+            "重置每周兑换码内部节点计数器"
+        ]
+    },
+    "每周兑换码完成回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码入口"
+                }
+            }
+        },
+        "next": [
+            "每周兑换码任务完成"
+        ]
+    },
+    "每周兑换码检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "next": [
+            "兑换码点击设置"
+        ]
+    },
+    "没有输入兑换码选项": {},
     "点击兑换码": {
         "recognition": {
             "type": "OCR",
@@ -216,26 +281,6 @@
             "点击兑换码"
         ]
     },
-    "兑换码展开页面": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    422,
-                    285,
-                    474,
-                    116
-                ],
-                "expected": [
-                    "兑换码"
-                ]
-            }
-        },
-        "next": [
-            "点击请输入兑换码",
-            "没有输入兑换码选项"
-        ]
-    },
     "点击请输入兑换码": {
         "recognition": {
             "type": "OCR",
@@ -259,20 +304,19 @@
             "获取兑换码"
         ]
     },
-    "没有输入兑换码选项": {},
     "获取兑换码": {
         "action": {
             "type": "Custom",
             "param": {
                 "custom_action": "RemoteJsonOverrideExpected",
                 "custom_action_param": {
-                    "path": "assets/remote/game-meta.json",
                     "overrides": {
                         "输入兑换码": {
-                            "json_key": "兑换码",
+                            "json_key": "每周兑换码",
                             "set": "action.param.input_text"
                         }
-                    }
+                    },
+                    "path": "assets/remote/game-meta.json"
                 }
             }
         },
@@ -293,60 +337,16 @@
             "[JumpBack]兑换码点击确定"
         ]
     },
-    "兑换码点击确定": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    503,
-                    484,
-                    273,
-                    95
-                ],
-                "expected": [
-                    "确定"
-                ]
-            }
-        },
+    "重置每周兑换码内部节点计数器": {
         "action": {
-            "type": "Click"
-        },
-        "post_delay": 1000
-    },
-    "兑换码不能为空": {
-        "recognition": {
-            "type": "OCR",
+            "type": "Custom",
             "param": {
-                "roi": [
-                    489,
-                    198,
-                    274,
-                    114
-                ],
-                "expected": [
-                    "兑换码不能为空|无效的礼包码|已达到兑换次数上限"
-                ]
+                "custom_action": "ResetCount"
             }
         },
         "next": [
-            "关闭兑换码输入页面"
+            "每周兑换码检查主页面",
+            "[JumpBack]back"
         ]
-    },
-    "兑换操作太频繁": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    489,
-                    198,
-                    274,
-                    114
-                ],
-                "expected": [
-                    "兑换操作太频繁"
-                ]
-            }
-        },
-        "post_delay": 5000
     }
 }
