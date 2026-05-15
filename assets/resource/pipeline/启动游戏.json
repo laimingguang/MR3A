@@ -1,6 +1,7 @@
 {
     "上层没有勾勾则点左上角": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     227,
@@ -8,15 +9,12 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "每日签到确定"
-        ]
+            }
+        }
     },
     "下层没有勾勾则点左下角": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     265,
@@ -24,78 +22,13 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "每日签到确定"
-        ]
-    },
-    "不关闭组队": {},
-    "主页面": {
-        "next": [
-            "验证主页面"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 400
-        },
-        "recognition": {
-            "param": {
-                "roi": [
-                    38,
-                    576,
-                    669,
-                    127
-                ],
-                "template": [
-                    "商店.png"
-                ],
-                "threshold": [
-                    0.75
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 1200
-    },
-    "主页面really": {
-        "next": [
-            "帮我关闭组队邀请",
-            "不关闭组队"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 1000
-        },
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "roi": [
-                    0,
-                    0,
-                    500,
-                    712
-                ],
-                "template": [
-                    "主页面.png"
-                ],
-                "threshold": 0.85
-            },
-            "type": "TemplateMatch"
+            }
         }
     },
-    "关闭设置": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "启动结束"
-        ],
+    "启动阶段关闭设置": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
                 "roi": [
                     1052,
                     16,
@@ -104,33 +37,51 @@
                 ],
                 "template": [
                     "叉叉1.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "勾选屏蔽": {
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
         "action": {
-            "param": {
-                "target": [
-                    872,
-                    162,
-                    25,
-                    24
-                ]
-            },
             "type": "Click"
         },
+        "post_delay": 0,
         "next": [
-            "关闭设置"
+            "启动结束"
         ]
     },
-    "同意隐私保护提示": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+    "勾选屏蔽": {
         "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    620,
+                    114,
+                    371,
+                    103
+                ],
+                "expected": [
+                    "屏蔽所有组队邀请"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    228,
+                    4,
+                    -194,
+                    -10
+                ]
+            }
+        },
+        "post_wait_freezes": 500
+    },
+    "同意隐私保护提示": {
+        "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     253,
@@ -141,43 +92,33 @@
                 "template": [
                     "同意并继续.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "启动应用": {
+        "pre_delay": 0,
         "action": {
+            "type": "StartApp",
             "param": {
                 "package": "com.pandadastudio.ninjamustdie3.vivo"
-            },
-            "type": "StartApp"
+            }
         },
-        "max_hit": 1
-    },
-    "启动流程": {
+        "post_delay": 0,
         "next": [
-            "主页面",
-            "识别登录",
-            "启动应用",
-            "每日签到",
-            "活动签到",
-            "需要更新",
-            "同意隐私保护提示",
-            "处理登录活动弹窗"
-        ],
-        "timeout": 90000
+            "关闭启动应用节点"
+        ]
     },
     "启动游戏entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "启动流程"
-            }
+            "[JumpBack]启动流程"
         ]
     },
     "启动游戏到了主页面": {
-        "focus": "任务完成：启动游戏✅",
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -188,32 +129,32 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "任务完成：启动游戏✅"
     },
     "启动结束": {
+        "pre_delay": 0,
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
                     "node_name": "启动流程"
                 }
-            },
-            "type": "Custom"
+            }
         },
+        "post_delay": 0,
         "next": [
             "启动游戏到了主页面"
         ]
     },
     "处理登录活动弹窗": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
                 "roi": [
                     833,
                     5,
@@ -225,83 +166,37 @@
                     "叉叉1.png",
                     "叉叉2.png",
                     "叉叉3.png"
-                ]
-            },
-            "type": "TemplateMatch"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "屏蔽所有组队邀请": {
-        "next": [
-            "识别是否勾选",
-            "勾选屏蔽"
-        ],
-        "post_wait_freezes": {
-            "target": [
-                638,
-                121,
-                557,
-                366
-            ],
-            "time": 200
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    625,
+                    139,
+                    311,
+                    67
+                ],
                 "expected": [
                     "屏蔽所有组队邀请"
-                ],
-                "roi": [
-                    635,
-                    111,
-                    547,
-                    376
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "帮我关闭组队邀请": {
-        "action": {
-            "param": {
-                "target": [
-                    1251,
-                    39,
-                    1,
-                    1
-                ]
-            },
-            "type": "Click"
+            }
         },
-        "max_hit": 1,
         "next": [
-            "设置页上滑"
-        ],
-        "post_delay": 400
+            "启动游戏组队邀请屏蔽已勾选",
+            "[JumpBack]勾选屏蔽"
+        ]
     },
     "最右侧有勾勾": {
-        "action": {
-            "param": {
-                "begin": [
-                    650,
-                    563,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        650,
-                        355,
-                        1,
-                        1
-                    ]
-                ]
-            },
-            "type": "Swipe"
-        },
-        "next": [
-            "识别下层勾勾",
-            "下层没有勾勾则点左下角"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     960,
@@ -312,63 +207,10 @@
                 "template": [
                     "签到勾勾.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "最右侧没有勾勾": {
-        "next": [
-            "识别上层勾勾",
-            "上层没有勾勾则点左上角"
-        ]
-    },
-    "每日签到": {
-        "max_hit": 1,
-        "next": [
-            "最右侧有勾勾",
-            "最右侧没有勾勾"
-        ],
-        "pre_wait_freezes": {
-            "threshold": 0.8,
-            "time": 300
+            }
         },
-        "recognition": {
-            "param": {
-                "template": [
-                    "每日签到.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 1200
-    },
-    "每日签到确定": {
         "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 1500
-        },
-        "pre_delay": 400,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "确定"
-                ],
-                "roi": [
-                    557,
-                    611,
-                    181,
-                    62
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "活动签到": {
-        "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     650,
@@ -384,109 +226,143 @@
                         1
                     ]
                 ]
-            },
-            "type": "Swipe"
+            }
         },
         "next": [
-            "点击上层限定结神符",
-            "点击下层限定结神符"
-        ],
+            "识别下层勾勾",
+            "下层没有勾勾则点左下角"
+        ]
+    },
+    "最右侧没有勾勾": {
+        "next": [
+            "识别上层勾勾",
+            "上层没有勾勾则点左上角"
+        ]
+    },
+    "每日签到": {
+        "max_hit": 1,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "expected": [
-                    "限定结神符"
-                ],
+                "template": [
+                    "每日签到.png"
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
+        },
+        "next": [
+            "最右侧有勾勾",
+            "最右侧没有勾勾"
+        ]
+    },
+    "活动签到": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
                 "roi": [
                     61,
                     357,
                     455,
                     220
+                ],
+                "expected": [
+                    "限定结神符"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击上层限定结神符": {
+            }
+        },
         "action": {
-            "param": {},
-            "type": "Click"
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    650,
+                    563,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        650,
+                        355,
+                        1,
+                        1
+                    ]
+                ]
+            }
         },
         "next": [
-            "签到确定_活动"
-        ],
+            "点击上层限定结神符",
+            "点击下层限定结神符",
+            "异常没发现结神符"
+        ]
+    },
+    "点击上层限定结神符": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "限定结神符×1"
-                ],
-                "index": 0,
-                "order_by": "Horizontal",
                 "roi": [
                     138,
                     287,
                     1005,
                     211
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击下层限定结神符": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "签到确定_活动"
-        ],
-        "recognition": {
-            "param": {
+                ],
                 "expected": [
                     "限定结神符×1"
                 ],
-                "index": 0,
                 "order_by": "Horizontal",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "点击下层限定结神符": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
                 "roi": [
                     135,
                     481,
                     1021,
                     200
-                ]
-            },
-            "type": "OCR"
+                ],
+                "expected": [
+                    "限定结神符×1"
+                ],
+                "order_by": "Horizontal",
+                "index": 0
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "点击区切换按钮": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "max_hit": 1,
-        "next": [
-            "选择几区"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "点击切换"
-                ],
                 "roi": [
                     665,
                     380,
                     180,
                     91
+                ],
+                "expected": [
+                    "点击切换"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击登录": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "post_delay": 1500,
+        "post_wait_freezes": 500
+    },
+    "点击登录": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     446,
@@ -497,89 +373,17 @@
                 "template": [
                     "登录.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "签到确定_活动": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 1500
-        },
-        "pre_delay": 400,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "确定"
-                ],
-                "roi": [
-                    521,
-                    585,
-                    262,
-                    124
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "设置页上滑": {
-        "action": {
-            "param": {
-                "begin": [
-                    900,
-                    461,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        900,
-                        121,
-                        1,
-                        1
-                    ]
-                ]
-            },
-            "type": "Swipe"
-        },
-        "next": [
-            "屏蔽所有组队邀请"
-        ],
-        "post_wait_freezes": {
-            "target": [
-                638,
-                121,
-                557,
-                366
-            ],
-            "time": 200
-        },
-        "timeout": 2000
+        "post_delay": 1500
     },
     "识别上层勾勾": {
-        "action": {
-            "param": {
-                "target_offset": [
-                    117,
-                    -115,
-                    38,
-                    50
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "每日签到确定"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
-                "index": -1,
-                "order_by": "Horizontal",
                 "roi": [
                     134,
                     224,
@@ -588,13 +392,14 @@
                 ],
                 "template": [
                     "签到勾勾.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "识别下层勾勾": {
+                ],
+                "green_mask": true,
+                "order_by": "Horizontal",
+                "index": -1
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     117,
@@ -602,17 +407,13 @@
                     38,
                     50
                 ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            "每日签到确定"
-        ],
+            }
+        }
+    },
+    "识别下层勾勾": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
-                "index": -1,
-                "order_by": "Horizontal",
                 "roi": [
                     130,
                     519,
@@ -621,17 +422,28 @@
                 ],
                 "template": [
                     "签到勾勾.png"
+                ],
+                "green_mask": true,
+                "order_by": "Horizontal",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    117,
+                    -115,
+                    38,
+                    50
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
         "timeout": 500
     },
-    "识别是否勾选": {
-        "next": [
-            "关闭设置"
-        ],
+    "启动游戏组队邀请屏蔽已勾选": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": "屏蔽所有组队邀请",
                 "roi_offset": [
@@ -643,17 +455,17 @@
                 "template": [
                     "设置页选项已勾选.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "关闭节点点击主页设置"
+        ]
     },
     "识别登录": {
-        "next": [
-            "跳过切换区",
-            "点击区切换按钮",
-            "点击登录"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     446,
@@ -664,20 +476,42 @@
                 "template": [
                     "登录.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
-        "timeout": 2000
+        "timeout": 10000,
+        "next": [
+            "跳过切换区",
+            "是目标区服",
+            "[JumpBack]选择几区",
+            "[JumpBack]点击区切换按钮"
+        ]
     },
     "跳过切换区": {
         "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
-            "点击登录"
-        ],
-        "timeout": 2000
+            "点击登录",
+            "没有点击登录按钮"
+        ]
     },
     "选择几区": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    233,
+                    233,
+                    802,
+                    76
+                ],
+                "expected": [
+                    "二服"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     24,
@@ -685,73 +519,314 @@
                     -42,
                     -2
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "next": [
-            "点击登录"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "二服"
-                ],
-                "roi": [
-                    233,
-                    233,
-                    802,
-                    76
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "需要更新": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "expected": [
-                    "确定"
-                ],
-                "order_by": "Random",
-                "roi": [
-                    360,
-                    276,
-                    731,
-                    382
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "验证主页面": {
-        "next": [
-            "主页面really"
-        ],
         "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 400
+            "time": 500,
+            "target": [
+                475,
+                413,
+                349,
+                39
+            ],
+            "threshold": 0.8
+        }
+    },
+    "关闭启动应用节点": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "启动应用"
+                }
+            }
         },
+        "post_delay": 0
+    },
+    "点击主页设置": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    38,
-                    576,
-                    669,
-                    127
+                    1069,
+                    2,
+                    211,
+                    86
                 ],
                 "template": [
-                    "商店.png"
+                    "设置1.png",
+                    "设置.png"
                 ],
-                "threshold": [
-                    0.75
-                ]
-            },
-            "type": "TemplateMatch"
+                "green_mask": true
+            }
         },
-        "timeout": 1200
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000
+    },
+    "设置页面上滑": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    563,
+                    25,
+                    155,
+                    114
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1000,
+                    450,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1000,
+                        150,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        }
+    },
+    "启动流程": {
+        "timeout": 90000,
+        "next": [
+            "启动应用",
+            "识别登录",
+            "关闭选择区服页面交给上层处理",
+            "需要更新",
+            "等待更新完成",
+            "同意隐私保护提示",
+            "启动阶段拒绝好友邀请",
+            "启动阶段奖励确定",
+            "每日签到",
+            "活动签到",
+            "屏蔽所有组队邀请",
+            "设置页面上滑",
+            "点击主页设置",
+            "处理登录活动弹窗"
+        ]
+    },
+    "关闭节点屏蔽所有组队邀请": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "屏蔽所有组队邀请"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "启动阶段关闭设置"
+        ]
+    },
+    "关闭节点设置页上滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "设置页面上滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭节点屏蔽所有组队邀请"
+        ]
+    },
+    "关闭节点点击主页设置": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "点击主页设置"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭节点设置页上滑"
+        ]
+    },
+    "是目标区服": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    439,
+                    373,
+                    251,
+                    94
+                ],
+                "expected": [
+                    "二区"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "启用跳过切换区"
+        ]
+    },
+    "启用跳过切换区": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "跳过切换区"
+                }
+            }
+        },
+        "post_delay": 0
+    },
+    "关闭选择区服页面交给上层处理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    546,
+                    189,
+                    182,
+                    63
+                ],
+                "expected": [
+                    "选择区服"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    676,
+                    84,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "启动阶段奖励确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    519,
+                    596,
+                    241,
+                    95
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "异常没发现结神符": {},
+    "启动阶段拒绝好友邀请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    370,
+                    495,
+                    211,
+                    65
+                ],
+                "expected": [
+                    "拒绝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "没有点击登录按钮": {},
+    "需要更新": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    387,
+                    182,
+                    482,
+                    289
+                ],
+                "expected": [
+                    "确认更新"
+                ]
+            }
+        },
+        "next": [
+            "点击确认更新的确定按钮",
+            "没有确认更新的确定按钮"
+        ]
+    },
+    "点击确认更新的确定按钮": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    693,
+                    469,
+                    216,
+                    98
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "没有确认更新的确定按钮": {},
+    "等待更新完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    474,
+                    614,
+                    338,
+                    104
+                ],
+                "expected": [
+                    "正在载入中"
+                ]
+            }
+        },
+        "post_delay": 5000
     }
 }

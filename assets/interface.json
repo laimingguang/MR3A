@@ -189,6 +189,30 @@
                     }
                 },
                 {
+                    "name": "oppo",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.nearme.gamecenter"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4399",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.m4399"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
                     "name": "华为",
                     "pipeline_override": {
                         "启动应用": {
@@ -255,6 +279,9 @@
                     "pipeline_override": {
                         "选择几区": {
                             "expected": "一服"
+                        },
+                        "是目标区服": {
+                            "expected": "一服"
                         }
                     }
                 },
@@ -262,6 +289,9 @@
                     "name": "二区",
                     "pipeline_override": {
                         "选择几区": {
+                            "expected": "二服"
+                        },
+                        "是目标区服": {
                             "expected": "二服"
                         }
                     }
@@ -271,6 +301,9 @@
                     "pipeline_override": {
                         "选择几区": {
                             "expected": "三服"
+                        },
+                        "是目标区服": {
+                            "expected": "三服"
                         }
                     }
                 },
@@ -278,6 +311,9 @@
                     "name": "四区",
                     "pipeline_override": {
                         "选择几区": {
+                            "expected": "四服"
+                        },
+                        "是目标区服": {
                             "expected": "四服"
                         }
                     }
