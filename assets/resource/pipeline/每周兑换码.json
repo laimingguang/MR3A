@@ -80,26 +80,21 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    0,
-                    0,
-                    500,
-                    712
+                    1069,
+                    2,
+                    211,
+                    86
                 ],
                 "template": [
-                    "主页面.png"
-                ]
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
             }
         },
+        "pre_delay": 0,
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1252,
-                    40,
-                    1,
-                    1
-                ]
-            }
+            "type": "Click"
         },
         "post_delay": 1000,
         "next": [
@@ -322,6 +317,9 @@
         },
         "next": [
             "输入兑换码"
+        ],
+        "on_error": [
+            "获取兑换码失败"
         ]
     },
     "输入兑换码": {
@@ -348,5 +346,8 @@
             "每周兑换码检查主页面",
             "[JumpBack]back"
         ]
+    },
+    "获取兑换码失败": {
+        "focus": "获取最新兑换码失败，请检查网络后重试"
     }
 }
