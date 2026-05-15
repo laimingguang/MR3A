@@ -117,6 +117,11 @@
             ]
         },
         {
+            "name": "关闭游戏",
+            "entry": "关闭游戏entry",
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">收尾用：会<strong>取消屏蔽好友组队邀请</strong>，再<strong>关闭游戏</strong>。<br/><br/>若要多账号轮换，可在任务列表里<strong>复制多组相同任务</strong>；每组建议按「<strong>启动游戏</strong> → 中间日常 → <strong>关闭游戏</strong>」排好，并<strong>为各组单独选区服</strong>，依次运行即可切号。</span>"
+        },
+        {
             "name": "每日藏宝图",
             "entry": "每日藏宝图entry",
             "option": [

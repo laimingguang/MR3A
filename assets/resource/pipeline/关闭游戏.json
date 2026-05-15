@@ -207,7 +207,9 @@
         },
         "post_delay": 0
     },
-    "关闭游戏": {
+    "开始关闭游戏": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "[JumpBack]关闭官服",
             "[JumpBack]关闭vivo服",
@@ -218,5 +220,132 @@
             "[JumpBack]关闭9游服",
             "[JumpBack]关闭b服"
         ]
+    },
+    "关闭游戏检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "next": [
+            "关闭游戏屏蔽所有组队邀请",
+            "[JumpBack]关闭游戏设置页面上滑",
+            "[JumpBack]关闭游戏打开设置"
+        ]
+    },
+    "点击取消勾选屏蔽": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": "关闭游戏屏蔽所有组队邀请",
+                "roi_offset": [
+                    168,
+                    -68,
+                    -60,
+                    127
+                ],
+                "template": [
+                    "设置页选项已勾选.png"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "关闭游戏屏蔽所有组队邀请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    625,
+                    139,
+                    311,
+                    67
+                ],
+                "expected": [
+                    "屏蔽所有组队邀请"
+                ]
+            }
+        },
+        "next": [
+            "[JumpBack]点击取消勾选屏蔽",
+            "开始关闭游戏"
+        ]
+    },
+    "关闭游戏entry": {
+        "next": [
+            "关闭游戏检查主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "关闭游戏打开设置": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1069,
+                    2,
+                    211,
+                    86
+                ],
+                "template": [
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 2000
+    },
+    "关闭游戏设置页面上滑": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    563,
+                    25,
+                    155,
+                    114
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1000,
+                    450,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1000,
+                        150,
+                        1,
+                        1
+                    ]
+                ]
+            }
+        }
     }
 }
