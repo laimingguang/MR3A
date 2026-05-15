@@ -1,10 +1,7 @@
 {
     "叉掉好友": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     795,
@@ -15,16 +12,16 @@
                 "template": [
                     "好友叉叉.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 400
     },
     "好友忍币entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "好友忍币入口"
-            },
+            "[JumpBack]好友忍币入口",
             "好友忍币任务出错"
         ]
     },
@@ -33,13 +30,13 @@
     },
     "好友忍币任务完成": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
                     "node_name": "好友忍币任务出错"
                 }
-            },
-            "type": "Custom"
+            }
         },
         "focus": "任务完成：好友忍币✅"
     },
@@ -50,19 +47,8 @@
         ]
     },
     "好友忍币回到主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "好友忍币入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "好友忍币任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -73,43 +59,44 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "好友忍币入口"
+                }
+            }
+        },
+        "next": [
+            "好友忍币任务完成"
+        ]
     },
     "好友忍币确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     500,
                     530,
                     301,
                     181
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "好友忍币进入聊天": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "next": [
-            "点击聊天"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 300
-        },
+        "post_delay": 400
+    },
+    "好友忍币进入聊天": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -120,12 +107,31 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
+        },
+        "next": [
+            "点击聊天"
+        ]
     },
     "好友聊天上滑": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 20
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     800,
@@ -141,47 +147,31 @@
                         1
                     ]
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 20
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "没有聊天好友了": {
-        "next": [
-            "退出好友忍币任务"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "选择好友"
-                ],
                 "roi": [
                     200,
                     285,
                     355,
                     170
+                ],
+                "expected": [
+                    "选择好友"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击好友礼包": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            "好友忍币确定"
-        ],
+            "退出好友忍币任务"
+        ]
+    },
+    "点击好友礼包": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     386,
@@ -192,51 +182,39 @@
                 "template": [
                     "好友忍币礼包.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
-        "timeout": 1000
-    },
-    "点击聊天": {
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "next": [
-            "确定在好友聊天页面"
-        ],
+        "post_delay": 400
+    },
+    "点击聊天": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "私聊"
-                ],
                 "roi": [
                     0,
                     0,
                     726,
                     63
+                ],
+                "expected": [
+                    "私聊"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "确定在好友聊天页面",
+            "点击聊天"
+        ]
     },
     "确定在好友聊天页面": {
-        "next": [
-            "没有聊天好友了",
-            {
-                "jump_back": true,
-                "name": "点击好友礼包"
-            },
-            {
-                "jump_back": true,
-                "name": "叉掉好友"
-            },
-            {
-                "jump_back": true,
-                "name": "好友聊天上滑"
-            }
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -247,12 +225,19 @@
                 "template": [
                     "私聊页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "没有聊天好友了",
+            "[JumpBack]好友忍币确定",
+            "[JumpBack]点击好友礼包",
+            "[JumpBack]叉掉好友",
+            "[JumpBack]好友聊天上滑"
+        ]
     },
     "退出好友忍币任务": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     1250,
@@ -260,8 +245,7 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "好友忍币回到主页面"
@@ -269,17 +253,14 @@
     },
     "重置好友忍币内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "好友忍币进入聊天",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
+            "[JumpBack]back"
         ]
     }
 }
