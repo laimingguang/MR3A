@@ -90,8 +90,7 @@
             "option": [
                 "每日悬赏族员组队超时时间",
                 "每日悬赏好友组队超时时间",
-                "每日悬赏开大前延迟",
-                "忍币购买悬赏商店"
+                "每日悬赏开大前延迟"
             ],
             "group": [
                 "daily"
@@ -872,25 +871,6 @@
                 },
                 {
                     "name": "No"
-                }
-            ]
-        },
-        "忍币购买悬赏商店": {
-            "type": "switch",
-            "default_case": "Yes",
-            "cases": [
-                {
-                    "name": "Yes",
-                    "label": "开启"
-                },
-                {
-                    "name": "No",
-                    "label": "关闭",
-                    "pipeline_override": {
-                        "是否忍币购买悬赏": {
-                            "enable": false
-                        }
-                    }
                 }
             ]
         }
