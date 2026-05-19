@@ -25,30 +25,93 @@
             }
         }
     },
-    "启动阶段关闭设置": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    1052,
-                    16,
-                    219,
-                    170
-                ],
-                "template": [
-                    "叉叉1.png"
-                ],
-                "green_mask": true
-            }
-        },
+    "关闭启动应用节点": {
         "pre_delay": 0,
         "action": {
-            "type": "Click"
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "启动应用"
+                }
+            }
+        },
+        "post_delay": 0
+    },
+    "关闭节点屏蔽所有组队邀请": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "屏蔽所有组队邀请"
+                }
+            }
         },
         "post_delay": 0,
         "next": [
-            "启动结束"
+            "启动阶段关闭设置"
         ]
+    },
+    "关闭节点点击主页设置": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "点击主页设置"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭节点设置页上滑"
+        ]
+    },
+    "关闭节点设置页上滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "设置页面上滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭节点屏蔽所有组队邀请"
+        ]
+    },
+    "关闭选择区服页面交给上层处理": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    546,
+                    189,
+                    182,
+                    63
+                ],
+                "expected": [
+                    "选择区服"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    676,
+                    84,
+                    1,
+                    1
+                ]
+            }
+        }
     },
     "勾选屏蔽": {
         "recognition": {
@@ -111,9 +174,30 @@
             "关闭启动应用节点"
         ]
     },
+    "启动流程": {
+        "timeout": 90000,
+        "next": [
+            "启动应用",
+            "识别登录",
+            "关闭选择区服页面交给上层处理",
+            "需要更新",
+            "等待更新完成",
+            "同意隐私保护提示",
+            "启动阶段拒绝好友邀请",
+            "启动阶段奖励确定",
+            "每日签到",
+            "活动签到",
+            "屏蔽所有组队邀请",
+            "设置页面上滑",
+            "处理登录活动弹窗",
+            "启动游戏点击主页设置",
+            "启动游戏识别到主页设置"
+        ]
+    },
     "启动游戏entry": {
         "next": [
-            "[JumpBack]启动流程"
+            "[JumpBack]启动流程",
+            "启动成功"
         ]
     },
     "启动游戏到了主页面": {
@@ -135,6 +219,28 @@
         "post_delay": 0,
         "focus": "任务完成：启动游戏✅"
     },
+    "启动游戏组队邀请屏蔽已勾选": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": "屏蔽所有组队邀请",
+                "roi_offset": [
+                    168,
+                    -68,
+                    -60,
+                    127
+                ],
+                "template": [
+                    "设置页选项已勾选.png"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "关闭节点点击主页设置"
+        ]
+    },
     "启动结束": {
         "pre_delay": 0,
         "action": {
@@ -150,6 +256,83 @@
         "next": [
             "启动游戏到了主页面"
         ]
+    },
+    "启动阶段关闭设置": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1052,
+                    16,
+                    219,
+                    170
+                ],
+                "template": [
+                    "叉叉1.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0,
+        "next": [
+            "启动结束"
+        ]
+    },
+    "启动阶段奖励确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    519,
+                    596,
+                    241,
+                    95
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "启动阶段拒绝好友邀请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    370,
+                    495,
+                    211,
+                    65
+                ],
+                "expected": [
+                    "拒绝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "启用跳过切换区": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "跳过切换区"
+                }
+            }
+        },
+        "post_delay": 0
     },
     "处理登录活动弹窗": {
         "recognition": {
@@ -192,6 +375,28 @@
         "next": [
             "启动游戏组队邀请屏蔽已勾选",
             "[JumpBack]勾选屏蔽"
+        ]
+    },
+    "异常没发现结神符": {},
+    "是目标区服": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    439,
+                    373,
+                    251,
+                    94
+                ],
+                "expected": [
+                    "二区"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "启用跳过切换区"
         ]
     },
     "最右侧有勾勾": {
@@ -258,6 +463,8 @@
             "最右侧没有勾勾"
         ]
     },
+    "没有点击登录按钮": {},
+    "没有确认更新的确定按钮": {},
     "活动签到": {
         "recognition": {
             "type": "OCR",
@@ -340,6 +547,30 @@
             "type": "Click"
         }
     },
+    "启动游戏识别到主页设置": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1069,
+                    2,
+                    211,
+                    86
+                ],
+                "template": [
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "启动游戏识别到主页面聊天",
+            "没有识别到主页面聊天"
+        ]
+    },
     "点击区切换按钮": {
         "recognition": {
             "type": "OCR",
@@ -379,6 +610,80 @@
             "type": "Click"
         },
         "post_delay": 1500
+    },
+    "点击确认更新的确定按钮": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    693,
+                    469,
+                    216,
+                    98
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "等待更新完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    474,
+                    614,
+                    338,
+                    104
+                ],
+                "expected": [
+                    "正在载入中"
+                ]
+            }
+        },
+        "post_delay": 5000
+    },
+    "设置页面上滑": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    563,
+                    25,
+                    155,
+                    114
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1000,
+                    450,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1000,
+                        150,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    100
+                ]
+            }
+        }
     },
     "识别上层勾勾": {
         "recognition": {
@@ -438,30 +743,7 @@
                     50
                 ]
             }
-        },
-        "timeout": 500
-    },
-    "启动游戏组队邀请屏蔽已勾选": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": "屏蔽所有组队邀请",
-                "roi_offset": [
-                    168,
-                    -68,
-                    -60,
-                    127
-                ],
-                "template": [
-                    "设置页选项已勾选.png"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "关闭节点点击主页设置"
-        ]
+        }
     },
     "识别登录": {
         "recognition": {
@@ -532,246 +814,6 @@
             "threshold": 0.8
         }
     },
-    "关闭启动应用节点": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "启动应用"
-                }
-            }
-        },
-        "post_delay": 0
-    },
-    "点击主页设置": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    1069,
-                    2,
-                    211,
-                    86
-                ],
-                "template": [
-                    "设置1.png",
-                    "设置.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 2000
-    },
-    "设置页面上滑": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    563,
-                    25,
-                    155,
-                    114
-                ],
-                "expected": [
-                    "设置"
-                ]
-            }
-        },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1000,
-                    450,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        1000,
-                        150,
-                        1,
-                        1
-                    ]
-                ]
-            }
-        }
-    },
-    "启动流程": {
-        "timeout": 90000,
-        "next": [
-            "启动应用",
-            "识别登录",
-            "关闭选择区服页面交给上层处理",
-            "需要更新",
-            "等待更新完成",
-            "同意隐私保护提示",
-            "启动阶段拒绝好友邀请",
-            "启动阶段奖励确定",
-            "每日签到",
-            "活动签到",
-            "屏蔽所有组队邀请",
-            "设置页面上滑",
-            "点击主页设置",
-            "处理登录活动弹窗"
-        ]
-    },
-    "关闭节点屏蔽所有组队邀请": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "屏蔽所有组队邀请"
-                }
-            }
-        },
-        "post_delay": 0,
-        "next": [
-            "启动阶段关闭设置"
-        ]
-    },
-    "关闭节点设置页上滑": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "设置页面上滑"
-                }
-            }
-        },
-        "post_delay": 0,
-        "next": [
-            "关闭节点屏蔽所有组队邀请"
-        ]
-    },
-    "关闭节点点击主页设置": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "点击主页设置"
-                }
-            }
-        },
-        "post_delay": 0,
-        "next": [
-            "关闭节点设置页上滑"
-        ]
-    },
-    "是目标区服": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    439,
-                    373,
-                    251,
-                    94
-                ],
-                "expected": [
-                    "二区"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "启用跳过切换区"
-        ]
-    },
-    "启用跳过切换区": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "EnableNode",
-                "custom_action_param": {
-                    "node_name": "跳过切换区"
-                }
-            }
-        },
-        "post_delay": 0
-    },
-    "关闭选择区服页面交给上层处理": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    546,
-                    189,
-                    182,
-                    63
-                ],
-                "expected": [
-                    "选择区服"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    676,
-                    84,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
-    "启动阶段奖励确定": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    519,
-                    596,
-                    241,
-                    95
-                ],
-                "expected": [
-                    "确定"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 500
-    },
-    "异常没发现结神符": {},
-    "启动阶段拒绝好友邀请": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    370,
-                    495,
-                    211,
-                    65
-                ],
-                "expected": [
-                    "拒绝"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
-    "没有点击登录按钮": {},
     "需要更新": {
         "recognition": {
             "type": "OCR",
@@ -792,41 +834,113 @@
             "没有确认更新的确定按钮"
         ]
     },
-    "点击确认更新的确定按钮": {
+    "启动游戏识别到主页面聊天": {
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    693,
-                    469,
-                    216,
-                    98
+                    0,
+                    0,
+                    500,
+                    712
                 ],
-                "expected": [
-                    "确定"
+                "template": [
+                    "主页面.png"
                 ]
             }
         },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "启动游戏识别到集会所",
+            "没有识别到集会所"
+        ]
+    },
+    "没有识别到主页面聊天": {
         "action": {
-            "type": "Click"
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount"
+            }
         }
     },
-    "没有确认更新的确定按钮": {},
-    "等待更新完成": {
+    "启动游戏识别到集会所": {
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    474,
-                    614,
-                    338,
-                    104
+                    698,
+                    400,
+                    558,
+                    311
                 ],
-                "expected": [
-                    "正在载入中"
-                ]
+                "template": [
+                    "集会所.png"
+                ],
+                "green_mask": true
             }
         },
-        "post_delay": 5000
-    }
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "重新识别确保启动阶段弹窗处理结束",
+            "两次识别成功后则确定进入了主页面"
+        ]
+    },
+    "没有识别到集会所": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount"
+            }
+        }
+    },
+    "重新识别确保启动阶段弹窗处理结束": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "pre_delay": 0
+    },
+    "两次识别成功后则确定进入了主页面": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "启动游戏点击主页设置"
+                }
+            }
+        }
+    },
+    "启动游戏点击主页设置": {
+        "enabled": false,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1069,
+                    2,
+                    211,
+                    86
+                ],
+                "template": [
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
+    },
+    "启动成功": {}
 }
