@@ -1,10 +1,7 @@
 {
     "再次检查战令页面": {
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 500
-        },
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -15,19 +12,16 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "threshold": 0.8
         }
     },
     "战令有红点": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "战令页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": "识别战令",
                 "roi_offset": [
@@ -39,9 +33,15 @@
                 "template": [
                     "红点.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "战令页面",
+            "[JumpBack]战令前往"
+        ]
     },
     "战令没红点": {
         "next": [
@@ -49,45 +49,30 @@
         ]
     },
     "战令确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "再次检查战令页面"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     238,
                     563,
                     455,
                     130
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "再次检查战令页面"
+        ]
     },
     "战令页面": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "每日试炼"
-            },
-            {
-                "jump_back": true,
-                "name": "月度试炼"
-            },
-            {
-                "jump_back": true,
-                "name": "试炼奖励"
-            },
-            "退出战令页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -98,45 +83,60 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "[JumpBack]每日试炼",
+            "[JumpBack]月度试炼",
+            "[JumpBack]试炼奖励",
+            "退出战令页面"
+        ]
     },
     "无奖励领取": {
-        "next": [
-            "再次检查战令页面"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "当前并无可领取奖励"
-                ],
                 "roi": [
                     500,
                     230,
                     266,
                     46
+                ],
+                "expected": [
+                    "当前并无可领取奖励"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "再次检查战令页面"
+        ]
     },
     "月度试炼": {
-        "next": [
-            "点击月度试炼"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
+            }
+        },
+        "next": [
+            "点击月度试炼"
+        ]
     },
     "月度试炼上滑": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     779,
@@ -155,17 +155,7 @@
                 "end_hold": [
                     400
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "月度试炼结束": {
@@ -174,18 +164,8 @@
         ]
     },
     "月度试炼页面": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "点击月度试炼领取图标"
-            },
-            {
-                "jump_back": true,
-                "name": "月度试炼上滑"
-            },
-            "月度试炼结束"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     573,
@@ -199,53 +179,53 @@
                 "threshold": [
                     0.8
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "[JumpBack]点击月度试炼领取图标",
+            "[JumpBack]月度试炼上滑",
+            "月度试炼结束"
+        ]
     },
     "每日试炼": {
-        "next": [
-            "点击每日试炼"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
-    },
-    "每日试炼确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            "再次检查战令页面"
-        ],
+            "点击每日试炼"
+        ]
+    },
+    "每日试炼确定": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     487,
                     563,
                     363,
                     152
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "再次检查战令页面"
+        ]
     },
     "每日试炼页面": {
-        "next": [
-            "识别试炼进度",
-            "试炼进度满了"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     573,
@@ -259,40 +239,43 @@
                 "threshold": [
                     0.8
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击一键领取": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            "战令确定",
-            "无奖励领取"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 400
-        },
+            "识别试炼进度",
+            "试炼进度满了"
+        ]
+    },
+    "点击一键领取": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "一键领取"
-                ],
                 "roi": [
                     509,
                     574,
                     555,
                     132
+                ],
+                "expected": [
+                    "一键领取"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 400,
+            "threshold": 0.8
+        },
+        "next": [
+            "战令确定",
+            "无奖励领取"
+        ]
     },
     "点击右上角空白-试炼": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     1239,
@@ -300,20 +283,20 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "threshold": 0.8
         },
         "next": [
             "每日试炼确定",
             "再次检查战令页面"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 500
-        }
+        ]
     },
     "点击奖励-0": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": "识别试炼进度",
                 "target_offset": [
@@ -322,19 +305,19 @@
                     16,
                     18
                 ]
-            },
-            "type": "Click"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
         },
         "next": [
             "点击奖励-1"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 300
-        }
+        ]
     },
     "点击奖励-1": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": "识别试炼进度",
                 "target_offset": [
@@ -343,19 +326,33 @@
                     13,
                     24
                 ]
-            },
-            "type": "Click"
+            }
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
         },
         "next": [
             "点击右上角空白-试炼"
-        ],
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 300
-        }
+        ]
     },
     "点击月度试炼": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    573,
+                    30,
+                    688,
+                    108
+                ],
+                "expected": [
+                    "月度试炼"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     925,
@@ -363,46 +360,45 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_wait_freezes": 300,
         "next": [
             "月度试炼页面",
             "点击月度试炼"
-        ],
-        "post_wait_freezes": 300,
+        ]
+    },
+    "点击月度试炼领取图标": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "expected": [
-                    "月度试炼"
-                ],
+                "template": [
+                    "月度试炼领取.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 400
+    },
+    "点击每日试炼": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
                 "roi": [
                     573,
                     30,
                     688,
                     108
+                ],
+                "expected": [
+                    "每日试炼"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击月度试炼领取图标": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
-        "post_delay": 400,
-        "recognition": {
-            "param": {
-                "template": [
-                    "月度试炼领取.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击每日试炼": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     1149,
@@ -410,31 +406,18 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_wait_freezes": 300,
         "next": [
             "每日试炼页面",
             "点击每日试炼"
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "每日试炼"
-                ],
-                "roi": [
-                    573,
-                    30,
-                    688,
-                    108
-                ]
-            },
-            "type": "OCR"
-        }
+        ]
     },
     "点击试炼勾玉": {
+        "pre_delay": 300,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     1175,
@@ -442,17 +425,30 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_wait_freezes": 300,
         "next": [
             "点击右上角空白-试炼"
-        ],
-        "post_wait_freezes": 300,
-        "pre_delay": 300
+        ]
     },
     "点击试炼奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    573,
+                    30,
+                    688,
+                    108
+                ],
+                "expected": [
+                    "试炼奖励"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     700,
@@ -460,39 +456,18 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "post_wait_freezes": 300,
         "next": [
             "试炼奖励页面",
             "点击试炼奖励"
-        ],
-        "post_wait_freezes": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "试炼奖励"
-                ],
-                "roi": [
-                    573,
-                    30,
-                    688,
-                    108
-                ]
-            },
-            "type": "OCR"
-        }
+        ]
     },
     "识别战令": {
-        "next": [
-            "战令有红点"
-        ],
-        "on_error": [
-            "战令没红点"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
                 "roi": [
                     0,
                     0,
@@ -501,17 +476,21 @@
                 ],
                 "template": [
                     "战令图标.png"
-                ]
-            },
-            "type": "TemplateMatch"
+                ],
+                "green_mask": true
+            }
         },
-        "timeout": 1000
+        "timeout": 1000,
+        "next": [
+            "战令有红点"
+        ],
+        "on_error": [
+            "战令没红点"
+        ]
     },
     "识别试炼进度": {
-        "next": [
-            "点击奖励-0"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     597,
@@ -522,29 +501,29 @@
                 "template": [
                     "每日试炼进度.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "点击奖励-0"
+        ]
     },
     "试炼奖励": {
-        "next": [
-            "点击试炼奖励"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
+            }
+        },
+        "next": [
+            "点击试炼奖励"
+        ]
     },
     "试炼奖励页面": {
-        "next": [
-            "点击一键领取"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     573,
@@ -558,15 +537,15 @@
                 "threshold": [
                     0.8
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "点击一键领取"
+        ]
     },
     "试炼进度满了": {
-        "next": [
-            "点击试炼勾玉"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1150,
@@ -577,19 +556,15 @@
                 "template": [
                     "试炼进度满了.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "退出战令页面": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            "领取战令回到了主页面"
-        ],
+            "点击试炼勾玉"
+        ]
+    },
+    "退出战令页面": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -600,31 +575,30 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "领取战令回到了主页面"
+        ]
     },
     "重置领取战令内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "识别战令",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
+            "[JumpBack]back"
         ]
     },
     "领取战令entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "领取战令入口"
-            },
+            "[JumpBack]领取战令入口",
             "领取战令任务出错"
         ]
     },
@@ -633,13 +607,13 @@
     },
     "领取战令任务完成": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "DisableNode",
                 "custom_action_param": {
                     "node_name": "领取战令任务出错"
                 }
-            },
-            "type": "Custom"
+            }
         },
         "focus": "任务完成：领取战令✅"
     },
@@ -650,19 +624,8 @@
         ]
     },
     "领取战令回到了主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "领取战令入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "领取战令任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -673,8 +636,38 @@
                 "template": [
                     "主页面.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取战令入口"
+                }
+            }
+        },
+        "next": [
+            "领取战令任务完成"
+        ]
+    },
+    "战令前往": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    527,
+                    592,
+                    255,
+                    60
+                ],
+                "expected": [
+                    "前往"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     }
 }
