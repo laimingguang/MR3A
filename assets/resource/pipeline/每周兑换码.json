@@ -27,7 +27,7 @@
                     114
                 ],
                 "expected": [
-                    "兑换码不能为空|无效的礼包码|已达到兑换次数上限"
+                    "兑换码不能为空|无效的礼包码|已达到兑换次数上限|礼包码已过期"
                 ]
             }
         },
@@ -247,39 +247,6 @@
             "兑换码点击确定"
         ]
     },
-    "点击兑换码": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    72,
-                    481,
-                    1075,
-                    178
-                ],
-                "expected": [
-                    "兑换码"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "target": [
-                481,
-                217,
-                312,
-                374
-            ],
-            "threshold": 0.8
-        },
-        "next": [
-            "兑换码展开页面",
-            "点击兑换码"
-        ]
-    },
     "点击请输入兑换码": {
         "recognition": {
             "type": "OCR",
@@ -298,7 +265,6 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 500,
         "next": [
             "获取兑换码"
         ]
@@ -352,6 +318,40 @@
         "next": [
             "每周兑换码检查主页面",
             "[JumpBack]back"
+        ]
+    },
+    "点击兑换码": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    72,
+                    481,
+                    1075,
+                    178
+                ],
+                "expected": [
+                    "兑换码"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "target": [
+                481,
+                217,
+                312,
+                374
+            ],
+            "threshold": 0.8
+        },
+        "post_delay": 0,
+        "next": [
+            "兑换码展开页面",
+            "点击兑换码"
         ]
     }
 }
