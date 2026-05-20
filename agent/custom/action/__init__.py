@@ -21,5 +21,7 @@ __all__ = [
     "my_3v3_kn_ya_p2",
     "my_3v3_kn_ying_p1",
     "my_3v3_kn_ying_p2",
-    "my_3v3_fight"
+    "my_3v3_kn_wu_p1",
+    "my_3v3_kn_wu_p2",
+    "my_3v3_fight",
 ]
