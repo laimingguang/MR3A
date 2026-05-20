@@ -188,7 +188,7 @@
             "param": {
                 "custom_action": "NodeOverride",
                 "custom_action_param": {
-                    "开大_bt": {
+                    "开大": {
                         "action": {
                             "param": {
                                 "custom_action_param": {
@@ -727,6 +727,27 @@
         },
         "post_delay": 0
     },
+    "每日悬赏点击出发（气笑了）": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1024,
+                    631,
+                    184,
+                    63
+                ],
+                "expected": [
+                    "出发"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
+    },
     "每日悬赏点击发送消息": {
         "recognition": {
             "type": "OCR",
@@ -824,6 +845,31 @@
             }
         },
         "rate_limit": 3000
+    },
+    "每日悬赏点击邀请好友": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    517,
+                    233,
+                    244,
+                    251
+                ],
+                "expected": [
+                    "点击邀请好友"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 800,
+        "next": [
+            "每日悬赏展开了邀请页面",
+            "每日悬赏点击邀请好友"
+        ]
     },
     "每日悬赏点到了个人信息": {
         "recognition": {
@@ -1226,6 +1272,15 @@
             "每日悬赏集会所主页",
             "[JumpBack]悬赏讨伐失败",
             "每日悬赏进入集会所"
+        ]
+    },
+    "每日悬赏邀请好友": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]每日悬赏点击出发（气笑了）",
+            "每日悬赏点击邀请好友",
+            "每日悬赏识别到进入了战斗"
         ]
     },
     "每日悬赏邀请好友组队": {
@@ -1651,7 +1706,7 @@
             "param": {
                 "custom_action": "NodeOverride",
                 "custom_action_param": {
-                    "开大_bt": {
+                    "开大": {
                         "action": {
                             "param": {
                                 "custom_action_param": {
@@ -1689,7 +1744,7 @@
             "param": {
                 "custom_action": "NodeOverride",
                 "custom_action_param": {
-                    "开大_bt": {
+                    "开大": {
                         "action": {
                             "param": {
                                 "custom_action_param": {
@@ -2186,61 +2241,6 @@
         "post_wait_freezes": 400,
         "next": [
             "每日悬赏完成回到了主页面"
-        ]
-    },
-    "每日悬赏点击邀请好友": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    517,
-                    233,
-                    244,
-                    251
-                ],
-                "expected": [
-                    "点击邀请好友"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 800,
-        "next": [
-            "每日悬赏展开了邀请页面",
-            "每日悬赏点击邀请好友"
-        ]
-    },
-    "每日悬赏点击出发（气笑了）": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1024,
-                    631,
-                    184,
-                    63
-                ],
-                "expected": [
-                    "出发"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 0
-    },
-    "每日悬赏邀请好友": {
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "[JumpBack]每日悬赏点击出发（气笑了）",
-            "每日悬赏点击邀请好友",
-            "每日悬赏识别到进入了战斗"
         ]
     }
 }
