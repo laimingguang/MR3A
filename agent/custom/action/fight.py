@@ -49,7 +49,7 @@ class fight(CustomAction):
         mode 1 为小椒大招
         mode 2 为卫鲤大招
         未传、空对象或缺省 mode 时视为模式 0（通用大招）。
-        
+
 
         """
         try:
@@ -64,13 +64,13 @@ class fight(CustomAction):
             # click(80, 360, t) 为大招原点
             # click(180, 260, t) 为小椒1式
             # click(210, 350, t) 为卫鲤2式
-            # mode 0 为通用大招
-            # mode 1 为小椒大招
+            # mode 1 为通用大招
+            # mode 0 为小椒大招
             # mode 2 为卫鲤大招
-            if mode == 0:
+            if mode == 1:
                 for _ in range(50):
                     click(80, 360, 200)
-            elif mode == 1:
+            elif mode == 0:
                 for _ in range(25):
                     click(80, 360, 100)
                     click(180, 260, 100)
