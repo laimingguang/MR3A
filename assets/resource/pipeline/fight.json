@@ -41,29 +41,26 @@
             "发现下翻按钮_cm"
         ]
     },
+    "刀疤蝠80delay": {
+        "pre_delay": 0,
+        "post_delay": 6500,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
     "发现boss_cm": {
         "recognition": {
-            "type": "ColorMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    225,
-                    361,
-                    20,
-                    20
+                    570,
+                    9,
+                    168,
+                    52
                 ],
-                "lower": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
-                ],
-                "upper": [
-                    255,
-                    255,
-                    255
-                ],
-                "count": 300
+                "expected": [
+                    "\\d"
+                ]
             }
         },
         "pre_delay": 0,
@@ -243,7 +240,7 @@
             "没见到boss就被打死了_cm"
         ]
     },
-    "开大_bt": {
+    "开大": {
         "pre_delay": 0,
         "action": {
             "type": "Custom",
@@ -252,16 +249,6 @@
                 "custom_action_param": {
                     "mode": 0
                 }
-            }
-        },
-        "post_delay": 0
-    },
-    "开大_cm": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "fight"
             }
         },
         "post_delay": 0
@@ -355,12 +342,27 @@
     },
     "没见到boss就被打死了_bt": {},
     "没见到boss就被打死了_cm": {},
+    "测试延迟节点": {
+        "inverse": true,
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
+    },
+    "焰纹黑龙80delay": {
+        "pre_delay": 0,
+        "post_delay": 9000,
+        "next": [
+            "用户配置延迟"
+        ]
+    },
     "用户配置延迟": {
         "pre_delay": 5000,
         "post_delay": 0,
         "rate_limit": 100,
         "next": [
-            "开大_bt"
+            "开大"
         ]
     },
     "血影80delay": {
@@ -399,7 +401,7 @@
         },
         "post_delay": 0,
         "next": [
-            "开大_cm"
+            "开大"
         ]
     },
     "青炎剑80delay": {
@@ -412,28 +414,6 @@
     "鬼头陀80delay": {
         "pre_delay": 0,
         "post_delay": 8600,
-        "next": [
-            "用户配置延迟"
-        ]
-    },
-    "测试延迟节点": {
-        "inverse": true,
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 0
-    },
-    "焰纹黑龙80delay": {
-        "pre_delay": 0,
-        "post_delay": 9000,
-        "next": [
-            "用户配置延迟"
-        ]
-    },
-    "刀疤蝠80delay": {
-        "pre_delay": 0,
-        "post_delay": 6500,
         "next": [
             "用户配置延迟"
         ]
