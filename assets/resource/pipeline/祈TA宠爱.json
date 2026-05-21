@@ -1,6 +1,7 @@
 {
     "祈TA宠爱entry": {
         "next": [
+            "祈TA宠爱祈福宠铃不足",
             "[JumpBack]祈TA宠爱好友组队关闭邀请",
             "[JumpBack]祈TA宠爱领取祈福确定",
             "[JumpBack]XX祈福"
@@ -23,6 +24,22 @@
         },
         "action": {
             "type": "Click"
+        }
+    },
+    "祈TA宠爱祈福宠铃不足": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    440,
+                    193,
+                    368,
+                    122
+                ],
+                "expected": [
+                    "祈福宠铃不足"
+                ]
+            }
         }
     },
     "祈TA宠爱领取祈福确定": {
