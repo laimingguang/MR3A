@@ -433,16 +433,17 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    800,
-                    8,
-                    474,
-                    95
+                    791,
+                    5,
+                    182,
+                    101
                 ],
                 "expected": [
-                    "好友|族员"
+                    "好友"
                 ]
             }
         },
+        "pre_delay": 0,
         "action": {
             "type": "Click",
             "param": {
@@ -453,7 +454,8 @@
                     1
                 ]
             }
-        }
+        },
+        "post_delay": 0
     },
     "镜界百器点击空白处关闭": {
         "recognition": {
@@ -627,6 +629,7 @@
                 ]
             }
         },
+        "pre_delay": 0,
         "action": {
             "type": "Click",
             "param": {
@@ -637,7 +640,8 @@
                     1
                 ]
             }
-        }
+        },
+        "post_delay": 0
     },
     "镜界百器出发超时": {
         "next": [
