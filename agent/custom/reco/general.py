@@ -591,7 +591,8 @@ class Count(CustomRecognition):
         重置计数器
 
         Args:
-            node_name: 要重置的节点名称，如果为None则重置所有节点
+            node_name: 要重置的节点名称；若该节点尚未执行过 Count，视为已为 0。
+                       为 None 时重置所有节点。
         """
         if node_name is None:
             cls.record.clear()
@@ -600,7 +601,7 @@ class Count(CustomRecognition):
             del cls.record[node_name]
             logger.debug(f"重置Count计数器: {node_name}")
         else:
-            logger.warning(f"未找到要重置的Count节点: {node_name}")
+            logger.debug(f"Count计数器未初始化，视为已为 0: {node_name}")
 
     def analyze(
         self,

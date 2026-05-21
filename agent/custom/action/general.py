@@ -199,11 +199,11 @@ class NodeOverride(CustomAction):
 @AgentServer.custom_action("ResetCount")
 class ResetCount(CustomAction):
     """
-    重置计数器。
+    重置计数器（幂等：目标节点未初始化时视为已为 0）。
 
     参数格式:
     {
-        "node_name": String # 目标计数器节点名称，不存在时重置全部节点
+        "node_name": String # 目标计数器节点名称；省略或空则重置全部节点
     }
     """
 
