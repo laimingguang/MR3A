@@ -99,7 +99,6 @@
         {
             "name": "3v3（仅支持困难图）",
             "entry": "3v3entry",
-            "option": ["满了也刷（最好不要）"],
             "group": [
                 "daily"
             ],
