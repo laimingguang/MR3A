@@ -1710,7 +1710,7 @@
                         "action": {
                             "param": {
                                 "custom_action_param": {
-                                    "mode": 2
+                                    "mode": 3
                                 }
                             }
                         }
@@ -1748,7 +1748,7 @@
                         "action": {
                             "param": {
                                 "custom_action_param": {
-                                    "mode": 0
+                                    "mode": 2
                                 }
                             }
                         }
