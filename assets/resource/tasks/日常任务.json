@@ -1,878 +1,891 @@
 {
-	"task": [
-		{
-			"name": "启动游戏",
-			"entry": "启动游戏entry",
-			"option": [
-				"请选择服务器",
-				"请选择区服"
-			],
-			"group": [
-				"daily"
-			],
-			"description": "<span style=\"color:deepskyblue;font-size:15px\">模拟器打开后，或登录页面，或忍三<strong>主界面</strong>均可使用：会尝试关掉常见弹窗，并领取<strong>每日签到</strong>与<strong>限定结神符</strong>。<br/><br/>暂不支持<strong>大版本签到</strong>页，脚本会<strong>跳过该页</strong>；未签时主界面<strong>通常没有红点</strong>，大版本活动期间请到<strong>活动页</strong>自行补签。</span>"
-		},
-		{
-			"name": "领取饭团",
-			"entry": "领取饭团entry",
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "小屋修炼",
-			"entry": "小屋修炼entry",
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "通灵巡逻",
-			"entry": "通灵巡逻entry",
-			"option": [
-				"有忍阶任务才巡逻",
-				"巡逻关卡"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "竞技场",
-			"entry": "竞技场entry",
-			"option": [
-				"竞技场跑酷策略",
-				"老板娘问答"
-			],
-			"group": [
-				"daily"
-			],
-			"description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
-		},
-		{
-			"name": "忍村试炼",
-			"entry": "忍村试炼entry",
-			"option": [
-				"是否留至少5个包子",
-				"忍村试炼关卡配置1",
-				"忍村试炼关卡配置2",
-				"忍村试炼关卡配置3",
-				"忍村试炼关卡配置4",
-				"忍村试炼关卡配置5"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "每日商店",
-			"entry": "每日商店entry",
-			"option": [
-				"忍币购买神秘商店"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "免费召唤",
-			"entry": "免费召唤entry",
-			"option": [
-				"忍币召唤白银武库"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "每日悬赏",
-			"entry": "每日悬赏entry",
-			"option": [
-				"每日悬赏族员组队超时时间",
-				"每日悬赏好友组队超时时间",
-				"每日悬赏开大前延迟"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "3v3（仅支持困难图）",
-			"entry": "3v3entry",
-			"group": [
-				"daily"
-			],
-			"description": "<span style=\"color:tomato;font-size:15px\">当前 3v3 只支持困难图，依赖固定延时点击，目前还是有些问题还在测试中，想长期用的话还是被动带不灭吧，以及不要在 3v3 跑图中关闭该任务</span>"
-		},
-		{
-			"name": "领取奖励",
-			"entry": "领取奖励entry",
-			"option": [
-				"神龙契约",
-				"家族祈福",
-				"好友忍币",
-				"每周兑换码",
-				"领取邮件",
-				"忍阶任务",
-				"领取战令",
-				"活动奖励"
-			],
-			"group": [
-				"daily"
-			]
-		},
-		{
-			"name": "关闭游戏",
-			"entry": "关闭游戏entry",
-			"group": [
-				"daily"
-			],
-			"description": "<span style=\"color:deepskyblue;font-size:15px\">收尾用：会<strong>取消屏蔽好友组队邀请</strong>，再<strong>关闭游戏</strong>。<br/><br/>若要多账号轮换，可在任务列表里<strong>复制多组相同任务</strong>；每组建议按「<strong>启动游戏</strong> → 中间日常 → <strong>关闭游戏</strong>」排好，并<strong>为各组单独选区服</strong>，依次运行即可切号。</span>"
-		}
-	],
-	"option": {
-		"请选择服务器": {
-			"type": "select",
-			"default_case": "官服",
-			"cases": [
-				{
-					"name": "官服",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "vivo",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.vivo"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "oppo",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.nearme.gamecenter"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "4399",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.m4399"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "华为",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.huawei"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "小米",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.mi"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "9游",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.aligames"
-								}
-							}
-						}
-					}
-				},
-				{
-					"name": "b服",
-					"pipeline_override": {
-						"启动应用": {
-							"action": {
-								"param": {
-									"package": "com.pandadastudio.ninjamustdie3.bilibili"
-								}
-							}
-						}
-					}
-				}
-			]
-		},
-		"请选择区服": {
-			"type": "select",
-			"default_case": "上次登录",
-			"cases": [
-				{
-					"name": "上次登录",
-					"pipeline_override": {
-						"跳过切换区": {
-							"enabled": true
-						}
-					}
-				},
-				{
-					"name": "一区",
-					"pipeline_override": {
-						"选择几区": {
-							"expected": "一服"
-						},
-						"是目标区服": {
-							"expected": "一服"
-						}
-					}
-				},
-				{
-					"name": "二区",
-					"pipeline_override": {
-						"选择几区": {
-							"expected": "二服"
-						},
-						"是目标区服": {
-							"expected": "二服"
-						}
-					}
-				},
-				{
-					"name": "三区",
-					"pipeline_override": {
-						"选择几区": {
-							"expected": "三服"
-						},
-						"是目标区服": {
-							"expected": "三服"
-						}
-					}
-				},
-				{
-					"name": "四区",
-					"pipeline_override": {
-						"选择几区": {
-							"expected": "四服"
-						},
-						"是目标区服": {
-							"expected": "四服"
-						}
-					}
-				}
-			]
-		},
-		"有忍阶任务才巡逻": {
-			"type": "switch",
-			"default_case": "Yes",
-			"description": "关闭后没任务也会尝试巡逻",
-			"cases": [
-				{
-					"name": "Yes",
-					"pipeline_override": {
-						"忍阶任务有才巡逻": {
-							"enabled": true
-						}
-					}
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"忍阶任务有才巡逻": {
-							"enabled": false
-						}
-					}
-				}
-			]
-		},
-		"巡逻关卡": {
-			"type": "select",
-			"default_case": "雾之湖",
-			"cases": [
-				{
-					"name": "雾之湖",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "雾之湖"
-						}
-					}
-				},
-				{
-					"name": "忍村",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "忍村"
-						}
-					}
-				},
-				{
-					"name": "忍之谷",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "忍之谷"
-						}
-					}
-				},
-				{
-					"name": "竹叶寨",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "竹叶寨"
-						}
-					}
-				},
-				{
-					"name": "雷王山",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "雷王山"
-						}
-					}
-				},
-				{
-					"name": "云之国",
-					"pipeline_override": {
-						"选择巡逻关卡": {
-							"expected": "云之国"
-						}
-					}
-				}
-			]
-		},
-		"竞技场跑酷策略": {
-			"type": "select",
-			"description": "决定要不要让脚本帮你去竞技场挂机跑酷。\n\n- **不跑酷**：不去跑。\n- **仅有每日任务时**：只有今天任务里确实需要跑竞技场时才会去；\n- **有每日任务时或本周未跑酷**：今天有任务会去跑；本周还没在竞技场跑过，也会帮你补一次。同一天最多跑一次，不会因为两个原因叠在一起跑两遍。",
-			"default_case": "有每日任务时或本周未跑酷",
-			"cases": [
-				{
-					"name": "有每日任务时或本周未跑酷",
-					"pipeline_override": {
-						"竞技场跑酷一次": {
-							"enabled": true
-						},
-						"每周跑酷一次": {
-							"enabled": true
-						}
-					}
-				},
-				{
-					"name": "仅有每日任务时",
-					"pipeline_override": {
-						"竞技场跑酷一次": {
-							"enabled": true
-						},
-						"每周跑酷一次": {
-							"enabled": false
-						}
-					}
-				},
-				{
-					"name": "不跑酷",
-					"pipeline_override": {
-						"竞技场跑酷一次": {
-							"enabled": false
-						},
-						"每周跑酷一次": {
-							"enabled": false
-						}
-					}
-				}
-			]
-		},
-		"老板娘问答": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes",
-					"pipeline_override": {
-						"老板娘问答": {
-							"enabled": true
-						}
-					}
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"老板娘问答": {
-							"enabled": false
-						}
-					}
-				}
-			]
-		},
-		"是否留至少5个包子": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes",
-					"label": "开启",
-					"pipeline_override": {}
-				},
-				{
-					"name": "No",
-					"label": "关闭",
-					"pipeline_override": {
-						"包子5结束": {
-							"enabled": false
-						},
-						"包子6结束": {
-							"enabled": false
-						},
-						"包子7结束": {
-							"enabled": false
-						},
-						"包子8结束": {
-							"enabled": false
-						},
-						"包子9结束": {
-							"enabled": false
-						}
-					}
-				}
-			]
-		},
-		"忍村试炼关卡配置1": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "第一关编号",
-					"default": "50",
-					"pipeline_type": "string",
-					"verify": "^(?:[1-9]|[1-4]\\d|50)$",
-					"pattern_msg": "请输入 1-50 的数字"
-				}
-			],
-			"pipeline_override": {
-				"识别试炼关卡数字-1": {
-					"expected": [
-						"第{第一关编号}关"
-					]
-				}
-			}
-		},
-		"忍村试炼关卡配置2": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "第二关编号",
-					"default": "49",
-					"pipeline_type": "string",
-					"verify": "^(?:[1-9]|[1-4]\\d|50)$",
-					"pattern_msg": "请输入 1-50 的数字"
-				}
-			],
-			"pipeline_override": {
-				"识别试炼关卡数字-2": {
-					"expected": [
-						"第{第二关编号}关"
-					]
-				}
-			}
-		},
-		"忍村试炼关卡配置3": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "第三关编号",
-					"default": "48",
-					"pipeline_type": "string",
-					"verify": "^(?:[1-9]|[1-4]\\d|50)$",
-					"pattern_msg": "请输入 1-50 的数字"
-				}
-			],
-			"pipeline_override": {
-				"识别试炼关卡数字-3": {
-					"expected": [
-						"第{第三关编号}关"
-					]
-				}
-			}
-		},
-		"忍村试炼关卡配置4": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "第四关编号",
-					"default": "47",
-					"pipeline_type": "string",
-					"verify": "^(?:[1-9]|[1-4]\\d|50)$",
-					"pattern_msg": "请输入 1-50 的数字"
-				}
-			],
-			"pipeline_override": {
-				"识别试炼关卡数字-4": {
-					"expected": [
-						"第{第四关编号}关"
-					]
-				}
-			}
-		},
-		"忍村试炼关卡配置5": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "第五关编号",
-					"default": "46",
-					"pipeline_type": "string",
-					"verify": "^(?:[1-9]|[1-4]\\d|50)$",
-					"pattern_msg": "请输入 1-50 的数字"
-				}
-			],
-			"pipeline_override": {
-				"识别试炼关卡数字-5": {
-					"expected": [
-						"第{第五关编号}关"
-					]
-				}
-			}
-		},
-		"忍币购买神秘商店": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes",
-					"label": "开启"
-				},
-				{
-					"name": "No",
-					"label": "关闭",
-					"pipeline_override": {
-						"神秘商店任务": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"忍币召唤白银武库": {
-			"type": "select",
-			"default_case": "不花费忍币",
-			"cases": [
-				{
-					"name": "不花费忍币",
-					"pipeline_override": {
-						"忍币召唤结束标志": {
-							"enable": true,
-							"expected": "4000|8000"
-						}
-					}
-				},
-				{
-					"name": "花费4000忍币",
-					"pipeline_override": {
-						"忍币召唤结束标志": {
-							"enable": true,
-							"expected": "8000"
-						}
-					}
-				},
-				{
-					"name": "花费8000忍币",
-					"pipeline_override": {
-						"忍币召唤结束标志": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"每日悬赏族员组队超时时间": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "邀请族员超时时间（秒）",
-					"description": "未持有神龙契约时，脚本会尝试邀请家族成员完成每日悬赏任务。在邀请界面停留超过此处设定的时间后，将跳过本次族员邀请并继续后续流程。请填写**正整数秒**（例如 180 表示 3 分钟）。",
-					"default": "180",
-					"pipeline_type": "string",
-					"verify": "^[1-9]\\d{0,5}$",
-					"pattern_msg": "请输入 1～999999 之间的整数秒"
-				}
-			],
-			"pipeline_override": {
-				"每日悬赏家族组队显示未完成": {
-					"action": {
-						"param": {
-							"custom_action_param": {
-								"duration_ms": "{邀请族员超时时间（秒）}000",
-								"scope": "每日悬赏家族组队deadline"
-							}
-						}
-					}
-				}
-			}
-		},
-		"每日悬赏好友组队超时时间": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "邀请好友超时时间（秒）",
-					"description": "同上",
-					"default": "180",
-					"pipeline_type": "string",
-					"verify": "^[1-9]\\d{0,5}$",
-					"pattern_msg": "请输入 1～999999 之间的整数秒"
-				}
-			],
-			"pipeline_override": {
-				"每日悬赏好友组队显示未完成": {
-					"action": {
-						"param": {
-							"custom_action_param": {
-								"duration_ms": "{邀请好友超时时间（秒）}000",
-								"scope": "每日悬赏好友组队deadline"
-							}
-						}
-					}
-				}
-			}
-		},
-		"每日悬赏开大前延迟": {
-			"type": "input",
-			"inputs": [
-				{
-					"name": "开大前间隔（毫秒）",
-					"description": "每日悬赏下滑上翻后到开大的延迟时间，数值越大开大越晚，正整数，单位毫秒。例如 5000 表示等待 5 秒后再开大。默认5000 毫秒不变即可，小椒三式推荐配置为 1000 毫秒。",
-					"default": "5000",
-					"pipeline_type": "int",
-					"verify": "^(0|[1-9]\\d{0,3})$",
-					"pattern_msg": "请输入 0～9999 之间的整数"
-				}
-			],
-			"pipeline_override": {
-				"用户配置延迟": {
-					"pre_delay": "{开大前间隔（毫秒）}"
-				}
-			}
-		},
-		"神龙契约": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_神龙契约": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"家族祈福": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_家族祈福": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"好友忍币": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_好友忍币": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"每周兑换码": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_每周兑换码": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"领取邮件": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_领取邮件": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"忍阶任务": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_忍阶任务": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"领取战令": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_领取战令": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"活动奖励": {
-			"type": "switch",
-			"default_case": "Yes",
-			"cases": [
-				{
-					"name": "Yes"
-				},
-				{
-					"name": "No",
-					"pipeline_override": {
-						"领取奖励_活动奖励": {
-							"enable": false
-						}
-					}
-				}
-			]
-		},
-		"给特定好友送饭团": {
-			"type": "switch",
-			"default_case": "No",
-			"cases": [
-				{
-					"name": "Yes",
-					"label": "开启",
-					"option": [
-						"指定饭团好友昵称"
-					],
-					"pipeline_override": {
-						"给特定好友送饭团": {
-							"enabled": true
-						}
-					}
-				},
-				{
-					"name": "No",
-					"label": "关闭",
-					"pipeline_override": {
-						"给特定好友送饭团": {
-							"enabled": false
-						}
-					}
-				}
-			]
-		},
-		"指定饭团好友昵称": {
-			"type": "input",
-			"description": "支持模糊匹配以及多个好友，用|分隔，如：张三|李四",
-			"inputs": [
-				{
-					"name": "好友昵称",
-					"default": "",
-					"pipeline_type": "string",
-					"pattern_msg": "请输入好友昵称"
-				}
-			],
-			"pipeline_override": {
-				"识别好友名字": {
-					"expected": "{好友昵称}"
-				}
-			}
-		},
-		"满了也刷（最好不要）": {
-			"type": "switch",
-			"label": "满了也刷（最好不要）",
-			"default_case": "No",
-			"cases": [
-				{
-					"name": "Yes",
-					"pipeline_override": {
-						"3v3每日任务满了": {
-							"next": "识别并点击匹配模式"
-						}
-					}
-				},
-				{
-					"name": "No"
-				}
-			]
-		}
-	}
+    "task": [
+        {
+            "name": "启动游戏",
+            "entry": "启动游戏entry",
+            "option": [
+                "请选择服务器",
+                "请选择区服"
+            ],
+            "group": [
+                "daily"
+            ],
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">模拟器打开后，或登录页面，或忍三<strong>主界面</strong>均可使用：会尝试关掉常见弹窗，并领取<strong>每日签到</strong>与<strong>限定结神符</strong>。<br/><br/>暂不支持<strong>大版本签到</strong>页，脚本会<strong>跳过该页</strong>；未签时主界面<strong>通常没有红点</strong>，大版本活动期间请到<strong>活动页</strong>自行补签。</span>"
+        },
+        {
+            "name": "领取饭团",
+            "entry": "领取饭团entry",
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "小屋修炼",
+            "entry": "小屋修炼entry",
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "通灵巡逻",
+            "entry": "通灵巡逻entry",
+            "option": [
+                "有忍阶任务才巡逻",
+                "巡逻关卡"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "竞技场",
+            "entry": "竞技场entry",
+            "option": [
+                "竞技场跑酷策略",
+                "老板娘问答"
+            ],
+            "group": [
+                "daily"
+            ],
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
+        },
+        {
+            "name": "忍村试炼",
+            "entry": "忍村试炼entry",
+            "option": [
+                "是否留至少5个包子",
+                "忍村试炼关卡配置1",
+                "忍村试炼关卡配置2",
+                "忍村试炼关卡配置3",
+                "忍村试炼关卡配置4",
+                "忍村试炼关卡配置5"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "每日商店",
+            "entry": "每日商店entry",
+            "option": [
+                "忍币购买神秘商店"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "免费召唤",
+            "entry": "免费召唤entry",
+            "option": [
+                "忍币召唤白银武库"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "每日悬赏",
+            "entry": "每日悬赏entry",
+            "option": [
+                "每日悬赏族员组队超时时间",
+                "每日悬赏好友组队超时时间",
+                "每日悬赏开大前延迟(毫秒)"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "3v3（仅支持困难图）",
+            "entry": "3v3entry",
+            "option": ["满了也刷（最好不要）"],
+            "group": [
+                "daily"
+            ],
+            "description": "<span style=\"color:tomato;font-size:15px\">当前 3v3 只支持困难图，依赖固定延时点击，目前还是有些问题还在测试中，想长期用的话还是被动带不灭吧，以及不要在 3v3 跑图中关闭该任务</span>"
+        },
+        {
+            "name": "领取奖励",
+            "entry": "领取奖励entry",
+            "option": [
+                "神龙契约",
+                "家族祈福",
+                "好友忍币",
+                "每周兑换码",
+                "领取邮件",
+                "忍阶任务",
+                "领取战令",
+                "活动奖励"
+            ],
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "关闭游戏",
+            "entry": "关闭游戏entry",
+            "group": [
+                "daily"
+            ],
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">收尾用：会<strong>取消屏蔽好友组队邀请</strong>，再<strong>关闭游戏</strong>。<br/><br/>若要多账号轮换，可在任务列表里<strong>复制多组相同任务</strong>；每组建议按「<strong>启动游戏</strong> → 中间日常 → <strong>关闭游戏</strong>」排好，并<strong>为各组单独选区服</strong>，依次运行即可切号。</span>"
+        }
+    ],
+    "option": {
+        "请选择服务器": {
+            "type": "select",
+            "default_case": "官服",
+            "cases": [
+                {
+                    "name": "官服",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "vivo",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.vivo"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "oppo",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.nearme.gamecenter"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "4399",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.m4399"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "华为",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.huawei"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "小米",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.mi"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "9游",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.aligames"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "b服",
+                    "pipeline_override": {
+                        "启动应用": {
+                            "action": {
+                                "param": {
+                                    "package": "com.pandadastudio.ninjamustdie3.bilibili"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "请选择区服": {
+            "type": "select",
+            "default_case": "上次登录",
+            "cases": [
+                {
+                    "name": "上次登录",
+                    "pipeline_override": {
+                        "跳过切换区": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "一区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "一服"
+                        },
+                        "是目标区服": {
+                            "expected": "一服"
+                        }
+                    }
+                },
+                {
+                    "name": "二区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "二服"
+                        },
+                        "是目标区服": {
+                            "expected": "二服"
+                        }
+                    }
+                },
+                {
+                    "name": "三区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "三服"
+                        },
+                        "是目标区服": {
+                            "expected": "三服"
+                        }
+                    }
+                },
+                {
+                    "name": "四区",
+                    "pipeline_override": {
+                        "选择几区": {
+                            "expected": "四服"
+                        },
+                        "是目标区服": {
+                            "expected": "四服"
+                        }
+                    }
+                }
+            ]
+        },
+        "有忍阶任务才巡逻": {
+            "type": "switch",
+            "default_case": "Yes",
+            "description": "关闭后没任务也会尝试巡逻",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "忍阶任务有才巡逻": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "忍阶任务有才巡逻": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "巡逻关卡": {
+            "type": "select",
+            "default_case": "雾之湖",
+            "cases": [
+                {
+                    "name": "雾之湖",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "雾之湖"
+                        }
+                    }
+                },
+                {
+                    "name": "忍村",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "忍村"
+                        }
+                    }
+                },
+                {
+                    "name": "忍之谷",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "忍之谷"
+                        }
+                    }
+                },
+                {
+                    "name": "竹叶寨",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "竹叶寨"
+                        }
+                    }
+                },
+                {
+                    "name": "雷王山",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "雷王山"
+                        }
+                    }
+                },
+                {
+                    "name": "云之国",
+                    "pipeline_override": {
+                        "选择巡逻关卡": {
+                            "expected": "云之国"
+                        }
+                    }
+                }
+            ]
+        },
+        "竞技场跑酷策略": {
+            "type": "select",
+            "description": "决定要不要让脚本帮你去竞技场挂机跑酷。\n\n- **不跑酷**：不去跑。\n- **仅有每日任务时**：只有今天任务里确实需要跑竞技场时才会去；\n- **有每日任务时或本周未跑酷**：今天有任务会去跑；本周还没在竞技场跑过，也会帮你补一次。同一天最多跑一次，不会因为两个原因叠在一起跑两遍。",
+            "default_case": "有每日任务时或本周未跑酷",
+            "cases": [
+                {
+                    "name": "有每日任务时或本周未跑酷",
+                    "pipeline_override": {
+                        "竞技场跑酷一次": {
+                            "enabled": true
+                        },
+                        "每周跑酷一次": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "仅有每日任务时",
+                    "pipeline_override": {
+                        "竞技场跑酷一次": {
+                            "enabled": true
+                        },
+                        "每周跑酷一次": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "不跑酷",
+                    "pipeline_override": {
+                        "竞技场跑酷一次": {
+                            "enabled": false
+                        },
+                        "每周跑酷一次": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "老板娘问答": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "老板娘问答": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "老板娘问答": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "是否留至少5个包子": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "包子5结束": {
+                            "enabled": false
+                        },
+                        "包子6结束": {
+                            "enabled": false
+                        },
+                        "包子7结束": {
+                            "enabled": false
+                        },
+                        "包子8结束": {
+                            "enabled": false
+                        },
+                        "包子9结束": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "忍村试炼关卡配置1": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "第一关编号",
+                    "default": "50",
+                    "pipeline_type": "string",
+                    "verify": "^(?:[1-9]|[1-4]\\d|50)$",
+                    "pattern_msg": "请输入 1-50 的数字"
+                }
+            ],
+            "pipeline_override": {
+                "识别试炼关卡数字-1": {
+                    "expected": [
+                        "第{第一关编号}关"
+                    ]
+                }
+            }
+        },
+        "忍村试炼关卡配置2": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "第二关编号",
+                    "default": "49",
+                    "pipeline_type": "string",
+                    "verify": "^(?:[1-9]|[1-4]\\d|50)$",
+                    "pattern_msg": "请输入 1-50 的数字"
+                }
+            ],
+            "pipeline_override": {
+                "识别试炼关卡数字-2": {
+                    "expected": [
+                        "第{第二关编号}关"
+                    ]
+                }
+            }
+        },
+        "忍村试炼关卡配置3": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "第三关编号",
+                    "default": "48",
+                    "pipeline_type": "string",
+                    "verify": "^(?:[1-9]|[1-4]\\d|50)$",
+                    "pattern_msg": "请输入 1-50 的数字"
+                }
+            ],
+            "pipeline_override": {
+                "识别试炼关卡数字-3": {
+                    "expected": [
+                        "第{第三关编号}关"
+                    ]
+                }
+            }
+        },
+        "忍村试炼关卡配置4": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "第四关编号",
+                    "default": "47",
+                    "pipeline_type": "string",
+                    "verify": "^(?:[1-9]|[1-4]\\d|50)$",
+                    "pattern_msg": "请输入 1-50 的数字"
+                }
+            ],
+            "pipeline_override": {
+                "识别试炼关卡数字-4": {
+                    "expected": [
+                        "第{第四关编号}关"
+                    ]
+                }
+            }
+        },
+        "忍村试炼关卡配置5": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "第五关编号",
+                    "default": "46",
+                    "pipeline_type": "string",
+                    "verify": "^(?:[1-9]|[1-4]\\d|50)$",
+                    "pattern_msg": "请输入 1-50 的数字"
+                }
+            ],
+            "pipeline_override": {
+                "识别试炼关卡数字-5": {
+                    "expected": [
+                        "第{第五关编号}关"
+                    ]
+                }
+            }
+        },
+        "忍币购买神秘商店": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启"
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "神秘商店任务": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "忍币召唤白银武库": {
+            "type": "select",
+            "default_case": "不花费忍币",
+            "cases": [
+                {
+                    "name": "不花费忍币",
+                    "pipeline_override": {
+                        "忍币召唤结束标志": {
+                            "enable": true,
+                            "expected": "4000|8000"
+                        }
+                    }
+                },
+                {
+                    "name": "花费4000忍币",
+                    "pipeline_override": {
+                        "忍币召唤结束标志": {
+                            "enable": true,
+                            "expected": "8000"
+                        }
+                    }
+                },
+                {
+                    "name": "花费8000忍币",
+                    "pipeline_override": {
+                        "忍币召唤结束标志": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "每日悬赏族员组队超时时间": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "邀请族员超时时间(秒)",
+                    "description": "未持有神龙契约时，脚本会尝试邀请家族成员完成每日悬赏任务。在邀请界面停留超过此处设定的时间后，将跳过本次族员邀请并继续后续流程。请填写**正整数秒**（例如 180 表示 3 分钟）。",
+                    "default": "180",
+                    "pipeline_type": "string",
+                    "verify": "^[1-9]\\d{0,5}$",
+                    "pattern_msg": "请输入 1～999999 之间的整数秒"
+                }
+            ],
+            "pipeline_override": {
+                "每日悬赏家族组队显示未完成": {
+                    "action": {
+                        "param": {
+                            "custom_action_param": {
+                                "duration_ms": "{邀请族员超时时间（秒）}000",
+                                "scope": "每日悬赏家族组队deadline"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "每日悬赏好友组队超时时间": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "邀请好友超时时间(秒)",
+                    "description": "同上",
+                    "default": "180",
+                    "pipeline_type": "string",
+                    "verify": "^[1-9]\\d{0,5}$",
+                    "pattern_msg": "请输入 1～999999 之间的整数秒"
+                }
+            ],
+            "pipeline_override": {
+                "每日悬赏好友组队显示未完成": {
+                    "action": {
+                        "param": {
+                            "custom_action_param": {
+                                "duration_ms": "{邀请好友超时时间（秒）}000",
+                                "scope": "每日悬赏好友组队deadline"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "每日悬赏开大前延迟(毫秒)": {
+            "type": "input",
+            "description": "每日悬赏下滑上翻后到开大的延迟时间，按角色分别配置。系统会识别所用角色并读取对应配置,默认不变即可。",
+            "inputs": [
+                {
+                    "name": "      双焰小椒",
+                    "description": "双焰小椒：数值越大开大越晚，正整数，单位毫秒。例如 1000 表示等待 1 秒后再开大。默认 1000 毫秒。",
+                    "default": "1000",
+                    "pipeline_type": "int",
+                    "verify": "^(0|[1-9]\\d{0,3})$",
+                    "pattern_msg": "请输入 0～9999 之间的整数"
+                },
+                {
+                    "name": "      其他角色",
+                    "description": "除双焰小椒外的角色：数值越大开大越晚，正整数，单位毫秒。例如 5000 表示等待 5 秒后再开大。默认 5000 毫秒。",
+                    "default": "5000",
+                    "pipeline_type": "int",
+                    "verify": "^(0|[1-9]\\d{0,3})$",
+                    "pattern_msg": "请输入 0～9999 之间的整数"
+                }
+            ],
+            "pipeline_override": {
+                "用户配置延迟_双焰小椒": {
+                    "pre_delay": "{双焰小椒}"
+                },
+                "用户配置延迟_其他角色": {
+                    "pre_delay": "{其他角色}"
+                }
+            }
+        },
+        "神龙契约": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_神龙契约": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "家族祈福": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_家族祈福": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "好友忍币": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_好友忍币": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "每周兑换码": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_每周兑换码": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "领取邮件": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_领取邮件": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "忍阶任务": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_忍阶任务": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "领取战令": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_领取战令": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "活动奖励": {
+            "type": "switch",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "领取奖励_活动奖励": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "给特定好友送饭团": {
+            "type": "switch",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "option": [
+                        "指定饭团好友昵称"
+                    ],
+                    "pipeline_override": {
+                        "给特定好友送饭团": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "给特定好友送饭团": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "指定饭团好友昵称": {
+            "type": "input",
+            "description": "支持模糊匹配以及多个好友，用|分隔，如：张三|李四",
+            "inputs": [
+                {
+                    "name": "好友昵称",
+                    "default": "",
+                    "pipeline_type": "string",
+                    "pattern_msg": "请输入好友昵称"
+                }
+            ],
+            "pipeline_override": {
+                "识别好友名字": {
+                    "expected": "{好友昵称}"
+                }
+            }
+        },
+        "满了也刷（最好不要）": {
+            "type": "switch",
+            "label": "满了也刷（最好不要）",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "3v3每日任务满了": {
+                            "next": "识别并点击匹配模式"
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        }
+    }
 }
