@@ -1,0 +1,74 @@
+{
+    "祈TA宠爱entry": {
+        "next": [
+            "[JumpBack]祈TA宠爱好友组队关闭邀请",
+            "[JumpBack]祈TA宠爱领取祈福确定",
+            "[JumpBack]XX祈福"
+        ]
+    },
+    "祈TA宠爱好友组队关闭邀请": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    370,
+                    495,
+                    211,
+                    65
+                ],
+                "expected": [
+                    "拒绝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "祈TA宠爱领取祈福确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    507,
+                    595,
+                    256,
+                    101
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "XX祈福": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    279,
+                    263,
+                    579,
+                    154
+                ],
+                "expected": [
+                    "宝物祈福"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    37,
+                    86,
+                    -64,
+                    -4
+                ]
+            }
+        }
+    }
+}

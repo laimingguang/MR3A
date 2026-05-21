@@ -55,6 +55,17 @@
             "description": "<span style=\"color:deepskyblue;font-size:15px\"><strong>清体力</strong>：建议有<strong>一勾以上忍宗</strong>运行此任务，避免影响其他玩家；<br/><br/><strong>每日任务</strong>：会<strong><span style=\"color:tomato\">重置秘境</span></strong>。若连续多次未完成，脚本将跳过该子任务；通常开局有大招即可正常完成。</span>"
         },
         {
+            "name": "祈TA宠爱",
+            "entry": "祈TA宠爱entry",
+            "option": [
+                "祈福类型"
+            ],
+            "group": [
+                "standalone"
+            ],
+            "description": "请在祈TA宠爱页面运行此任务。（碎碎念：领个蚊子腿还要看这么长过场动画）"
+        },
+        {
             "name": "周末活动",
             "entry": "周末活动entry",
             "option": [
@@ -341,6 +352,43 @@
                     "pipeline_override": {
                         "周末活动_光影忍法帖": {
                             "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "祈福类型": {
+            "type": "select",
+            "label": "祈福类型",
+            "default_case": "宝物祈福",
+            "cases": [
+                {
+                    "name": "宝物祈福",
+                    "pipeline_override": {
+                        "XX祈福": {
+                            "expected": [
+                                "宝物祈福"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "武器祈福",
+                    "pipeline_override": {
+                        "XX祈福": {
+                            "expected": [
+                                "武器祈福"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "角色祈福",
+                    "pipeline_override": {
+                        "XX祈福": {
+                            "expected": [
+                                "角色祈福"
+                            ]
                         }
                     }
                 }
