@@ -51,7 +51,8 @@
             ],
             "group": [
                 "standalone"
-            ]
+            ],
+            "description": "<span style=\"color:deepskyblue;font-size:15px\"><strong>清体力</strong>：建议有<strong>一勾以上忍宗</strong>运行此任务，避免影响其他玩家；<br/><br/><strong>每日任务</strong>：会<strong><span style=\"color:tomato\">重置秘境</span></strong>。若连续多次未完成，脚本将跳过该子任务；通常开局有大招即可正常完成。</span>"
         },
         {
             "name": "周末活动",
