@@ -236,6 +236,9 @@
                 {
                     "name": "Yes",
                     "label": "开启",
+                    "option": [
+                        "镜界百器目标模式"
+                    ],
                     "pipeline_override": {
                         "清理镜界百器体力": {
                             "enable": true
@@ -248,6 +251,53 @@
                     "pipeline_override": {
                         "清理镜界百器体力": {
                             "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "镜界百器目标模式": {
+            "type": "select",
+            "label": "目标模式",
+            "default_case": "炼狱",
+            "cases": [
+                {
+                    "name": "炼狱",
+                    "pipeline_override": {
+                        "镜界百器识别目标模式": {
+                            "expected": [
+                                "炼狱"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "噩梦",
+                    "pipeline_override": {
+                        "镜界百器识别目标模式": {
+                            "expected": [
+                                "噩梦"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "困难",
+                    "pipeline_override": {
+                        "镜界百器识别目标模式": {
+                            "expected": [
+                                "困难"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "普通",
+                    "pipeline_override": {
+                        "镜界百器识别目标模式": {
+                            "expected": [
+                                "普通"
+                            ]
                         }
                     }
                 }
