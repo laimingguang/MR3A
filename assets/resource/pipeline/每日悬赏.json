@@ -378,7 +378,7 @@
         ]
     },
     "每日悬赏奖励次数满了": {
-        "enabled": false,
+        "enabled": true,
         "recognition": {
             "type": "TemplateMatch",
             "param": {

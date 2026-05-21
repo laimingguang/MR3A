@@ -625,7 +625,7 @@
                     "action": {
                         "param": {
                             "custom_action_param": {
-                                "duration_ms": "{邀请族员超时时间（秒）}000",
+                                "duration_ms": "{邀请族员超时时间(秒)}000",
                                 "scope": "每日悬赏家族组队deadline"
                             }
                         }
@@ -650,7 +650,7 @@
                     "action": {
                         "param": {
                             "custom_action_param": {
-                                "duration_ms": "{邀请好友超时时间（秒）}000",
+                                "duration_ms": "{邀请好友超时时间(秒)}000",
                                 "scope": "每日悬赏好友组队deadline"
                             }
                         }
@@ -681,10 +681,10 @@
             ],
             "pipeline_override": {
                 "用户配置延迟_双焰小椒": {
-                    "pre_delay": "{双焰小椒}"
+                    "pre_delay": "{      双焰小椒}"
                 },
                 "用户配置延迟_其他角色": {
-                    "pre_delay": "{其他角色}"
+                    "pre_delay": "{      其他角色}"
                 }
             }
         },
