@@ -860,9 +860,16 @@
         "action": {
             "type": "Custom",
             "param": {
-                "custom_action": "ResetCount"
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "重新识别确保启动阶段弹窗处理结束"
+                }
             }
-        }
+        },
+        "next": [
+            "此节点用于计数多次没进入主页面则关闭可能的签到",
+            "点击空白处关闭未知签到"
+        ]
     },
     "启动游戏识别到集会所": {
         "recognition": {
@@ -891,9 +898,16 @@
         "action": {
             "type": "Custom",
             "param": {
-                "custom_action": "ResetCount"
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "重新识别确保启动阶段弹窗处理结束"
+                }
             }
-        }
+        },
+        "next": [
+            "此节点用于计数多次没进入主页面则关闭可能的签到",
+            "点击空白处关闭未知签到"
+        ]
     },
     "重新识别确保启动阶段弹窗处理结束": {
         "recognition": {
@@ -942,5 +956,43 @@
         },
         "post_delay": 0
     },
-    "启动成功": {}
+    "启动成功": {},
+    "此节点用于计数多次没进入主页面则关闭可能的签到": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 3
+                }
+            }
+        }
+    },
+    "点击空白处关闭未知签到": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1252,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "重置节点此节点用于计数多次没进入主页面则关闭可能的签到"
+        ]
+    },
+    "重置节点此节点用于计数多次没进入主页面则关闭可能的签到": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "此节点用于计数多次没进入主页面则关闭可能的签到"
+                }
+            }
+        }
+    }
 }
