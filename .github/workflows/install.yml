@@ -19,7 +19,7 @@ on:
       - "**.py"
   workflow_dispatch:
 env:
-  MAA_FRAMEWORK_VERSION: "v5.8.1"
+  MAA_FRAMEWORK_VERSION: "v5.10.4"
 permissions:
   contents: write
   actions: write
