@@ -13,20 +13,6 @@
             "description": "<span style=\"color:deepskyblue;font-size:15px\">模拟器打开后，或登录页面，或忍三<strong>主界面</strong>均可使用：会尝试关掉常见弹窗，并领取<strong>每日签到</strong>与<strong>限定结神符</strong>。<br/><br/>暂不支持<strong>大版本签到</strong>页，脚本会在一段时间后<strong>跳过该页</strong>；未签时主界面<strong>通常没有红点</strong>，大版本活动期间请到<strong>活动页</strong>自行补签。</span>"
         },
         {
-            "name": "领取饭团",
-            "entry": "领取饭团entry",
-            "group": [
-                "daily"
-            ]
-        },
-        {
-            "name": "小屋修炼",
-            "entry": "小屋修炼entry",
-            "group": [
-                "daily"
-            ]
-        },
-        {
             "name": "通灵巡逻",
             "entry": "通灵巡逻entry",
             "option": [
@@ -48,6 +34,20 @@
                 "daily"
             ],
             "description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
+        },
+        {
+            "name": "领取饭团",
+            "entry": "领取饭团entry",
+            "group": [
+                "daily"
+            ]
+        },
+        {
+            "name": "小屋修炼",
+            "entry": "小屋修炼entry",
+            "group": [
+                "daily"
+            ]
         },
         {
             "name": "忍村试炼",
