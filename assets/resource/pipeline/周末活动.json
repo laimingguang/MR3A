@@ -1,20 +1,305 @@
 {
-    "周末活动_光影忍法帖": {
-        "max_hit": 1,
+    "周末活动entry": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]周末活动入口",
+            "周末活动任务出错"
+        ]
+    },
+    "周末活动任务出错": {
+        "focus": "任务出错：周末活动❌"
+    },
+    "周末活动任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "周末活动任务出错"
+                }
+            }
+        },
+        "focus": "任务完成：周末活动✅"
+    },
+    "周末活动入口": {
+        "max_hit": 3,
+        "next": [
+            "重置周末活动内部节点计数器"
+        ]
+    },
+    "周末活动处理悬赏讨伐失败弹窗": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    500,
+                    465,
+                    285,
+                    247
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "周末活动完成回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "周末活动入口"
+                }
+            }
+        },
+        "next": [
+            "周末活动任务完成"
+        ]
+    },
+    "周末活动检查集会所主页": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    21,
+                    3,
+                    379,
+                    132
+                ],
+                "template": [
+                    "集会所主页.png"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]周末活动点击光影忍法帖",
+            "[JumpBack]周末活动点击忍界乱斗",
+            "周末活动完成回到了主页面",
+            "[JumpBack]周末活动集会所右滑",
+            "未知周末活动退回主页面"
+        ]
+    },
+    "周末活动点击光影忍法帖": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1272,
+                    300
+                ],
+                "template": [
+                    "光影忍法帖.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "next": [
             "光影忍法帖entry"
         ]
     },
-    "周末活动entry": {
+    "周末活动点击忍界乱斗": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1272,
+                    300
+                ],
+                "template": [
+                    "忍界乱斗.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
         "next": [
-            {
-                "jump_back": true,
-                "name": "周末活动_光影忍法帖"
-            },
-            "周末活动结束"
-        ],
-        "post_delay": 0,
-        "pre_delay": 0
+            "忍界乱斗entry"
+        ]
     },
-    "周末活动结束": {}
+    "周末活动确认在主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    12,
+                    133,
+                    379,
+                    468
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "周末活动当前为周日",
+            "周末活动当前为周六",
+            "周末活动当前不为周末"
+        ]
+    },
+    "周末活动进入集会所": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    665,
+                    357,
+                    615,
+                    341
+                ],
+                "template": [
+                    "集会所.png"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "threshold": 0.8
+        },
+        "next": [
+            "周末活动检查集会所主页",
+            "[JumpBack]周末活动处理悬赏讨伐失败弹窗",
+            "周末活动进入集会所"
+        ]
+    },
+    "周末活动集会所右滑": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 6
+                }
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1200,
+                    400,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        400,
+                        400,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    500
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "threshold": 0.8
+        }
+    },
+    "未知周末活动退回主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1500,
+        "focus": "未知的周末活动，跳过此任务",
+        "next": [
+            "周末活动完成回到了主页面"
+        ]
+    },
+    "重置周末活动内部节点计数器": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount"
+            }
+        },
+        "next": [
+            "周末活动确认在主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "周末活动当前为周日": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "7"
+                }
+            }
+        },
+        "next": [
+            "周末活动进入集会所"
+        ]
+    },
+    "周末活动当前为周六": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "6"
+                }
+            }
+        },
+        "next": [
+            "周末活动进入集会所"
+        ]
+    },
+    "周末活动当前不为周末": {
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "非周末，跳过此任务"
+    }
 }
