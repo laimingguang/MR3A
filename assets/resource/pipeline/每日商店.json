@@ -107,8 +107,7 @@
         },
         "pre_delay": 0,
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "next": [
             "再次确认是花费忍币并点击购买",
@@ -134,116 +133,14 @@
             "忍币商店点击空白处"
         ]
     },
-    "悬赏商店任务": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "next": [
-            "点击限购商店"
-        ]
-    },
-    "悬赏商店右滑": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 13
-                }
-            }
-        },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    800,
-                    390,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        300,
-                        390,
-                        1,
-                        1
-                    ]
-                ]
-            }
-        },
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        }
-    },
-    "是否忍币购买悬赏": {
-        "enabled": true,
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        },
-        "next": [
-            "购买悬赏忍币不足",
-            {
-                "name": "点击悬赏购买按钮",
-                "jump_back": true
-            },
-            {
-                "name": "点击悬赏购买确定按钮",
-                "jump_back": true
-            },
-            {
-                "name": "点击悬赏商店忍币",
-                "jump_back": true
-            },
-            "识别到C级悬赏",
-            {
-                "name": "悬赏商店右滑",
-                "jump_back": true
-            }
-        ]
-    },
     "每日商店entry": {
         "next": [
-            {
-                "name": "每日商店入口",
-                "jump_back": true
-            },
+            "[JumpBack]每日商店入口",
             "每日商店任务出错"
         ]
     },
     "每日商店任务出错": {
         "focus": "任务出错：每日商店❌"
-    },
-    "每日商店任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日商店任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：每日商店✅"
     },
     "每日商店入口": {
         "max_hit": 3,
@@ -263,140 +160,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日商店入口"
-                }
-            }
-        },
-        "next": [
-            "每日商店任务完成"
-        ]
-    },
-    "点击悬赏商店": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1103,
-                    108,
-                    174,
-                    544
                 ],
-                "expected": [
-                    "悬赏商店"
-                ]
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "StopTask"
         },
-        "post_wait_freezes": 500,
-        "next": [
-            {
-                "name": "领取免费悬赏",
-                "jump_back": true
-            },
-            "是否忍币购买悬赏",
-            "退出悬赏商店"
-        ]
-    },
-    "点击悬赏商店忍币": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    37,
-                    484,
-                    763,
-                    160
-                ],
-                "template": [
-                    "悬赏商店忍币.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        }
-    },
-    "点击悬赏购买按钮": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    535,
-                    457,
-                    276,
-                    122
-                ],
-                "expected": [
-                    "购买"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        }
-    },
-    "点击悬赏购买确定按钮": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    527,
-                    582,
-                    243,
-                    101
-                ],
-                "expected": [
-                    "确定"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        }
+        "focus": "任务完成：每日商店✅"
     },
     "点击神秘商店": {
         "recognition": {
@@ -414,63 +185,13 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_wait_freezes": 300,
         "next": [
             "神秘商店页面",
             "点击神秘商店"
         ]
-    },
-    "点击限购商店": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    18,
-                    633,
-                    1261,
-                    84
-                ],
-                "expected": [
-                    "限购商店"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": 300,
-        "next": [
-            "点击悬赏商店",
-            "点击限购商店"
-        ]
-    },
-    "确定领取免费悬赏": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    449,
-                    522,
-                    393,
-                    195
-                ],
-                "expected": [
-                    "确定"
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 400,
-            "threshold": 0.8
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        }
     },
     "神秘商店任务": {
         "enabled": true,
@@ -524,8 +245,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -613,8 +333,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -680,8 +399,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -747,8 +465,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -814,8 +531,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -881,8 +597,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -948,8 +663,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -1015,8 +729,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 300,
         "next": [
@@ -1080,8 +793,7 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_delay": 400,
         "next": [
@@ -1105,143 +817,18 @@
             }
         },
         "next": [
-            {
-                "name": "神秘商店商品0",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品1",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品2",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品3",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品4",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品5",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品6",
-                "jump_back": true
-            },
-            {
-                "name": "神秘商店商品7",
-                "jump_back": true
-            },
+            "[JumpBack]神秘商店商品0",
+            "[JumpBack]神秘商店商品1",
+            "[JumpBack]神秘商店商品2",
+            "[JumpBack]神秘商店商品3",
+            "[JumpBack]神秘商店商品4",
+            "[JumpBack]神秘商店商品5",
+            "[JumpBack]神秘商店商品6",
+            "[JumpBack]神秘商店商品7",
             "神秘商店页面购买结束"
         ]
     },
     "神秘商店页面购买结束": {},
-    "识别到C级悬赏": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    183,
-                    97,
-                    872,
-                    114
-                ],
-                "expected": [
-                    "C级悬赏"
-                ]
-            }
-        },
-        "timeout": 1500,
-        "next": [
-            "识别到已购买说明购买完成"
-        ],
-        "on_error": [
-            "是否忍币购买悬赏"
-        ]
-    },
-    "识别到免费悬赏": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    8,
-                    382,
-                    352,
-                    282
-                ],
-                "expected": [
-                    "可领取"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": 300,
-        "next": [
-            "确定领取免费悬赏"
-        ]
-    },
-    "识别到已购买说明购买完成": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": "识别到C级悬赏",
-                "roi_offset": [
-                    -71,
-                    403,
-                    127,
-                    92
-                ],
-                "expected": [
-                    "已购买"
-                ]
-            }
-        }
-    },
-    "购买悬赏忍币不足": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    514,
-                    59,
-                    241,
-                    117
-                ],
-                "expected": [
-                    "忍币不足"
-                ]
-            }
-        },
-        "pre_wait_freezes": {
-            "time": 300,
-            "target": [
-                946,
-                30,
-                330,
-                679
-            ],
-            "threshold": 0.8
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    287,
-                    21,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
     "进入商店": {
         "recognition": {
             "type": "TemplateMatch",
@@ -1259,15 +846,11 @@
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "post_wait_freezes": 300,
         "next": [
-            {
-                "name": "神秘商店任务",
-                "jump_back": true
-            },
+            "[JumpBack]神秘商店任务",
             "退出商店"
         ]
     },
@@ -1288,14 +871,12 @@
         },
         "pre_wait_freezes": 400,
         "action": {
-            "type": "Click",
-            "param": {}
+            "type": "Click"
         },
         "next": [
             "每日商店回到了主页面"
         ]
     },
-    "退出悬赏商店": {},
     "重置每日商店内部节点计数器": {
         "action": {
             "type": "Custom",
@@ -1305,25 +886,7 @@
         },
         "next": [
             "进入商店",
-            {
-                "name": "back",
-                "jump_back": true
-            }
-        ]
-    },
-    "领取免费悬赏": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "timeout": 400,
-        "next": [
-            "识别到免费悬赏"
+            "[JumpBack]back"
         ]
     }
 }

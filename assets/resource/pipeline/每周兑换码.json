@@ -177,18 +177,6 @@
     "每周兑换码任务出错": {
         "focus": "任务出错：活动奖励❌"
     },
-    "每周兑换码任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每周兑换码任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：每周兑换码✅"
-    },
     "每周兑换码入口": {
         "max_hit": 3,
         "next": [
@@ -207,21 +195,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每周兑换码入口"
-                }
-            }
+            "type": "StopTask"
         },
-        "next": [
-            "每周兑换码任务完成"
-        ]
+        "focus": "任务完成：每周兑换码✅"
     },
     "每周兑换码检查主页面": {
         "recognition": {
@@ -235,7 +216,8 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "next": [
@@ -245,6 +227,40 @@
     "没有输入兑换码选项": {
         "next": [
             "兑换码点击确定"
+        ]
+    },
+    "点击兑换码": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    72,
+                    481,
+                    1075,
+                    178
+                ],
+                "expected": [
+                    "兑换码"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 300,
+            "target": [
+                481,
+                217,
+                312,
+                374
+            ],
+            "threshold": 0.8
+        },
+        "post_delay": 0,
+        "next": [
+            "兑换码展开页面",
+            "点击兑换码"
         ]
     },
     "点击请输入兑换码": {
@@ -318,40 +334,6 @@
         "next": [
             "每周兑换码检查主页面",
             "[JumpBack]back"
-        ]
-    },
-    "点击兑换码": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    72,
-                    481,
-                    1075,
-                    178
-                ],
-                "expected": [
-                    "兑换码"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": {
-            "time": 300,
-            "target": [
-                481,
-                217,
-                312,
-                374
-            ],
-            "threshold": 0.8
-        },
-        "post_delay": 0,
-        "next": [
-            "兑换码展开页面",
-            "点击兑换码"
         ]
     }
 }

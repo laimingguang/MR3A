@@ -24,7 +24,8 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "next": [
@@ -44,7 +45,8 @@
                 ],
                 "template": [
                     "商店.png"
-                ]
+                ],
+                "green_mask": true
             }
         }
     },

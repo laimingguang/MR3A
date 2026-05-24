@@ -203,6 +203,37 @@
             "点击开始游戏jjc跑酷"
         ]
     },
+    "屏蔽任务每周跑酷检查": {},
+    "忍阶任务页面_jjc": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1061,
+                    6,
+                    209,
+                    113
+                ],
+                "expected": [
+                    "忍阶预览"
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "target": [
+                514,
+                103,
+                547,
+                178
+            ],
+            "threshold": 0.8
+        },
+        "next": [
+            "有任务竞技场跑酷一次",
+            "没有任务竞技场跑酷一次"
+        ]
+    },
     "有任务竞技场跑酷一次": {
         "recognition": {
             "type": "OCR",
@@ -221,6 +252,57 @@
         "next": [
             "检查到jjc任务没完成",
             "检测到jjc任务已完成"
+        ]
+    },
+    "本周已跑酷标志1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    120,
+                    593,
+                    224,
+                    113
+                ],
+                "expected": [
+                    "距离奖杯结算"
+                ]
+            }
+        }
+    },
+    "本周已跑酷标志2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    344,
+                    106,
+                    366,
+                    79
+                ],
+                "expected": [
+                    "观看本场最高分录像"
+                ]
+            }
+        }
+    },
+    "本周没跑酷": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    251,
+                    339,
+                    745,
+                    182
+                ],
+                "expected": [
+                    "共同参加小组赛"
+                ]
+            }
+        },
+        "next": [
+            "老板娘问答图标"
         ]
     },
     "检查到jjc任务没完成": {
@@ -270,6 +352,43 @@
             "竞技场任务退出"
         ]
     },
+    "每周跑酷一次": {
+        "enabled": true,
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "next": [
+            "每周跑酷一次进入了竞技场"
+        ]
+    },
+    "每周跑酷一次进入了竞技场": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1011,
+                    47,
+                    154,
+                    70
+                ],
+                "expected": [
+                    "老板娘问答"
+                ]
+            }
+        },
+        "next": [
+            "本周没跑酷",
+            "本周已跑酷标志1",
+            "本周已跑酷标志2"
+        ]
+    },
+    "每周跑酷和每日老板娘问答结束": {},
     "没有任务竞技场跑酷一次": {
         "next": [
             "竞技场任务退出"
@@ -435,7 +554,8 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
@@ -469,18 +589,6 @@
     },
     "竞技场任务出错": {
         "focus": "任务出错：竞技场❌"
-    },
-    "竞技场任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "竞技场任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：竞技场✅"
     },
     "竞技场任务结束": {
         "next": [
@@ -524,21 +632,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "竞技场入口"
-                }
-            }
+            "type": "StopTask"
         },
-        "next": [
-            "竞技场任务完成"
-        ]
+        "focus": "任务完成：竞技场✅"
     },
     "竞技场检查主页面": {
         "recognition": {
@@ -552,12 +653,93 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "next": [
             "竞技场任务"
         ]
+    },
+    "竞技场点击一键领取": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1093,
+                    94,
+                    178,
+                    86
+                ],
+                "expected": [
+                    "一键领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "竞技场点击每晚排行榜结算": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    691,
+                    100,
+                    201,
+                    587
+                ],
+                "expected": [
+                    "现在点击领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "竞技场点击确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    467,
+                    531,
+                    363,
+                    171
+                ],
+                "expected": [
+                    "确定|领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "竞技场确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    403,
+                    360,
+                    569,
+                    355
+                ],
+                "expected": [
+                    "确定|继续"
+                ],
+                "order_by": "Random"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     },
     "竞技场确定_问答": {
         "recognition": {
@@ -594,6 +776,99 @@
             "确认在主页面则点击忍阶_jjc"
         ]
     },
+    "答对10题的奖励": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    838,
+                    657,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "答对20题的奖励": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1007,
+                    645,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "答对30题的奖励": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1191,
+                    645,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "答对x题奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    501,
+                    200,
+                    273,
+                    87
+                ],
+                "expected": [
+                    "答对.+题奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    666,
+                    6,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
     "经典模式": {
         "recognition": {
             "type": "TemplateMatch",
@@ -610,7 +885,8 @@
             "进入了jjc跑酷页面"
         ]
     },
-    "进入竞技场": {
+    "老板娘问答": {
+        "enabled": true,
         "recognition": {
             "type": "Custom",
             "param": {
@@ -621,9 +897,7 @@
             }
         },
         "next": [
-            "进入了竞技场老板娘问答图标",
-            "点击决斗场_jjc",
-            "进入了决斗场_jjc"
+            "老板娘问答图标_问答"
         ]
     },
     "老板娘问答图标": {
@@ -647,7 +921,7 @@
             "经典模式"
         ]
     },
-    "进入了竞技场老板娘问答图标": {
+    "老板娘问答图标_问答": {
         "recognition": {
             "type": "OCR",
             "param": {
@@ -662,14 +936,13 @@
                 ]
             }
         },
-        "post_wait_freezes": 300,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500,
         "next": [
-            "[JumpBack]每周跑酷一次",
-            "[JumpBack]老板娘问答",
-            "[JumpBack]竞技场点击确定",
-            "[JumpBack]竞技场点击每晚排行榜结算",
-            "[JumpBack]竞技场点击一键领取",
-            "每周跑酷和每日老板娘问答结束"
+            "老板娘问答页面",
+            "老板娘问答图标_问答"
         ]
     },
     "老板娘问答页面": {
@@ -732,6 +1005,47 @@
         },
         "next": [
             "点击竞技场"
+        ]
+    },
+    "进入了竞技场老板娘问答图标": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1011,
+                    47,
+                    154,
+                    70
+                ],
+                "expected": [
+                    "老板娘问答"
+                ]
+            }
+        },
+        "post_wait_freezes": 300,
+        "next": [
+            "[JumpBack]每周跑酷一次",
+            "[JumpBack]老板娘问答",
+            "[JumpBack]竞技场点击确定",
+            "[JumpBack]竞技场点击每晚排行榜结算",
+            "[JumpBack]竞技场点击一键领取",
+            "每周跑酷和每日老板娘问答结束"
+        ]
+    },
+    "进入竞技场": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "next": [
+            "进入了竞技场老板娘问答图标",
+            "点击决斗场_jjc",
+            "进入了决斗场_jjc"
         ]
     },
     "选择选项": {
@@ -867,336 +1181,5 @@
             "type": "Click"
         },
         "post_wait_freezes": 400
-    },
-    "答对20题的奖励": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1007,
-                    645,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
-    "答对10题的奖励": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    838,
-                    657,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
-    "答对30题的奖励": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1191,
-                    645,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
-    "答对x题奖励": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    501,
-                    200,
-                    273,
-                    87
-                ],
-                "expected": [
-                    "答对.+题奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    666,
-                    6,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
-    "每周跑酷一次": {
-        "enabled": true,
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "next": [
-            "每周跑酷一次进入了竞技场"
-        ]
-    },
-    "老板娘问答图标_问答": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1011,
-                    47,
-                    154,
-                    70
-                ],
-                "expected": [
-                    "老板娘问答"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 500,
-        "next": [
-            "老板娘问答页面",
-            "老板娘问答图标_问答"
-        ]
-    },
-    "每周跑酷一次进入了竞技场": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1011,
-                    47,
-                    154,
-                    70
-                ],
-                "expected": [
-                    "老板娘问答"
-                ]
-            }
-        },
-        "next": [
-            "本周没跑酷",
-            "本周已跑酷标志1",
-            "本周已跑酷标志2"
-        ]
-    },
-    "本周没跑酷": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    251,
-                    339,
-                    745,
-                    182
-                ],
-                "expected": [
-                    "共同参加小组赛"
-                ]
-            }
-        },
-        "next": [
-            "老板娘问答图标"
-        ]
-    },
-    "本周已跑酷标志1": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    120,
-                    593,
-                    224,
-                    113
-                ],
-                "expected": [
-                    "距离奖杯结算"
-                ]
-            }
-        }
-    },
-    "本周已跑酷标志2": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    344,
-                    106,
-                    366,
-                    79
-                ],
-                "expected": [
-                    "观看本场最高分录像"
-                ]
-            }
-        }
-    },
-    "屏蔽任务每周跑酷检查": {},
-    "老板娘问答": {
-        "enabled": true,
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "next": [
-            "老板娘问答图标_问答"
-        ]
-    },
-    "每周跑酷和每日老板娘问答结束": {},
-    "竞技场点击每晚排行榜结算": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    691,
-                    100,
-                    201,
-                    587
-                ],
-                "expected": [
-                    "现在点击领取"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 1000
-    },
-    "竞技场点击确定": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    467,
-                    531,
-                    363,
-                    171
-                ],
-                "expected": [
-                    "确定|领取"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 1000
-    },
-    "竞技场点击一键领取": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1093,
-                    94,
-                    178,
-                    86
-                ],
-                "expected": [
-                    "一键领取"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 1000
-    },
-    "忍阶任务页面_jjc": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1061,
-                    6,
-                    209,
-                    113
-                ],
-                "expected": [
-                    "忍阶预览"
-                ]
-            }
-        },
-        "post_wait_freezes": {
-            "time": 1000,
-            "target": [
-                514,
-                103,
-                547,
-                178
-            ],
-            "threshold": 0.8
-        },
-        "next": [
-            "有任务竞技场跑酷一次",
-            "没有任务竞技场跑酷一次"
-        ]
-    },
-    "竞技场确定": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    403,
-                    360,
-                    569,
-                    355
-                ],
-                "expected": [
-                    "确定|继续"
-                ],
-                "order_by": "Random"
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
     }
 }

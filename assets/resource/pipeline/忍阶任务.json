@@ -1,9 +1,7 @@
 {
     "回到主页面任务结束": {
-        "next": [
-            "忍阶任务回到了主页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     15,
@@ -13,34 +11,22 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "忍阶任务回到了主页面"
+        ]
     },
     "忍阶任务entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "忍阶任务入口"
-            },
+            "[JumpBack]忍阶任务入口",
             "忍阶任务任务出错"
         ]
     },
     "忍阶任务任务出错": {
         "focus": "任务出错：忍阶任务❌"
-    },
-    "忍阶任务任务完成": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "忍阶任务任务出错"
-                }
-            },
-            "type": "Custom"
-        },
-        "focus": "任务完成：忍阶任务✅"
     },
     "忍阶任务入口": {
         "max_hit": 3,
@@ -49,19 +35,8 @@
         ]
     },
     "忍阶任务回到了主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "忍阶任务入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "忍阶任务任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -71,21 +46,18 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "任务完成：忍阶任务✅"
     },
     "忍阶任务退出": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_wait_freezes": {
-            "threshold": 0.8,
-            "time": 400
-        },
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -99,49 +71,58 @@
                 "threshold": [
                     0.8
                 ]
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": {
+            "time": 400,
+            "threshold": 0.8
         }
     },
     "忍阶任务页面": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "点击点击领取"
-            },
-            {
-                "jump_back": true,
-                "name": "忍阶宝箱继续"
-            },
-            {
-                "jump_back": true,
-                "name": "点击下一忍阶2_忍阶任务"
-            },
-            {
-                "jump_back": true,
-                "name": "忍阶任务退出"
-            },
-            "回到主页面任务结束"
-        ],
-        "post_wait_freezes": 1000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "忍阶预览"
-                ],
                 "roi": [
                     1061,
                     6,
                     209,
                     113
+                ],
+                "expected": [
+                    "忍阶预览"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": 1500
+        "post_wait_freezes": 1000,
+        "timeout": 1500,
+        "next": [
+            "[JumpBack]点击点击领取",
+            "[JumpBack]忍阶宝箱继续",
+            "[JumpBack]点击下一忍阶2_忍阶任务",
+            "[JumpBack]忍阶任务退出",
+            "回到主页面任务结束"
+        ]
     },
     "忍阶宝箱继续": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    517,
+                    626,
+                    265,
+                    92
+                ],
+                "expected": [
+                    "继续"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     379,
@@ -149,139 +130,103 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "expected": [
-                    "继续"
-                ],
-                "roi": [
-                    517,
-                    626,
-                    265,
-                    92
-                ]
-            },
-            "type": "OCR"
+            }
         }
     },
     "每周随机道具确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     497,
                     590,
                     293,
                     116
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "没有每周随机道具": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": "点击下一忍阶_忍阶任务"
-            },
-            "type": "Click"
+            }
         }
     },
     "点击下一忍阶2_忍阶任务": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_wait_freezes": 400,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "下一忍阶"
-                ],
                 "roi": [
                     1005,
                     623,
                     251,
                     90
+                ],
+                "expected": [
+                    "下一忍阶"
                 ]
-            },
-            "type": "OCR"
+            }
         },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 400,
         "timeout": 400
     },
     "点击下一忍阶_忍阶任务": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1005,
+                    623,
+                    251,
+                    90
+                ],
+                "expected": [
+                    "下一忍阶"
+                ]
+            }
+        },
+        "post_wait_freezes": 400,
+        "timeout": 400,
         "next": [
             "领取每周随机道具"
         ],
         "on_error": [
             "没有每周随机道具"
-        ],
-        "post_wait_freezes": 400,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "下一忍阶"
-                ],
-                "roi": [
-                    1005,
-                    623,
-                    251,
-                    90
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": 400
+        ]
     },
     "点击点击领取": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "点击领取"
-                ],
                 "roi": [
                     1058,
                     246,
                     174,
                     422
+                ],
+                "expected": [
+                    "点击领取"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "确认在主页面则点击忍阶_忍阶任务": {
-        "action": {
-            "param": {
-                "target": [
-                    54,
-                    71,
-                    1,
-                    1
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            {
-                "jump_back": true,
-                "name": "点击下一忍阶_忍阶任务"
-            },
-            "忍阶任务页面"
-        ],
-        "post_wait_freezes": 400,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     21,
@@ -291,41 +236,53 @@
                 ],
                 "template": [
                     "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    54,
+                    71,
+                    1,
+                    1
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "post_wait_freezes": 400,
+        "next": [
+            "[JumpBack]点击下一忍阶_忍阶任务",
+            "忍阶任务页面"
+        ]
     },
     "重置忍阶任务内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "确认在主页面则点击忍阶_忍阶任务",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
+            "[JumpBack]back"
         ]
     },
     "领取每周随机道具": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "每周随机道具确定"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
                 "expected": [
                     "点击领取每周随机道具"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "每周随机道具确定"
+        ]
     }
 }

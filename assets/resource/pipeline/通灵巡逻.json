@@ -1,6 +1,16 @@
 {
     "巡逻上滑": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     666,
@@ -16,21 +26,21 @@
                         1
                     ]
                 ]
-            },
-            "type": "Swipe"
-        },
+            }
+        }
+    },
+    "巡逻下滑": {
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
-        }
-    },
-    "巡逻下滑": {
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     666,
@@ -46,60 +56,49 @@
                         1
                     ]
                 ]
-            },
-            "type": "Swipe"
-        },
-        "recognition": {
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            },
-            "type": "Custom"
+            }
         }
     },
     "巡逻奖励确定": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "退出巡逻页面再次运行"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     489,
                     579,
                     306,
                     130
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "退出巡逻页面再次运行"
+        ]
     },
     "巡逻饭团不足": {
-        "next": [
-            "饭团不足退出巡逻"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "饭团不足"
-                ],
                 "roi": [
                     963,
                     577,
                     314,
                     136
+                ],
+                "expected": [
+                    "饭团不足"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "饭团不足退出巡逻"
+        ]
     },
     "忍阶任务有才巡逻": {
         "enabled": true,
@@ -108,38 +107,32 @@
         ]
     },
     "忍阶任务页面_巡逻": {
-        "next": [
-            "识别到巡逻任务"
-        ],
-        "on_error": [
-            "没有巡逻任务"
-        ],
-        "post_wait_freezes": 500,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "忍阶预览"
-                ],
                 "roi": [
                     1061,
                     6,
                     209,
                     113
+                ],
+                "expected": [
+                    "忍阶预览"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": 1500
+        "post_wait_freezes": 500,
+        "timeout": 1500,
+        "next": [
+            "识别到巡逻任务"
+        ],
+        "on_error": [
+            "没有巡逻任务"
+        ]
     },
     "忍阶巡逻完成退出": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "通灵巡逻完成回到主页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -150,56 +143,61 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "通灵巡逻完成回到主页面"
+        ]
     },
     "检查到任务没完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": "识别到巡逻任务",
+                "roi_offset": [
+                    410,
+                    -24,
+                    10,
+                    67
+                ],
+                "expected": [
+                    "点击前往"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": "识别到巡逻任务"
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "通灵兽巡逻页面",
             "进入了巡逻详细页面"
-        ],
-        "recognition": {
-            "param": {
-                "expected": [
-                    "点击前往"
-                ],
-                "roi": "识别到巡逻任务",
-                "roi_offset": [
-                    410,
-                    -24,
-                    10,
-                    67
-                ]
-            },
-            "type": "OCR"
-        }
+        ]
     },
     "检测到任务已完成": {
-        "next": [
-            "忍阶巡逻完成退出"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "点击领取"
-                ],
                 "roi": "识别到巡逻任务",
                 "roi_offset": [
                     410,
                     -24,
                     10,
                     67
+                ],
+                "expected": [
+                    "点击领取"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "忍阶巡逻完成退出"
+        ]
     },
     "没有巡逻任务": {
         "next": [
@@ -209,10 +207,10 @@
     "没有通灵兽说明还在巡逻": {},
     "没有食物则关闭食物页面": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": "选择额外食物"
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "点击开始巡逻",
@@ -220,34 +218,27 @@
         ]
     },
     "点击下一忍阶_巡逻": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "下一忍阶"
-                ],
                 "roi": [
                     1005,
                     623,
                     251,
                     90
+                ],
+                "expected": [
+                    "下一忍阶"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "点击巡逻按钮": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "进入了巡逻详细页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     871,
@@ -258,85 +249,71 @@
                 "template": [
                     "巡逻.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "点击开始巡逻": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "退出巡逻并任务结束"
-        ],
+            "进入了巡逻详细页面"
+        ]
+    },
+    "点击开始巡逻": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "开始巡逻"
-                ],
                 "roi": [
                     963,
                     577,
                     314,
                     136
+                ],
+                "expected": [
+                    "开始巡逻"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击通灵兽": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "通灵兽巡逻页面"
-        ],
+            "退出巡逻并任务结束"
+        ]
+    },
+    "点击通灵兽": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "通灵兽"
-                ],
                 "roi": [
                     10,
                     152,
                     301,
                     450
+                ],
+                "expected": [
+                    "通灵兽"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "通灵兽巡逻页面"
+        ]
     },
     "直接去巡逻": {
+        "timeout": 500,
         "next": [
             "点击通灵兽"
         ],
         "on_error": [
             "没有通灵兽说明还在巡逻"
-        ],
-        "timeout": 500
+        ]
     },
     "确认在主页面则点击忍阶_巡逻": {
-        "action": {
-            "param": {
-                "target": [
-                    54,
-                    71,
-                    1,
-                    1
-                ]
-            },
-            "type": "Click"
-        },
-        "next": [
-            {
-                "jump_back": true,
-                "name": "点击下一忍阶_巡逻"
-            },
-            "忍阶任务页面_巡逻"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     21,
@@ -346,86 +323,111 @@
                 ],
                 "template": [
                     "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    54,
+                    71,
+                    1,
+                    1
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "[JumpBack]点击下一忍阶_巡逻",
+            "忍阶任务页面_巡逻"
+        ]
     },
     "识别到巡逻任务": {
-        "next": [
-            "检查到任务没完成",
-            "检测到任务已完成"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "通灵兽巡逻"
-                ],
                 "roi": [
                     611,
                     276,
                     466,
                     306
+                ],
+                "expected": [
+                    "通灵兽巡逻"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "检查到任务没完成",
+            "检测到任务已完成"
+        ]
     },
     "还在巡逻": {
-        "next": [
-            "忍阶巡逻完成退出"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "取消"
-                ],
                 "roi": [
                     1045,
                     628,
                     232,
                     90
+                ],
+                "expected": [
+                    "取消"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "忍阶巡逻完成退出"
+        ]
     },
     "进入了巡逻详细页面": {
-        "next": [
-            "选择巡逻关卡",
-            {
-                "jump_back": true,
-                "name": "巡逻下滑"
-            },
-            {
-                "jump_back": true,
-                "name": "巡逻上滑"
-            }
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "通灵兽巡逻"
-                ],
                 "roi": [
                     53,
                     3,
                     382,
                     140
+                ],
+                "expected": [
+                    "通灵兽巡逻"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "选择巡逻关卡",
+            "[JumpBack]巡逻下滑",
+            "[JumpBack]巡逻上滑"
+        ]
     },
     "退出巡逻并任务结束": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "通灵巡逻完成回到主页面"
-        ],
+        ]
+    },
+    "退出巡逻页面再次运行": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -436,66 +438,40 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "退出巡逻页面再次运行": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "通灵巡逻任务"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "选择巡逻关卡": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "选择额外食物"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "雾之湖"
-                ],
                 "roi": [
                     4,
                     113,
                     197,
                     473
+                ],
+                "expected": [
+                    "雾之湖"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "选择炭烧牛排": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "点击开始巡逻",
-            "巡逻饭团不足"
-        ],
+            "选择额外食物"
+        ]
+    },
+    "选择炭烧牛排": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     852,
@@ -509,20 +485,19 @@
                 "threshold": [
                     0.9
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "选择牛奶": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "点击开始巡逻",
             "巡逻饭团不足"
-        ],
+        ]
+    },
+    "选择牛奶": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     852,
@@ -536,20 +511,19 @@
                 "threshold": [
                     0.9
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "选择肥美羊腿": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "点击开始巡逻",
             "巡逻饭团不足"
-        ],
+        ]
+    },
+    "选择肥美羊腿": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     852,
@@ -563,24 +537,19 @@
                 "threshold": [
                     0.9
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "选择额外食物": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "选择炭烧牛排",
-            "选择肥美羊腿",
-            "选择牛奶"
-        ],
-        "on_error": [
-            "没有食物则关闭食物页面"
-        ],
+            "点击开始巡逻",
+            "巡逻饭团不足"
+        ]
+    },
+    "选择额外食物": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     942,
@@ -591,18 +560,24 @@
                 "template": [
                     "额外食物.png"
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
-        "timeout": 1000
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 1000,
+        "next": [
+            "选择炭烧牛排",
+            "选择肥美羊腿",
+            "选择牛奶"
+        ],
+        "on_error": [
+            "没有食物则关闭食物页面"
+        ]
     },
     "通灵兽巡逻页面": {
-        "next": [
-            "点击巡逻按钮",
-            "领取巡逻奖励",
-            "还在巡逻"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -613,16 +588,17 @@
                 "template": [
                     "通灵兽.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "点击巡逻按钮",
+            "领取巡逻奖励",
+            "还在巡逻"
+        ]
     },
     "通灵巡逻entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "通灵巡逻入口"
-            },
+            "[JumpBack]通灵巡逻入口",
             "通灵巡逻任务出错"
         ]
     },
@@ -635,18 +611,6 @@
     "通灵巡逻任务出错": {
         "focus": "任务出错：通灵巡逻❌"
     },
-    "通灵巡逻任务完成": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "通灵巡逻任务出错"
-                }
-            },
-            "type": "Custom"
-        },
-        "focus": "任务完成：通灵巡逻✅"
-    },
     "通灵巡逻入口": {
         "max_hit": 3,
         "next": [
@@ -654,19 +618,8 @@
         ]
     },
     "通灵巡逻完成回到主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "通灵巡逻入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "通灵巡逻任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -676,16 +629,18 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "任务完成：通灵巡逻✅"
     },
     "通灵巡逻检查主页面": {
-        "next": [
-            "通灵巡逻任务"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     9,
@@ -695,59 +650,51 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "通灵巡逻任务"
+        ]
     },
     "重置通灵巡逻内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "通灵巡逻检查主页面",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
+            "[JumpBack]back"
         ]
     },
     "领取巡逻奖励": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "巡逻奖励确定"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "领取巡逻奖励"
-                ],
                 "roi": [
                     874,
                     619,
                     339,
                     95
+                ],
+                "expected": [
+                    "领取巡逻奖励"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "饭团不足退出巡逻": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "退出巡逻并任务结束"
-        ],
-        "post_delay": 500,
+            "巡逻奖励确定"
+        ]
+    },
+    "饭团不足退出巡逻": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -758,8 +705,14 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500,
+        "next": [
+            "退出巡逻并任务结束"
+        ]
     }
 }

@@ -1,6 +1,21 @@
 {
     "self藏宝图左滑": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1132,
+                    348,
+                    72,
+                    116
+                ],
+                "template": [
+                    "藏宝图右侧还有.png"
+                ]
+            }
+        },
         "action": {
+            "type": "Swipe",
             "param": {
                 "begin": [
                     900,
@@ -19,50 +34,35 @@
                 "end_hold": [
                     500
                 ]
-            },
-            "type": "Swipe"
+            }
         },
         "next": [
             "藏宝图主页-self"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    1132,
-                    348,
-                    72,
-                    116
-                ],
-                "template": [
-                    "藏宝图右侧还有.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "self藏宝图换下一个": {
+        "timeout": 1500,
         "next": [
             "self藏宝图左滑"
         ],
         "on_error": [
             "self藏宝图结束"
-        ],
-        "timeout": 1500
+        ]
     },
     "self藏宝图结束": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "助力次数"
-                ],
                 "roi": [
                     1055,
                     634,
                     130,
                     65
+                ],
+                "expected": [
+                    "助力次数"
                 ]
-            },
-            "type": "OCR"
+            }
         }
     },
     "再次检查_藏宝图": {
@@ -76,145 +76,113 @@
         ]
     },
     "刷新": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "pre_delay": 0,
-        "rate_limit": 50,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "刷新"
-                ],
                 "roi": [
                     884,
                     623,
                     159,
                     87
+                ],
+                "expected": [
+                    "刷新"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "rate_limit": 50
     },
     "刷自己的藏宝图": {
         "enabled": false,
-        "next": [
-            "识别藏宝图是否为空（保留三个）"
-        ],
         "recognition": {
+            "type": "Custom",
             "param": {
                 "custom_recognition": "Count",
                 "custom_recognition_param": {
                     "target": 1
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "timeout": 2000
+        "timeout": 2000,
+        "next": [
+            "识别藏宝图是否为空（保留三个）"
+        ]
     },
     "助力次数": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "识别藏宝图是否满了",
-            "点击助力次数"
-        ],
-        "post_wait_freezes": 400,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "助力次数"
-                ],
                 "roi": [
                     1014,
                     599,
                     252,
                     119
+                ],
+                "expected": [
+                    "助力次数"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 400,
+        "next": [
+            "识别藏宝图是否满了",
+            "点击助力次数"
+        ]
     },
     "已进入队伍": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "点到了好友"
-            },
-            {
-                "jump_back": true,
-                "name": "点到玩家信息了"
-            },
-            "满了",
-            "点击准备-藏宝图",
-            "藏宝图主页并点击"
-        ],
-        "rate_limit": 50,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "准备"
-                ],
                 "roi": [
                     1036,
                     620,
                     168,
                     90
+                ],
+                "expected": [
+                    "准备"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": -1
+        "timeout": -1,
+        "rate_limit": 50,
+        "next": [
+            "[JumpBack]点到了好友",
+            "[JumpBack]点到玩家信息了",
+            "满了",
+            "点击准备-藏宝图",
+            "藏宝图主页并点击"
+        ]
     },
     "战斗-self藏宝图": {
+        "timeout": 7000,
         "next": [
-            {
-                "jump_back": true,
-                "name": "确定-self藏宝图"
-            },
-            {
-                "jump_back": true,
-                "name": "点击空白处关闭-self藏宝图"
-            },
-            {
-                "jump_back": true,
-                "name": "进入了战斗-self藏宝图"
-            },
+            "[JumpBack]确定-self藏宝图",
+            "[JumpBack]点击空白处关闭-self藏宝图",
+            "[JumpBack]进入了战斗-self藏宝图",
             "藏宝图主页-self",
             "点击出发-藏宝图"
         ],
         "on_error": [
             "识别到出发的同时别人退了导致的异常_藏宝图",
             "超时但是藏宝图未打完"
-        ],
-        "timeout": 7000
+        ]
     },
     "每日藏宝图entry": {
         "next": [
-            {
-                "jump_back": true,
-                "name": "每日藏宝图入口"
-            },
+            "[JumpBack]每日藏宝图入口",
             "每日藏宝图任务出错"
         ]
     },
     "每日藏宝图任务出错": {
         "focus": "任务出错：每日藏宝图❌"
-    },
-    "每日藏宝图任务完成": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日藏宝图任务出错"
-                }
-            },
-            "type": "Custom"
-        },
-        "focus": "任务完成：每日藏宝图✅"
     },
     "每日藏宝图入口": {
         "max_hit": 3,
@@ -223,19 +191,8 @@
         ]
     },
     "每日藏宝图回到主页面": {
-        "action": {
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日藏宝图入口"
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "每日藏宝图任务完成"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     4,
@@ -245,20 +202,18 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "任务完成：每日藏宝图✅"
     },
     "没人打藏宝图": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "没人打藏宝图-确定"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -269,86 +224,100 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "没人打藏宝图-确定": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
-            "藏宝图主页-self"
-        ],
-        "post_wait_freezes": 300,
+            "没人打藏宝图-确定"
+        ]
+    },
+    "没人打藏宝图-确定": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     678,
                     436,
                     263,
                     179
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 300,
+        "next": [
+            "藏宝图主页-self"
+        ]
     },
     "没有加入队伍": {
+        "timeout": 120000,
+        "rate_limit": 50,
         "next": [
             "藏宝图列表页",
             "已进入队伍",
-            {
-                "jump_back": true,
-                "name": "点太快点到了好友"
-            },
-            {
-                "jump_back": true,
-                "name": "点太快点到玩家信息了"
-            },
+            "[JumpBack]点太快点到了好友",
+            "[JumpBack]点太快点到玩家信息了",
             "藏宝图主页并点击"
-        ],
-        "rate_limit": 50,
-        "timeout": 120000
+        ]
     },
     "满了": {
         "enabled": true,
-        "next": [
-            "返回",
-            "藏宝图主页并点击"
-        ],
-        "rate_limit": 50,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "次数上限"
-                ],
                 "roi": [
                     498,
                     65,
                     461,
                     76
+                ],
+                "expected": [
+                    "次数上限"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "rate_limit": 50,
+        "next": [
+            "返回",
+            "藏宝图主页并点击"
+        ]
     },
     "满了藏宝图关闭助力次数页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 400,
+            "threshold": 0.85
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "满了藏宝图返回"
-        ],
-        "pre_wait_freezes": {
-            "threshold": 0.85,
-            "time": 400
-        },
+        ]
+    },
+    "满了藏宝图返回": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -359,20 +328,19 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了藏宝图返回": {
+            }
+        },
+        "pre_wait_freezes": 400,
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "满了藏宝图返回主页面"
-        ],
-        "pre_wait_freezes": 400,
+        ]
+    },
+    "满了藏宝图返回主页面": {
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -383,126 +351,114 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "满了藏宝图返回主页面": {
+            }
+        },
+        "pre_wait_freezes": 400,
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "每日藏宝图回到主页面"
-        ],
-        "pre_wait_freezes": 400,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "点击准备-藏宝图": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "点击准备后"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "准备"
-                ],
                 "roi": [
                     1036,
                     620,
                     168,
                     90
+                ],
+                "expected": [
+                    "准备"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "点击准备后"
+        ]
     },
     "点击准备后": {
+        "timeout": 70000,
         "next": [
-            {
-                "jump_back": true,
-                "name": "确定0"
-            },
-            {
-                "jump_back": true,
-                "name": "进入了战斗-藏宝图"
-            },
+            "[JumpBack]确定0",
+            "[JumpBack]进入了战斗-藏宝图",
             "助力次数"
         ],
         "on_error": [
             "超时准备退出_藏宝图",
             "再次检查_藏宝图"
-        ],
-        "timeout": 70000
+        ]
     },
     "点击出发-藏宝图": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "战斗-self藏宝图"
-        ],
-        "post_delay": 0,
-        "pre_delay": 0,
-        "rate_limit": 50,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "出发"
-                ],
                 "roi": [
                     1024,
                     631,
                     184,
                     63
+                ],
+                "expected": [
+                    "出发"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "点击助力次数": {
+            }
+        },
+        "pre_delay": 0,
         "action": {
-            "param": {},
             "type": "Click"
         },
+        "post_delay": 0,
+        "rate_limit": 50,
         "next": [
-            "藏宝图主页并点击"
-        ],
+            "战斗-self藏宝图"
+        ]
+    },
+    "点击助力次数": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "助力次数"
-                ],
                 "roi": [
                     1014,
                     599,
                     252,
                     119
+                ],
+                "expected": [
+                    "助力次数"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "藏宝图主页并点击"
+        ]
     },
     "点击空白处关闭-self藏宝图": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    505,
+                    599,
+                    247,
+                    71
+                ],
+                "expected": [
+                    "点击空白处关闭"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     384,
@@ -510,27 +466,13 @@
                     -126,
                     17
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "rate_limit": 2000,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "点击空白处关闭"
-                ],
-                "roi": [
-                    505,
-                    599,
-                    247,
-                    71
-                ]
-            },
-            "type": "OCR"
-        }
+        "rate_limit": 2000
     },
     "点击自己的藏宝图": {
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     519,
@@ -538,15 +480,29 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
         "next": [
             "藏宝图-点击邀请好友"
         ]
     },
     "点到了好友": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    804,
+                    5,
+                    163,
+                    117
+                ],
+                "expected": [
+                    "好友"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     681,
@@ -554,26 +510,27 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
-        },
-        "recognition": {
-            "param": {
-                "expected": [
-                    "好友"
-                ],
-                "roi": [
-                    804,
-                    5,
-                    163,
-                    117
-                ]
-            },
-            "type": "OCR"
+            }
         }
     },
     "点到玩家信息了": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    139,
+                    71,
+                    116,
+                    43
+                ],
+                "expected": [
+                    "个人信息"
+                ]
+            }
+        },
+        "pre_delay": 0,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     776,
@@ -581,28 +538,28 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "post_delay": 0,
-        "pre_delay": 0,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "个人信息"
-                ],
-                "roi": [
-                    139,
-                    71,
-                    116,
-                    43
-                ]
-            },
-            "type": "OCR"
-        }
+        "post_delay": 0
     },
     "点太快点到了好友": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    804,
+                    5,
+                    163,
+                    117
+                ],
+                "expected": [
+                    "好友"
+                ]
+            }
+        },
+        "pre_delay": 0,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     681,
@@ -610,28 +567,28 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "post_delay": 0,
-        "pre_delay": 0,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "好友"
-                ],
-                "roi": [
-                    804,
-                    5,
-                    163,
-                    117
-                ]
-            },
-            "type": "OCR"
-        }
+        "post_delay": 0
     },
     "点太快点到玩家信息了": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    139,
+                    71,
+                    116,
+                    43
+                ],
+                "expected": [
+                    "个人信息"
+                ]
+            }
+        },
+        "pre_delay": 0,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     776,
@@ -639,115 +596,110 @@
                     1,
                     1
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "post_delay": 0,
-        "pre_delay": 0,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "个人信息"
-                ],
-                "roi": [
-                    139,
-                    71,
-                    116,
-                    43
-                ]
-            },
-            "type": "OCR"
-        }
+        "post_delay": 0
     },
     "确定-self藏宝图": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "rate_limit": 2000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定|下一页"
-                ],
                 "roi": [
                     521,
                     408,
                     246,
                     309
+                ],
+                "expected": [
+                    "确定|下一页"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "rate_limit": 2000
     },
     "确定0": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "rate_limit": 2000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定|下一页"
-                ],
                 "roi": [
                     521,
                     408,
                     246,
                     309
+                ],
+                "expected": [
+                    "确定|下一页"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "确定离开队伍藏宝图": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "next": [
-            "藏宝图主页-self"
-        ],
+        "rate_limit": 2000
+    },
+    "确定离开队伍藏宝图": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     732,
                     473,
                     168,
                     100
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "确认离开队伍": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_delay": 400,
-        "rate_limit": 100,
-        "recognition": {
-            "param": {
+                ],
                 "expected": [
                     "确定"
-                ],
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "藏宝图主页-self"
+        ]
+    },
+    "确认离开队伍": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
                 "roi": [
                     690,
                     446,
                     241,
                     168
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 400,
+        "rate_limit": 100
     },
     "藏宝图-关闭邀请页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1131,
+                    19,
+                    143,
+                    89
+                ],
+                "expected": [
+                    "聊天"
+                ]
+            }
+        },
         "action": {
+            "type": "Click",
             "param": {
                 "target_offset": [
                     -1025,
@@ -755,191 +707,159 @@
                     28,
                     29
                 ]
-            },
-            "type": "Click"
+            }
         },
+        "timeout": 56000,
+        "rate_limit": 50,
         "next": [
             "点击出发-藏宝图"
         ],
         "on_error": [
             "没人打藏宝图"
-        ],
-        "rate_limit": 50,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "聊天"
-                ],
-                "roi": [
-                    1131,
-                    19,
-                    143,
-                    89
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": 56000
+        ]
     },
     "藏宝图-点击发送消息": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "藏宝图-关闭邀请页面"
-        ],
-        "post_delay": 300,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "发送消息"
-                ],
                 "roi": [
                     928,
                     558,
                     247,
                     79
+                ],
+                "expected": [
+                    "发送消息"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "藏宝图-点击聊天": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
+        "post_delay": 300,
         "next": [
-            "藏宝图-点击发送消息"
-        ],
-        "post_wait_freezes": 300,
+            "藏宝图-关闭邀请页面"
+        ]
+    },
+    "藏宝图-点击聊天": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "聊天"
-                ],
                 "roi": [
                     1131,
                     19,
                     143,
                     89
+                ],
+                "expected": [
+                    "聊天"
                 ]
-            },
-            "type": "OCR"
-        }
-    },
-    "藏宝图-点击邀请好友": {
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "next": [
-            "藏宝图-点击聊天"
-        ],
         "post_wait_freezes": 300,
-        "pre_wait_freezes": 300,
+        "next": [
+            "藏宝图-点击发送消息"
+        ]
+    },
+    "藏宝图-点击邀请好友": {
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "点击邀请好友"
-                ],
                 "roi": [
                     289,
                     288,
                     944,
                     135
+                ],
+                "expected": [
+                    "点击邀请好友"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "pre_wait_freezes": 300,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 300,
+        "next": [
+            "藏宝图-点击聊天"
+        ]
     },
     "藏宝图主页": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "刷自己的藏宝图"
-            },
-            "助力次数"
-        ],
-        "post_wait_freezes": 400,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "助力次数"
-                ],
                 "roi": [
                     1014,
                     599,
                     252,
                     119
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "藏宝图主页-self": {
-        "next": [
-            "识别品质self藏宝图"
-        ],
-        "on_error": [
-            "self藏宝图换下一个"
-        ],
-        "recognition": {
-            "param": {
+                ],
                 "expected": [
                     "助力次数"
-                ],
+                ]
+            }
+        },
+        "post_wait_freezes": 400,
+        "next": [
+            "[JumpBack]刷自己的藏宝图",
+            "助力次数"
+        ]
+    },
+    "藏宝图主页-self": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
                 "roi": [
                     1055,
                     639,
                     127,
                     60
+                ],
+                "expected": [
+                    "助力次数"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": 1500
+        "timeout": 1500,
+        "next": [
+            "识别品质self藏宝图"
+        ],
+        "on_error": [
+            "self藏宝图换下一个"
+        ]
     },
     "藏宝图主页并点击": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "藏宝图列表页"
-        ],
-        "rate_limit": 50,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "助力"
-                ],
                 "roi": [
                     1194,
                     252,
                     65,
                     177
+                ],
+                "expected": [
+                    "助力"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": 60000
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 60000,
+        "rate_limit": 50,
+        "next": [
+            "藏宝图列表页"
+        ]
     },
     "藏宝图列表页": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "刷新"
-            },
-            "识别藏宝图品质",
-            "已进入队伍",
-            "藏宝图主页并点击"
-        ],
-        "rate_limit": 1,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
                 "roi": [
                     476,
                     33,
@@ -948,21 +868,22 @@
                 ],
                 "template": [
                     "寻宝助力.png"
-                ]
-            },
-            "type": "TemplateMatch"
+                ],
+                "green_mask": true
+            }
         },
-        "timeout": 180000
+        "timeout": 180000,
+        "rate_limit": 1,
+        "next": [
+            "[JumpBack]刷新",
+            "识别藏宝图品质",
+            "已进入队伍",
+            "藏宝图主页并点击"
+        ]
     },
     "藏宝图异常返回": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "确定离开队伍藏宝图"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -973,15 +894,18 @@
                 "template": [
                     "返回按钮.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "确定离开队伍藏宝图"
+        ]
     },
     "识别到出发的同时别人退了导致的异常_藏宝图": {
-        "next": [
-            "藏宝图异常返回"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     6,
@@ -992,149 +916,144 @@
                 "template": [
                     "悬赏页面小人.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "藏宝图异常返回"
+        ]
     },
     "识别品质self藏宝图": {
-        "next": [
-            "识别属性self藏宝图"
-        ],
-        "on_error": [
-            "self藏宝图换下一个"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "凡品|珍品|绝品"
-                ],
                 "roi": [
                     439,
                     281,
                     220,
                     55
+                ],
+                "expected": [
+                    "凡品|珍品|绝品"
                 ]
-            },
-            "type": "OCR"
+            }
         },
-        "timeout": 1500
+        "timeout": 1500,
+        "next": [
+            "识别属性self藏宝图"
+        ],
+        "on_error": [
+            "self藏宝图换下一个"
+        ]
     },
     "识别属性self藏宝图": {
-        "next": [
-            "点击自己的藏宝图"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    ".*"
-                ],
                 "roi": [
                     439,
                     281,
                     179,
                     55
+                ],
+                "expected": [
+                    ".*"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "next": [
+            "点击自己的藏宝图"
+        ]
     },
     "识别并点击藏宝图加入队伍": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_delay": 0,
-        "pre_delay": 0,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "加入队伍"
-                ],
                 "roi": "识别藏宝图品质",
                 "roi_offset": [
                     95,
                     126,
                     -10,
                     43
+                ],
+                "expected": [
+                    "加入队伍"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
     },
     "识别藏宝图": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "藏宝图.png"
+                ],
+                "green_mask": true
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "藏宝图主页"
-        ],
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "template": [
-                    "藏宝图.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "识别藏宝图品质": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    230,
+                    149,
+                    888,
+                    281
+                ],
+                "expected": [
+                    "凡品|珍品|绝品|神品|传颂"
+                ],
+                "order_by": "Random"
+            }
+        },
+        "timeout": 500,
+        "rate_limit": 1,
         "next": [
             "识别藏宝图属性",
             "已进入队伍"
         ],
         "on_error": [
             "藏宝图列表页"
-        ],
-        "rate_limit": 1,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "凡品|珍品|绝品|神品|传颂"
-                ],
-                "order_by": "Random",
-                "roi": [
-                    230,
-                    149,
-                    888,
-                    281
-                ]
-            },
-            "type": "OCR"
-        },
-        "timeout": 500
+        ]
     },
     "识别藏宝图属性": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "识别并点击藏宝图加入队伍"
-            },
-            "没有加入队伍"
-        ],
-        "rate_limit": 10,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "神炎国|海之国|云之国|雷王山|藏宝图"
-                ],
                 "roi": "识别藏宝图品质",
                 "roi_offset": [
                     -41,
                     -30,
                     78,
                     71
+                ],
+                "expected": [
+                    "神炎国|海之国|云之国|雷王山|藏宝图"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "rate_limit": 10,
+        "next": [
+            "[JumpBack]识别并点击藏宝图加入队伍",
+            "没有加入队伍"
+        ]
     },
     "识别藏宝图是否为空（保留三个）": {
-        "next": [
-            "藏宝图主页-self"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1132,
@@ -1145,15 +1064,15 @@
                 "template": [
                     "藏宝图右侧还有.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "藏宝图主页-self"
+        ]
     },
     "识别藏宝图是否满了": {
-        "next": [
-            "满了藏宝图关闭助力次数页面"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1169,
@@ -1167,22 +1086,17 @@
                 "threshold": [
                     0.9
                 ]
-            },
-            "type": "TemplateMatch"
+            }
         },
-        "timeout": 2000
+        "timeout": 2000,
+        "next": [
+            "满了藏宝图关闭助力次数页面"
+        ]
     },
     "识别集会所": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "识别藏宝图"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "green_mask": true,
                 "roi": [
                     704,
                     282,
@@ -1191,10 +1105,16 @@
                 ],
                 "template": [
                     "集会所.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "识别藏宝图"
+        ]
     },
     "超时但是藏宝图未打完": {
         "next": [
@@ -1202,62 +1122,55 @@
         ]
     },
     "超时准备退出-确定_副本3": {
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "next": [
-            "超时准备退出但是进入了战斗_副本4",
-            "藏宝图主页并点击"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "确定"
-                ],
                 "roi": [
                     690,
                     446,
                     241,
                     168
+                ],
+                "expected": [
+                    "确定"
                 ]
-            },
-            "type": "OCR"
-        }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "超时准备退出但是进入了战斗_副本4",
+            "藏宝图主页并点击"
+        ]
     },
     "超时准备退出_藏宝图": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
         "action": {
-            "param": {},
             "type": "Click"
         },
         "next": [
             "超时准备退出-确定_副本3",
             "超时准备退出但是进入了战斗_副本4",
             "藏宝图主页并点击"
-        ],
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        }
+        ]
     },
     "超时准备退出但是进入了战斗_副本4": {
-        "next": [
-            {
-                "jump_back": true,
-                "name": "进入了战斗-藏宝图"
-            }
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     10,
@@ -1268,49 +1181,45 @@
                 "template": [
                     "进入战斗中.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "返回": {
-        "action": {
-            "param": {},
-            "type": "Click"
+            }
         },
         "next": [
-            {
-                "jump_back": true,
-                "name": "确认离开队伍"
-            },
+            "[JumpBack]进入了战斗-藏宝图"
+        ]
+    },
+    "返回": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0,
+        "timeout": 3000,
+        "rate_limit": 100,
+        "next": [
+            "[JumpBack]确认离开队伍",
             "藏宝图主页并点击"
         ],
         "on_error": [
             "识别集会所",
             "再次检查返回"
-        ],
-        "post_delay": 0,
-        "rate_limit": 100,
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    125,
-                    100
-                ],
-                "template": [
-                    "返回按钮.png"
-                ]
-            },
-            "type": "TemplateMatch"
-        },
-        "timeout": 3000
+        ]
     },
     "进入了战斗-self藏宝图": {
-        "next": [
-            "fight"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     10,
@@ -1321,15 +1230,15 @@
                 "template": [
                     "进入战斗中.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "fight"
+        ]
     },
     "进入了战斗-藏宝图": {
-        "next": [
-            "fight"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     10,
@@ -1340,23 +1249,22 @@
                 "template": [
                     "进入战斗中.png"
                 ]
-            },
-            "type": "TemplateMatch"
-        }
+            }
+        },
+        "next": [
+            "fight"
+        ]
     },
     "重置每日藏宝图内部节点计数器": {
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "ResetCount"
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "识别集会所",
-            {
-                "jump_back": true,
-                "name": "back"
-            }
+            "[JumpBack]back"
         ]
     }
 }

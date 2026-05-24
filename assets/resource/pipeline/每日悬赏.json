@@ -262,18 +262,6 @@
     "每日悬赏任务出错": {
         "focus": "任务出错：每日悬赏❌"
     },
-    "每日悬赏任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日悬赏任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：每日悬赏✅"
-    },
     "每日悬赏入口": {
         "max_hit": 3,
         "next": [
@@ -472,21 +460,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "每日悬赏入口"
-                }
-            }
+            "type": "StopTask"
         },
-        "next": [
-            "每日悬赏任务完成"
-        ]
+        "focus": "任务完成：每日悬赏✅"
     },
     "每日悬赏家族组队任务": {
         "pre_delay": 0,
@@ -916,8 +897,7 @@
                 "template": [
                     "主页面.png"
                 ],
-                "green_mask": true,
-                "threshold": 0.85
+                "green_mask": true
             }
         },
         "next": [
@@ -2253,7 +2233,6 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 400,
         "next": [
             "每日悬赏完成回到了主页面"
         ]

@@ -155,6 +155,26 @@
             "type": "Click"
         }
     },
+    "周末活动再次点击光影忍法帖": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1272,
+                    300
+                ],
+                "template": [
+                    "光影忍法帖.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
     "对手选牌中": {
         "recognition": {
             "type": "OCR",
@@ -350,25 +370,5 @@
             "点击所有光影忍法帖忍者",
             "点击所有光影忍法帖宝物"
         ]
-    },
-    "周末活动再次点击光影忍法帖": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    1272,
-                    300
-                ],
-                "template": [
-                    "光影忍法帖.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 1000
     }
 }

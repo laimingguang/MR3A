@@ -19,6 +19,25 @@
             "threshold": 0.8
         }
     },
+    "战令前往": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    527,
+                    592,
+                    255,
+                    60
+                ],
+                "expected": [
+                    "前往"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
     "战令有红点": {
         "recognition": {
             "type": "TemplateMatch",
@@ -605,18 +624,6 @@
     "领取战令任务出错": {
         "focus": "任务出错：领取战令❌"
     },
-    "领取战令任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "领取战令任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：领取战令✅"
-    },
     "领取战令入口": {
         "max_hit": 3,
         "next": [
@@ -635,39 +642,13 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "领取战令入口"
-                }
-            }
-        },
-        "next": [
-            "领取战令任务完成"
-        ]
-    },
-    "战令前往": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    527,
-                    592,
-                    255,
-                    60
                 ],
-                "expected": [
-                    "前往"
-                ]
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Click"
-        }
+            "type": "StopTask"
+        },
+        "focus": "任务完成：领取战令✅"
     }
 }

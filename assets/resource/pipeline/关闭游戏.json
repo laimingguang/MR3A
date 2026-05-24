@@ -207,62 +207,11 @@
         },
         "post_delay": 0
     },
-    "开始关闭游戏": {
-        "pre_delay": 0,
-        "post_delay": 0,
+    "关闭游戏entry": {
         "next": [
-            "[JumpBack]关闭官服",
-            "[JumpBack]关闭vivo服",
-            "[JumpBack]关闭oppo服",
-            "[JumpBack]关闭4399服",
-            "[JumpBack]关闭华为服",
-            "[JumpBack]关闭小米服",
-            "[JumpBack]关闭9游服",
-            "[JumpBack]关闭b服"
+            "关闭游戏检查主页面",
+            "[JumpBack]back"
         ]
-    },
-    "关闭游戏检查主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    500,
-                    712
-                ],
-                "template": [
-                    "主页面.png"
-                ]
-            }
-        },
-        "next": [
-            "关闭游戏屏蔽所有组队邀请",
-            "[JumpBack]关闭游戏设置页面上滑",
-            "[JumpBack]关闭游戏打开设置"
-        ]
-    },
-    "点击取消勾选屏蔽": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": "关闭游戏屏蔽所有组队邀请",
-                "roi_offset": [
-                    168,
-                    -68,
-                    -60,
-                    127
-                ],
-                "template": [
-                    "设置页选项已勾选.png"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": 500
     },
     "关闭游戏屏蔽所有组队邀请": {
         "recognition": {
@@ -282,12 +231,6 @@
         "next": [
             "[JumpBack]点击取消勾选屏蔽",
             "开始关闭游戏"
-        ]
-    },
-    "关闭游戏entry": {
-        "next": [
-            "关闭游戏检查主页面",
-            "[JumpBack]back"
         ]
     },
     "关闭游戏打开设置": {
@@ -312,6 +255,28 @@
             "type": "Click"
         },
         "post_delay": 2000
+    },
+    "关闭游戏检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "关闭游戏屏蔽所有组队邀请",
+            "[JumpBack]关闭游戏设置页面上滑",
+            "[JumpBack]关闭游戏打开设置"
+        ]
     },
     "关闭游戏设置页面上滑": {
         "recognition": {
@@ -347,5 +312,41 @@
                 ]
             }
         }
+    },
+    "开始关闭游戏": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]关闭官服",
+            "[JumpBack]关闭vivo服",
+            "[JumpBack]关闭oppo服",
+            "[JumpBack]关闭4399服",
+            "[JumpBack]关闭华为服",
+            "[JumpBack]关闭小米服",
+            "[JumpBack]关闭9游服",
+            "[JumpBack]关闭b服"
+        ]
+    },
+    "点击取消勾选屏蔽": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": "关闭游戏屏蔽所有组队邀请",
+                "roi_offset": [
+                    168,
+                    -68,
+                    -60,
+                    127
+                ],
+                "template": [
+                    "设置页选项已勾选.png"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
     }
 }

@@ -28,18 +28,6 @@
     "好友忍币任务出错": {
         "focus": "任务出错：好友忍币❌"
     },
-    "好友忍币任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "好友忍币任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：好友忍币✅"
-    },
     "好友忍币入口": {
         "max_hit": 3,
         "next": [
@@ -58,21 +46,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "好友忍币入口"
-                }
-            }
+            "type": "StopTask"
         },
-        "next": [
-            "好友忍币任务完成"
-        ]
+        "focus": "任务完成：好友忍币✅"
     },
     "好友忍币确定": {
         "recognition": {
@@ -106,7 +87,8 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {

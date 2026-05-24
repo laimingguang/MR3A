@@ -25,6 +25,17 @@
             }
         }
     },
+    "两次识别成功后则确定进入了主页面": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "启动游戏点击主页设置"
+                }
+            }
+        }
+    },
     "关闭启动应用节点": {
         "pre_delay": 0,
         "action": {
@@ -174,6 +185,7 @@
             "关闭启动应用节点"
         ]
     },
+    "启动成功": {},
     "启动流程": {
         "timeout": 90000,
         "next": [
@@ -212,12 +224,40 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "pre_delay": 0,
+        "action": {
+            "type": "StopTask"
+        },
         "post_delay": 0,
         "focus": "任务完成：启动游戏✅"
+    },
+    "启动游戏点击主页设置": {
+        "enabled": false,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1069,
+                    2,
+                    211,
+                    86
+                ],
+                "template": [
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 0
     },
     "启动游戏组队邀请屏蔽已勾选": {
         "recognition": {
@@ -241,20 +281,74 @@
             "关闭节点点击主页设置"
         ]
     },
-    "启动结束": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Custom",
+    "启动游戏识别到主页设置": {
+        "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "启动流程"
-                }
+                "roi": [
+                    1069,
+                    2,
+                    211,
+                    86
+                ],
+                "template": [
+                    "设置1.png",
+                    "设置.png"
+                ],
+                "green_mask": true
             }
         },
+        "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "启动游戏到了主页面"
+            "启动游戏识别到主页面聊天",
+            "没有识别到主页面聊天"
+        ]
+    },
+    "启动游戏识别到主页面聊天": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "启动游戏识别到集会所",
+            "没有识别到集会所"
+        ]
+    },
+    "启动游戏识别到集会所": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    698,
+                    400,
+                    558,
+                    311
+                ],
+                "template": [
+                    "集会所.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "重新识别确保启动阶段弹窗处理结束",
+            "两次识别成功后则确定进入了主页面"
         ]
     },
     "启动阶段关闭设置": {
@@ -279,7 +373,7 @@
         },
         "post_delay": 0,
         "next": [
-            "启动结束"
+            "启动游戏到了主页面"
         ]
     },
     "启动阶段奖励确定": {
@@ -411,7 +505,8 @@
                 ],
                 "template": [
                     "签到勾勾.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
@@ -444,6 +539,17 @@
             "上层没有勾勾则点左上角"
         ]
     },
+    "此节点用于计数多次没进入主页面则关闭可能的签到": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 3
+                }
+            }
+        }
+    },
     "每日签到": {
         "max_hit": 1,
         "recognition": {
@@ -465,6 +571,36 @@
     },
     "没有点击登录按钮": {},
     "没有确认更新的确定按钮": {},
+    "没有识别到主页面聊天": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "重新识别确保启动阶段弹窗处理结束"
+                }
+            }
+        },
+        "next": [
+            "此节点用于计数多次没进入主页面则关闭可能的签到",
+            "点击空白处关闭未知签到"
+        ]
+    },
+    "没有识别到集会所": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "重新识别确保启动阶段弹窗处理结束"
+                }
+            }
+        },
+        "next": [
+            "此节点用于计数多次没进入主页面则关闭可能的签到",
+            "点击空白处关闭未知签到"
+        ]
+    },
     "活动签到": {
         "recognition": {
             "type": "OCR",
@@ -547,30 +683,6 @@
             "type": "Click"
         }
     },
-    "启动游戏识别到主页设置": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    1069,
-                    2,
-                    211,
-                    86
-                ],
-                "template": [
-                    "设置1.png",
-                    "设置.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "启动游戏识别到主页面聊天",
-            "没有识别到主页面聊天"
-        ]
-    },
     "点击区切换按钮": {
         "recognition": {
             "type": "OCR",
@@ -630,6 +742,22 @@
             "type": "Click"
         }
     },
+    "点击空白处关闭未知签到": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1252,
+                    38,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "重置节点此节点用于计数多次没进入主页面则关闭可能的签到"
+        ]
+    },
     "等待更新完成": {
         "recognition": {
             "type": "OCR",
@@ -678,9 +806,6 @@
                         1,
                         1
                     ]
-                ],
-                "end_hold": [
-                    100
                 ]
             }
         }
@@ -814,6 +939,29 @@
             "threshold": 0.8
         }
     },
+    "重新识别确保启动阶段弹窗处理结束": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "pre_delay": 0
+    },
+    "重置节点此节点用于计数多次没进入主页面则关闭可能的签到": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount",
+                "custom_action_param": {
+                    "node_name": "此节点用于计数多次没进入主页面则关闭可能的签到"
+                }
+            }
+        }
+    },
     "需要更新": {
         "recognition": {
             "type": "OCR",
@@ -833,166 +981,5 @@
             "点击确认更新的确定按钮",
             "没有确认更新的确定按钮"
         ]
-    },
-    "启动游戏识别到主页面聊天": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    500,
-                    712
-                ],
-                "template": [
-                    "主页面.png"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "启动游戏识别到集会所",
-            "没有识别到集会所"
-        ]
-    },
-    "没有识别到主页面聊天": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "ResetCount",
-                "custom_action_param": {
-                    "node_name": "重新识别确保启动阶段弹窗处理结束"
-                }
-            }
-        },
-        "next": [
-            "此节点用于计数多次没进入主页面则关闭可能的签到",
-            "点击空白处关闭未知签到"
-        ]
-    },
-    "启动游戏识别到集会所": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    698,
-                    400,
-                    558,
-                    311
-                ],
-                "template": [
-                    "集会所.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "重新识别确保启动阶段弹窗处理结束",
-            "两次识别成功后则确定进入了主页面"
-        ]
-    },
-    "没有识别到集会所": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "ResetCount",
-                "custom_action_param": {
-                    "node_name": "重新识别确保启动阶段弹窗处理结束"
-                }
-            }
-        },
-        "next": [
-            "此节点用于计数多次没进入主页面则关闭可能的签到",
-            "点击空白处关闭未知签到"
-        ]
-    },
-    "重新识别确保启动阶段弹窗处理结束": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 1
-                }
-            }
-        },
-        "pre_delay": 0
-    },
-    "两次识别成功后则确定进入了主页面": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "EnableNode",
-                "custom_action_param": {
-                    "node_name": "启动游戏点击主页设置"
-                }
-            }
-        }
-    },
-    "启动游戏点击主页设置": {
-        "enabled": false,
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    1069,
-                    2,
-                    211,
-                    86
-                ],
-                "template": [
-                    "设置1.png",
-                    "设置.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "pre_delay": 0,
-        "action": {
-            "type": "Click"
-        },
-        "post_delay": 0
-    },
-    "启动成功": {},
-    "此节点用于计数多次没进入主页面则关闭可能的签到": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "Count",
-                "custom_recognition_param": {
-                    "target": 3
-                }
-            }
-        }
-    },
-    "点击空白处关闭未知签到": {
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1252,
-                    38,
-                    1,
-                    1
-                ]
-            }
-        },
-        "next": [
-            "重置节点此节点用于计数多次没进入主页面则关闭可能的签到"
-        ]
-    },
-    "重置节点此节点用于计数多次没进入主页面则关闭可能的签到": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "ResetCount",
-                "custom_action_param": {
-                    "node_name": "此节点用于计数多次没进入主页面则关闭可能的签到"
-                }
-            }
-        }
     }
 }

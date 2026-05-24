@@ -10,18 +10,6 @@
     "周末活动任务出错": {
         "focus": "任务出错：周末活动❌"
     },
-    "周末活动任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "周末活动任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：周末活动✅"
-    },
     "周末活动入口": {
         "max_hit": 3,
         "next": [
@@ -59,20 +47,47 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
+            "type": "StopTask"
+        },
+        "focus": "任务完成：周末活动✅"
+    },
+    "周末活动当前不为周末": {
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "非周末，跳过此任务"
+    },
+    "周末活动当前为周六": {
+        "recognition": {
             "type": "Custom",
             "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "周末活动入口"
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "6"
                 }
             }
         },
         "next": [
-            "周末活动任务完成"
+            "周末活动进入集会所"
+        ]
+    },
+    "周末活动当前为周日": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "7"
+                }
+            }
+        },
+        "next": [
+            "周末活动进入集会所"
         ]
     },
     "周末活动检查集会所主页": {
@@ -178,7 +193,8 @@
                 ],
                 "template": [
                     "集会所.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "pre_delay": 0,
@@ -267,39 +283,5 @@
             "周末活动确认在主页面",
             "[JumpBack]back"
         ]
-    },
-    "周末活动当前为周日": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "IsTargetWeekday",
-                "custom_recognition_param": {
-                    "weekday": "7"
-                }
-            }
-        },
-        "next": [
-            "周末活动进入集会所"
-        ]
-    },
-    "周末活动当前为周六": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "IsTargetWeekday",
-                "custom_recognition_param": {
-                    "weekday": "6"
-                }
-            }
-        },
-        "next": [
-            "周末活动进入集会所"
-        ]
-    },
-    "周末活动当前不为周末": {
-        "action": {
-            "type": "StopTask"
-        },
-        "focus": "非周末，跳过此任务"
     }
 }

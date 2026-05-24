@@ -59,7 +59,8 @@
                     "叉叉2.png",
                     "叉叉3.png",
                     "叉叉4.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
@@ -176,18 +177,6 @@
     "领取邮件任务出错": {
         "focus": "任务出错：神龙契约❌"
     },
-    "领取邮件任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "领取邮件任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：领取邮件✅"
-    },
     "领取邮件入口": {
         "max_hit": 3,
         "next": [
@@ -206,21 +195,14 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "领取邮件入口"
-                }
-            }
+            "type": "StopTask"
         },
-        "next": [
-            "领取邮件任务完成"
-        ]
+        "focus": "任务完成：领取邮件✅"
     },
     "领取邮件检查主页面": {
         "recognition": {
@@ -234,7 +216,8 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "next": [

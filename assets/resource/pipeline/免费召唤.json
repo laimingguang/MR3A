@@ -19,48 +19,14 @@
         },
         "post_delay": 500
     },
-    "每日首次免费": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    552,
-                    525,
-                    398,
-                    193
-                ],
-                "expected": [
-                    "每日首次免费"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
     "免费召唤entry": {
         "next": [
-            {
-                "name": "免费召唤入口",
-                "jump_back": true
-            },
+            "[JumpBack]免费召唤入口",
             "免费召唤任务出错"
         ]
     },
     "免费召唤任务出错": {
         "focus": "任务出错：免费召唤❌"
-    },
-    "免费召唤任务完成": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "免费召唤任务出错"
-                }
-            }
-        },
-        "focus": "任务完成：免费召唤✅"
     },
     "免费召唤入口": {
         "max_hit": 3,
@@ -80,20 +46,33 @@
                 ],
                 "template": [
                     "主页面.png"
-                ]
+                ],
+                "green_mask": true
             }
         },
         "action": {
-            "type": "Custom",
+            "type": "StopTask"
+        },
+        "focus": "任务完成：免费召唤✅"
+    },
+    "免费召唤检查主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
             "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "免费召唤入口"
-                }
+                "roi": [
+                    9,
+                    143,
+                    411,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
             }
         },
         "next": [
-            "免费召唤任务完成"
+            "点击进入召唤页面"
         ]
     },
     "免费召唤确定": {
@@ -186,14 +165,8 @@
             }
         },
         "next": [
-            {
-                "name": "金钥宝库任务",
-                "jump_back": true
-            },
-            {
-                "name": "白钥武库任务",
-                "jump_back": true
-            },
+            "[JumpBack]金钥宝库任务",
+            "[JumpBack]白钥武库任务",
             "退出召唤"
         ]
     },
@@ -211,6 +184,42 @@
                     "召唤.png"
                 ]
             }
+        }
+    },
+    "忍币召唤结束标志": {
+        "enabled": true,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    643,
+                    617,
+                    147,
+                    76
+                ],
+                "expected": [
+                    "4000|8000"
+                ]
+            }
+        }
+    },
+    "每日首次免费": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    552,
+                    525,
+                    398,
+                    193
+                ],
+                "expected": [
+                    "每日首次免费"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
         }
     },
     "点击咒印炼化": {
@@ -356,10 +365,7 @@
         },
         "next": [
             "白钥武库",
-            {
-                "name": "召唤上滑",
-                "jump_back": true
-            }
+            "[JumpBack]召唤上滑"
         ]
     },
     "白银武库主页面": {
@@ -388,24 +394,12 @@
             "threshold": 0.8
         },
         "next": [
-            {
-                "name": "免费召唤确定",
-                "jump_back": true
-            },
-            {
-                "name": "每日首次免费",
-                "jump_back": true
-            },
+            "[JumpBack]免费召唤确定",
+            "[JumpBack]每日首次免费",
             "银钥匙不足或忍币不足",
             "忍币召唤结束标志",
-            {
-                "name": "使用钥匙召唤",
-                "jump_back": true
-            },
-            {
-                "name": "花费忍币召唤",
-                "jump_back": true
-            }
+            "[JumpBack]使用钥匙召唤",
+            "[JumpBack]花费忍币召唤"
         ]
     },
     "花费忍币召唤": {
@@ -480,10 +474,7 @@
         },
         "next": [
             "免费召唤检查主页面",
-            {
-                "name": "back",
-                "jump_back": true
-            }
+            "[JumpBack]back"
         ]
     },
     "金钥宝库": {
@@ -524,10 +515,7 @@
         },
         "next": [
             "金钥宝库",
-            {
-                "name": "召唤上滑",
-                "jump_back": true
-            }
+            "[JumpBack]召唤上滑"
         ]
     },
     "银钥匙不足或忍币不足": {
@@ -553,42 +541,6 @@
                     501,
                     1,
                     1
-                ]
-            }
-        }
-    },
-    "免费召唤检查主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    9,
-                    143,
-                    411,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ]
-            }
-        },
-        "next": [
-            "点击进入召唤页面"
-        ]
-    },
-    "忍币召唤结束标志": {
-        "enabled": true,
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    643,
-                    617,
-                    147,
-                    76
-                ],
-                "expected": [
-                    "4000|8000"
                 ]
             }
         }
