@@ -1,0 +1,951 @@
+{
+    "不停止家族战任务": {},
+    "使能节点家族战页面上滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "家族战页面上滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭识别到头目战"
+        ]
+    },
+    "使能节点家族战页面下滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "家族战页面下滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "关闭识别到家族信息"
+        ]
+    },
+    "使能节点识别到全员参战且有进入战场": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "识别到全员参战且有进入战场"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "家族战结束时间大于21点20",
+            "家族战未结束"
+        ]
+    },
+    "使能识别到头目战": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "识别到头目战"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能节点识别到全员参战且有进入战场"
+        ]
+    },
+    "使能识别到家族信息": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "EnableNode",
+                "custom_action_param": {
+                    "node_name": "识别到家族信息"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能节点识别到全员参战且有进入战场"
+        ]
+    },
+    "停止家族战任务": {
+        "enabled": false,
+        "action": {
+            "type": "StopTask"
+        }
+    },
+    "关闭节点家族战页面上滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "家族战页面上滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能节点家族战页面下滑"
+        ]
+    },
+    "关闭节点家族战页面下滑": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "家族战页面下滑"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能节点家族战页面上滑"
+        ]
+    },
+    "关闭节点识别到全员参战且有进入战场": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "识别到全员参战且有进入战场"
+                }
+            }
+        }
+    },
+    "关闭识别到头目战": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "识别到头目战"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能识别到家族信息"
+        ]
+    },
+    "关闭识别到家族信息": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "识别到家族信息"
+                }
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "使能识别到头目战"
+        ]
+    },
+    "团队战已结束": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    481,
+                    645,
+                    565,
+                    73
+                ],
+                "expected": [
+                    "团队战已结束|提交成绩|再次挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    72,
+                    59,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "关闭节点识别到全员参战且有进入战场"
+        ]
+    },
+    "团队战点击加入战斗": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    481,
+                    645,
+                    565,
+                    73
+                ],
+                "expected": [
+                    "加入战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "团队战进入战斗失败": {},
+    "家族战entry": {
+        "next": [
+            "[JumpBack]家族战入口",
+            "家族战任务出错"
+        ]
+    },
+    "家族战主页": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    931,
+                    536,
+                    349,
+                    181
+                ],
+                "template": [
+                    "族战页面.png"
+                ]
+            }
+        },
+        "timeout": 600000,
+        "next": [
+            "[JumpBack]家族战拒绝组队",
+            "[JumpBack]领取家族战结算奖励",
+            "[JumpBack]领取家族战参战奖励",
+            "[JumpBack]点击族战宝箱",
+            "[JumpBack]族战宝箱确定",
+            "[JumpBack]族战战报结算确定",
+            "[JumpBack]识别到全员参战且有进入战场",
+            "[JumpBack]团队战已结束",
+            "[JumpBack]团队战点击加入战斗",
+            "[JumpBack]家族战团本结算任意位置继续",
+            "[JumpBack]识别到头目战",
+            "[JumpBack]识别到家族信息",
+            "[JumpBack]家族战页面下滑",
+            "[JumpBack]家族战页面上滑"
+        ]
+    },
+    "家族战任务出错": {
+        "focus": "任务出错：家族战❌"
+    },
+    "家族战任务完成": {
+        "action": {
+            "type": "StopTask"
+        },
+        "focus": "任务完成：家族战✅"
+    },
+    "家族战入口": {
+        "max_hit": 3,
+        "next": [
+            "重置家族战内部节点计数器"
+        ]
+    },
+    "家族战再次确认在主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "点击家族战小图标",
+            "家族战开始"
+        ]
+    },
+    "家族战切换到右侧页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    953,
+                    601,
+                    327,
+                    117
+                ],
+                "expected": [
+                    "家族换装|家族荣誉"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1181,
+                    369,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "target": [
+                457,
+                8,
+                477,
+                101
+            ],
+            "threshold": 0.85
+        }
+    },
+    "家族战团本结算任意位置继续": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    392,
+                    373,
+                    530,
+                    341
+                ],
+                "expected": [
+                    "继续"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1252,
+                    566,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "家族战在目标时间范围": {
+        "next": [
+            "家族战再次确认在主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "家族战开始": {
+        "next": [
+            "家族战主页",
+            "[JumpBack]家族战拒绝组队",
+            "[JumpBack]家族战点击进入战场",
+            "[JumpBack]家族战点击正在进行中",
+            "[JumpBack]家族战意外点击到了深渊",
+            "[JumpBack]家族战切换到右侧页面",
+            "[JumpBack]家族战点击主页家族"
+        ]
+    },
+    "家族战当前不为周末": {
+        "focus": "家族战：非周末，跳过此任务"
+    },
+    "家族战当前为星期六": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "6"
+                }
+            }
+        },
+        "next": [
+            "家族战当前时间大于21点20",
+            "[JumpBack]家族战当前时间小于19点45",
+            "[JumpBack]家族战当前时间小于20点",
+            "家族战在目标时间范围"
+        ]
+    },
+    "家族战当前为星期日": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "IsTargetWeekday",
+                "custom_recognition_param": {
+                    "weekday": "7"
+                }
+            }
+        },
+        "next": [
+            "家族战当前时间大于21点20",
+            "[JumpBack]家族战当前时间小于19点45",
+            "[JumpBack]家族战当前时间小于20点",
+            "家族战在目标时间范围"
+        ]
+    },
+    "家族战当前时间大于21点20": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "TimeAfter",
+                "custom_recognition_param": {
+                    "time": "21:20"
+                }
+            }
+        },
+        "focus": "家族战：当前时间大于21:20，跳过此任务"
+    },
+    "家族战当前时间小于19点45": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "TimeBefore",
+                "custom_recognition_param": {
+                    "time": "19:45"
+                }
+            }
+        },
+        "next": [
+            "[JumpBack]家族战等待提示",
+            "家族战等待10分钟"
+        ]
+    },
+    "家族战当前时间小于20点": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "TimeBefore",
+                "custom_recognition_param": {
+                    "time": "20:00"
+                }
+            }
+        },
+        "next": [
+            "[JumpBack]家族战等待提示",
+            "家族战等待10秒"
+        ]
+    },
+    "家族战意外点击到了深渊": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    592,
+                    2,
+                    684,
+                    98
+                ],
+                "expected": [
+                    "深渊卡牌",
+                    "深渊积分"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    51,
+                    57,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 1000,
+            "threshold": 0.8
+        }
+    },
+    "家族战拒绝组队": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    381,
+                    457,
+                    167,
+                    132
+                ],
+                "expected": [
+                    "拒绝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "家族战未结束": {},
+    "家族战点击主页家族": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    728,
+                    230,
+                    550,
+                    479
+                ],
+                "template": [
+                    "家族.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "家族战点击正在进行中": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    433,
+                    254,
+                    428,
+                    154
+                ],
+                "expected": [
+                    "正在进行中",
+                    "对战结束",
+                    "距离开始还有"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "家族战点击进入战场": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    438,
+                    573,
+                    431,
+                    135
+                ],
+                "expected": [
+                    "进入战场"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "家族战确认在主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    500,
+                    712
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "next": [
+            "家族战当前为星期六",
+            "家族战当前为星期日",
+            "家族战当前不为周末"
+        ]
+    },
+    "家族战等待10分钟": {
+        "post_delay": 600000
+    },
+    "家族战等待10秒": {
+        "post_delay": 10000
+    },
+    "家族战等待提示": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "Count",
+                "custom_recognition_param": {
+                    "target": 1
+                }
+            }
+        },
+        "focus": "挂机等待至20:00家族战开启",
+        "next": [
+            "停止家族战任务",
+            "不停止家族战任务"
+        ]
+    },
+    "家族战结束完成回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "家族战入口"
+                }
+            }
+        },
+        "next": [
+            "家族战任务完成"
+        ]
+    },
+    "家族战结束时间大于21点20": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "TimeAfter",
+                "custom_recognition_param": {
+                    "time": "21:20"
+                }
+            }
+        },
+        "next": [
+            "家族战结束完成回到了主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "家族战页面上滑": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    931,
+                    536,
+                    349,
+                    181
+                ],
+                "template": [
+                    "族战页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1100,
+                    100,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1100,
+                        500,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    500
+                ]
+            }
+        }
+    },
+    "家族战页面下滑": {
+        "enabled": false,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    931,
+                    536,
+                    349,
+                    181
+                ],
+                "template": [
+                    "族战页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1100,
+                    500,
+                    1,
+                    1
+                ],
+                "end": [
+                    [
+                        1100,
+                        100,
+                        1,
+                        1
+                    ]
+                ],
+                "end_hold": [
+                    500
+                ]
+            }
+        }
+    },
+    "族战宝箱确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    465,
+                    546,
+                    358,
+                    163
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "族战战报结算确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1071,
+                    650,
+                    160,
+                    59
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "点击家族战小图标": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    5,
+                    146,
+                    384,
+                    452
+                ],
+                "expected": [
+                    "家族战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "家族战开始"
+        ]
+    },
+    "点击族战宝箱": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    221,
+                    5,
+                    239,
+                    706
+                ],
+                "expected": [
+                    "剩余时间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "识别到全员参战": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    482,
+                    0,
+                    316,
+                    534
+                ],
+                "expected": [
+                    "全员参战"
+                ]
+            }
+        },
+        "next": [
+            "识别到团队战进入战场",
+            "团队战进入战斗失败"
+        ]
+    },
+    "识别到全员参战且有进入战场": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "识别到全员参战",
+                    "识别到团队战进入战场"
+                ]
+            }
+        },
+        "next": [
+            "识别到全员参战",
+            "团队战进入战斗失败"
+        ]
+    },
+    "识别到团队战进入战场": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": "识别到全员参战",
+                "roi_offset": [
+                    -126,
+                    57,
+                    226,
+                    142
+                ],
+                "expected": [
+                    "进入战场"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "识别到头目战": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    490,
+                    36,
+                    304,
+                    444
+                ],
+                "expected": [
+                    "头目战"
+                ]
+            }
+        },
+        "next": [
+            "关闭节点家族战页面下滑"
+        ]
+    },
+    "识别到家族信息": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    2,
+                    414,
+                    1278,
+                    213
+                ],
+                "expected": [
+                    "家族信息"
+                ]
+            }
+        },
+        "next": [
+            "关闭节点家族战页面上滑"
+        ]
+    },
+    "重置家族战内部节点计数器": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "ResetCount"
+            }
+        },
+        "next": [
+            "家族战确认在主页面",
+            "[JumpBack]back"
+        ]
+    },
+    "领取家族战参战奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    92,
+                    449,
+                    270,
+                    224
+                ],
+                "expected": [
+                    "奖励可领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "领取家族战结算奖励": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    462,
+                    420,
+                    360,
+                    105
+                ],
+                "expected": [
+                    "家族战奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}
