@@ -618,7 +618,8 @@
     "领取战令entry": {
         "next": [
             "[JumpBack]领取战令入口",
-            "领取战令任务出错"
+            "领取战令任务出错",
+            "领取战令完成"
         ]
     },
     "领取战令任务出错": {
@@ -647,7 +648,28 @@
             }
         },
         "action": {
-            "type": "StopTask"
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取战令任务出错"
+                }
+            }
+        },
+        "next": [
+            "领取战令任务完成"
+        ]
+    },
+    "领取战令完成": {},
+    "领取战令任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "领取战令入口"
+                }
+            }
         },
         "focus": "任务完成：领取战令✅"
     }

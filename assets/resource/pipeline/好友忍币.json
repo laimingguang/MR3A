@@ -22,7 +22,8 @@
     "好友忍币entry": {
         "next": [
             "[JumpBack]好友忍币入口",
-            "好友忍币任务出错"
+            "好友忍币任务出错",
+            "好友忍币完成"
         ]
     },
     "好友忍币任务出错": {
@@ -33,27 +34,6 @@
         "next": [
             "重置好友忍币内部节点计数器"
         ]
-    },
-    "好友忍币回到主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    4,
-                    136,
-                    434,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "action": {
-            "type": "StopTask"
-        },
-        "focus": "任务完成：好友忍币✅"
     },
     "好友忍币确定": {
         "recognition": {
@@ -230,7 +210,7 @@
             }
         },
         "next": [
-            "好友忍币回到主页面"
+            "好友忍币回到了主页面"
         ]
     },
     "重置好友忍币内部节点计数器": {
@@ -244,5 +224,47 @@
             "好友忍币进入聊天",
             "[JumpBack]back"
         ]
-    }
+    },
+    "好友忍币回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "好友忍币任务出错"
+                }
+            }
+        },
+        "next": [
+            "好友忍币任务完成"
+        ]
+    },
+    "好友忍币任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "好友忍币入口"
+                }
+            }
+        },
+        "focus": "任务完成：好友忍币✅"
+    },
+    "好友忍币完成": {}
 }

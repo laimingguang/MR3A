@@ -22,7 +22,8 @@
     "忍阶任务entry": {
         "next": [
             "[JumpBack]忍阶任务入口",
-            "忍阶任务任务出错"
+            "忍阶任务任务出错",
+            "忍阶任务完成"
         ]
     },
     "忍阶任务任务出错": {
@@ -33,27 +34,6 @@
         "next": [
             "重置忍阶任务内部节点计数器"
         ]
-    },
-    "忍阶任务回到了主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    4,
-                    136,
-                    434,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "action": {
-            "type": "StopTask"
-        },
-        "focus": "任务完成：忍阶任务✅"
     },
     "忍阶任务退出": {
         "recognition": {
@@ -284,5 +264,47 @@
         "next": [
             "每周随机道具确定"
         ]
+    },
+    "忍阶任务完成": {},
+    "忍阶任务回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍阶任务任务出错"
+                }
+            }
+        },
+        "next": [
+            "忍阶任务任务完成"
+        ]
+    },
+    "忍阶任务任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "忍阶任务入口"
+                }
+            }
+        },
+        "focus": "任务完成：忍阶任务✅"
     }
 }

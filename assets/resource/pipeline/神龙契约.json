@@ -12,7 +12,8 @@
     "神龙契约entry": {
         "next": [
             "[JumpBack]神龙契约入口",
-            "神龙契约任务出错"
+            "神龙契约任务出错",
+            "神龙契约完成"
         ]
     },
     "神龙契约任务出错": {
@@ -41,9 +42,17 @@
             }
         },
         "action": {
-            "type": "StopTask"
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "神龙契约任务出错"
+                }
+            }
         },
-        "focus": "任务完成：神龙契约✅"
+        "next": [
+            "神龙契约任务完成"
+        ]
     },
     "神龙契约检查主页面": {
         "recognition": {
@@ -195,5 +204,18 @@
             "神龙契约检查主页面",
             "[JumpBack]back"
         ]
-    }
+    },
+    "神龙契约任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "神龙契约入口"
+                }
+            }
+        },
+        "focus": "任务完成：神龙契约✅"
+    },
+    "神龙契约完成": {}
 }

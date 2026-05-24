@@ -141,7 +141,7 @@
             "type": "Click"
         },
         "next": [
-            "每周兑换码完成回到了主页面"
+            "每周兑换码回到了主页面"
         ]
     },
     "关闭兑换码输入页面": {
@@ -171,38 +171,18 @@
     "每周兑换码entry": {
         "next": [
             "[JumpBack]每周兑换码入口",
-            "每周兑换码任务出错"
+            "每周兑换码任务出错",
+            "每周兑换码完成"
         ]
     },
     "每周兑换码任务出错": {
-        "focus": "任务出错：活动奖励❌"
+        "focus": "任务出错：每周兑换码❌"
     },
     "每周兑换码入口": {
         "max_hit": 3,
         "next": [
             "重置每周兑换码内部节点计数器"
         ]
-    },
-    "每周兑换码完成回到了主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    4,
-                    136,
-                    434,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "action": {
-            "type": "StopTask"
-        },
-        "focus": "任务完成：每周兑换码✅"
     },
     "每周兑换码检查主页面": {
         "recognition": {
@@ -335,5 +315,47 @@
             "每周兑换码检查主页面",
             "[JumpBack]back"
         ]
+    },
+    "每周兑换码完成": {},
+    "每周兑换码回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码任务出错"
+                }
+            }
+        },
+        "next": [
+            "每周兑换码任务完成"
+        ]
+    },
+    "每周兑换码任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "每周兑换码入口"
+                }
+            }
+        },
+        "focus": "任务完成：每周兑换码✅"
     }
 }

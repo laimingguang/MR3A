@@ -96,7 +96,8 @@
     "活动奖励entry": {
         "next": [
             "[JumpBack]活动奖励入口",
-            "活动奖励任务出错"
+            "活动奖励任务出错",
+            "活动奖励完成"
         ]
     },
     "活动奖励任务出错": {
@@ -107,27 +108,6 @@
         "next": [
             "重置活动奖励内部节点计数器"
         ]
-    },
-    "活动奖励完成回到了主页面": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    4,
-                    136,
-                    434,
-                    459
-                ],
-                "template": [
-                    "主页面.png"
-                ],
-                "green_mask": true
-            }
-        },
-        "action": {
-            "type": "StopTask"
-        },
-        "focus": "任务完成：活动奖励✅"
     },
     "活动奖励检查主页面": {
         "recognition": {
@@ -220,7 +200,7 @@
             "type": "Click"
         },
         "next": [
-            "活动奖励完成回到了主页面"
+            "活动奖励回到了主页面"
         ]
     },
     "猫太酬宾礼": {
@@ -512,5 +492,47 @@
             "type": "Click"
         },
         "post_delay": 500
-    }
+    },
+    "活动奖励回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "活动奖励任务出错"
+                }
+            }
+        },
+        "next": [
+            "活动奖励任务完成"
+        ]
+    },
+    "活动奖励任务完成": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "活动奖励入口"
+                }
+            }
+        },
+        "focus": "任务完成：活动奖励✅"
+    },
+    "活动奖励完成": {}
 }
