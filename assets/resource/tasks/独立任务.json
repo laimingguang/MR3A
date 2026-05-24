@@ -68,12 +68,10 @@
         {
             "name": "周末活动",
             "entry": "周末活动entry",
-            "option": [
-                "光影忍法帖"
-            ],
             "group": [
                 "standalone"
-            ]
+            ],
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">系统会先判断当前是否为<strong>周六、周日</strong>，非周末将<strong>直接跳过</strong>。<br/><br/>此外无法识别的活动会自动跳过。目前已支持：<strong>光影忍法帖</strong>、<strong>忍界乱斗</strong>。</span>"
         }
     ],
     "option": {
@@ -334,23 +332,6 @@
                     "label": "关闭",
                     "pipeline_override": {
                         "镜界百器每日任务": {
-                            "enable": false
-                        }
-                    }
-                }
-            ]
-        },
-        "光影忍法帖": {
-            "type": "switch",
-            "default_case": "Yes",
-            "cases": [
-                {
-                    "name": "Yes"
-                },
-                {
-                    "name": "No",
-                    "pipeline_override": {
-                        "周末活动_光影忍法帖": {
                             "enable": false
                         }
                     }
