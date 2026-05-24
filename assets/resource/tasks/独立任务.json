@@ -406,6 +406,9 @@
                     "pipeline_override": {
                         "停止家族战任务": {
                             "enabled": true
+                        },
+                        "家族战等待提示": {
+                            "focus": ""
                         }
                     }
                 }

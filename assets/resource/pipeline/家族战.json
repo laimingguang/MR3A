@@ -85,7 +85,8 @@
         "enabled": false,
         "action": {
             "type": "StopTask"
-        }
+        },
+        "focus": "任务完成：家族战✅"
     },
     "关闭节点家族战页面上滑": {
         "pre_delay": 0,

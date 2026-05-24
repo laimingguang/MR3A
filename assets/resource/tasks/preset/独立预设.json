@@ -22,6 +22,10 @@
                 {
                     "name": "周末活动",
                     "enabled": false
+                },
+                {
+                    "name": "家族战",
+                    "enabled": false
                 }
             ]
         }
