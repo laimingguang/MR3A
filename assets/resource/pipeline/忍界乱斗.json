@@ -1,0 +1,481 @@
+{
+    "忍界乱斗宝箱领取完毕": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    516,
+                    31,
+                    248,
+                    147
+                ],
+                "expected": [
+                    "宝箱说明"
+                ]
+            }
+        },
+        "next": [
+            "忍界乱斗完成回到了主页面",
+            "[JumpBack]忍界乱斗返回主页面"
+        ]
+    },
+    "忍界乱斗点击前往活动": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    892,
+                    582,
+                    378,
+                    130
+                ],
+                "expected": [
+                    "跃跃|交给我吧|前往活动|确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗entry": {
+        "next": [
+            "忍界乱斗主页面",
+            "[JumpBack]周末活动再次点击忍界乱斗",
+            "[JumpBack]忍界乱斗点击前往活动"
+        ]
+    },
+    "周末活动再次点击忍界乱斗": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1272,
+                    300
+                ],
+                "template": [
+                    "忍界乱斗.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗进入战斗后回到了主页面标志1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    663,
+                    0,
+                    617,
+                    135
+                ],
+                "expected": [
+                    "宝箱说明"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "忍界乱斗进入战斗后回到了主页面标志2",
+            "忍界乱斗未识别到主页面标志"
+        ]
+    },
+    "忍界乱斗主节点": {
+        "post_delay": 2000,
+        "timeout": 360000,
+        "next": [
+            "忍界乱斗进入战斗后回到了主页面标志1",
+            "[JumpBack]忍界乱斗点击进入确定进入战场",
+            "[JumpBack]忍界乱斗点击返回和继续",
+            "[JumpBack]忍界乱斗点击结算确定",
+            "[JumpBack]忍界乱斗点击装备卡牌",
+            "[JumpBack]忍界乱斗点击卡牌",
+            "[JumpBack]忍界乱斗等待当前人数满",
+            "[JumpBack]忍界乱斗等待准备倒计时"
+        ]
+    },
+    "忍界乱斗已完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    715,
+                    606,
+                    172,
+                    107
+                ],
+                "expected": [
+                    "3/3"
+                ]
+            }
+        },
+        "next": [
+            "忍界乱斗活动进行结算"
+        ]
+    },
+    "忍界乱斗返回主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1500
+    },
+    "忍界乱斗完成回到了主页面": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    4,
+                    136,
+                    434,
+                    459
+                ],
+                "template": [
+                    "主页面.png"
+                ]
+            }
+        }
+    },
+    "忍界乱斗等待当前人数满": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    438,
+                    167,
+                    390,
+                    159
+                ],
+                "expected": [
+                    "当前人数|分配人员中"
+                ]
+            }
+        }
+    },
+    "忍界乱斗点击卡牌": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    560,
+                    220,
+                    447,
+                    184
+                ],
+                "template": [
+                    "忍界乱斗待装备卡牌.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    666,
+                    561,
+                    1,
+                    1
+                ]
+            }
+        },
+        "post_delay": 500
+    },
+    "忍界乱斗点击装备卡牌": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    813,
+                    513,
+                    233,
+                    102
+                ],
+                "expected": [
+                    "装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗点击返回和继续": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    459,
+                    546,
+                    374,
+                    173
+                ],
+                "expected": [
+                    "返回|继续|跳过"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗点击结算确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    920,
+                    611,
+                    297,
+                    95
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗点击进入确定进入战场": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    559,
+                    441,
+                    162,
+                    109
+                ],
+                "expected": [
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗等待准备倒计时": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    11,
+                    0,
+                    425,
+                    127
+                ],
+                "expected": [
+                    "准备倒计时|决策时间"
+                ]
+            }
+        }
+    },
+    "忍界乱斗点击宝箱": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    784,
+                    0,
+                    492,
+                    124
+                ],
+                "expected": [
+                    "乱斗排行"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    730,
+                    650,
+                    37,
+                    35
+                ]
+            }
+        }
+    },
+    "忍界乱斗领取宝箱确定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    503,
+                    574,
+                    284,
+                    119
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "忍界乱斗未完成": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    715,
+                    606,
+                    172,
+                    107
+                ],
+                "expected": [
+                    "0/3",
+                    "1/3",
+                    "2/3"
+                ]
+            }
+        },
+        "next": [
+            "忍界乱斗未完成点击开始比赛",
+            "忍界乱斗主节点"
+        ]
+    },
+    "忍界乱斗主页面": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    663,
+                    0,
+                    617,
+                    135
+                ],
+                "expected": [
+                    "宝箱说明"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "忍界乱斗不在指定时间",
+            "忍界乱斗未完成",
+            "忍界乱斗已完成",
+            "忍界乱斗主节点"
+        ]
+    },
+    "忍界乱斗未完成点击开始比赛": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    868,
+                    482,
+                    409,
+                    236
+                ],
+                "expected": [
+                    "开始比赛"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "忍界乱斗活动已关闭",
+            "忍界乱斗主节点"
+        ]
+    },
+    "忍界乱斗进入战斗后回到了主页面标志2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    663,
+                    0,
+                    617,
+                    135
+                ],
+                "expected": [
+                    "乱斗排行"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "忍界乱斗主页面",
+            "忍界乱斗未识别到主页面标志"
+        ]
+    },
+    "忍界乱斗未识别到主页面标志": {
+        "next": [
+            "忍界乱斗主节点"
+        ]
+    },
+    "忍界乱斗活动已关闭": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    433,
+                    182,
+                    398,
+                    155
+                ],
+                "expected": [
+                    "活动已关闭"
+                ]
+            }
+        },
+        "next": [
+            "忍界乱斗活动进行结算"
+        ]
+    },
+    "忍界乱斗活动进行结算": {
+        "next": [
+            "忍界乱斗宝箱领取完毕",
+            "[JumpBack]忍界乱斗领取宝箱确定",
+            "[JumpBack]忍界乱斗点击宝箱"
+        ]
+    },
+    "忍界乱斗不在指定时间": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    846,
+                    582,
+                    435,
+                    128
+                ],
+                "expected": [
+                    "每日.*开启"
+                ]
+            }
+        },
+        "next": [
+            "忍界乱斗活动进行结算"
+        ]
+    }
+}
