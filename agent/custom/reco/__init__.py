@@ -1,5 +1,6 @@
 from .general import *
 from .loop_deadline import *
+from .time_check import *
 
 __all__ = [
     "LoopDeadlineActive",
@@ -8,5 +9,8 @@ __all__ = [
     "Count",
     "CheckStopping",
     "ColorOCR",
-    "ColorOCRWithFallback"
+    "ColorOCRWithFallback",
+    "IsTargetWeekday",
+    "TimeAfter",
+    "TimeBefore",
 ]

@@ -1,5 +1,111 @@
-from datetime import datetime, timedelta
+from __future__ import annotations
+
+import re
+from datetime import datetime, time, timedelta
+from typing import Any, Dict, Optional, Tuple
+
 import pytz
+
+DEFAULT_TIMEZONE = "Asia/Shanghai"
+
+_WEEKDAY_NAMES: Dict[int, Tuple[str, ...]] = {
+    0: ("mon", "monday", "周一", "星期一", "礼拜一"),
+    1: ("tue", "tuesday", "周二", "星期二", "礼拜二"),
+    2: ("wed", "wednesday", "周三", "星期三", "礼拜三"),
+    3: ("thu", "thursday", "周四", "星期四", "礼拜四"),
+    4: ("fri", "friday", "周五", "星期五", "礼拜五"),
+    5: ("sat", "saturday", "周六", "星期六", "礼拜六"),
+    6: ("sun", "sunday", "周日", "周天", "星期日", "星期天", "礼拜日", "礼拜天"),
+}
+
+
+def get_timezone(tz_name: Optional[str] = None):
+    return pytz.timezone(tz_name or DEFAULT_TIMEZONE)
+
+
+def now_in_timezone(tz_name: Optional[str] = None) -> datetime:
+    return datetime.now(get_timezone(tz_name))
+
+
+def parse_weekday(value: Any) -> Optional[int]:
+    """
+    解析目标星期，返回 Python weekday（0=周一 … 6=周日）。
+    支持 0-6 整数、中英文名称；字符串 "1"-"7" 按 ISO（1=周一，7=周日）解析。
+    """
+    if value is None:
+        return None
+
+    if isinstance(value, bool):
+        return None
+
+    if isinstance(value, int):
+        if 0 <= value <= 6:
+            return value
+        return None
+
+    if isinstance(value, str):
+        text = value.strip().lower()
+        if not text:
+            return None
+        if text.isdigit():
+            num = int(text)
+            if 1 <= num <= 7:
+                return num - 1
+            if 0 <= num <= 6:
+                return num
+            return None
+        for weekday, names in _WEEKDAY_NAMES.items():
+            if text in names:
+                return weekday
+        return None
+
+    return None
+
+
+def parse_time_of_day(param: Dict[str, Any]) -> Optional[time]:
+    """
+    从参数字典解析时刻，支持：
+    - time: "HH:MM" / "H:MM" / "HH:MM:SS"
+    - hour + minute + second
+    """
+    if not param:
+        return None
+
+    raw_time = param.get("time")
+    if raw_time is not None:
+        if isinstance(raw_time, str):
+            text = raw_time.strip()
+            match = re.fullmatch(r"(\d{1,2}):(\d{2})(?::(\d{2}))?", text)
+            if not match:
+                return None
+            hour, minute, second = int(match.group(1)), int(match.group(2)), int(
+                match.group(3) or 0
+            )
+        else:
+            return None
+    else:
+        hour_raw = param.get("hour")
+        if hour_raw is None:
+            return None
+        try:
+            hour = int(hour_raw)
+            minute = int(param.get("minute", 0))
+            second = int(param.get("second", 0))
+        except (TypeError, ValueError):
+            return None
+
+    if not (0 <= hour <= 23 and 0 <= minute <= 59 and 0 <= second <= 59):
+        return None
+    return time(hour=hour, minute=minute, second=second)
+
+
+def today_at(target: time, now: datetime) -> datetime:
+    return now.replace(
+        hour=target.hour,
+        minute=target.minute,
+        second=target.second,
+        microsecond=0,
+    )
 
 
 def ms_timestamp_diff_to_dhm(timestamp1_ms, timestamp2_ms):
