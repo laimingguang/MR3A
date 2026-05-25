@@ -815,9 +815,9 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    134,
+                    150,
                     224,
-                    814,
+                    820,
                     368
                 ],
                 "template": [
@@ -845,9 +845,9 @@
             "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    130,
+                    150,
                     519,
-                    804,
+                    820,
                     186
                 ],
                 "template": [
