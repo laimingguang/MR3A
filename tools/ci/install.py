@@ -7,7 +7,6 @@ import json
 # 添加当前目录到 Python 路径，便于导入同目录脚本
 sys.path.append(str(Path(__file__).parent))
 from configure import configure_ocr_model
-from generate_manifest_cache import generate_manifest_cache
 
 
 def remove_json_comments(json_string: str) -> str:
@@ -196,17 +195,6 @@ def install_agent():
         json.dump(interface, f, ensure_ascii=False, indent=4)
 
 
-def install_manifest_cache():
-    """生成初始 manifest 缓存（失败不影响构建）"""
-    config_dir = install_path / "config"
-    try:
-        success = generate_manifest_cache(config_dir)
-        if not success:
-            print("Warning: Manifest cache generation failed, users will do full check on first run.")
-    except Exception as e:
-        print(f"Warning: Manifest cache generation raised error: {e}")
-
-
 def install_or_patch_maa_option():
     """写入 MR3A 默认 maa_option，并保留上游新增字段。"""
     if not defaults_path.exists():
@@ -249,7 +237,6 @@ if __name__ == "__main__":
     install_resource()
     install_chores()
     install_agent()
-    install_manifest_cache()
     install_or_patch_maa_option()
 
     print(f"Install to {install_path} successfully.")
