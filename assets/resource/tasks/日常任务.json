@@ -33,7 +33,7 @@
             "group": [
                 "daily"
             ],
-            "description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的，老板娘问答是随机选的</span>"
+            "description": "<span style=\"color:deepskyblue;font-size:15px\">竞技场跑酷是直接挂机的</span>"
         },
         {
             "name": "领取饭团",
@@ -425,6 +425,31 @@
                     "pipeline_override": {
                         "老板娘问答": {
                             "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "老板娘问答自动学题": {
+            "type": "switch",
+            "default_case": "No",
+            "label": "答错后自动学题入库",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {
+                        "老板娘问答回答错误不入库": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "老板娘问答回答错误不入库": {
+                            "enabled": true
                         }
                     }
                 }
