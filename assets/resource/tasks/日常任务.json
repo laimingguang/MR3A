@@ -414,6 +414,9 @@
             "cases": [
                 {
                     "name": "Yes",
+                    "option": [
+                        "自动学题"
+                    ],
                     "pipeline_override": {
                         "老板娘问答": {
                             "enabled": true
@@ -430,10 +433,10 @@
                 }
             ]
         },
-        "老板娘问答自动学题": {
+        "自动学题": {
             "type": "switch",
             "default_case": "No",
-            "label": "答错后自动学题入库",
+            "label": "答错后自动学题",
             "cases": [
                 {
                     "name": "Yes",

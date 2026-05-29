@@ -139,6 +139,44 @@
             "饭团不足返回jjc页面"
         ]
     },
+    "关闭答对x题奖励弹窗": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    501,
+                    200,
+                    273,
+                    87
+                ],
+                "expected": [
+                    "答对.+题奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    666,
+                    6,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "关闭节点问答提前退出不领取奖励": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "问答提前退出不领取奖励"
+                }
+            }
+        }
+    },
     "决斗场退回主页_jjc": {
         "recognition": {
             "type": "TemplateMatch",
@@ -843,33 +881,6 @@
             }
         }
     },
-    "答对x题奖励": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    501,
-                    200,
-                    273,
-                    87
-                ],
-                "expected": [
-                    "答对.+题奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    666,
-                    6,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
     "经典模式": {
         "recognition": {
             "type": "TemplateMatch",
@@ -1232,12 +1243,34 @@
         },
         "next": [
             "[JumpBack]问答点击确定",
-            "[JumpBack]答对x题奖励",
+            "[JumpBack]关闭答对x题奖励弹窗",
+            "问答提前退出不领取奖励",
             "[JumpBack]答对10题的奖励",
             "[JumpBack]答对20题的奖励",
             "[JumpBack]答对30题的奖励",
             "问答退出"
         ]
+    },
+    "问答提前退出不领取奖励": {
+        "enabled": true,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
     },
     "问答点击确定": {
         "recognition": {
@@ -1275,7 +1308,10 @@
         },
         "action": {
             "type": "Click"
-        }
+        },
+        "next": [
+            "关闭节点问答提前退出不领取奖励"
+        ]
     },
     "问答退出": {
         "recognition": {
@@ -1295,7 +1331,7 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 400
+        "post_wait_freezes": 500
     },
     "饭团不足返回jjc页面": {
         "recognition": {
