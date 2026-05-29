@@ -6,21 +6,15 @@
             "用户配置延迟"
         ]
     },
-    "fight": {
-        "next": [
-            "fight_common",
-            "fight_better"
-        ]
-    },
-    "fight_better": {
+    "fight_A": {
         "timeout": 120000,
         "rate_limit": 200,
         "next": [
-            "发现下滑按钮_bt",
-            "发现下翻按钮_bt"
+            "发现下滑按钮_fa",
+            "发现下翻按钮_fa"
         ]
     },
-    "fight_better_boss_delay": {
+    "fight_A_boss_delay": {
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -33,7 +27,7 @@
             "刀疤蝠80delay"
         ]
     },
-    "fight_common": {
+    "fight": {
         "timeout": 120000,
         "rate_limit": 200,
         "next": [
@@ -53,46 +47,13 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    570,
-                    9,
-                    168,
-                    52
+                    780,
+                    43,
+                    112,
+                    55
                 ],
                 "expected": [
                     "\\d"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "rate_limit": 100,
-        "next": [
-            "转绳上_cm"
-        ]
-    },
-    "发现下滑按钮_bt": {
-        "recognition": {
-            "type": "ColorMatch",
-            "param": {
-                "roi": [
-                    230,
-                    612,
-                    1,
-                    1
-                ],
-                "lower": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
-                ],
-                "upper": [
-                    [
-                        255,
-                        255,
-                        255
-                    ]
                 ]
             }
         },
@@ -101,22 +62,17 @@
             "type": "Click",
             "param": {
                 "target": [
-                    230,
-                    612,
-                    1,
-                    1
+                    52,
+                    315,
+                    61,
+                    58
                 ]
             }
         },
         "post_delay": 0,
-        "timeout": 15000,
         "rate_limit": 100,
         "next": [
-            "[JumpBack]持续点击下滑按钮_bt",
-            "转绳上_bt"
-        ],
-        "on_error": [
-            "没见到boss就被打死了_bt"
+            "转绳上_cm"
         ]
     },
     "发现下滑按钮_cm": {
@@ -168,13 +124,13 @@
             "没见到boss就被打死了_cm"
         ]
     },
-    "发现下翻按钮_bt": {
+    "发现下滑按钮_fa": {
         "recognition": {
             "type": "ColorMatch",
             "param": {
                 "roi": [
-                    189,
-                    606,
+                    230,
+                    612,
                     1,
                     1
                 ],
@@ -195,13 +151,26 @@
             }
         },
         "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    230,
+                    612,
+                    1,
+                    1
+                ]
+            }
+        },
         "post_delay": 0,
+        "timeout": 15000,
         "rate_limit": 100,
         "next": [
-            "转绳上_bt"
+            "[JumpBack]持续点击下滑按钮_fa",
+            "转绳上_fa"
         ],
         "on_error": [
-            "没见到boss就被打死了_bt"
+            "没见到boss就被打死了_fa"
         ]
     },
     "发现下翻按钮_cm": {
@@ -240,6 +209,42 @@
             "没见到boss就被打死了_cm"
         ]
     },
+    "发现下翻按钮_fa": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    189,
+                    606,
+                    1,
+                    1
+                ],
+                "lower": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ],
+                "upper": [
+                    [
+                        255,
+                        255,
+                        255
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 100,
+        "next": [
+            "转绳上_fa"
+        ],
+        "on_error": [
+            "没见到boss就被打死了_fa"
+        ]
+    },
     "开大": {
         "pre_delay": 0,
         "action": {
@@ -253,7 +258,7 @@
         },
         "post_delay": 0
     },
-    "持续点击下滑按钮_bt": {
+    "持续点击下滑按钮_cm": {
         "recognition": {
             "type": "ColorMatch",
             "param": {
@@ -293,7 +298,7 @@
         },
         "post_delay": 0
     },
-    "持续点击下滑按钮_cm": {
+    "持续点击下滑按钮_fa": {
         "recognition": {
             "type": "ColorMatch",
             "param": {
@@ -340,8 +345,8 @@
             "用户配置延迟"
         ]
     },
-    "没见到boss就被打死了_bt": {},
     "没见到boss就被打死了_cm": {},
+    "没见到boss就被打死了_fa": {},
     "测试延迟节点": {
         "inverse": true,
         "pre_delay": 0,
@@ -366,6 +371,30 @@
             "用户配置延迟_其他角色"
         ]
     },
+    "用户配置延迟_其他角色": {
+        "pre_delay": 5000,
+        "post_delay": 0,
+        "rate_limit": 0,
+        "next": [
+            "用户配置延迟结束"
+        ]
+    },
+    "用户配置延迟_双焰小椒": {
+        "pre_delay": 1000,
+        "post_delay": 0,
+        "rate_limit": 0,
+        "next": [
+            "用户配置延迟结束"
+        ]
+    },
+    "用户配置延迟结束": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 0,
+        "next": [
+            "开大"
+        ]
+    },
     "血影80delay": {
         "pre_delay": 0,
         "post_delay": 2900,
@@ -373,23 +402,16 @@
             "用户配置延迟"
         ]
     },
-    "转绳上_bt": {
+    "bossfight": {
         "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1090,
-                    620
-                ]
-            }
-        },
         "post_delay": 0,
+        "rate_limit": 100,
         "next": [
-            "fight_better_boss_delay"
+            "boss存活_cm",
+            "未发现boss存活"
         ]
     },
-    "转绳上_cm": {
+    "转绳上_fa": {
         "pre_delay": 0,
         "action": {
             "type": "Click",
@@ -402,7 +424,7 @@
         },
         "post_delay": 0,
         "next": [
-            "开大"
+            "fight_A_boss_delay"
         ]
     },
     "青炎剑80delay": {
@@ -419,28 +441,174 @@
             "用户配置延迟"
         ]
     },
-    "用户配置延迟_双焰小椒": {
-        "pre_delay": 1000,
-        "post_delay": 0,
-        "rate_limit": 0,
-        "next": [
-            "用户配置延迟结束"
-        ]
-    },
-    "用户配置延迟_其他角色": {
-        "pre_delay": 5000,
-        "post_delay": 0,
-        "rate_limit": 0,
-        "next": [
-            "用户配置延迟结束"
-        ]
-    },
-    "用户配置延迟结束": {
+    "boss存活_cm": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    780,
+                    43,
+                    112,
+                    55
+                ],
+                "expected": [
+                    "\\d"
+                ]
+            }
+        },
         "pre_delay": 0,
         "post_delay": 0,
-        "rate_limit": 0,
         "next": [
-            "开大"
+            "boss存活点击大招0"
+        ]
+    },
+    "boss存活点击武器": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    360,
+                    612,
+                    41,
+                    34
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "boss存活点击技能2"
+        ]
+    },
+    "boss存活点击大招0": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    52,
+                    315,
+                    61,
+                    58
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "boss存活点击大招1"
+        ]
+    },
+    "boss存活点击大招1": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    164,
+                    241,
+                    40,
+                    41
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "boss存活点击武器"
+        ]
+    },
+    "boss存活点击技能0": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    496,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "bossfight"
+        ]
+    },
+    "boss存活点击技能1": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    610,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "boss存活点击技能0"
+        ]
+    },
+    "boss存活点击技能2": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    724,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 50,
+        "next": [
+            "boss存活点击技能1"
+        ]
+    },
+    "未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "next": [
+            "boss存活_cm",
+            "再次未发现boss存活"
+        ]
+    },
+    "再次未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 800,
+        "next": [
+            "boss存活_cm",
+            "再再次未发现boss存活"
+        ]
+    },
+    "再再次未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 400,
+        "next": [
+            "boss存活_cm",
+            "boss死了或者自己死了"
+        ]
+    },
+    "boss死了或者自己死了": {},
+    "转绳上_cm": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    620
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "bossfight"
         ]
     }
 }
