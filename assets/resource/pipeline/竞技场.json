@@ -139,6 +139,44 @@
             "饭团不足返回jjc页面"
         ]
     },
+    "关闭答对x题奖励弹窗": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    501,
+                    200,
+                    273,
+                    87
+                ],
+                "expected": [
+                    "答对.+题奖励"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    666,
+                    6,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "关闭节点问答提前退出不领取奖励": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "问答提前退出不领取奖励"
+                }
+            }
+        }
+    },
     "决斗场退回主页_jjc": {
         "recognition": {
             "type": "TemplateMatch",
@@ -466,7 +504,8 @@
         },
         "action": {
             "type": "Click"
-        }
+        },
+        "post_delay": 500
     },
     "点击开始游戏jjc跑酷": {
         "recognition": {
@@ -842,33 +881,6 @@
             }
         }
     },
-    "答对x题奖励": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    501,
-                    200,
-                    273,
-                    87
-                ],
-                "expected": [
-                    "答对.+题奖励"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    666,
-                    6,
-                    1,
-                    1
-                ]
-            }
-        }
-    },
     "经典模式": {
         "recognition": {
             "type": "TemplateMatch",
@@ -899,6 +911,47 @@
         "next": [
             "老板娘问答图标_问答"
         ]
+    },
+    "老板娘问答回答正确": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    624,
+                    322,
+                    589,
+                    256
+                ],
+                "template": [
+                    "老板娘问答回答正确.png"
+                ]
+            }
+        }
+    },
+    "老板娘问答回答错误": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    624,
+                    322,
+                    589,
+                    256
+                ],
+                "template": [
+                    "老板娘问答回答错误.png"
+                ]
+            }
+        },
+        "next": [
+            "老板娘问答回答错误不入库",
+            "获取正确答案并更新json文件"
+        ]
+    },
+    "老板娘问答回答错误不入库": {
+        "enabled": true,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "老板娘问答图标": {
         "recognition": {
@@ -945,6 +998,58 @@
             "老板娘问答图标_问答"
         ]
     },
+    "老板娘问答识别到问题等待画面稳定": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    404,
+                    87,
+                    831,
+                    213
+                ],
+                "expected": [
+                    "第\\d+/10问"
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                409,
+                90,
+                825,
+                206
+            ]
+        },
+        "next": [
+            "老板娘问答选择答案"
+        ]
+    },
+    "老板娘问答选择答案": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "LandladyQaAnswer",
+                "custom_recognition_param": {
+                    "db_path": "resource/data/老板娘问答.json",
+                    "fallback_random": true,
+                    "min_answer_ratio": 0.78,
+                    "min_question_ratio": 0.85,
+                    "options_recognition": "问答_选项OCR",
+                    "question_recognition": "问答_题目OCR"
+                }
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000,
+        "next": [
+            "老板娘问答回答错误",
+            "老板娘问答回答正确"
+        ]
+    },
     "老板娘问答页面": {
         "recognition": {
             "type": "TemplateMatch",
@@ -962,11 +1067,44 @@
         },
         "next": [
             "[JumpBack]点击准备好了",
-            "[JumpBack]选择选项",
+            "[JumpBack]老板娘问答识别到问题等待画面稳定",
             "[JumpBack]问答点击领取奖励",
             "[JumpBack]问答点击确定",
             "问答完成"
         ]
+    },
+    "获取正确答案并更新json文件": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    610,
+                    320,
+                    600,
+                    260
+                ],
+                "template": [
+                    "老板娘问答回答正确.png"
+                ]
+            }
+        },
+        "pre_delay": 500,
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "LandladyQaLearnAnswer",
+                "custom_action_param": {
+                    "db_path": "resource/data/老板娘问答.json",
+                    "on_duplicate": "update",
+                    "target_offset": [
+                        95,
+                        -17,
+                        374,
+                        36
+                    ]
+                }
+            }
+        }
     },
     "进入了jjc跑酷页面": {
         "recognition": {
@@ -1048,26 +1186,6 @@
             "进入了决斗场_jjc"
         ]
     },
-    "选择选项": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    636,
-                    331,
-                    561,
-                    247
-                ],
-                "expected": [
-                    "A|B|C"
-                ],
-                "order_by": "Random"
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
     "重置竞技场内部节点计数器": {
         "action": {
             "type": "Custom",
@@ -1079,6 +1197,34 @@
             "竞技场检查主页面",
             "[JumpBack]back"
         ]
+    },
+    "问答_选项OCR": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    610,
+                    320,
+                    600,
+                    260
+                ],
+                "order_by": "Vertical"
+            }
+        }
+    },
+    "问答_题目OCR": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    400,
+                    80,
+                    840,
+                    220
+                ],
+                "order_by": "Vertical"
+            }
+        }
     },
     "问答完成": {
         "recognition": {
@@ -1097,12 +1243,34 @@
         },
         "next": [
             "[JumpBack]问答点击确定",
-            "[JumpBack]答对x题奖励",
+            "[JumpBack]关闭答对x题奖励弹窗",
+            "问答提前退出不领取奖励",
             "[JumpBack]答对10题的奖励",
             "[JumpBack]答对20题的奖励",
             "[JumpBack]答对30题的奖励",
             "问答退出"
         ]
+    },
+    "问答提前退出不领取奖励": {
+        "enabled": true,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    125,
+                    100
+                ],
+                "template": [
+                    "返回按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
     },
     "问答点击确定": {
         "recognition": {
@@ -1140,7 +1308,10 @@
         },
         "action": {
             "type": "Click"
-        }
+        },
+        "next": [
+            "关闭节点问答提前退出不领取奖励"
+        ]
     },
     "问答退出": {
         "recognition": {
@@ -1160,7 +1331,7 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 400
+        "post_wait_freezes": 500
     },
     "饭团不足返回jjc页面": {
         "recognition": {
