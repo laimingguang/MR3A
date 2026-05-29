@@ -835,7 +835,8 @@
                     1
                 ]
             }
-        }
+        },
+        "post_delay": 800
     },
     "答对20题的奖励": {
         "recognition": {
@@ -857,7 +858,8 @@
                     1
                 ]
             }
-        }
+        },
+        "post_delay": 800
     },
     "答对30题的奖励": {
         "recognition": {
@@ -879,7 +881,8 @@
                     1
                 ]
             }
-        }
+        },
+        "post_delay": 800
     },
     "经典模式": {
         "recognition": {
@@ -1270,7 +1273,7 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 500
+        "post_wait_freezes": 800
     },
     "问答点击确定": {
         "recognition": {
@@ -1331,7 +1334,7 @@
         "action": {
             "type": "Click"
         },
-        "post_wait_freezes": 500
+        "post_wait_freezes": 800
     },
     "饭团不足返回jjc页面": {
         "recognition": {
