@@ -84,6 +84,16 @@
                 "standalone"
             ],
             "description": "<span style=\"color:deepskyblue;font-size:15px\">系统会先判断当前是否为<strong>周六、周日</strong>，非周末将<strong>直接跳过</strong>。</span>"
+        },
+        {
+            "name": "万川修行",
+            "entry": "万川修行entry",
+            "option": [
+                "是否使用体验角色"
+            ],
+            "group": [
+                "standalone"
+            ]
         }
     ],
     "option": {
@@ -443,6 +453,61 @@
                         },
                         "识别到全员参战且有进入战场": {
                             "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "是否使用体验角色": {
+            "type": "switch",
+            "label": "是否使用体验角色",
+            "default_case": "Yes",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "label": "开启",
+                    "pipeline_override": {
+                        "万川修行已选择体验忍者": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "万川修行已使用体验忍者.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "万川修行点击选择体验忍者": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "万川修行未使用体验忍者.png"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "label": "关闭",
+                    "pipeline_override": {
+                        "万川修行已选择体验忍者": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "万川修行未使用体验忍者.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "万川修行点击选择体验忍者": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "万川修行已使用体验忍者.png"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
