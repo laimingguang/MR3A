@@ -1,9 +1,158 @@
 {
+    "bossfight": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "rate_limit": 100,
+        "next": [
+            "boss存活_cm",
+            "未发现boss存活"
+        ]
+    },
+    "boss存活_cm": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    780,
+                    43,
+                    112,
+                    55
+                ],
+                "expected": [
+                    "×\\d",
+                    "x\\d",
+                    "X\\d"
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "boss存活点击大招0"
+        ]
+    },
+    "boss存活点击大招0": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    52,
+                    315,
+                    61,
+                    58
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "boss存活点击大招1"
+        ]
+    },
+    "boss存活点击大招1": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    164,
+                    241,
+                    40,
+                    41
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "boss存活点击武器"
+        ]
+    },
+    "boss存活点击技能0": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    496,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "bossfight"
+        ]
+    },
+    "boss存活点击技能1": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    610,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "boss存活点击技能0"
+        ]
+    },
+    "boss存活点击技能2": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    724,
+                    570,
+                    50,
+                    50
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "boss存活点击技能1"
+        ]
+    },
+    "boss存活点击武器": {
+        "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    360,
+                    612,
+                    41,
+                    34
+                ]
+            }
+        },
+        "post_delay": 0,
+        "next": [
+            "boss存活点击技能2"
+        ]
+    },
+    "boss死了或者自己死了": {},
     "common_boss_delay": {
         "pre_delay": 0,
         "post_delay": 4000,
         "next": [
             "用户配置延迟"
+        ]
+    },
+    "fight": {
+        "timeout": 120000,
+        "rate_limit": 200,
+        "next": [
+            "发现下滑按钮_cm",
+            "发现下翻按钮_cm"
         ]
     },
     "fight_A": {
@@ -27,12 +176,20 @@
             "刀疤蝠80delay"
         ]
     },
-    "fight": {
-        "timeout": 120000,
-        "rate_limit": 200,
+    "再再次未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 400,
         "next": [
-            "发现下滑按钮_cm",
-            "发现下翻按钮_cm"
+            "boss存活_cm",
+            "boss死了或者自己死了"
+        ]
+    },
+    "再次未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 800,
+        "next": [
+            "boss存活_cm",
+            "再再次未发现boss存活"
         ]
     },
     "刀疤蝠80delay": {
@@ -53,7 +210,9 @@
                     55
                 ],
                 "expected": [
-                    "\\d"
+                    "×\\d",
+                    "x\\d",
+                    "X\\d"
                 ]
             }
         },
@@ -114,7 +273,7 @@
             }
         },
         "post_delay": 0,
-        "timeout": 15000,
+        "timeout": 20000,
         "rate_limit": 100,
         "next": [
             "[JumpBack]持续点击下滑按钮_cm",
@@ -338,6 +497,14 @@
         },
         "post_delay": 0
     },
+    "未发现boss存活": {
+        "pre_delay": 0,
+        "post_delay": 1200,
+        "next": [
+            "boss存活_cm",
+            "再次未发现boss存活"
+        ]
+    },
     "歼灭者V型80delay": {
         "pre_delay": 0,
         "post_delay": 3700,
@@ -402,13 +569,20 @@
             "用户配置延迟"
         ]
     },
-    "bossfight": {
+    "转绳上_cm": {
         "pre_delay": 0,
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1090,
+                    620
+                ]
+            }
+        },
         "post_delay": 0,
-        "rate_limit": 100,
         "next": [
-            "boss存活_cm",
-            "未发现boss存活"
+            "bossfight"
         ]
     },
     "转绳上_fa": {
@@ -439,176 +613,6 @@
         "post_delay": 8600,
         "next": [
             "用户配置延迟"
-        ]
-    },
-    "boss存活_cm": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    780,
-                    43,
-                    112,
-                    55
-                ],
-                "expected": [
-                    "\\d"
-                ]
-            }
-        },
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "boss存活点击大招0"
-        ]
-    },
-    "boss存活点击武器": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    360,
-                    612,
-                    41,
-                    34
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "boss存活点击技能2"
-        ]
-    },
-    "boss存活点击大招0": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    52,
-                    315,
-                    61,
-                    58
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "boss存活点击大招1"
-        ]
-    },
-    "boss存活点击大招1": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    164,
-                    241,
-                    40,
-                    41
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "boss存活点击武器"
-        ]
-    },
-    "boss存活点击技能0": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    496,
-                    570,
-                    50,
-                    50
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "bossfight"
-        ]
-    },
-    "boss存活点击技能1": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    610,
-                    570,
-                    50,
-                    50
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "boss存活点击技能0"
-        ]
-    },
-    "boss存活点击技能2": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    724,
-                    570,
-                    50,
-                    50
-                ]
-            }
-        },
-        "post_delay": 50,
-        "next": [
-            "boss存活点击技能1"
-        ]
-    },
-    "未发现boss存活": {
-        "pre_delay": 0,
-        "post_delay": 1200,
-        "next": [
-            "boss存活_cm",
-            "再次未发现boss存活"
-        ]
-    },
-    "再次未发现boss存活": {
-        "pre_delay": 0,
-        "post_delay": 800,
-        "next": [
-            "boss存活_cm",
-            "再再次未发现boss存活"
-        ]
-    },
-    "再再次未发现boss存活": {
-        "pre_delay": 0,
-        "post_delay": 400,
-        "next": [
-            "boss存活_cm",
-            "boss死了或者自己死了"
-        ]
-    },
-    "boss死了或者自己死了": {},
-    "转绳上_cm": {
-        "pre_delay": 0,
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    1090,
-                    620
-                ]
-            }
-        },
-        "post_delay": 0,
-        "next": [
-            "bossfight"
         ]
     }
 }
