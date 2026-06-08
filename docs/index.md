@@ -3,10 +3,12 @@ layout: home
 
 hero:
   name: MR3A
-  text: 《忍者必须死3》自动化助手
+  text: |
+    《忍者必须死3》
+    自动化助手
   tagline: 图像识别 + 模拟控制，解放双手
   image:
-    src: /logo.png
+    src: /logo.webp
     alt: MR3A
   actions:
     - theme: brand

@@ -14,14 +14,15 @@ export default defineConfig({
   ],
 
   head: [
-    ['link', { rel: 'icon', href: '/MR3A/logo.png' }],
+    ['link', { rel: 'icon', href: '/MR3A/logo.webp' }],
+    ['style', {}, '.VPHero .text { white-space: pre-line; }'],
   ],
 
   // develop/ 仅保留在仓库，不在站点展示
   srcExclude: ['develop/**'],
 
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo.webp',
 
     nav: [
       { text: '首页', link: '/' },
