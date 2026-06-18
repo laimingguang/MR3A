@@ -45,6 +45,9 @@ def main():
             print("ERROR: 兑换码 field is empty or not a list", file=sys.stderr)
             return 1
         code = codes[0]
+        if not isinstance(code, str):
+            print(f"ERROR: 兑换码 is not a string: {type(code).__name__}", file=sys.stderr)
+            return 1
         print(f"Code: {code}")
     except Exception as e:
         print(f"ERROR: Parse failed: {e}", file=sys.stderr)
